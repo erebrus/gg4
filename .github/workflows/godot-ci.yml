@@ -31,6 +31,7 @@ jobs:
         mkdir -v -p build/html
         cd src
         godot -v --headless --export-release "HTML5" ../build/html/index.html
+        godot -v --headless --export-release "HTML5" ../build/html/index.html
     - name: Publish to Itch.io
       uses: josephbmanley/butler-publish-itchio-action@master
       env:
