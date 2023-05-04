@@ -1,0 +1,35 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Go Godot Jam 4"
+run/main_scene="res://src/DummyScene.tscn"
+config/features=PackedStringArray("4.0", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
+RngUtils="*res://addons/rng_utils/rng_utils.gd"
+Logger="*res://addons/gs_logger/logger.gd"
+
+[editor]
+
+script/templates_search_path="res://addons/xsm/templates/"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/xsm/plugin.cfg", "res://addons/rng_utils/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/random_audio_player/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg")
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
