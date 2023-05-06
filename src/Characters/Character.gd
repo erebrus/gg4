@@ -10,8 +10,8 @@ var world_target_pos:Vector2 = Vector2()
 var speed:int = 0
 var is_moving:bool = false
 @onready var grid:Arena = get_parent()
-var commands:Array = []
-var command:Vector2i
+var commands:Array[Globals.Commands] = []
+var command
 
 func _ready():
 	pass
@@ -35,7 +35,7 @@ func _physics_process(delta:float):
 		else:
 			direction=Vector2i.ZERO
 			is_moving=false
-			command = Vector2i.ZERO
+			command = null
 
 	elif is_moving:
 		speed = MAX_SPEED
@@ -49,8 +49,9 @@ func _physics_process(delta:float):
 		if distance_to_target < move_distance:
 			velocity = target_direction * distance_to_target
 			is_moving = false
-			command = Vector2i.ZERO
-			direction = command #TODO check if we want to keep direction, or just use command
+			command = null
+			direction = Vector2i.ZERO
+			#TODO check if we want to keep direction, or just use command
 			
 
 		var collision = move_and_collide(velocity)
@@ -59,8 +60,8 @@ func _physics_process(delta:float):
 
 
 func control(delta:float)->void:
-	if command!=null and command!=Vector2i.ZERO:		
-		direction = command	
+	if command!=null:		
+		direction = translate_command(command)
 	else:
 		direction = Vector2i.ZERO		
 
@@ -68,7 +69,20 @@ func tick()->void:
 	var new_direction:Vector2i = Vector2i()
 
 	if not commands.is_empty():
-		new_direction = commands[0]
+		new_direction = translate_command(commands[0])
 		commands.remove_at(0)			
 		
 	direction=new_direction	
+
+func translate_command(command : Globals.Commands)->Vector2i:
+	match command:
+		Globals.Commands.RIGHT:
+			return Vector2i.RIGHT
+		Globals.Commands.LEFT:
+			return Vector2i.LEFT
+		Globals.Commands.UP:
+			return Vector2i.UP
+		Globals.Commands.DOWN:
+			return Vector2i.DOWN
+	return Vector2i.ZERO	
+	

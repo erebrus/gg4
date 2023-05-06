@@ -6,19 +6,17 @@ extends Character
 func control(delta:float)->void:	
 	if enable_debug_movement:		
 		if Input.is_action_just_pressed("ui_up"):
-#			new_direction.y = -1
-			commands.append(Vector2i(0,-1))
+			Events.commands_queued.emit([Globals.Commands.UP]) 
 		elif Input.is_action_just_pressed("ui_down"):
-#			new_direction.y = 1
-			commands.append(Vector2i(0,1))
+			Events.commands_queued.emit([Globals.Commands.DOWN])
 		elif Input.is_action_just_pressed("ui_left"):
-			commands.append(Vector2i(-1, 0))
-#			new_direction.x = -1
+			Events.commands_queued.emit([Globals.Commands.LEFT]) 
 		elif Input.is_action_just_pressed("ui_right"):
-#			new_direction.x = 1
-			commands.append(Vector2i(1, 0))		
+			Events.commands_queued.emit([Globals.Commands.RIGHT])
 	else:
 		super.control(delta)
 		
 		
-
+func add_commands(new_commands): #TODO :Array[Globals.Commands]
+	commands.append_array(new_commands)
+	Logger.debug("Added %s commands to player" % str(new_commands))
