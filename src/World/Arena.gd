@@ -1,7 +1,8 @@
 extends TileMap
 class_name Arena
 
-const PlayerScene:PackedScene = preload("res://src/Player/Character.tscn")
+const EnemyScene:PackedScene = preload("res://src/Characters/Enemies/Enemy.tscn")
+const PlayerScene:PackedScene = preload("res://src/Characters/Player/Player.tscn")
 const ObstacleScene:PackedScene = preload("res://src/World/Obstacle.tscn")
 
 enum CellType {EMPTY, OBSTACLE}
@@ -9,7 +10,8 @@ enum CellType {EMPTY, OBSTACLE}
 
 @export var grid_size_x:int = 15
 @export var grid_size_y:int = 9
-@export var enable_debug_obstacles := true
+@export var enable_debug_elements := true
+@export var enable_debug_mode := true
 
 @export var start_position:Vector2 = Vector2(1,1)
 
@@ -25,8 +27,9 @@ func _ready():
 
 	init_grid()
 	init_player()
-	if enable_debug_obstacles:
+	if enable_debug_elements:
 		init_debug_obstacles()
+		init_debug_enemies()
 	Logger.info("Arena initialised.")
 
 func init_player():
@@ -34,9 +37,16 @@ func init_player():
 	add_child(player)
 	player.position = map_to_local(start_position)
 	
+func init_debug_enemies():
+	add_debug_enemy(Vector2i(3,8))
 func init_debug_obstacles():
 	add_debug_obstacle(Vector2i(4,5))
 	
+func add_debug_enemy(cell_pos:Vector2i)->void:
+	var enemy:Enemy = EnemyScene.instantiate()
+	add_child(enemy)
+	enemy.position = map_to_local(cell_pos)
+		
 func add_debug_obstacle(cell_pos:Vector2i)->void:
 	var o = ObstacleScene.instantiate()	
 	grid[cell_pos.x][cell_pos.y] = CellType.OBSTACLE
@@ -79,3 +89,12 @@ func update_child_pos(this_world_pos, direction, type)->Vector2:
 
 	var new_world_pos:Vector2 = map_to_local(new_grid_pos)
 	return new_world_pos
+
+func tick():
+	for child in get_children():
+		if child.has_method("tick"):
+			child.tick()
+
+func _input(event):
+	if enable_debug_mode and Input.is_action_just_pressed("ui_accept"):
+		tick()

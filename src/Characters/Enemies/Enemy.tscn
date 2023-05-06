@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgl5ug6gk4feq"]
+
+[ext_resource type="PackedScene" uid="uid://dq5gskfco0vnc" path="res://src/Characters/Character.tscn" id="1_f8rso"]
+[ext_resource type="Script" path="res://src/Characters/Enemies/Enemy.gd" id="2_omkhf"]
+
+[node name="Enemy" instance=ExtResource("1_f8rso")]
+script = ExtResource("2_omkhf")
+command_pattern = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(-1, 0), Vector2i(1, 0)])
+
+[node name="Polygon2D" parent="." index="1"]
+color = Color(0.94902, 0.231373, 0.278431, 1)

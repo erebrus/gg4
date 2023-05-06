@@ -3,9 +3,6 @@ class_name Character
 
 const MAX_SPEED:float = 300
 
-
-@export var enable_debug_movement:=true
-
 var direction:Vector2i = Vector2i()
 var target_direction:Vector2 = Vector2()
 var world_target_pos:Vector2 = Vector2()
@@ -13,8 +10,12 @@ var world_target_pos:Vector2 = Vector2()
 var speed:int = 0
 var is_moving:bool = false
 @onready var grid:Arena = get_parent()
+var commands:Array = []
+var command:Vector2i
 
-
+func _ready():
+	pass
+	
 func update_sprite():
 	pass
 
@@ -34,6 +35,7 @@ func _physics_process(delta:float):
 		else:
 			direction=Vector2i.ZERO
 			is_moving=false
+			command = Vector2i.ZERO
 
 	elif is_moving:
 		speed = MAX_SPEED
@@ -47,6 +49,9 @@ func _physics_process(delta:float):
 		if distance_to_target < move_distance:
 			velocity = target_direction * distance_to_target
 			is_moving = false
+			command = Vector2i.ZERO
+			direction = command #TODO check if we want to keep direction, or just use command
+			
 
 		var collision = move_and_collide(velocity)
 		if collision:
@@ -54,17 +59,16 @@ func _physics_process(delta:float):
 
 
 func control(delta:float)->void:
-	if not enable_debug_movement:
-		return
-	var new_direction:Vector2i = Vector2i()
-	
-	if Input.is_action_pressed("ui_up"):
-		new_direction.y = -1
-	elif Input.is_action_pressed("ui_down"):
-		new_direction.y = 1
-	elif Input.is_action_pressed("ui_left"):
-		new_direction.x = -1
-	elif Input.is_action_pressed("ui_right"):
-		new_direction.x = 1
+	if command!=null and command!=Vector2i.ZERO:		
+		direction = command	
+	else:
+		direction = Vector2i.ZERO		
 
+func tick()->void:
+	var new_direction:Vector2i = Vector2i()
+
+	if not commands.is_empty():
+		new_direction = commands[0]
+		commands.remove_at(0)			
+		
 	direction=new_direction	
