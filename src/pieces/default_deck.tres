@@ -10,27 +10,27 @@
 
 [sub_resource type="Resource" id="Resource_mp32m"]
 script = ExtResource("1_gqlm8")
-commands = Array[StringName]([&"right", &"right", &"down", &"down"])
+commands = Array[int]([2, 2, 3, 3])
 texture = ExtResource("2_mrcvf")
 
 [sub_resource type="Resource" id="Resource_6qdkm"]
 script = ExtResource("1_gqlm8")
-commands = Array[StringName]([&"right", &"right", &"right", &"right"])
+commands = Array[int]([2, 2, 2, 2])
 texture = ExtResource("3_57fcy")
 
 [sub_resource type="Resource" id="Resource_fir6j"]
 script = ExtResource("1_gqlm8")
-commands = Array[StringName]([&"right"])
+commands = Array[int]([2])
 texture = ExtResource("4_5bq1o")
 
 [sub_resource type="Resource" id="Resource_dbhim"]
 script = ExtResource("1_gqlm8")
-commands = Array[StringName]([&"right", &"down", &"right", &"right"])
+commands = Array[int]([2, 3, 2, 2])
 texture = ExtResource("5_0bows")
 
 [sub_resource type="Resource" id="Resource_qmxbc"]
 script = ExtResource("1_gqlm8")
-commands = Array[StringName]([&"right", &"down", &"left", &"left"])
+commands = Array[int]([2, 3, 0, 0])
 texture = ExtResource("6_sbys1")
 
 [resource]

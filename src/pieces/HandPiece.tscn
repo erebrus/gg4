@@ -6,7 +6,7 @@
 
 [sub_resource type="Resource" id="Resource_8agbt"]
 script = ExtResource("2_l1fjc")
-commands = Array[StringName]([&"right", &"right", &"down", &"down"])
+commands = Array[int]([2, 2, 3, 3])
 texture = ExtResource("3_jc7cu")
 
 [node name="HandPiece" type="MarginContainer"]
@@ -18,7 +18,5 @@ grow_vertical = 2
 script = ExtResource("1_v6ls0")
 piece = SubResource("Resource_8agbt")
 
-[node name="Sprite" type="TextureRect" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
-stretch_mode = 2
