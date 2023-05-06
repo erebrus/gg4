@@ -2,7 +2,7 @@ name: "godot-ci export"
 on:
   push:
     branches:
-      - main
+      - release
 
 env:
   GODOT_VERSION: 4.0.1
