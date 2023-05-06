@@ -5,7 +5,7 @@
 
 [node name="Enemy" instance=ExtResource("1_f8rso")]
 script = ExtResource("2_omkhf")
-command_pattern = Array[Vector2i]([Vector2i(1, 0), Vector2i(-1, 0), Vector2i(-1, 0), Vector2i(1, 0)])
+command_pattern = Array[int]([0, 2, 2, 0])
 
 [node name="Polygon2D" parent="." index="1"]
 color = Color(0.94902, 0.231373, 0.278431, 1)

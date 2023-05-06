@@ -41,6 +41,7 @@ func init_player():
 	add_child(player)
 	player.position = map_to_local(start_position)
 	tick.connect(player.tick)
+	Events.commands_queued.connect(player.add_commands)
 	
 func init_debug_enemies():
 	add_debug_enemy(Vector2i(3,8))
