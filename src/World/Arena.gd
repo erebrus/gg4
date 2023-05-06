@@ -1,6 +1,10 @@
 extends TileMap
 class_name Arena
 
+
+signal tick()
+
+
 const EnemyScene:PackedScene = preload("res://src/Characters/Enemies/Enemy.tscn")
 const PlayerScene:PackedScene = preload("res://src/Characters/Player/Player.tscn")
 const ObstacleScene:PackedScene = preload("res://src/World/Obstacle.tscn")
@@ -36,6 +40,7 @@ func init_player():
 	var player:Character = PlayerScene.instantiate()
 	add_child(player)
 	player.position = map_to_local(start_position)
+	tick.connect(player.tick)
 	
 func init_debug_enemies():
 	add_debug_enemy(Vector2i(3,8))
@@ -46,7 +51,8 @@ func add_debug_enemy(cell_pos:Vector2i)->void:
 	var enemy:Enemy = EnemyScene.instantiate()
 	add_child(enemy)
 	enemy.position = map_to_local(cell_pos)
-		
+	tick.connect(enemy.tick)
+	
 func add_debug_obstacle(cell_pos:Vector2i)->void:
 	var o = ObstacleScene.instantiate()	
 	grid[cell_pos.x][cell_pos.y] = CellType.OBSTACLE
@@ -90,11 +96,7 @@ func update_child_pos(this_world_pos, direction, type)->Vector2:
 	var new_world_pos:Vector2 = map_to_local(new_grid_pos)
 	return new_world_pos
 
-func tick():
-	for child in get_children():
-		if child.has_method("tick"):
-			child.tick()
-
 func _input(event):
 	if enable_debug_mode and Input.is_action_just_pressed("ui_accept"):
-		tick()
+		tick.emit()
+		
