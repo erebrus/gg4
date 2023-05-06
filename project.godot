@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 RngUtils="*res://addons/rng_utils/rng_utils.gd"
 Logger="*res://addons/gs_logger/logger.gd"
 Globals="*res://src/Globals.gd"
