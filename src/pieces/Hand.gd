@@ -46,3 +46,9 @@ func _on_left_button_pressed():
 func _on_right_button_pressed():
 	if selected_piece != null:
 		selected_piece.rotate_right()
+	
+
+func _on_accept_button_pressed():
+	if selected_piece != null:
+		selected_piece.place()
+		_add_piece()

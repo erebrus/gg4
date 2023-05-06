@@ -29,6 +29,11 @@ func _gui_input(event: InputEvent) -> void:
 			select()
 	
 
+func place() -> void:
+	Events.commands_queued.emit(piece.commands)
+	queue_free()
+	
+
 func select() -> void:
 	if is_selected:
 		return
