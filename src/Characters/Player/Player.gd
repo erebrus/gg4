@@ -17,6 +17,6 @@ func control(delta:float)->void:
 		super.control(delta)
 		
 		
-func add_commands(new_commands): #TODO :Array[Globals.Commands]
+func add_commands(new_commands: Array[Globals.Commands]):
 	commands.append_array(new_commands)
 	Logger.debug("Added %s commands to player" % str(new_commands))

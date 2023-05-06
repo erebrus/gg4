@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://2yjr5nvq11bj"]
+[gd_scene load_steps=3 format=3 uid="uid://pine8k86awhd"]
 
-[ext_resource type="Script" path="res://src/pieces/Hand.gd" id="1_3wl41"]
-[ext_resource type="Resource" uid="uid://co741xa2xsj72" path="res://src/pieces/default_deck.tres" id="2_x3m8u"]
+[ext_resource type="Script" path="res://src/Pieces/Hand.gd" id="1_j7nri"]
+[ext_resource type="Resource" path="res://src/Pieces/default_deck.tres" id="2_lq4b3"]
 
 [node name="Hand" type="MarginContainer"]
 anchors_preset = 15
@@ -9,8 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3wl41")
-deck = ExtResource("2_x3m8u")
+script = ExtResource("1_j7nri")
+deck = ExtResource("2_lq4b3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
