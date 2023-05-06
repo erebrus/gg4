@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://djn3b4e5hbf2b"]
+
+[ext_resource type="PackedScene" uid="uid://dq5gskfco0vnc" path="res://src/Characters/Character.tscn" id="1_fybfn"]
+[ext_resource type="Script" path="res://src/Characters/Player/Player.gd" id="2_jhrk2"]
+
+[node name="Player" instance=ExtResource("1_fybfn")]
+script = ExtResource("2_jhrk2")
+enable_debug_movement = true
