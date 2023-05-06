@@ -21,6 +21,11 @@ RngUtils="*res://addons/rng_utils/rng_utils.gd"
 Logger="*res://addons/gs_logger/logger.gd"
 Globals="*res://src/Globals.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1280
+
 [editor]
 
 script/templates_search_path="res://addons/xsm/templates/"
