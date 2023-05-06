@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmlwbo38m15g6"]
+
+[ext_resource type="PackedScene" uid="uid://dwo076kjitnic" path="res://src/World/Arena.tscn" id="1_yj4tk"]
+[ext_resource type="PackedScene" uid="uid://pine8k86awhd" path="res://src/Pieces/Hand.tscn" id="2_7hgf0"]
+
+[node name="Main" type="Node"]
+
+[node name="Map" parent="." instance=ExtResource("1_yj4tk")]
+
+[node name="Hand" parent="." instance=ExtResource("2_7hgf0")]
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -144.0
+grow_horizontal = 0
