@@ -12,7 +12,7 @@ var config:ConfigFile
 var debug_build := false
 var music
 
-
+enum Commands {LEFT, UP, RIGHT, DOWN}
 
 func _ready():
 	_init_logger()	

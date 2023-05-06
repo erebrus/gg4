@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://co741xa2xsj72"]
+
+[ext_resource type="Script" path="res://src/pieces/Piece.gd" id="1_gqlm8"]
+[ext_resource type="Script" path="res://src/pieces/Deck.gd" id="1_jxee3"]
+[ext_resource type="Texture2D" uid="uid://dgimh66xnl65w" path="res://src/pieces/l.png" id="2_mrcvf"]
+[ext_resource type="Texture2D" uid="uid://chg4mcxwkxgaj" path="res://src/pieces/long.png" id="3_57fcy"]
+[ext_resource type="Texture2D" uid="uid://d1nflrc8e5wjv" path="res://src/pieces/right.png" id="4_5bq1o"]
+[ext_resource type="Texture2D" uid="uid://bdb0nipfpgw8p" path="res://src/pieces/step.png" id="5_0bows"]
+[ext_resource type="Texture2D" uid="uid://0c3qibpjv76n" path="res://src/pieces/u.png" id="6_sbys1"]
+
+[sub_resource type="Resource" id="Resource_mp32m"]
+script = ExtResource("1_gqlm8")
+commands = Array[int]([2, 2, 3, 3])
+texture = ExtResource("2_mrcvf")
+
+[sub_resource type="Resource" id="Resource_6qdkm"]
+script = ExtResource("1_gqlm8")
+commands = Array[int]([2, 2, 2, 2])
+texture = ExtResource("3_57fcy")
+
+[sub_resource type="Resource" id="Resource_fir6j"]
+script = ExtResource("1_gqlm8")
+commands = Array[int]([2])
+texture = ExtResource("4_5bq1o")
+
+[sub_resource type="Resource" id="Resource_dbhim"]
+script = ExtResource("1_gqlm8")
+commands = Array[int]([2, 3, 2, 2])
+texture = ExtResource("5_0bows")
+
+[sub_resource type="Resource" id="Resource_qmxbc"]
+script = ExtResource("1_gqlm8")
+commands = Array[int]([2, 3, 0, 0])
+texture = ExtResource("6_sbys1")
+
+[resource]
+script = ExtResource("1_jxee3")
+pieces = Array[ExtResource("1_gqlm8")]([SubResource("Resource_mp32m"), SubResource("Resource_6qdkm"), SubResource("Resource_fir6j"), SubResource("Resource_dbhim"), SubResource("Resource_qmxbc")])

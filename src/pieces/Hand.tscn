@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://2yjr5nvq11bj"]
+
+[ext_resource type="Script" path="res://src/pieces/Hand.gd" id="1_3wl41"]
+[ext_resource type="Resource" uid="uid://co741xa2xsj72" path="res://src/pieces/default_deck.tres" id="2_x3m8u"]
+
+[node name="Hand" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3wl41")
+deck = ExtResource("2_x3m8u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Left"
+
+[node name="AcceptButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Place"
+
+[node name="RightButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Right"
+
+[node name="Pieces" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RightButton" to="." method="_on_right_button_pressed"]
