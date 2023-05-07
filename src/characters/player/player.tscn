@@ -1,8 +1,10 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://jqxg88aou1fg"]
 
-[ext_resource type="PackedScene" path="res://src/characters/character.tscn" id="1_fybfn"]
+[ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_fybfn"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="2_jhrk2"]
 
-[node name="Player" instance=ExtResource("1_fybfn")]
+[node name="Player" groups=["player"] instance=ExtResource("1_fybfn")]
+collision_layer = 16
+collision_mask = 33
 script = ExtResource("2_jhrk2")
 enable_debug_movement = true

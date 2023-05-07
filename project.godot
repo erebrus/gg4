@@ -35,6 +35,13 @@ script/templates_search_path="res://addons/xsm/templates/"
 
 enabled=PackedStringArray("res://addons/xsm/plugin.cfg", "res://addons/rng_utils/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/random_audio_player/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg")
 
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_5="player"
+2d_physics/layer_6="enemies"
+2d_physics/layer_7="objects"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
