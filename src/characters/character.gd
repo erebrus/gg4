@@ -136,6 +136,13 @@ func do_retreat(redo_command:bool):
 
 func take_damage(dmg):
 	hp = clamp(hp - dmg, 0, hp)
+	
+	var hurt_color:Color = Color("ff0f18")
+	#var tween := create_tween().set_trans(Tween.TRANS_CUBIC).
+	modulate = hurt_color
+	await get_tree().create_timer(.2).timeout
+	modulate = Color.WHITE
+		
 	if hp == 0:
 		do_death()
 
