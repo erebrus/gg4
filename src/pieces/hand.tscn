@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://pine8k86awhd"]
 
-[ext_resource type="Script" path="res://src/Pieces/Hand.gd" id="1_j7nri"]
-[ext_resource type="Resource" path="res://src/Pieces/default_deck.tres" id="2_lq4b3"]
+[ext_resource type="Script" path="res://src/pieces/hand.gd" id="1_j7nri"]
+[ext_resource type="Resource" path="res://src/pieces/default_deck.tres" id="2_lq4b3"]
 
 [node name="Hand" type="MarginContainer"]
 anchors_preset = 15

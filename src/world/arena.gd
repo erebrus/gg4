@@ -5,9 +5,9 @@ class_name Arena
 signal tick()
 
 
-const EnemyScene:PackedScene = preload("res://src/Characters/Enemies/Enemy.tscn")
-const PlayerScene:PackedScene = preload("res://src/Characters/Player/Player.tscn")
-const ObstacleScene:PackedScene = preload("res://src/World/Obstacle.tscn")
+const EnemyScene:PackedScene = preload("res://src/characters/enemies/enemy.tscn")
+const PlayerScene:PackedScene = preload("res://src/characters/player/player.tscn")
+const ObstacleScene:PackedScene = preload("res://src/world/obstacle.tscn")
 
 enum CellType {EMPTY, OBSTACLE, PLAYER, ENEMY}
 
