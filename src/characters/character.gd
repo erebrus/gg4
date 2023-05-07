@@ -1,20 +1,32 @@
 extends CharacterBody2D
 class_name Character
 
+signal tick_complete()
+
 const MAX_SPEED:float = 300
+
+
+@export var hp:int = 3
 
 var direction:Vector2i = Vector2i()
 var target_direction:Vector2 = Vector2()
 var world_target_pos:Vector2 = Vector2()
 
-var speed:int = 0
+var speed:float = 0
 var is_moving:bool = false
-@onready var grid:Arena = get_parent()
+
+var previous_command
+var previous_cell:Vector2i
+
 var commands:Array[Globals.Commands] = []
 var command
 
+var in_turn := false
+
+@onready var grid:Arena = get_parent()
+
 func _ready():
-	pass
+	previous_cell = grid.local_to_map(position)
 	
 func update_sprite():
 	pass
@@ -23,14 +35,14 @@ func _physics_process(delta:float):
 
 	control(delta)
 	update_sprite()
-	var tpos := position
+	
 	if not is_moving and direction != Vector2i():
 		# if player is not moving and has no direction
 		target_direction = Vector2(direction).normalized()
 		# then set the target direction
 
 		if grid.is_cell_vacant(position, direction):
-			world_target_pos = grid.update_child_pos(position, direction, null)
+			world_target_pos = grid.update_child_pos(position, direction)
 			is_moving = true
 		else:
 			pre_handle_collision(position, direction)
@@ -48,36 +60,51 @@ func _physics_process(delta:float):
 
 		# Set the last movement distance to the distance to the target
 		# this will make the player stop exaclty on the target
+		var done :=false
 		if distance_to_target < move_distance:
 			velocity = target_direction * distance_to_target
 			is_moving = false
 			command = null
 			direction = Vector2i.ZERO
+			done = true			
 			#TODO check if we want to keep direction, or just use command
 			
 
 		var collision = move_and_collide(velocity)
 		if collision:
-			Logger.error("Unexpected collision with:",collision.collider.name)
+			#Logger.error("Unexpected collision with:",collision.collider.name)
+			var retreat = handle_combat_with(collision.get_collider())
+			if done and retreat:
+				done=false
+		if done:
+			in_turn = false
+			previous_command = null
+			tick_complete.emit()
+	elif in_turn:
+		in_turn = false
+		tick_complete.emit() #nothing to do
 
 
-func control(delta:float)->void:
+func control(_delta:float)->void:
 	if command!=null:		
 		direction = translate_command(command)
 	else:
 		direction = Vector2i.ZERO		
 
 func tick()->void:
+	in_turn = true
 	var new_direction:Vector2i = Vector2i()
 
 	if not commands.is_empty():
 		new_direction = translate_command(commands[0])
-		commands.remove_at(0)			
+		previous_command = commands[0]
+		commands.remove_at(0)	
+		previous_cell = grid.local_to_map(position)		
 		
 	direction=new_direction	
 
-func translate_command(command : Globals.Commands)->Vector2i:
-	match command:
+func translate_command(_command : Globals.Commands)->Vector2i:
+	match _command:
 		Globals.Commands.RIGHT:
 			return Vector2i.RIGHT
 		Globals.Commands.LEFT:
@@ -88,8 +115,29 @@ func translate_command(command : Globals.Commands)->Vector2i:
 			return Vector2i.DOWN
 	return Vector2i.ZERO	
 	
-func pre_handle_collision(position, direction):
+func pre_handle_collision(_position, _direction):
 	pass
 
-func post_handle_collision(position, direction):
+func post_handle_collision(_position, _direction):
 	pass
+
+
+func handle_combat_with(other):
+	pass
+
+func do_retreat(redo_command:bool):
+	world_target_pos = grid.map_to_local(previous_cell)
+	is_moving = true
+	if redo_command:
+		commands.insert(0,previous_command)
+	direction *= -1
+	target_direction = Vector2(direction).normalized()
+	
+
+func take_damage(dmg):
+	hp = clamp(hp - dmg, 0, hp)
+	if hp == 0:
+		do_death()
+
+func do_death():
+	queue_free()
