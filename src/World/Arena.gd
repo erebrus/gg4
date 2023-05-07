@@ -9,7 +9,7 @@ const EnemyScene:PackedScene = preload("res://src/Characters/Enemies/Enemy.tscn"
 const PlayerScene:PackedScene = preload("res://src/Characters/Player/Player.tscn")
 const ObstacleScene:PackedScene = preload("res://src/World/Obstacle.tscn")
 
-enum CellType {EMPTY, OBSTACLE}
+enum CellType {EMPTY, OBSTACLE, PLAYER, ENEMY}
 
 
 @export var grid_size_x:int = 15

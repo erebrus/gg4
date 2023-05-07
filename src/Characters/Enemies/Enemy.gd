@@ -19,4 +19,10 @@ func control(delta:float)->void:
 			commands.append_array(command_pattern)
 		
 	
-	
+func pre_handle_collision(position, direction):
+	var new_cell_pos = grid.local_to_map(position)+direction
+	if grid.grid[new_cell_pos.x][new_cell_pos.y] == Arena.CellType.OBSTACLE:
+		return
+
+func post_handle_collision(position, direction):
+	pass	

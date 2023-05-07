@@ -33,9 +33,11 @@ func _physics_process(delta:float):
 			world_target_pos = grid.update_child_pos(position, direction, null)
 			is_moving = true
 		else:
+			pre_handle_collision(position, direction)
 			direction=Vector2i.ZERO
 			is_moving=false
 			command = null
+			post_handle_collision(position, direction)
 
 	elif is_moving:
 		speed = MAX_SPEED
@@ -86,3 +88,8 @@ func translate_command(command : Globals.Commands)->Vector2i:
 			return Vector2i.DOWN
 	return Vector2i.ZERO	
 	
+func pre_handle_collision(position, direction):
+	pass
+
+func post_handle_collision(position, direction):
+	pass
