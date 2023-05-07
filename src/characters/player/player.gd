@@ -30,4 +30,4 @@ func handle_combat_with(other):
 
 func do_death():
 	Logger.info("Player died")
-	get_tree().quit()
+	Globals.gameover()
