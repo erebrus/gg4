@@ -7,4 +7,4 @@ func _on_body_entered(body):
 
 func on_level_complete():
 	Logger.info("Level complete.")
-	get_tree().quit()
+	Events.level_complete.emit()

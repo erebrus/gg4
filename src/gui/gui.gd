@@ -11,6 +11,8 @@ extends PanelContainer
 
 func _ready() -> void:
 	Events.player_queue_empty.connect(_on_player_queue_empty)
+	Events.level_complete.connect(_on_level_complete)
+	
 	hand.piece_placed.connect(_on_piece_placed)
 	
 	if auto_draw_piece_on_place:
@@ -48,3 +50,7 @@ func _on_player_queue_empty() -> void:
 	if deck.is_empty() and hand.is_empty():
 		Logger.info("Out of pieces")
 		Globals.gameover()
+	
+
+func _on_level_complete() -> void:
+	Globals.win(deck.num_pieces)
