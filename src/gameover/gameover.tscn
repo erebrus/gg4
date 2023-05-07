@@ -31,7 +31,7 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_xue0m")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 60.0
 one_shot = true
 autostart = true
 

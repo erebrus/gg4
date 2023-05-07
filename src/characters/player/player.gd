@@ -4,7 +4,8 @@ extends Character
 @export var enable_debug_movement:=true
 
 func _ready():
-	Events.commands_queued.connect(add_commands)		
+	Events.commands_queued.connect(add_commands)
+	tick_complete.connect(_on_tick_complete)
 	
 func control(_delta:float)->void:	
 	if enable_debug_movement:		
@@ -31,3 +32,7 @@ func handle_combat_with(other):
 func do_death():
 	Logger.info("Player died")
 	Globals.gameover()
+
+func _on_tick_complete():
+	if commands.is_empty():
+		Events.player_queue_empty.emit()

@@ -13,6 +13,10 @@ func _ready() -> void:
 	update()
 	
 
+func is_empty() -> bool:
+	return pieces.is_empty()
+	
+
 func draw_piece() -> Piece:
 	assert(not pieces.is_empty())
 	var piece = pieces.pop_front()
@@ -27,4 +31,4 @@ func add_piece(piece: Piece) -> void:
 
 func update() -> void:
 	number_label.text = str(pieces.size())
-	# todo: handle deck empty
+	

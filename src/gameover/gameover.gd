@@ -4,7 +4,7 @@ extends Control
 var can_exit = false
 
 func _ready():
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(0.3).timeout
 	can_exit = true
 	
 
