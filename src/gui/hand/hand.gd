@@ -7,7 +7,11 @@ signal piece_placed(piece: Piece)
 const HandPiece = preload("res://src/gui/hand/hand_piece.tscn")
 
 
-@export var num_pieces: int = 4
+@export var max_pieces: int = 4
+var num_pieces:
+	get:
+		return pieces.size()
+	
 
 var selected_piece: Piece
 var pieces: Dictionary
