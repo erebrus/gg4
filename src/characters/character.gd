@@ -15,7 +15,7 @@ var world_target_pos:Vector2 = Vector2()
 var speed:float = 0
 var is_moving:bool = false
 
-var previous_command:Globals.Commands
+var previous_command
 var previous_cell:Vector2i
 
 var commands:Array[Globals.Commands] = []
@@ -78,6 +78,7 @@ func _physics_process(delta:float):
 				done=false
 		if done:
 			in_turn = false
+			previous_command = null
 			tick_complete.emit()
 	elif in_turn:
 		in_turn = false
