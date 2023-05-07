@@ -1,7 +1,7 @@
 class_name Hand extends MarginContainer
 
 
-signal piece_placed
+signal piece_placed(piece: Piece)
 
 
 const HandPiece = preload("res://src/gui/hand/hand_piece.tscn")
@@ -51,5 +51,5 @@ func _on_accept_button_pressed():
 	if selected_piece != null:
 		pieces[selected_piece].place()
 		pieces.erase(selected_piece)
-		piece_placed.emit()
+		piece_placed.emit(selected_piece)
 		selected_piece = null

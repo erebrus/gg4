@@ -13,6 +13,7 @@ func _ready() -> void:
 		hand.add(deck.draw_piece())
 	
 
-func _on_piece_placed() -> void:
+func _on_piece_placed(piece: Piece) -> void:
+	discard.add_piece(piece)
 	hand.add(deck.draw_piece())
 

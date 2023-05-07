@@ -20,7 +20,7 @@ func draw_piece() -> Piece:
 	return piece 
 	
 
-func place_piece(piece: Piece) -> void:
+func add_piece(piece: Piece) -> void:
 	pieces.push_front(piece)
 	update()
 	
