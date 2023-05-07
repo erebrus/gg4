@@ -13,16 +13,20 @@ func _test_pattern():
 		start +=translate_command(v)
 	assert(start==Vector2i.ZERO)
 		
-func control(delta:float)->void:	
+func control(_delta:float)->void:	
 	if command == null:
 		if commands.is_empty():
 			commands.append_array(command_pattern)
 		
 	
-func pre_handle_collision(position, direction):
-	var new_cell_pos = grid.local_to_map(position)+direction
+func pre_handle_collision(_position, _direction):
+	var new_cell_pos = grid.local_to_map(_position)+_direction
 	if grid.grid[new_cell_pos.x][new_cell_pos.y] == Arena.CellType.OBSTACLE:
 		return
 
-func post_handle_collision(position, direction):
+func post_handle_collision(_position, _direction):
 	pass	
+
+func handle_combat_with(other):
+	other.do_retreat(false)
+	other.take_damage(1)	

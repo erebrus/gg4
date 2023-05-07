@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://caltr3wgjn0r3"]
 
-[ext_resource type="PackedScene" path="res://src/world/arena.tscn" id="1_yj4tk"]
+[ext_resource type="PackedScene" uid="uid://cldwu41ur8qw1" path="res://src/world/arena.tscn" id="1_yj4tk"]
 [ext_resource type="PackedScene" uid="uid://pine8k86awhd" path="res://src/pieces/hand.tscn" id="2_7hgf0"]
 
 [node name="Main" type="Node"]
