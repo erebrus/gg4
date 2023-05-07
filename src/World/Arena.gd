@@ -31,34 +31,22 @@ func _ready():
 
 	init_grid()
 	init_player()
-	if enable_debug_elements:
-#		init_debug_obstacles()
-		init_debug_enemies()
+	align_children()
+	
 	Logger.info("Arena initialised.")
 
+func align_children():
+	for child in get_children():
+		child.position = map_to_local(local_to_map(child.position))
+		if child.has_method("tick"):
+			tick.connect(child.tick)
+			
 func init_player():
 	var player:Character = PlayerScene.instantiate()
 	add_child(player)
 	player.position = map_to_local(start_position)
 	tick.connect(player.tick)
-	Events.commands_queued.connect(player.add_commands)
-	
-func init_debug_enemies():
-	add_debug_enemy(Vector2i(6,4))
-func init_debug_obstacles():
-	add_debug_obstacle(Vector2i(4,5))
-	
-func add_debug_enemy(cell_pos:Vector2i)->void:
-	var enemy:Enemy = EnemyScene.instantiate()
-	add_child(enemy)
-	enemy.position = map_to_local(cell_pos)
-	tick.connect(enemy.tick)
-	
-func add_debug_obstacle(cell_pos:Vector2i)->void:
-	var o = ObstacleScene.instantiate()	
-	grid[cell_pos.x][cell_pos.y] = CellType.OBSTACLE
-	add_child(o)
-	o.position = map_to_local(cell_pos)		
+	Events.commands_queued.connect(player.add_commands)		
 	
 func init_grid():
 	for x in range(grid_size.x):

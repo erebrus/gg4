@@ -9,11 +9,12 @@ size = Vector2(64, 64)
 [node name="Character" type="CharacterBody2D"]
 script = ExtResource("1_gf8xb")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_ms33h")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_25a17")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ms33h")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false
