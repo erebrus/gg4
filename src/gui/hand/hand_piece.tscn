@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://cu4s4om5ko3l4"]
 
 [ext_resource type="Script" path="res://src/gui/hand/hand_piece.gd" id="1_yl2u0"]
 [ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="2_tp2xr"]

@@ -4,15 +4,42 @@ class_name Piece extends Resource
 @export var texture: Texture
 
 
-func rotate(direction: int) -> void:
+func rotate_left() -> void:
 	for i in commands.size():
-		commands[i] = _rotate_command(commands[i], direction)
-		
+		commands[i] = _rotate_command_left(commands[i])
+	
 
-func _rotate_command(command: Globals.Commands, direction: int) -> Globals.Commands:
-	var command_index = int(command)
-	var new_command = (command + direction) % Globals.Commands.size()
-	return new_command as Globals.Commands
+func rotate_right() -> void:
+	for i in commands.size():
+		commands[i] = _rotate_command_right(commands[i])
+	
+
+func _rotate_command_left(command: Globals.Commands) -> Globals.Commands:
+	match command:
+		Globals.Commands.LEFT:
+			return Globals.Commands.DOWN
+		Globals.Commands.UP:
+			return Globals.Commands.LEFT
+		Globals.Commands.RIGHT:
+			return Globals.Commands.UP
+		Globals.Commands.DOWN:
+			return Globals.Commands.RIGHT
+		_:
+			return command
+	
+
+func _rotate_command_right(command: Globals.Commands) -> Globals.Commands:
+	match command:
+		Globals.Commands.LEFT:
+			return Globals.Commands.UP
+		Globals.Commands.UP:
+			return Globals.Commands.RIGHT
+		Globals.Commands.RIGHT:
+			return Globals.Commands.DOWN
+		Globals.Commands.DOWN:
+			return Globals.Commands.LEFT
+		_:
+			return command
 	
 
 func _to_string() -> String:
