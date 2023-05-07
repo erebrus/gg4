@@ -1,11 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgl5ug6gk4feq"]
+[gd_scene load_steps=4 format=3 uid="uid://cgl5ug6gk4feq"]
 
 [ext_resource type="PackedScene" uid="uid://dq5gskfco0vnc" path="res://src/Characters/Character.tscn" id="1_f8rso"]
 [ext_resource type="Script" path="res://src/Characters/Enemies/Enemy.gd" id="2_omkhf"]
+[ext_resource type="Texture2D" uid="uid://dbuuftdupt88d" path="res://src/Characters/enemy.png" id="3_yleur"]
 
 [node name="Enemy" instance=ExtResource("1_f8rso")]
 script = ExtResource("2_omkhf")
 command_pattern = Array[int]([0, 2, 2, 0])
 
-[node name="Polygon2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_yleur")
+
+[node name="Polygon2D" parent="." index="2"]
 color = Color(0.94902, 0.231373, 0.278431, 1)

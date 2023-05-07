@@ -13,7 +13,7 @@ enum CellType {EMPTY, OBSTACLE}
 
 
 @export var grid_size_x:int = 15
-@export var grid_size_y:int = 9
+@export var grid_size_y:int = 8
 @export var enable_debug_elements := true
 @export var enable_debug_mode := true
 
@@ -32,7 +32,7 @@ func _ready():
 	init_grid()
 	init_player()
 	if enable_debug_elements:
-		init_debug_obstacles()
+#		init_debug_obstacles()
 		init_debug_enemies()
 	Logger.info("Arena initialised.")
 
@@ -44,7 +44,7 @@ func init_player():
 	Events.commands_queued.connect(player.add_commands)
 	
 func init_debug_enemies():
-	add_debug_enemy(Vector2i(3,8))
+	add_debug_enemy(Vector2i(6,4))
 func init_debug_obstacles():
 	add_debug_obstacle(Vector2i(4,5))
 	
@@ -64,8 +64,17 @@ func init_grid():
 	for x in range(grid_size.x):
 		grid.append([])
 		for y in range(grid_size.y):
-			grid[x].append(CellType.EMPTY)
+			
+			var data:TileData = get_cell_tile_data(0, Vector2i(x,y))
+			if data==null:
+				Logger.warn("Missing tile at %d,%d" % [x,y])		
+				grid[x].append(CellType.EMPTY)
+				continue				
+			grid[x].append(data.get_custom_data("type"))
+				
 
+		
+		
 func is_in_arena(pos:Vector2)->bool:
 	return pos.x >= 0 && pos.x < grid_size_x && pos.y >= 0 && pos.y < grid_size_y 
 
