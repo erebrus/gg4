@@ -14,6 +14,9 @@ var music
 
 enum Commands {LEFT, UP, RIGHT, DOWN}
 
+const MAIN_SCREEN = "res://src/main.tscn"
+const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"
+
 func _ready():
 	_init_logger()	
 	Logger.info("Init complete.")	
@@ -35,7 +38,15 @@ func _init_logger():
 	file_appender.logger_format=Logger.LOG_FORMAT_FULL
 	file_appender.logger_level = Logger.LOG_LEVEL_DEBUG
 
+
+func gameover():
+	SceneLoader.load_scene(GAMEOVER_SCREEN)
 	
+
+func start():
+	SceneLoader.load_scene(MAIN_SCREEN)
+	
+
 #
 #func load_data():
 #	var password = OS.get_unique_id() # works only on this computer

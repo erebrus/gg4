@@ -10,6 +10,7 @@ extends PanelContainer
 
 
 func _ready() -> void:
+	Events.player_queue_empty.connect(_on_player_queue_empty)
 	hand.piece_placed.connect(_on_piece_placed)
 	
 	if auto_draw_piece_on_place:
@@ -21,6 +22,10 @@ func draw_from(pile: PiecePile) -> void:
 	if hand.num_pieces >= hand.max_pieces:
 		Logger.error("Hand full")
 		return
+	if pile.is_empty():
+		Logger.warn("Cannot draw from empty pile")
+		return
+	
 	hand.add(pile.draw_piece())
 	
 
@@ -37,3 +42,9 @@ func _on_deck_pile_gui_input(event: InputEvent) -> void:
 	
 	if event is InputEventMouseButton and event.is_pressed():
 		draw_from(deck)
+	
+
+func _on_player_queue_empty() -> void:
+	if deck.is_empty() and hand.is_empty():
+		Logger.info("Out of pieces")
+		Globals.gameover()

@@ -29,6 +29,10 @@ func add(piece: Piece) -> void:
 	piece_container.add_child(scene)
 	
 
+func is_empty() -> bool:
+	return pieces.is_empty()
+	
+
 func _on_piece_selected(piece: Piece) -> void:
 	selected_piece = piece
 	for child in piece_container.get_children():
