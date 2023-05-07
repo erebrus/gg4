@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmueioutpi337"]
+
+[ext_resource type="PackedScene" uid="uid://bmt4b7nq0aagl" path="res://src/gameover/gameover.tscn" id="1_aupqi"]
+[ext_resource type="Script" path="res://src/win/win_screen.gd" id="2_3x4lx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_21evv"]
+font_size = 60
+
+[node name="WinScreen" instance=ExtResource("1_aupqi")]
+script = ExtResource("2_3x4lx")
+
+[node name="Label" parent="VBoxContainer" index="0"]
+text = "YOU WIN"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Remaining Pieces:"
+label_settings = SubResource("LabelSettings_21evv")
+
+[node name="PiecesLabel" type="Label" parent="VBoxContainer/HBoxContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_21evv")

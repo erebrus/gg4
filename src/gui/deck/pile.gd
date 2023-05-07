@@ -4,6 +4,10 @@ class_name PiecePile extends PanelContainer
 @export var deck: Deck
 
 var pieces: Array[Piece]
+var num_pieces:
+	get:
+		return pieces.size()
+	
 
 @onready var number_label: Label = get_node("%NumPieces")
 

@@ -6,3 +6,6 @@ signal commands_queued(commands: Array[Globals.Commands])
 
 # warning-ignore:unused_signal
 signal player_queue_empty
+
+# warning-ignore:unused_signal
+signal level_complete

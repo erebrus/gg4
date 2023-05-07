@@ -16,6 +16,7 @@ enum Commands {LEFT, UP, RIGHT, DOWN}
 
 const MAIN_SCREEN = "res://src/main.tscn"
 const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"
+const WIN_SCREEN = "res://src/win/win_screen.tscn"
 
 func _ready():
 	_init_logger()	
@@ -41,6 +42,10 @@ func _init_logger():
 
 func gameover():
 	SceneLoader.load_scene(GAMEOVER_SCREEN)
+	
+
+func win(remaining_pieces: int):
+	SceneLoader.load_scene(WIN_SCREEN, remaining_pieces)
 	
 
 func start():
