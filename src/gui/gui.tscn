@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dfjqux4p83uay"]
 
 [ext_resource type="Script" path="res://src/gui/gui.gd" id="1_jttiy"]
-[ext_resource type="PackedScene" uid="uid://rbcgarrsf0ox" path="res://src/pieces/pile.tscn" id="1_lbl2e"]
-[ext_resource type="PackedScene" uid="uid://pine8k86awhd" path="res://src/pieces/hand.tscn" id="2_4blni"]
+[ext_resource type="PackedScene" uid="uid://rbcgarrsf0ox" path="res://src/gui/deck/pile.tscn" id="1_lbl2e"]
+[ext_resource type="PackedScene" uid="uid://pine8k86awhd" path="res://src/gui/hand/hand.tscn" id="2_4blni"]
 
 [node name="Gui" type="PanelContainer"]
 anchors_preset = 11

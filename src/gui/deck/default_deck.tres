@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3]
+[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://bjhasktpujsqs"]
 
 [ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_gqlm8"]
 [ext_resource type="Texture2D" uid="uid://clvrir1upfgp2" path="res://src/gui/pieces/l.png" id="2_mrcvf"]
