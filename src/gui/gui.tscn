@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfjqux4p83uay"]
+
+[ext_resource type="Script" path="res://src/gui/gui.gd" id="1_jttiy"]
+[ext_resource type="PackedScene" uid="uid://rbcgarrsf0ox" path="res://src/pieces/pile.tscn" id="1_lbl2e"]
+[ext_resource type="PackedScene" uid="uid://pine8k86awhd" path="res://src/pieces/hand.tscn" id="2_4blni"]
+
+[node name="Gui" type="PanelContainer"]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_jttiy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Piles" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="DeckPile" parent="VBoxContainer/Piles" instance=ExtResource("1_lbl2e")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DiscardPile" parent="VBoxContainer/Piles" instance=ExtResource("1_lbl2e")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+deck = null
+
+[node name="Hand" parent="VBoxContainer" instance=ExtResource("2_4blni")]
+unique_name_in_owner = true
+layout_mode = 2

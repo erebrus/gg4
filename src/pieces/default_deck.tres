@@ -36,3 +36,4 @@ texture = ExtResource("6_sbys1")
 [resource]
 script = ExtResource("1_jxee3")
 pieces = Array[ExtResource("1_gqlm8")]([SubResource("Resource_mp32m"), SubResource("Resource_6qdkm"), SubResource("Resource_fir6j"), SubResource("Resource_dbhim"), SubResource("Resource_qmxbc")])
+quantities = Array[int]([10, 8, 15, 10, 5])

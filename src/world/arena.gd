@@ -45,7 +45,7 @@ func init_player():
 	var player:Character = PlayerScene.instantiate()
 	add_child(player)
 	player.position = map_to_local(start_position)
-	tick.connect(player.tick)
+#	tick.connect(player.tick)
 	Events.commands_queued.connect(player.add_commands)		
 	
 func init_grid():

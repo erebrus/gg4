@@ -1,12 +1,15 @@
 class_name Deck extends Resource
 
+
 @export var pieces: Array[Piece]
+@export var quantities: Array[int]
 
 
-func random() -> Piece:
-	return pieces.pick_random().duplicate()
-	
-# DOUBTS:
-# - option 1: fixed "deck" with number of pieces of each shape -> when deck runs out game over / reshuffle
-# - option 2: infite number of pieces
-#		- different probability for each piece shape
+func generate() -> Array[Piece]:
+	assert(pieces.size() == quantities.size())
+	var deck: Array[Piece]
+	for i in pieces.size():
+		for _n in quantities[i]:
+			deck.append(pieces[i].duplicate())
+	deck.shuffle()
+	return deck
