@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv4k0hhuei58a"
-path="res://.godot/imported/rock.png-562b8591935559843de930e562a3d9c2.ctex"
+uid="uid://clovogbd3h57n"
+path="res://.godot/imported/enemy.png-59e9d8f988a957119e7d84f2d1823792.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/World/rock.png"
-dest_files=["res://.godot/imported/rock.png-562b8591935559843de930e562a3d9c2.ctex"]
+source_file="res://src/characters/enemy.png"
+dest_files=["res://.godot/imported/enemy.png-59e9d8f988a957119e7d84f2d1823792.ctex"]
 
 [params]
 

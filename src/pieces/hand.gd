@@ -1,7 +1,7 @@
 extends MarginContainer
 
 
-const Piece = preload("res://src/pieces/HandPiece.tscn")
+const Piece = preload("res://src/pieces/hand_piece.tscn")
 
 
 @export var deck: Deck

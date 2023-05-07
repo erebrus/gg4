@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3]
+[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://bdlfprgicgr8u"]
 
-[ext_resource type="Script" path="res://src/Pieces/Piece.gd" id="1_gqlm8"]
-[ext_resource type="Script" path="res://src/Pieces/Deck.gd" id="1_jxee3"]
-[ext_resource type="Texture2D" uid="uid://dgimh66xnl65w" path="res://src/Pieces/l.png" id="2_mrcvf"]
-[ext_resource type="Texture2D" uid="uid://chg4mcxwkxgaj" path="res://src/Pieces/long.png" id="3_57fcy"]
-[ext_resource type="Texture2D" uid="uid://d1nflrc8e5wjv" path="res://src/Pieces/right.png" id="4_5bq1o"]
-[ext_resource type="Texture2D" uid="uid://bdb0nipfpgw8p" path="res://src/Pieces/step.png" id="5_0bows"]
-[ext_resource type="Texture2D" uid="uid://0c3qibpjv76n" path="res://src/Pieces/u.png" id="6_sbys1"]
+[ext_resource type="Script" path="res://src/pieces/piece.gd" id="1_gqlm8"]
+[ext_resource type="Script" path="res://src/pieces/deck.gd" id="1_jxee3"]
+[ext_resource type="Texture2D" uid="uid://clvrir1upfgp2" path="res://src/pieces/l.png" id="2_mrcvf"]
+[ext_resource type="Texture2D" uid="uid://bqey8y2mtr6p4" path="res://src/pieces/long.png" id="3_57fcy"]
+[ext_resource type="Texture2D" uid="uid://b0f13wob08j2u" path="res://src/pieces/right.png" id="4_5bq1o"]
+[ext_resource type="Texture2D" uid="uid://2neuxcdkf2mx" path="res://src/pieces/step.png" id="5_0bows"]
+[ext_resource type="Texture2D" uid="uid://codwn8e4fnc42" path="res://src/pieces/u.png" id="6_sbys1"]
 
 [sub_resource type="Resource" id="Resource_mp32m"]
 script = ExtResource("1_gqlm8")
