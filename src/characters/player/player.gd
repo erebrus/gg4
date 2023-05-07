@@ -29,7 +29,7 @@ func handle_combat_with(other):
 	take_damage(1)	
 
 func do_death():
-	Logger.info("Player died")
+	Logger.info("Player died.")
 	get_tree().quit()
 
 
