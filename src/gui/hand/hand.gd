@@ -4,7 +4,7 @@ class_name Hand extends MarginContainer
 signal piece_placed
 
 
-const HandPiece = preload("res://src/pieces/hand_piece.tscn")
+const HandPiece = preload("res://src/gui/hand/hand_piece.tscn")
 
 
 @export var num_pieces: int = 4
