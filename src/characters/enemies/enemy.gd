@@ -28,5 +28,9 @@ func post_handle_collision(_position, _direction):
 	pass	
 
 func handle_combat_with(other):
-	other.do_retreat(false)
 	other.take_damage(1)	
+	if other.previous_command != null:
+		other.do_retreat(false)
+	else:
+		do_retreat(true)
+	
