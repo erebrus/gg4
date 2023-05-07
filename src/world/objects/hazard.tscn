@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://pllnnrdp1xi5"]
+
+[ext_resource type="Texture2D" uid="uid://6jhng8p4f0ol" path="res://src/world/hazard.png" id="1_36m5i"]
+[ext_resource type="Script" path="res://src/world/objects/hazard.gd" id="1_vwjgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_33b7v"]
+size = Vector2(32, 32)
+
+[node name="Hazard" type="Area2D"]
+collision_mask = 16
+script = ExtResource("1_vwjgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["map_element"]]
+visible = false
+shape = SubResource("RectangleShape2D_33b7v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_36m5i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
