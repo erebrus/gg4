@@ -51,10 +51,10 @@ func unselect() -> void:
 	
 
 func rotate_left() -> void:
-	piece.rotate(-1)
+	piece.rotate_left()
 	sprite.rotate(-PI/2)
 	
 
 func rotate_right() -> void:
-	piece.rotate(1)
+	piece.rotate_right()
 	sprite.rotate(PI/2)
