@@ -1,8 +1,6 @@
 extends Node
 class_name TurnManager
 
-@export var enable_debug_mode := true
-
 var elements:Array = []
 var elements_moving:Array = []
 var tick_pending:bool = false
@@ -37,6 +35,3 @@ func tick()->void:
 func turn_complete()->bool:
 	return elements_moving.is_empty()
 	
-func _input(_event):
-	if turn_complete() and enable_debug_mode and Input.is_action_just_pressed("ui_accept"):
-		tick() 
