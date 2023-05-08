@@ -41,15 +41,9 @@ func _physics_process(delta:float):
 		target_direction = Vector2(direction).normalized()
 		# then set the target direction
 
-		if grid.is_cell_vacant(position, direction):
-			world_target_pos = grid.update_child_pos(position, direction)
-			is_moving = true
-		else:
-			pre_handle_collision(position, direction)
-			direction=Vector2i.ZERO
-			is_moving=false
-			command = null
-			post_handle_collision(position, direction)
+		world_target_pos = grid.update_child_pos(position, direction)
+		is_moving = true
+		
 
 	elif is_moving:
 		speed = MAX_SPEED
@@ -73,7 +67,12 @@ func _physics_process(delta:float):
 		var collision = move_and_collide(velocity)
 		if collision:
 			#Logger.error("Unexpected collision with:",collision.collider.name)
-			var retreat = handle_combat_with(collision.get_collider())
+			var collider=collision.get_collider()
+			var retreat:bool = true
+			if collider.is_in_group("character"):
+				retreat = handle_combat_with(collider)
+			else:
+				do_retreat(false)
 			if done and retreat:
 				done=false
 		if done:
@@ -115,12 +114,6 @@ func translate_command(_command : Globals.Commands)->Vector2i:
 			return Vector2i.DOWN
 	return Vector2i.ZERO	
 	
-func pre_handle_collision(_position, _direction):
-	pass
-
-func post_handle_collision(_position, _direction):
-	pass
-
 
 func handle_combat_with(_other):
 	pass
