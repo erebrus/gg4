@@ -1,7 +1,7 @@
 extends Character
 class_name Enemy
 
-@export var command_pattern:Array[Globals.Direction]=[]
+@export var command_pattern: Array[Command]
 
 func _ready():
 	super._ready()
