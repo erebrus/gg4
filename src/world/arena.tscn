@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cldwu41ur8qw1"]
+[gd_scene load_steps=18 format=3 uid="uid://cldwu41ur8qw1"]
 
 [ext_resource type="Script" path="res://src/world/arena.gd" id="1_mncgg"]
 [ext_resource type="Texture2D" uid="uid://bqhanj7bmx5sa" path="res://src/world/ground.png" id="1_x0g2d"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bn8hyp5yo4amx" path="res://src/characters/enemies/enemy.tscn" id="4_xmkju"]
 [ext_resource type="PackedScene" uid="uid://jqxg88aou1fg" path="res://src/characters/player/player.tscn" id="6_b2fmq"]
 [ext_resource type="PackedScene" uid="uid://dgltfqufrm17e" path="res://src/world/objects/exit.tscn" id="8_gnqqo"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="8_k43g2"]
 [ext_resource type="PackedScene" uid="uid://pllnnrdp1xi5" path="res://src/world/objects/hazard.tscn" id="9_lmutl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2k3b"]
@@ -39,6 +40,30 @@ sources/1 = SubResource("TileSetAtlasSource_j2k3b")
 sources/2 = SubResource("TileSetAtlasSource_wrtya")
 sources/4 = SubResource("TileSetScenesCollectionSource_x4dqh")
 
+[sub_resource type="Resource" id="Resource_axerm"]
+script = ExtResource("8_k43g2")
+action = 0
+direction = 0
+speed = 1
+
+[sub_resource type="Resource" id="Resource_3g0bf"]
+script = ExtResource("8_k43g2")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_gbpwt"]
+script = ExtResource("8_k43g2")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_aoyvb"]
+script = ExtResource("8_k43g2")
+action = 0
+direction = 0
+speed = 1
+
 [node name="Map" type="TileMap"]
 tile_set = SubResource("TileSet_bj5ol")
 format = 2
@@ -59,6 +84,7 @@ script = ExtResource("4_kogra")
 
 [node name="Enemy" parent="." instance=ExtResource("4_xmkju")]
 position = Vector2(832, 576)
+command_pattern = Array[ExtResource("8_k43g2")]([SubResource("Resource_axerm"), SubResource("Resource_3g0bf"), SubResource("Resource_gbpwt"), SubResource("Resource_aoyvb")])
 
 [node name="Player" parent="." instance=ExtResource("6_b2fmq")]
 position = Vector2(194.415, 189.279)

@@ -2,7 +2,7 @@ extends Node
 
 
 # warning-ignore:unused_signal
-signal commands_queued(commands: Array[Globals.Commands])
+signal commands_queued(commands: Array[Command])
 
 # warning-ignore:unused_signal
 signal player_queue_empty
