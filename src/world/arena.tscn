@@ -55,7 +55,3 @@ position = Vector2(832, 576)
 
 [node name="Player" parent="." instance=ExtResource("6_b2fmq")]
 position = Vector2(194.415, 189.279)
-
-[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="@Hazard@138160" to="@Hazard@138160" method="_on_body_entered" flags=18]
