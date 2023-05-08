@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://bjhasktpujsqs"]
+[gd_resource type="Resource" script_class="Deck" load_steps=15 format=3 uid="uid://bjhasktpujsqs"]
 
 [ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_gqlm8"]
 [ext_resource type="Texture2D" uid="uid://clvrir1upfgp2" path="res://src/gui/pieces/l.png" id="2_mrcvf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b0f13wob08j2u" path="res://src/gui/pieces/right.png" id="4_5bq1o"]
 [ext_resource type="Texture2D" uid="uid://2neuxcdkf2mx" path="res://src/gui/pieces/step.png" id="5_0bows"]
 [ext_resource type="Texture2D" uid="uid://codwn8e4fnc42" path="res://src/gui/pieces/u.png" id="6_sbys1"]
+[ext_resource type="Texture2D" uid="uid://c1e2j8bbsl2dx" path="res://src/gui/pieces/shield.png" id="7_3pnwc"]
 [ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="7_kw80b"]
 
 [sub_resource type="Resource" id="Resource_mp32m"]
@@ -33,7 +34,12 @@ script = ExtResource("1_gqlm8")
 commands = Array[int]([2, 3, 0, 0])
 texture = ExtResource("6_sbys1")
 
+[sub_resource type="Resource" id="Resource_s7uie"]
+script = ExtResource("1_gqlm8")
+commands = Array[int]([4])
+texture = ExtResource("7_3pnwc")
+
 [resource]
 script = ExtResource("7_kw80b")
-pieces = Array[ExtResource("1_gqlm8")]([SubResource("Resource_mp32m"), SubResource("Resource_6qdkm"), SubResource("Resource_fir6j"), SubResource("Resource_dbhim"), SubResource("Resource_qmxbc")])
-quantities = Array[int]([10, 8, 15, 10, 5])
+pieces = Array[ExtResource("1_gqlm8")]([SubResource("Resource_mp32m"), SubResource("Resource_6qdkm"), SubResource("Resource_fir6j"), SubResource("Resource_dbhim"), SubResource("Resource_qmxbc"), SubResource("Resource_s7uie")])
+quantities = Array[int]([10, 8, 15, 10, 5, 5])
