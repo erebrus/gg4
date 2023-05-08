@@ -12,7 +12,7 @@ var config:ConfigFile
 var debug_build := false
 var music
 
-enum Commands {LEFT, UP, RIGHT, DOWN, WAIT}
+enum Commands {LEFT, UP, RIGHT, DOWN}
 
 const MAIN_SCREEN = "res://src/main.tscn"
 const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"

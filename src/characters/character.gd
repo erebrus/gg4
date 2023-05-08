@@ -86,10 +86,8 @@ func _physics_process(delta:float):
 
 
 func control(_delta:float)->void:
-	if command!=null:		
-		direction = translate_command(command)
-	else:
-		direction = Vector2i.ZERO		
+	pass	
+
 
 func tick()->void:
 	in_turn = true

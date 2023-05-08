@@ -16,4 +16,6 @@ func _on_body_exited(body):
 	if not body.has_signal("command_added"):
 		Logger.warn("Quicksand detected exit of non character body %s" % body.name)
 		return
-	body.command_added.disconnect(on_command_added.bind(body))
+
+	if body.command_added.is_connected(on_command_added.bind(body)):
+		body.command_added.disconnect(on_command_added.bind(body))

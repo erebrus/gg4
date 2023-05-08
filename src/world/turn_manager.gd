@@ -4,6 +4,7 @@ class_name TurnManager
 var elements:Array = []
 var elements_moving:Array = []
 var tick_pending:bool = false
+
 func register(element):
 	elements.append(element)
 	element.tick_complete.connect(_on_tick_complete.bind(element))
