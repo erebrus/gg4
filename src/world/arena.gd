@@ -16,7 +16,7 @@ enum CellType {EMPTY, OBSTACLE}
 var tile_size:Vector2 
 var grid_size:Vector2 = Vector2(grid_size_x, grid_size_y)
 
-var grid:Array = []
+#var grid:Array = []
 
 @onready var turn_manager:TurnManager = $TurnManager
 
@@ -25,7 +25,7 @@ func _ready():
 	assert(tile_set)
 	tile_size = tile_set.tile_size
 
-	init_grid()
+#	init_grid()
 	init_children()
 	
 	Logger.info("Arena initialised.")
@@ -37,31 +37,24 @@ func init_children():
 			if child.has_method("tick"):
 				turn_manager.register(child)
 				
-func init_grid():
-	for x in range(grid_size.x):
-		grid.append([])
-		for y in range(grid_size.y):
-			
-			var data:TileData = get_cell_tile_data(0, Vector2i(x,y))
-			if data==null:
-				Logger.warn("Missing tile at %d,%d" % [x,y])		
-				grid[x].append(CellType.EMPTY)
-				continue				
-			grid[x].append(data.get_custom_data("type"))
-				
+#func init_grid():
+#	for x in range(grid_size.x):
+#		grid.append([])
+#		for y in range(grid_size.y):
+#
+#			var data:TileData = get_cell_tile_data(0, Vector2i(x,y))
+#			if data==null:
+#				Logger.warn("Missing tile at %d,%d" % [x,y])		
+#				grid[x].append(CellType.EMPTY)
+#				continue				
+#			grid[x].append(data.get_custom_data("type"))
+#
 
-		
-		
+
 func is_in_arena(pos:Vector2)->bool:
 	return pos.x >= 0 && pos.x < grid_size_x && pos.y >= 0 && pos.y < grid_size_y 
 
-func check_for_obstacle(pos)->bool:
-	if !is_in_arena(pos):
-		return false
-	if grid[pos.x][pos.y]==CellType.OBSTACLE:
-		return true		
-	return false
-		
+
 func update_child_pos(this_world_pos, direction)->Vector2:
 
 	var this_grid_pos = local_to_map(this_world_pos)

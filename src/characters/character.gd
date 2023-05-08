@@ -16,7 +16,7 @@ var world_target_pos:Vector2 = Vector2()
 var speed:float = 0
 var is_moving:bool = false
 
-var previous_command
+var previous_command:Command = null
 var previous_cell:Vector2i
 
 var commands:Array[Command]
