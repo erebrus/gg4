@@ -20,7 +20,6 @@ var previous_command:Command = null
 var previous_cell:Vector2i
 
 var commands:Array[Command]
-var command
 
 var in_turn := false
 
@@ -59,7 +58,6 @@ func _physics_process(delta:float):
 		if distance_to_target < move_distance:
 			velocity = target_direction * distance_to_target
 			is_moving = false
-			command = null
 			direction = Vector2i.ZERO
 			done = true			
 			#TODO check if we want to keep direction, or just use command

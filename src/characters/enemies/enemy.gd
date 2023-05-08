@@ -14,9 +14,8 @@ func _test_pattern():
 	assert(start==Vector2i.ZERO)
 		
 func control(_delta:float)->void:	
-	if command == null:
-		if commands.is_empty():
-			commands.append_array(command_pattern)
+	if commands.is_empty():
+		commands.append_array(command_pattern)
 		
 
 func handle_combat_with(other):
