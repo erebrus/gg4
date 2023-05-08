@@ -23,9 +23,10 @@ func control(_delta:float)->void:
 		
 func add_commands(new_commands: Array[Globals.Commands]):
 	commands.append_array(new_commands)
+	Events.player_ticked.emit()
 	Logger.debug("Added %s commands to player" % str(new_commands))
 
-func handle_combat_with(other):
+func handle_combat_with(_other):
 	do_retreat(false)
 	take_damage(1)	
 
@@ -36,3 +37,6 @@ func do_death():
 func _on_tick_complete():
 	if commands.is_empty():
 		Events.player_queue_empty.emit()
+	else:
+		Events.player_ticked.emit()
+		

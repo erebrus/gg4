@@ -122,7 +122,7 @@ func post_handle_collision(_position, _direction):
 	pass
 
 
-func handle_combat_with(other):
+func handle_combat_with(_other):
 	pass
 
 func do_retreat(redo_command:bool):

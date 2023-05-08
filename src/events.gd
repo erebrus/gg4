@@ -9,3 +9,5 @@ signal player_queue_empty
 
 # warning-ignore:unused_signal
 signal level_complete
+
+signal player_ticked
