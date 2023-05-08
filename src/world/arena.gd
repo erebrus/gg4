@@ -61,24 +61,11 @@ func check_for_obstacle(pos)->bool:
 	if grid[pos.x][pos.y]==CellType.OBSTACLE:
 		return true		
 	return false
-	
-func is_cell_vacant(this_grid_pos=Vector2(), direction=Vector2()):	
-	var target_grid_pos:Vector2 = local_to_map(this_grid_pos) + direction
-	# Check if target cell is within the grid
-	if is_in_arena(target_grid_pos):
-		# If within grid return true if target cell is empty
-		if grid[target_grid_pos.x][target_grid_pos.y] == CellType.EMPTY:
-			return true
-		else:
-			return false
-	return false
-	
+		
 func update_child_pos(this_world_pos, direction)->Vector2:
 
 	var this_grid_pos = local_to_map(this_world_pos)
 	var new_grid_pos = this_grid_pos + direction
-
-
 
 	var new_world_pos:Vector2 = map_to_local(new_grid_pos)
 	return new_world_pos

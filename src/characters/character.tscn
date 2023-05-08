@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ms33h"]
 size = Vector2(32, 32)
 
-[node name="Character" type="CharacterBody2D" groups=["map_element"]]
+[node name="Character" type="CharacterBody2D" groups=["character", "map_element"]]
 z_index = 1
 script = ExtResource("1_gf8xb")
 
