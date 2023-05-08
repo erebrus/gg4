@@ -19,7 +19,7 @@ var is_moving:bool = false
 var previous_command
 var previous_cell:Vector2i
 
-var commands:Array[Globals.Commands] = []
+var commands:Array[Globals.Direction] = []
 var command
 
 var in_turn := false
@@ -102,15 +102,15 @@ func tick()->void:
 		direction = Vector2i.ZERO		
 	
 
-func translate_command(_command : Globals.Commands)->Vector2i:
+func translate_command(_command : Globals.Direction)->Vector2i:
 	match _command:
-		Globals.Commands.RIGHT:
+		Globals.Direction.RIGHT:
 			return Vector2i.RIGHT
-		Globals.Commands.LEFT:
+		Globals.Direction.LEFT:
 			return Vector2i.LEFT
-		Globals.Commands.UP:
+		Globals.Direction.UP:
 			return Vector2i.UP
-		Globals.Commands.DOWN:
+		Globals.Direction.DOWN:
 			return Vector2i.DOWN
 	return Vector2i.ZERO	
 	

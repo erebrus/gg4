@@ -6,9 +6,20 @@ extends Character
 func _ready():
 	Events.commands_queued.connect(add_commands)
 	tick_complete.connect(_on_tick_complete)
-			
+	
+func control(_delta:float)->void:	
+	if enable_debug_movement:		
+		if Input.is_action_just_pressed("ui_up"):
+			Events.commands_queued.emit([Globals.Direction.UP]) 
+		elif Input.is_action_just_pressed("ui_down"):
+			Events.commands_queued.emit([Globals.Direction.DOWN])
+		elif Input.is_action_just_pressed("ui_left"):
+			Events.commands_queued.emit([Globals.Direction.LEFT]) 
+		elif Input.is_action_just_pressed("ui_right"):
+			Events.commands_queued.emit([Globals.Direction.RIGHT])
 		
-func add_commands(new_commands: Array[Globals.Commands]):
+
+func add_commands(new_commands: Array[Globals.Direction]):
 	commands.append_array(new_commands)
 	Events.player_ticked.emit()
 	Logger.debug("Added %s commands to player" % str(new_commands))

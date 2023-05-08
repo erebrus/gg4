@@ -1,6 +1,6 @@
 class_name Piece extends Resource
 
-@export var commands : Array[Globals.Commands]
+@export var commands : Array[Globals.Direction]
 @export var texture: Texture
 
 
@@ -14,30 +14,30 @@ func rotate_right() -> void:
 		commands[i] = _rotate_command_right(commands[i])
 	
 
-func _rotate_command_left(command: Globals.Commands) -> Globals.Commands:
+func _rotate_command_left(command: Globals.Direction) -> Globals.Direction:
 	match command:
-		Globals.Commands.LEFT:
-			return Globals.Commands.DOWN
-		Globals.Commands.UP:
-			return Globals.Commands.LEFT
-		Globals.Commands.RIGHT:
-			return Globals.Commands.UP
-		Globals.Commands.DOWN:
-			return Globals.Commands.RIGHT
+		Globals.Direction.LEFT:
+			return Globals.Direction.DOWN
+		Globals.Direction.UP:
+			return Globals.Direction.LEFT
+		Globals.Direction.RIGHT:
+			return Globals.Direction.UP
+		Globals.Direction.DOWN:
+			return Globals.Direction.RIGHT
 		_:
 			return command
 	
 
-func _rotate_command_right(command: Globals.Commands) -> Globals.Commands:
+func _rotate_command_right(command: Globals.Direction) -> Globals.Direction:
 	match command:
-		Globals.Commands.LEFT:
-			return Globals.Commands.UP
-		Globals.Commands.UP:
-			return Globals.Commands.RIGHT
-		Globals.Commands.RIGHT:
-			return Globals.Commands.DOWN
-		Globals.Commands.DOWN:
-			return Globals.Commands.LEFT
+		Globals.Direction.LEFT:
+			return Globals.Direction.UP
+		Globals.Direction.UP:
+			return Globals.Direction.RIGHT
+		Globals.Direction.RIGHT:
+			return Globals.Direction.DOWN
+		Globals.Direction.DOWN:
+			return Globals.Direction.LEFT
 		_:
 			return command
 	
