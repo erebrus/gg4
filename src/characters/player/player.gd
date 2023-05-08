@@ -10,16 +10,16 @@ func _ready():
 func control(_delta:float)->void:	
 	if enable_debug_movement:		
 		if Input.is_action_just_pressed("ui_up"):
-			Events.commands_queued.emit([Globals.Direction.UP]) 
+			Events.commands_queued.emit([Command.create(Command.Direction.RIGHT)]) 
 		elif Input.is_action_just_pressed("ui_down"):
-			Events.commands_queued.emit([Globals.Direction.DOWN])
+			Events.commands_queued.emit([Command.create(Command.Direction.DOWN)])
 		elif Input.is_action_just_pressed("ui_left"):
-			Events.commands_queued.emit([Globals.Direction.LEFT]) 
+			Events.commands_queued.emit([Command.create(Command.Direction.LEFT)]) 
 		elif Input.is_action_just_pressed("ui_right"):
-			Events.commands_queued.emit([Globals.Direction.RIGHT])
+			Events.commands_queued.emit([Command.create(Command.Direction.RIGHT)])
 		
 
-func add_commands(new_commands: Array[Globals.Direction]):
+func add_commands(new_commands: Array[Command]):
 	commands.append_array(new_commands)
 	Events.player_ticked.emit()
 	Logger.debug("Added %s commands to player" % str(new_commands))

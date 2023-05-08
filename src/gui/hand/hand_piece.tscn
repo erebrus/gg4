@@ -1,13 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cu4s4om5ko3l4"]
+[gd_scene load_steps=3 format=3 uid="uid://cu4s4om5ko3l4"]
 
 [ext_resource type="Script" path="res://src/gui/hand/hand_piece.gd" id="1_yl2u0"]
-[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="2_tp2xr"]
-[ext_resource type="Texture2D" uid="uid://clvrir1upfgp2" path="res://src/gui/pieces/l.png" id="3_dnrgm"]
-
-[sub_resource type="Resource" id="Resource_8agbt"]
-script = ExtResource("2_tp2xr")
-commands = Array[int]([2, 2, 3, 3])
-texture = ExtResource("3_dnrgm")
+[ext_resource type="Resource" uid="uid://cmtbsf6p7tasc" path="res://src/gui/pieces/charge.tres" id="2_j0k5f"]
 
 [node name="HandPiece" type="MarginContainer"]
 anchors_preset = 15
@@ -16,7 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yl2u0")
-piece = SubResource("Resource_8agbt")
+piece = ExtResource("2_j0k5f")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true

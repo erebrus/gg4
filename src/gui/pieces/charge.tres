@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=7 format=3 uid="uid://cmtbsf6p7tasc"]
+
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_df7hs"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_vuvd1"]
+[ext_resource type="Texture2D" uid="uid://j6ap8ue7rlni" path="res://src/gui/pieces/charge.png" id="3_r2en6"]
+
+[sub_resource type="Resource" id="Resource_5bp26"]
+script = ExtResource("1_vuvd1")
+action = 2
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_5bp27"]
+script = ExtResource("1_vuvd1")
+action = 2
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_5bp28"]
+script = ExtResource("1_vuvd1")
+action = 2
+direction = 2
+speed = 1
+
+[resource]
+script = ExtResource("1_df7hs")
+commands = Array[ExtResource("1_vuvd1")]([SubResource("Resource_5bp26"), SubResource("Resource_5bp27"), SubResource("Resource_5bp28")])
+texture = ExtResource("3_r2en6")

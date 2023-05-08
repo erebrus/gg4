@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=5 format=3 uid="uid://dbklk6tjc4cot"]
+
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_df7hs"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_vuvd1"]
+[ext_resource type="Texture2D" uid="uid://c1e2j8bbsl2dx" path="res://src/gui/pieces/shield.png" id="3_r2en6"]
+
+[sub_resource type="Resource" id="Resource_5bp26"]
+script = ExtResource("1_vuvd1")
+action = 1
+direction = 2
+speed = 0
+
+[resource]
+script = ExtResource("1_df7hs")
+commands = Array[ExtResource("1_vuvd1")]([SubResource("Resource_5bp26")])
+texture = ExtResource("3_r2en6")
