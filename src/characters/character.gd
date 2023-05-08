@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Character
 
+signal command_added()
 signal tick_complete()
 
 const MAX_SPEED:float = 300
@@ -36,7 +37,7 @@ func _physics_process(delta:float):
 	control(delta)
 	update_sprite()
 	
-	if not is_moving and direction != Vector2i():
+	if not is_moving and direction != Vector2i.ZERO:
 		# if player is not moving and has no direction
 		target_direction = Vector2(direction).normalized()
 		# then set the target direction
@@ -92,15 +93,16 @@ func control(_delta:float)->void:
 
 func tick()->void:
 	in_turn = true
-	var new_direction:Vector2i = Vector2i()
 
 	if not commands.is_empty():
-		new_direction = translate_command(commands[0])
+		direction = translate_command(commands[0])
 		previous_command = commands[0]
 		commands.remove_at(0)	
 		previous_cell = grid.local_to_map(position)		
-		
-	direction=new_direction	
+		command_added.emit()
+	else:
+		direction = Vector2i.ZERO		
+	
 
 func translate_command(_command : Globals.Commands)->Vector2i:
 	match _command:

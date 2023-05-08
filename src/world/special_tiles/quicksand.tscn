@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2dkrwgtcayi2"]
+
+[ext_resource type="Script" path="res://src/world/special_tiles/quicksand.gd" id="1_8qs88"]
+[ext_resource type="Texture2D" uid="uid://d2qvj1y0lg4nj" path="res://src/world/quicksand.png" id="1_e7nvf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neegs"]
+size = Vector2(32, 32)
+
+[node name="Quicksand" type="Area2D"]
+collision_mask = 48
+script = ExtResource("1_8qs88")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_neegs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_e7nvf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
