@@ -17,8 +17,6 @@ func control(_delta:float)->void:
 			Events.commands_queued.emit([Globals.Commands.LEFT]) 
 		elif Input.is_action_just_pressed("ui_right"):
 			Events.commands_queued.emit([Globals.Commands.RIGHT])
-	else:
-		super.control(_delta)
 		
 		
 func add_commands(new_commands: Array[Globals.Commands]):
