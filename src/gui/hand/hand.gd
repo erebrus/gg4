@@ -27,6 +27,10 @@ func add(piece: Piece) -> void:
 	scene.unselected.connect(_on_piece_unselected.bind(piece))
 	pieces[piece] = scene
 	piece_container.add_child(scene)
+	#if it's the first piece of the hand, select it
+	if not selected_piece:
+		scene.select()	
+		_on_piece_selected(piece)
 	
 
 func is_empty() -> bool:
@@ -57,7 +61,69 @@ func _on_right_button_pressed():
 
 func _on_accept_button_pressed():
 	if selected_piece != null:
+		var idx = get_index_of_piece(selected_piece)
 		pieces[selected_piece].place()
+		piece_container.remove_child(pieces[selected_piece])
 		pieces.erase(selected_piece)
 		piece_placed.emit(selected_piece)
-		selected_piece = null
+		
+		var piece_count:int = piece_container.get_child_count()
+
+		if piece_count == 0:
+			selected_piece = null
+		else:
+			select_piece_by_index(idx)
+
+			
+func choose_previous_piece()->void:
+	var idx = get_index_of_piece(selected_piece)
+	if idx == -1:
+		Logger.warn("No piece selected, so we can't select previous piece")
+		return
+	select_piece_by_index(idx - 1, true)
+
+
+func choose_next_piece()->void:
+	var idx = get_index_of_piece(selected_piece)
+	if idx == -1:
+		Logger.warn("No piece selected, so we can't select next piece")
+		return
+	select_piece_by_index(idx + 1, true)
+
+
+func get_index_of_piece(piece:Piece)->int:
+	for idx in range(piece_container.get_child_count()):
+		if piece_container.get_child(idx).piece == piece:
+			return idx
+	return -1
+
+
+func select_piece_by_index(idx:int, rollover:bool = false)->void:
+	if piece_container.get_child_count() == 0:
+		Logger.warn("Cannot select piece of idx %d on empty hand."  % idx)
+		return
+	
+	if idx >= piece_container.get_child_count():
+		idx = 0 if rollover else piece_container.get_child_count() - 1
+	if idx < 0:
+		idx = piece_container.get_child_count() - 1 if rollover else 0
+
+	var new_piece:Piece = piece_container.get_child(idx).piece
+	piece_container.get_child(idx).select()
+	_on_piece_selected(new_piece)
+
+
+func _input(_event):		
+	if Input.is_action_just_pressed("ui_up"):
+		_on_left_button_pressed()
+	if Input.is_action_just_pressed("ui_down"):
+		_on_left_button_pressed()
+		
+	if Input.is_action_just_pressed("ui_left"):
+		choose_previous_piece()
+	if Input.is_action_just_pressed("ui_right"):
+		choose_next_piece()
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_accept_button_pressed()
+		
