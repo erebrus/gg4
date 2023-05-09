@@ -14,4 +14,4 @@ speed = 0
 script = ExtResource("1_df7hs")
 commands = Array[ExtResource("1_vuvd1")]([SubResource("Resource_5bp26")])
 texture = ExtResource("3_r2en6")
-description = "Stay and shield from incoming attacks"
+description = ""

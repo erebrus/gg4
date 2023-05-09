@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cldwu41ur8qw1"]
+[gd_scene load_steps=13 format=3 uid="uid://cldwu41ur8qw1"]
 
 [ext_resource type="Script" path="res://src/world/arena.gd" id="1_mncgg"]
 [ext_resource type="Texture2D" uid="uid://bqhanj7bmx5sa" path="res://src/world/ground.png" id="1_x0g2d"]
 [ext_resource type="Texture2D" uid="uid://b6umsbbynub0l" path="res://src/world/rock.png" id="2_to2ek"]
-[ext_resource type="Script" path="res://src/world/turn_manager.gd" id="4_kogra"]
 [ext_resource type="PackedScene" uid="uid://bn8hyp5yo4amx" path="res://src/characters/enemies/enemy.tscn" id="4_xmkju"]
 [ext_resource type="PackedScene" uid="uid://c2dkrwgtcayi2" path="res://src/world/special_tiles/quicksand.tscn" id="5_4to4b"]
 [ext_resource type="PackedScene" uid="uid://jqxg88aou1fg" path="res://src/characters/player/player.tscn" id="6_b2fmq"]
@@ -56,12 +55,15 @@ layer_1/tile_data = PackedInt32Array(131078, 4, 131072, 393227, 4, 131072, 26215
 script = ExtResource("1_mncgg")
 metadata/_edit_lock_ = true
 
-[node name="TurnManager" type="Node" parent="."]
-script = ExtResource("4_kogra")
-
 [node name="Player" parent="." instance=ExtResource("6_b2fmq")]
 position = Vector2(194.415, 189.279)
 enable_debug_movement = true
 
 [node name="Enemy" parent="." instance=ExtResource("4_xmkju")]
 position = Vector2(824.962, 554.173)
+
+[connection signal="body_entered" from="Quicksand" to="Quicksand" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Quicksand" to="Quicksand" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@51727" to="@Hazard@51727" method="_on_body_entered" flags=18]

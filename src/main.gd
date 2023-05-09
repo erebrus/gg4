@@ -5,6 +5,7 @@ extends Node
 func _ready():
 	LevelManager.reset_level() #TODO remove once we have main menu
 	var map = LevelManager.get_current_level().instantiate()
+	map.turn_manager = $TurnManager
 	add_child(map)
 	move_child(map, 0)
 
