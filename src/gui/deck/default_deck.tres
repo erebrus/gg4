@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=12 format=3 uid="uid://bjhasktpujsqs"]
+[gd_resource type="Resource" script_class="Deck" load_steps=14 format=3 uid="uid://bjhasktpujsqs"]
 
 [ext_resource type="Resource" uid="uid://cf8vqjp1hbl4a" path="res://src/gui/pieces/right.tres" id="1_safwu"]
 [ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/long.tres" id="2_x76ek"]
@@ -11,8 +11,10 @@
 [ext_resource type="Resource" uid="uid://lmaj55dcc2ow" path="res://src/gui/pieces/charge.tres" id="8_8iao1"]
 [ext_resource type="Resource" uid="uid://bm4gdywfkfvlf" path="res://src/gui/pieces/shield_charge.tres" id="9_cl4fp"]
 [ext_resource type="Resource" uid="uid://dpuudyls0tsih" path="res://src/gui/pieces/sprint.tres" id="10_7bodq"]
+[ext_resource type="Resource" uid="uid://4o3cxm5dd3jw" path="res://src/gui/pieces/wait.tres" id="11_8cejf"]
+[ext_resource type="Resource" uid="uid://kf0k6ydfddtp" path="res://src/gui/pieces/tripple_wait.tres" id="12_j8je2"]
 
 [resource]
 script = ExtResource("7_kw80b")
-pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_safwu"), ExtResource("2_x76ek"), ExtResource("3_nn11v"), ExtResource("4_hnfnq"), ExtResource("5_xd6un"), ExtResource("6_kvbpt"), ExtResource("7_xrwc6"), ExtResource("8_8iao1"), ExtResource("9_cl4fp"), ExtResource("10_7bodq")])
-quantities = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_safwu"), ExtResource("2_x76ek"), ExtResource("3_nn11v"), ExtResource("4_hnfnq"), ExtResource("5_xd6un"), ExtResource("6_kvbpt"), ExtResource("7_xrwc6"), ExtResource("8_8iao1"), ExtResource("9_cl4fp"), ExtResource("10_7bodq"), ExtResource("11_8cejf"), ExtResource("12_j8je2")])
+quantities = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])

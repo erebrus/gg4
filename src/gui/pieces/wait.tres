@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=5 format=3 uid="uid://4o3cxm5dd3jw"]
+
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_ohxfw"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_rpayk"]
+[ext_resource type="Texture2D" uid="uid://5avxrtpdmgtm" path="res://src/gui/pieces/wait.png" id="3_3v5a3"]
+
+[sub_resource type="Resource" id="Resource_aemn8"]
+script = ExtResource("1_rpayk")
+action = 0
+direction = 0
+speed = 0
+
+[resource]
+script = ExtResource("1_ohxfw")
+commands = Array[ExtResource("1_rpayk")]([SubResource("Resource_aemn8")])
+texture = ExtResource("3_3v5a3")

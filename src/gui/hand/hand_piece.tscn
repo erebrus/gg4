@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cu4s4om5ko3l4"]
 
 [ext_resource type="Script" path="res://src/gui/hand/hand_piece.gd" id="1_yl2u0"]
-[ext_resource type="Resource" uid="uid://cmtbsf6p7tasc" path="res://src/gui/pieces/charge.tres" id="2_j0k5f"]
+[ext_resource type="Resource" uid="uid://lmaj55dcc2ow" path="res://src/gui/pieces/charge.tres" id="2_j0k5f"]
 
 [node name="HandPiece" type="MarginContainer"]
 anchors_preset = 15
