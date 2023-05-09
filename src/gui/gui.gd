@@ -15,6 +15,8 @@ func _ready() -> void:
 	hand.piece_discarded.connect(_on_piece_placed)
 	hand.piece_placed.connect(_on_piece_placed)
 	
+	deck.pieces = Globals.deck
+	
 	if auto_draw_piece_on_place:
 		while hand.num_pieces < hand.max_pieces:
 			draw_from(deck)

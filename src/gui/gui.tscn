@@ -30,7 +30,6 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-deck = null
 
 [node name="Hand" parent="VBoxContainer" instance=ExtResource("2_4blni")]
 unique_name_in_owner = true
