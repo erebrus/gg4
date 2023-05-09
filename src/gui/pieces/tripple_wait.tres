@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Piece" load_steps=5 format=3 uid="uid://kf0k6ydfddtp"]
+[gd_resource type="Resource" script_class="Piece" load_steps=5 format=3 uid="uid://chsk2qjugpdvk"]
 
 [ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_dhwo4"]
 [ext_resource type="Script" path="res://src/commands/command.gd" id="1_nxwdr"]

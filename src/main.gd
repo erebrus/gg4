@@ -7,6 +7,8 @@ func _ready():
 	Events.level_complete.connect(_on_level_complete)
 	
 	var map = Globals.level_manager.get_current_level().instantiate()
+	map.turn_manager = $TurnManager
+	
 	add_child(map)
 	move_child(map, 0)
 
