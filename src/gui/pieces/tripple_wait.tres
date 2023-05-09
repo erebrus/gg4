@@ -14,3 +14,4 @@ speed = 0
 script = ExtResource("1_dhwo4")
 commands = Array[ExtResource("1_nxwdr")]([SubResource("Resource_u5vjq"), SubResource("Resource_u5vjq"), SubResource("Resource_u5vjq")])
 texture = ExtResource("3_8xw5a")
+description = "Wait three times"

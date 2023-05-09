@@ -17,9 +17,13 @@ const MAIN_SCREEN = "res://src/main.tscn"
 const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"
 const WIN_SCREEN = "res://src/win/win_screen.tscn"
 
+const START_DECK = preload("res://src/gui/deck/default_deck.tres")
+var deck: Array[Piece]
+
 func _ready():
 	_init_logger()	
-	Logger.info("Init complete.")	
+	Logger.info("Init complete.")
+	deck = START_DECK.generate()
 
 #	music = AudioStreamPlayer.new()
 #	music.stream = load ("res://assets/music/WGJ Main menu mp3.mp3")
@@ -49,6 +53,7 @@ func win(remaining_pieces: int):
 
 func start():
 	SceneLoader.load_scene(MAIN_SCREEN)
+	deck = START_DECK.generate()
 	
 
 #

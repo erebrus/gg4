@@ -1,9 +1,12 @@
 class_name PiecePile extends PanelContainer
 
 
-@export var deck: Deck
-
-var pieces: Array[Piece]
+var pieces: Array[Piece]:
+	set(value):
+		pieces = value
+		if number_label != null:
+			update()
+	
 var num_pieces:
 	get:
 		return pieces.size()
@@ -12,8 +15,6 @@ var num_pieces:
 @onready var number_label: Label = get_node("%NumPieces")
 
 func _ready() -> void:
-	if deck != null:
-		pieces = deck.generate()
 	update()
 	
 

@@ -32,3 +32,4 @@ speed = 1
 script = ExtResource("1_3flr7")
 commands = Array[ExtResource("1_g8rd5")]([SubResource("Resource_mg7ly"), SubResource("Resource_tm12r"), SubResource("Resource_8c8of"), SubResource("Resource_vx6s7")])
 texture = ExtResource("3_artnt")
+description = "Move in a step down shape"

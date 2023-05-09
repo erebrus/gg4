@@ -14,3 +14,4 @@ speed = 0
 script = ExtResource("1_ohxfw")
 commands = Array[ExtResource("1_rpayk")]([SubResource("Resource_aemn8")])
 texture = ExtResource("3_3v5a3")
+description = "Wait"
