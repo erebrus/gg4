@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://bs3ie3ldfbwx1"]
+
+[ext_resource type="Script" path="res://src/choose_piece/choice_piece.gd" id="1_fx7i2"]
+[ext_resource type="Resource" uid="uid://bm4gdywfkfvlf" path="res://src/gui/pieces/shield_charge.tres" id="2_q3f7a"]
+
+[node name="ChoicePiece" type="VBoxContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -13.5
+offset_right = 0.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fx7i2")
+piece = ExtResource("2_q3f7a")
+
+[node name="Piece" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite" type="Sprite2D" parent="Piece"]
+unique_name_in_owner = true
+
+[node name="Description" type="Label" parent="."]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+autowrap_mode = 3
+
+[connection signal="gui_input" from="Piece" to="." method="_on_piece_gui_input"]
+[connection signal="mouse_entered" from="Piece" to="." method="_on_piece_mouse_entered"]
+[connection signal="mouse_exited" from="Piece" to="." method="_on_piece_mouse_exited"]

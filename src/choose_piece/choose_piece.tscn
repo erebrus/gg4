@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs5utugte18qt"]
+
+[ext_resource type="Script" path="res://src/choose_piece/choose_piece.gd" id="1_3v4q0"]
+[ext_resource type="Resource" uid="uid://bas55cd0npkbp" path="res://src/gui/deck/special_deck.tres" id="2_s38ht"]
+
+[node name="ChoosePiece" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3v4q0")
+deck = ExtResource("2_s38ht")
+
+[node name="Pieces" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
