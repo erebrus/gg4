@@ -13,6 +13,7 @@ var debug_build := false
 var music
 
 
+const MENU_SCREEN = "res://src/menu/menu.tscn"
 const MAIN_SCREEN = "res://src/main.tscn"
 const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"
 const WIN_SCREEN = "res://src/win/win_screen.tscn"
@@ -21,7 +22,7 @@ const START_DECK = preload("res://src/gui/deck/default_deck.tres")
 var deck: Array[Piece]
 
 func _ready():
-	_init_logger()	
+	_init_logger()
 	Logger.info("Init complete.")
 	deck = START_DECK.generate()
 
@@ -51,9 +52,23 @@ func win(remaining_pieces: int):
 	SceneLoader.load_scene(WIN_SCREEN, remaining_pieces)
 	
 
+func menu():
+	SceneLoader.load_scene(MENU_SCREEN)
+	
+
+func can_continue() -> bool:
+	# todo: can continue if there's a saved game
+	return false
+	
+
 func start():
-	SceneLoader.load_scene(MAIN_SCREEN)
 	deck = START_DECK.generate()
+	SceneLoader.load_scene(MAIN_SCREEN)
+	
+
+func continue_game():
+	# todo: continue from last level
+	start()
 	
 
 #
