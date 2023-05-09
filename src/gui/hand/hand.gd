@@ -2,6 +2,7 @@ class_name Hand extends MarginContainer
 
 
 signal piece_placed(piece: Piece)
+signal piece_discarded(piece: Piece)
 
 
 const HandPiece = preload("res://src/gui/hand/hand_piece.tscn")
@@ -19,6 +20,9 @@ var pieces: Dictionary
 
 @onready var piece_container = get_node("%Pieces")
 
+func _ready():
+	Events.player_damaged.connect(on_player_damaged)
+	Events.player_bumped.connect(on_player_bumped)
 
 func add(piece: Piece) -> void:
 	var scene = HandPiece.instantiate()
@@ -127,3 +131,31 @@ func _input(_event):
 	if Input.is_action_just_pressed("ui_accept"):
 		_on_accept_button_pressed()
 		
+func discard(idx:int = 0 )->void:
+	if idx < 0 or idx >= piece_container.get_child_count():
+		Logger.warn("Tried to discard invalid index %d" % idx)
+		return
+
+	var handpiece = piece_container.get_child(idx)
+	piece_container.remove_child(handpiece)
+	var discarded_piece = handpiece.piece
+	pieces.erase(discarded_piece)
+	handpiece.queue_free()
+	
+	piece_discarded.emit(discarded_piece)
+	
+	var piece_count:int = piece_container.get_child_count()
+	if piece_count == 0:
+		selected_piece = null
+	else:
+		select_piece_by_index(idx)
+
+func on_player_damaged(dmg:int)->void:
+	for i in range (clamp(dmg, 0, piece_container.get_child_count())):
+		discard()
+
+func on_player_bumped()->void:
+	if piece_container.get_child_count():
+		discard(RngUtils.int_range(0, piece_container.get_child_count()-1))
+	else:
+		Logger.warn("Tried to discard card, but hand is empty.")

@@ -13,14 +13,11 @@ func add_commands(new_commands: Array[Command]):
 	Logger.debug("Added %s commands to player" % str(new_commands))
 
 func handle_combat_with(_other):
-	if previous_command.is_attack:
-		_other.take_damage(1)
-	elif previous_command.is_shield:
-		_other.push(self)
-	else:
-		do_retreat(false)
-	take_damage(1)	
+	handle_combat(self, _other)
 
+func take_damage():	
+	Events.player_damaged.emit(4) #TODO replace by variable
+	
 func do_death():
 	Logger.info("Player died")
 	Globals.gameover()
@@ -29,5 +26,7 @@ func _on_tick_complete():
 	if commands.is_empty():
 		Events.player_queue_empty.emit()
 	else:
-		Events.player_ticked.emit()
-		
+		Events.player_ticked.emit()			
+
+func bump()->void:
+	Events.player_bumped.emit()

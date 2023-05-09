@@ -11,3 +11,9 @@ signal player_queue_empty
 signal level_complete
 
 signal player_ticked
+
+signal player_damaged(dmg)
+
+signal player_bumped
+
+

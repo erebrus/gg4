@@ -19,9 +19,13 @@ func control(_delta:float)->void:
 		
 
 func handle_combat_with(other):
-	other.take_damage(1)	
-	if other.previous_command != null:
-		other.do_retreat(false)
-	else:
-		do_retreat(true)
+	handle_combat(other, self)
+	
+func take_damage():	
+	super.take_damage()
+	collision_layer=0
+	#HACK we need to replace all this by an XSM to fix it
+	await get_tree().create_timer(.3).timeout
+	do_death()
+	
 	

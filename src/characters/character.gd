@@ -7,15 +7,13 @@ signal tick_complete()
 const MAX_SPEED:float = 300
 
 
-@export var hp:int = 3
-
 var direction:Vector2i = Vector2i()
 var target_direction:Vector2 = Vector2()
 var world_target_pos:Vector2 = Vector2()
 
 var speed:float = 0
 var is_moving:bool = false
-
+var is_retreating:bool = false
 var previous_command:Command = null
 var previous_cell:Vector2i
 
@@ -32,7 +30,7 @@ func update_sprite():
 	pass
 
 func _physics_process(delta:float):
-
+	is_retreating=false
 	control(delta)
 	update_sprite()
 	
@@ -67,12 +65,12 @@ func _physics_process(delta:float):
 		if collision:
 			#Logger.error("Unexpected collision with:",collision.collider.name)
 			var collider=collision.get_collider()
-			var retreat:bool = true
 			if collider.is_in_group("character"):
-				retreat = handle_combat_with(collider)
+				handle_combat_with(collider)
 			else:
+				bump()
 				do_retreat(false)
-			if done and retreat:
+			if done and is_retreating:
 				done=false
 		if done:
 			in_turn = false
@@ -96,6 +94,7 @@ func tick()->void:
 		commands.remove_at(0)	
 		previous_cell = grid.local_to_map(position)		
 		command_added.emit()
+		is_retreating=false
 	else:
 		direction = Vector2i.ZERO		
 	
@@ -115,6 +114,36 @@ func translate_command(_command : Command)->Vector2i:
 
 func handle_combat_with(_other):
 	pass
+	
+func handle_combat(player, enemy)->bool:
+	#Player wins
+	if player.previous_command.is_attack:
+		enemy.take_damage()
+		return true
+	else:
+		var cell:Vector2i = grid.local_to_map(player.position)
+		var player_moved:bool = cell != player.previous_cell
+		var enemy_moved:bool = cell != enemy.previous_cell
+		
+		if player.previous_command.is_shield:
+			if player_moved:
+				if enemy_moved:
+					enemy.do_retreat(true)
+				else:
+#					enemy.push(player)			TODO push
+					player.do_retreat(false)
+			else:
+				enemy.do_retreat(true)
+			return true
+			
+		else:				
+	
+			if player_moved:			
+				player.do_retreat(false)
+			else:
+				enemy.do_retreat(true)
+			player.take_damage()	#TODO gets this from global var
+			return false
 
 func do_retreat(redo_command:bool):
 	world_target_pos = grid.map_to_local(previous_cell)
@@ -123,19 +152,18 @@ func do_retreat(redo_command:bool):
 		commands.insert(0,previous_command)
 	direction *= -1
 	target_direction = Vector2(direction).normalized()
-	
+	is_retreating = true
 
-func take_damage(dmg):
-	hp = clamp(hp - dmg, 0, hp)
-	
+func take_damage():	
 	var hurt_color:Color = Color("ff0f18")
 	#var tween := create_tween().set_trans(Tween.TRANS_CUBIC).
 	modulate = hurt_color
 	await get_tree().create_timer(.2).timeout
 	modulate = Color.WHITE
 		
-	if hp == 0:
-		do_death()
 
 func do_death():
 	queue_free()
+
+func bump()->void:
+	pass
