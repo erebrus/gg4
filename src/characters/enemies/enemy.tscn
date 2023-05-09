@@ -1,13 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn8hyp5yo4amx"]
+[gd_scene load_steps=5 format=3 uid="uid://bn8hyp5yo4amx"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_f8rso"]
-[ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_dipus"]
+[ext_resource type="Texture2D" uid="uid://5jm7m3b3avn2" path="res://src/characters/hurt.png" id="3_dbvjy"]
 [ext_resource type="Texture2D" uid="uid://clovogbd3h57n" path="res://src/characters/enemy.png" id="3_yleur"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3p6th"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dbvjy")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yleur")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dbvjy")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yleur")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yleur")
+}],
+"loop": true,
+"name": &"wobble",
+"speed": 5.0
+}]
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_f8rso")]
 collision_layer = 32
 collision_mask = 17
-script = ExtResource("2_dipus")
 
 [node name="Sprite2D" parent="." index="1"]
+visible = false
 texture = ExtResource("3_yleur")
+
+[node name="sprite" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_3p6th")
+animation = &"wobble"
+
+[node name="idle" parent="xsm" index="0"]
+next_state = NodePath("../wait")
+
+[node name="wait" parent="xsm" index="1"]
+next_state = NodePath("../move")
+
+[node name="move" parent="xsm" index="2"]
+next_state = NodePath("../hurt")
+
+[node name="hurt" parent="xsm" index="3"]
+next_state = NodePath("../death")
+
+[node name="death" parent="xsm" index="4"]
+next_state = NodePath("../wobble")
+
+[node name="wobble" parent="xsm" index="5"]
+next_state = NodePath("../retreat")

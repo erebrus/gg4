@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cldwu41ur8qw1"]
+[gd_scene load_steps=14 format=3 uid="uid://cldwu41ur8qw1"]
 
 [ext_resource type="Script" path="res://src/world/arena.gd" id="1_mncgg"]
 [ext_resource type="Texture2D" uid="uid://bqhanj7bmx5sa" path="res://src/world/ground.png" id="1_x0g2d"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://jqxg88aou1fg" path="res://src/characters/player/player.tscn" id="6_b2fmq"]
 [ext_resource type="PackedScene" uid="uid://dgltfqufrm17e" path="res://src/world/objects/exit.tscn" id="8_gnqqo"]
 [ext_resource type="PackedScene" uid="uid://pllnnrdp1xi5" path="res://src/world/objects/hazard.tscn" id="9_lmutl"]
-[ext_resource type="Script" path="res://src/commands/command.gd" id="9_xtfw0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2k3b"]
 texture = ExtResource("1_x0g2d")
@@ -42,18 +41,6 @@ sources/1 = SubResource("TileSetAtlasSource_j2k3b")
 sources/2 = SubResource("TileSetAtlasSource_wrtya")
 sources/4 = SubResource("TileSetScenesCollectionSource_x4dqh")
 
-[sub_resource type="Resource" id="Resource_rdtjo"]
-script = ExtResource("9_xtfw0")
-action = 0
-direction = 0
-speed = 1
-
-[sub_resource type="Resource" id="Resource_mhbyx"]
-script = ExtResource("9_xtfw0")
-action = 0
-direction = 2
-speed = 1
-
 [node name="Map" type="TileMap"]
 tile_set = SubResource("TileSet_bj5ol")
 format = 2
@@ -78,4 +65,3 @@ enable_debug_movement = true
 
 [node name="Enemy" parent="." instance=ExtResource("4_xmkju")]
 position = Vector2(824.962, 554.173)
-command_pattern = Array[ExtResource("9_xtfw0")]([SubResource("Resource_rdtjo"), SubResource("Resource_mhbyx")])

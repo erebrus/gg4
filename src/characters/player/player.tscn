@@ -60,3 +60,21 @@ texture = null
 
 [node name="sprite" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
+
+[node name="idle" parent="xsm" index="0"]
+next_state = NodePath("../wait")
+
+[node name="wait" parent="xsm" index="1"]
+next_state = NodePath("../wait")
+
+[node name="move" parent="xsm" index="2"]
+next_state = NodePath("../wait")
+
+[node name="hurt" parent="xsm" index="3"]
+next_state = NodePath("../wait")
+
+[node name="death" parent="xsm" index="4"]
+next_state = NodePath("../wait")
+
+[node name="wobble" parent="xsm" index="5"]
+next_state = NodePath("../wait")

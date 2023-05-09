@@ -1,6 +1,5 @@
-[gd_scene load_steps=19 format=3 uid="uid://b4bv0gd2datv0"]
+[gd_scene load_steps=18 format=3 uid="uid://b4bv0gd2datv0"]
 
-[ext_resource type="Texture2D" uid="uid://bt17q3m36yr0p" path="res://src/characters/player.png" id="2_25a17"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="3_uqxgq"]
 [ext_resource type="Script" path="res://src/characters/wait.gd" id="4_2hx5j"]
 [ext_resource type="Script" path="res://src/characters/idle.gd" id="4_7r88x"]
@@ -40,6 +39,21 @@ animations = [{
 "name": &"wobble",
 "speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_psy0d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_sb2yv"]
 resource_name = "death"
@@ -194,21 +208,6 @@ tracks/1/keys = {
 "values": [&"wobble"]
 }
 
-[sub_resource type="Animation" id="Animation_psy0d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xnugw"]
 _data = {
 "RESET": SubResource("Animation_psy0d"),
@@ -225,9 +224,6 @@ z_index = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_ms33h")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_25a17")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ldbhc")
@@ -257,7 +253,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../wait")
 
 [node name="wait" type="Node" parent="xsm"]
 script = ExtResource("4_2hx5j")
@@ -269,7 +265,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../wait")
 
 [node name="move" type="Node" parent="xsm"]
 script = ExtResource("5_b8cj8")
@@ -281,7 +277,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../wait")
 
 [node name="hurt" type="Node" parent="xsm"]
 script = ExtResource("6_kofad")
@@ -293,7 +289,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../wait")
 
 [node name="death" type="Node" parent="xsm"]
 script = ExtResource("6_8ud4g")
@@ -305,7 +301,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../wait")
 
 [node name="wobble" type="Node" parent="xsm"]
 script = ExtResource("4_gccs2")
@@ -317,7 +313,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../wait")
 
 [node name="retreat" type="Node" parent="xsm"]
 script = ExtResource("7_hnxgb")
