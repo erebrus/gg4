@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c2dkrwgtcayi2" path="res://src/world/special_tiles/quicksand.tscn" id="5_4to4b"]
 [ext_resource type="PackedScene" uid="uid://jqxg88aou1fg" path="res://src/characters/player/player.tscn" id="6_b2fmq"]
 [ext_resource type="PackedScene" uid="uid://dgltfqufrm17e" path="res://src/world/objects/exit.tscn" id="8_gnqqo"]
-[ext_resource type="Script" path="res://src/commands/command.gd" id="9_22bkc"]
 [ext_resource type="PackedScene" uid="uid://pllnnrdp1xi5" path="res://src/world/objects/hazard.tscn" id="9_lmutl"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="9_xtfw0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j2k3b"]
 texture = ExtResource("1_x0g2d")
@@ -42,16 +42,16 @@ sources/1 = SubResource("TileSetAtlasSource_j2k3b")
 sources/2 = SubResource("TileSetAtlasSource_wrtya")
 sources/4 = SubResource("TileSetScenesCollectionSource_x4dqh")
 
-[sub_resource type="Resource" id="Resource_n5b8s"]
-script = ExtResource("9_22bkc")
+[sub_resource type="Resource" id="Resource_i862a"]
+script = ExtResource("9_xtfw0")
 action = 0
-direction = 2
+direction = 3
 speed = 1
 
-[sub_resource type="Resource" id="Resource_p1brt"]
-script = ExtResource("9_22bkc")
+[sub_resource type="Resource" id="Resource_ddixi"]
+script = ExtResource("9_xtfw0")
 action = 0
-direction = 0
+direction = 1
 speed = 1
 
 [node name="Map" type="TileMap"]
@@ -72,12 +72,15 @@ metadata/_edit_lock_ = true
 [node name="TurnManager" type="Node" parent="."]
 script = ExtResource("4_kogra")
 
-[node name="Enemy2" parent="." instance=ExtResource("4_xmkju")]
-position = Vector2(64, 64)
-command_pattern = Array[ExtResource("9_22bkc")]([SubResource("Resource_n5b8s"), SubResource("Resource_p1brt")])
-
 [node name="Enemy" parent="." instance=ExtResource("4_xmkju")]
-position = Vector2(832, 576)
+position = Vector2(192, 64)
+command_pattern = Array[ExtResource("9_xtfw0")]([SubResource("Resource_i862a"), SubResource("Resource_ddixi")])
 
 [node name="Player" parent="." instance=ExtResource("6_b2fmq")]
 position = Vector2(194.415, 189.279)
+
+[connection signal="body_entered" from="Quicksand" to="Quicksand" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Quicksand" to="Quicksand" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@47940" to="@Hazard@47940" method="_on_body_entered" flags=18]

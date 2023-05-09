@@ -1,39 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://bn8hyp5yo4amx"]
+[gd_scene load_steps=4 format=3 uid="uid://bn8hyp5yo4amx"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_f8rso"]
-[ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_lmo2k"]
-[ext_resource type="Script" path="res://src/commands/command.gd" id="3_bfyw3"]
+[ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_dipus"]
 [ext_resource type="Texture2D" uid="uid://clovogbd3h57n" path="res://src/characters/enemy.png" id="3_yleur"]
-
-[sub_resource type="Resource" id="Resource_w21v1"]
-script = ExtResource("3_bfyw3")
-action = 0
-direction = 0
-speed = 1
-
-[sub_resource type="Resource" id="Resource_lacmu"]
-script = ExtResource("3_bfyw3")
-action = 0
-direction = 2
-speed = 1
-
-[sub_resource type="Resource" id="Resource_3aeoo"]
-script = ExtResource("3_bfyw3")
-action = 0
-direction = 2
-speed = 1
-
-[sub_resource type="Resource" id="Resource_w78jx"]
-script = ExtResource("3_bfyw3")
-action = 0
-direction = 0
-speed = 1
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_f8rso")]
 collision_layer = 32
 collision_mask = 17
-script = ExtResource("2_lmo2k")
-command_pattern = Array[ExtResource("3_bfyw3")]([SubResource("Resource_w21v1"), SubResource("Resource_lacmu"), SubResource("Resource_3aeoo"), SubResource("Resource_w78jx")])
+script = ExtResource("2_dipus")
+command_pattern = Array[Resource("res://src/commands/command.gd")]([])
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_yleur")
+
+[node name="sprite" parent="." index="2"]
+animation = &"death"

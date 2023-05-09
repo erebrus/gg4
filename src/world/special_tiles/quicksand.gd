@@ -8,7 +8,6 @@ func _on_body_entered(body):
 	body.command_added.connect(on_command_added.bind(body))
 
 func on_command_added(body):
-	body.direction = Vector2i.ZERO
 	body.command_added.disconnect(on_command_added.bind(body))
 
 

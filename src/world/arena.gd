@@ -41,7 +41,7 @@ func is_in_arena(pos:Vector2)->bool:
 	return pos.x >= 0 && pos.x < grid_size_x && pos.y >= 0 && pos.y < grid_size_y 
 
 
-func update_child_pos(this_world_pos, direction)->Vector2:
+func get_new_local_position(this_world_pos:Vector2, direction:Vector2i=Vector2.ZERO)->Vector2:
 
 	var this_grid_pos = local_to_map(this_world_pos)
 	var new_grid_pos = this_grid_pos + direction

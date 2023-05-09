@@ -5,6 +5,7 @@ class_name Enemy
 
 func _ready():
 	super._ready()
+	redo_command = true
 	_test_pattern()
 
 func _test_pattern():
@@ -23,9 +24,5 @@ func handle_combat_with(other):
 	
 func take_damage():	
 	super.take_damage()
-	collision_layer=0
-	#HACK we need to replace all this by an XSM to fix it
-	await get_tree().create_timer(.3).timeout
-	do_death()
 	
 	

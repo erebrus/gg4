@@ -15,9 +15,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 @tool
+@icon("res://addons/xsm/icons/state.png")
 extends Node
 class_name State
-@icon("res://addons/xsm/icons/state.png")
 
 # To use this plugin, you should inherit this class or the typed inheritances
 # to add scripts to your nodes (if you use the "inherit from script,

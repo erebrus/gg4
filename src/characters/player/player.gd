@@ -4,6 +4,7 @@ extends Character
 @export var enable_debug_movement:=true
 
 func _ready():
+	super._ready()
 	Events.commands_queued.connect(add_commands)
 	tick_complete.connect(_on_tick_complete)	
 
@@ -17,6 +18,7 @@ func handle_combat_with(_other):
 
 func take_damage():	
 	Events.player_damaged.emit(4) #TODO replace by variable
+	super.take_damage()
 	
 func do_death():
 	Logger.info("Player died")
