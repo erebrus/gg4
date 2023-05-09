@@ -8,8 +8,10 @@ func _on_body_entered(body):
 	body.command_added.connect(on_command_added.bind(body))
 
 func on_command_added(body):
+	#TODO replace this by a stay command
+	body.world_target_pos = body.grid.map_to_local(body.grid.local_to_map(body.position))
 	body.command_added.disconnect(on_command_added.bind(body))
-
+	body.xsm.change_state("idle")
 
 func _on_body_exited(body):
 	if not body.has_signal("command_added"):
