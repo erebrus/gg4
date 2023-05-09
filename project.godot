@@ -22,6 +22,7 @@ Logger="*res://addons/gs_logger/logger.gd"
 SceneLoader="*res://addons/scene_loader/scene_loader.gd"
 Globals="*res://src/globals.gd"
 Events="*res://src/events.gd"
+LevelManager="*res://src/level_manager.gd"
 
 [display]
 

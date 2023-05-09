@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://caltr3wgjn0r3"]
 
-[ext_resource type="PackedScene" uid="uid://cldwu41ur8qw1" path="res://src/world/arena.tscn" id="1_yj4tk"]
+[ext_resource type="Script" path="res://src/main.gd" id="1_fmrj7"]
 [ext_resource type="PackedScene" uid="uid://dfjqux4p83uay" path="res://src/gui/gui.tscn" id="2_hg27e"]
 
 [node name="Main" type="Node"]
-
-[node name="Map" parent="." instance=ExtResource("1_yj4tk")]
+script = ExtResource("1_fmrj7")
 
 [node name="Gui" parent="." instance=ExtResource("2_hg27e")]
