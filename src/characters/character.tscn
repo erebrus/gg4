@@ -1,11 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://b4bv0gd2datv0"]
+[gd_scene load_steps=18 format=3 uid="uid://b4bv0gd2datv0"]
 
-[ext_resource type="Script" path="res://src/characters/character.gd" id="1_gf8xb"]
 [ext_resource type="Texture2D" uid="uid://bt17q3m36yr0p" path="res://src/characters/player.png" id="2_25a17"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="3_uqxgq"]
 [ext_resource type="Script" path="res://src/characters/idle.gd" id="4_7r88x"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="4_gccs2"]
 [ext_resource type="Script" path="res://src/characters/move.gd" id="5_b8cj8"]
+[ext_resource type="Script" path="res://src/characters/death.gd" id="6_8ud4g"]
 [ext_resource type="Script" path="res://src/characters/hurt.gd" id="6_kofad"]
 [ext_resource type="Script" path="res://src/characters/retreat.gd" id="7_hnxgb"]
 
@@ -66,6 +66,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"death"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hw3ro"]
@@ -181,8 +193,24 @@ tracks/1/keys = {
 "values": [&"wobble"]
 }
 
+[sub_resource type="Animation" id="Animation_psy0d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xnugw"]
 _data = {
+"RESET": SubResource("Animation_psy0d"),
 "death": SubResource("Animation_sb2yv"),
 "hurt": SubResource("Animation_hw3ro"),
 "idle": SubResource("Animation_cm82f"),
@@ -192,7 +220,6 @@ _data = {
 
 [node name="Character" type="CharacterBody2D" groups=["character", "map_element"]]
 z_index = 1
-script = ExtResource("1_gf8xb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -203,6 +230,7 @@ texture = ExtResource("2_25a17")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ldbhc")
+animation = &"death"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -213,7 +241,7 @@ libraries = {
 script = ExtResource("3_uqxgq")
 history_size = 0
 disabled = true
-debug_mode = false
+debug_mode = true
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -255,7 +283,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="death" type="Node" parent="xsm"]
-script = ExtResource("4_gccs2")
+script = ExtResource("6_8ud4g")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "death"
 anim_times_to_play = 1

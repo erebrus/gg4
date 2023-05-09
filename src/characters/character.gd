@@ -19,6 +19,7 @@ var commands:Array[Command]
 
 var in_turn := false
 
+var dead := false
 
 @onready var grid:Arena = get_parent()
 @onready var xsm:State = $xsm
@@ -37,6 +38,8 @@ func is_at_target_position()->bool:
 
 
 func _physics_process(delta:float):	
+	if dead:
+		return
 	control(delta)
 	update_sprite()
 
@@ -96,6 +99,7 @@ func handle_combat(player, enemy)->void:
 		if player.previous_command.is_shield:
 			if player_moved:
 				if enemy_moved:
+					player.retreat()
 					enemy.retreat()
 				else:
 #					enemy.push(player)			TODO push
@@ -115,9 +119,6 @@ func handle_combat(player, enemy)->void:
 			
 func take_damage():	
 	xsm.change_state("hurt")
-
-func do_death():
-	queue_free()
 
 func bump()->void:
 	pass

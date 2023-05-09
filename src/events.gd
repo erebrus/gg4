@@ -16,4 +16,4 @@ signal player_damaged(dmg)
 
 signal player_bumped
 
-
+signal announce_death(el)

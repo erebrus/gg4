@@ -20,9 +20,6 @@ func take_damage():
 	Events.player_damaged.emit(4) #TODO replace by variable
 	super.take_damage()
 	
-func do_death():
-	Logger.info("Player died")
-	Globals.gameover()
 
 func _on_tick_complete():
 	if commands.is_empty():

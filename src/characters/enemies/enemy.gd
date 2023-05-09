@@ -24,5 +24,6 @@ func handle_combat_with(other):
 	
 func take_damage():	
 	super.take_damage()
+	dead = true
 	
 	
