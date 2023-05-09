@@ -69,6 +69,8 @@ func tick()->void:
 	
 
 func translate_command(_command : Command)->Vector2i:
+	if _command.speed == 0:
+		return Vector2i.ZERO
 	match _command.direction:
 		Command.Direction.RIGHT:
 			return Vector2i.RIGHT
