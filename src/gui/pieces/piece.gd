@@ -2,6 +2,7 @@ class_name Piece extends Resource
 
 @export var commands : Array[Command]
 @export var texture: Texture
+@export var description: String
 
 
 func rotate_left() -> void:
