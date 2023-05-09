@@ -57,13 +57,9 @@ func tick()->void:
 		commands.remove_at(0)	
 		previous_cell = grid.local_to_map(position)		
 		world_target_pos = grid.get_new_local_position(position, direction)
-		command_added.emit()
-			
+		command_added.emit()			
 		if is_at_target_position():
-			previous_command = null
-			in_turn = false
-			tick_complete.emit() #no
-#		is_retreating=false
+			xsm.change_state("wait")
 	else:
 		# lets wait for the next frame because we might be inside a subscriber call of the signal
 		await get_tree().process_frame 

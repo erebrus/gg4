@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4bv0gd2datv0"]
+[gd_scene load_steps=19 format=3 uid="uid://b4bv0gd2datv0"]
 
 [ext_resource type="Texture2D" uid="uid://bt17q3m36yr0p" path="res://src/characters/player.png" id="2_25a17"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="3_uqxgq"]
+[ext_resource type="Script" path="res://src/characters/wait.gd" id="4_2hx5j"]
 [ext_resource type="Script" path="res://src/characters/idle.gd" id="4_7r88x"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="4_gccs2"]
 [ext_resource type="Script" path="res://src/characters/move.gd" id="5_b8cj8"]
@@ -258,6 +259,18 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
+[node name="wait" type="Node" parent="xsm"]
+script = ExtResource("4_2hx5j")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "idle"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
 [node name="move" type="Node" parent="xsm"]
 script = ExtResource("5_b8cj8")
 animation_player = NodePath("../../AnimationPlayer")
@@ -316,4 +329,4 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../wait")

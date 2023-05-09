@@ -8,10 +8,6 @@
 collision_layer = 32
 collision_mask = 17
 script = ExtResource("2_dipus")
-command_pattern = Array[Resource("res://src/commands/command.gd")]([])
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_yleur")
-
-[node name="sprite" parent="." index="2"]
-animation = &"death"

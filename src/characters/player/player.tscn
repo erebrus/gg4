@@ -56,22 +56,7 @@ enable_debug_movement = null
 
 [node name="Sprite2D" parent="." index="1"]
 visible = false
+texture = null
 
 [node name="sprite" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
-animation = &"death"
-
-[node name="idle" parent="xsm" index="0"]
-next_state = NodePath("")
-
-[node name="move" parent="xsm" index="1"]
-next_state = NodePath("")
-
-[node name="hurt" parent="xsm" index="2"]
-next_state = NodePath("")
-
-[node name="death" parent="xsm" index="3"]
-next_state = NodePath("")
-
-[node name="wobble" parent="xsm" index="4"]
-next_state = NodePath("")
