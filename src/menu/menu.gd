@@ -13,7 +13,6 @@ func _on_start_button_pressed():
 	Globals.start()
 	
 
-
 func _on_continue_button_pressed():
 	Globals.continue_game()
 	

@@ -17,15 +17,22 @@ const MENU_SCREEN = "res://src/menu/menu.tscn"
 const MAIN_SCREEN = "res://src/main.tscn"
 const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"
 const WIN_SCREEN = "res://src/win/win_screen.tscn"
+const CHOOSE_PIECE = "res://src/choose_piece/choose_piece.tscn"
 
 const START_DECK = preload("res://src/gui/deck/default_deck.tres")
-var deck: Array[Piece]
+var deck:
+	get:
+		return level_manager.current_deck
+	
+
+@onready var level_manager:LevelManager = $LevelManager
 
 func _ready():
 	_init_logger()
 	Logger.info("Init complete.")
-	deck = START_DECK.generate()
-
+	if level_manager.current_deck.is_empty():
+		level_manager.current_deck = START_DECK.generate()
+	
 #	music = AudioStreamPlayer.new()
 #	music.stream = load ("res://assets/music/WGJ Main menu mp3.mp3")
 #	music.volume_db=-10
@@ -57,18 +64,20 @@ func menu():
 	
 
 func can_continue() -> bool:
-	# todo: can continue if there's a saved game
-	return false
+	return level_manager.current_level > 0
 	
 
 func start():
-	deck = START_DECK.generate()
+	level_manager.reset_level()
 	SceneLoader.load_scene(MAIN_SCREEN)
 	
 
 func continue_game():
-	# todo: continue from last level
-	start()
+	SceneLoader.load_scene(MAIN_SCREEN)
+	
+
+func choose_piece():
+	SceneLoader.load_scene(CHOOSE_PIECE)
 	
 
 #

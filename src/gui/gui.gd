@@ -11,7 +11,6 @@ extends PanelContainer
 
 func _ready() -> void:
 	Events.player_queue_empty.connect(_on_player_queue_empty)
-	Events.level_complete.connect(_on_level_complete)
 	hand.piece_discarded.connect(_on_piece_placed)
 	hand.piece_placed.connect(_on_piece_placed)
 	
@@ -60,5 +59,3 @@ func _on_player_queue_empty() -> void:
 		Globals.gameover()
 	
 
-func _on_level_complete() -> void:
-	Globals.win(deck.num_pieces)

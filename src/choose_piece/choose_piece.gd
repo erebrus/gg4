@@ -26,5 +26,5 @@ func _ready() -> void:
 
 func _on_piece_selected(piece: Piece) -> void:
 	Globals.deck.append(piece)
-	# todo: go to next level?
+	Globals.level_manager.next_level()
 	SceneLoader.load_scene(Globals.MAIN_SCREEN)

@@ -1,13 +1,17 @@
 extends Node
 
+@onready var gui = $Gui
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	LevelManager.reset_level() #TODO remove once we have main menu
-	var map = LevelManager.get_current_level().instantiate()
+	Events.level_complete.connect(_on_level_complete)
+	
+	var map = Globals.level_manager.get_current_level().instantiate()
 	add_child(map)
 	move_child(map, 0)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_level_complete() -> void:
+	if Globals.level_manager.is_last_level():
+		Globals.win(gui.deck.num_pieces)
+	else:
+		Globals.choose_piece()
