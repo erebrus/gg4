@@ -5,6 +5,15 @@ var elements:Array = []
 var elements_moving:Array = []
 var tick_pending:bool = false
 
+func _ready():
+	Events.announce_death.connect(unregister)
+
+func unregister(element):
+	elements.erase(element)
+	element.tick_complete.emit()
+	elements_moving.erase(element)
+	
+
 func register(element):
 	elements.append(element)
 	element.tick_complete.connect(_on_tick_complete.bind(element))

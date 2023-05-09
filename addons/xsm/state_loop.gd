@@ -15,9 +15,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 @tool
+@icon("res://addons/xsm/icons/state_loop.png")
 extends State
 class_name StateLoop
-@icon("res://addons/xsm/icons/state_loop.png")
 
 # StateLoop allows for easy navigation in its substates
 # Just call next_in_loop() or prev_in_loop() to advance in the children loop

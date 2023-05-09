@@ -1,14 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn8hyp5yo4amx"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_f8rso"]
-[ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_omkhf"]
+[ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_dipus"]
 [ext_resource type="Texture2D" uid="uid://clovogbd3h57n" path="res://src/characters/enemy.png" id="3_yleur"]
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_f8rso")]
 collision_layer = 32
 collision_mask = 17
-script = ExtResource("2_omkhf")
-command_pattern = Array[int]([0, 2, 2, 0])
+script = ExtResource("2_dipus")
 
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_yleur")

@@ -15,9 +15,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 @tool
+@icon("res://addons/xsm/icons/state_rand.png")
 extends State
 class_name StateRand
-@icon("res://addons/xsm/icons/state_rand.png")
 
 # StateRand Can chose a random state based on priorities
 # Call rand_state() to chose a random substate

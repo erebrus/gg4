@@ -8,9 +8,12 @@ func _on_body_entered(body):
 	body.command_added.connect(on_command_added.bind(body))
 
 func on_command_added(body):
-	body.direction = Vector2i.ZERO
+	#TODO replace this by a stay command
+	body.world_target_pos = body.grid.map_to_local(body.grid.local_to_map(body.position))
+#	body.xsm.change_state("wait")
 	body.command_added.disconnect(on_command_added.bind(body))
-
+#	pass
+	
 
 func _on_body_exited(body):
 	if not body.has_signal("command_added"):

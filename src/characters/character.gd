@@ -6,83 +6,42 @@ signal tick_complete()
 
 const MAX_SPEED:float = 300
 
+var redo_command:=false
 
-@export var hp:int = 3
-
-var direction:Vector2i = Vector2i()
-var target_direction:Vector2 = Vector2()
 var world_target_pos:Vector2 = Vector2()
-
 var speed:float = 0
-var is_moving:bool = false
 
-var previous_command
+
+var previous_command:Command = null
 var previous_cell:Vector2i
 
 var commands:Array[Command]
-var command
 
 var in_turn := false
 
-@onready var grid:Arena = get_parent()
+var dead := false
 
+@onready var grid:Arena = get_parent()
+@onready var xsm:State = $xsm
 func _ready():
 	previous_cell = grid.local_to_map(position)
-	
+	world_target_pos = position
+	xsm.disabled = false
+	xsm.change_state("idle")
+
+
 func update_sprite():
 	pass
 
-func _physics_process(delta:float):
+func is_at_target_position()->bool:
+	return position == world_target_pos
 
+
+func _physics_process(delta:float):	
+	if dead:
+		return
 	control(delta)
 	update_sprite()
-	
-	if not is_moving and direction != Vector2i.ZERO:
-		# if player is not moving and has no direction
-		target_direction = Vector2(direction).normalized()
-		# then set the target direction
-
-		world_target_pos = grid.update_child_pos(position, direction)
-		is_moving = true
-		
-
-	elif is_moving:
-		speed = MAX_SPEED
-		velocity = speed * target_direction * delta
-
-		var distance_to_target = position.distance_to(world_target_pos)
-		var move_distance = velocity.length()
-
-		# Set the last movement distance to the distance to the target
-		# this will make the player stop exaclty on the target
-		var done :=false
-		if distance_to_target < move_distance:
-			velocity = target_direction * distance_to_target
-			is_moving = false
-			command = null
-			direction = Vector2i.ZERO
-			done = true			
-			#TODO check if we want to keep direction, or just use command
-			
-
-		var collision = move_and_collide(velocity)
-		if collision:
-			#Logger.error("Unexpected collision with:",collision.collider.name)
-			var collider=collision.get_collider()
-			var retreat:bool = true
-			if collider.is_in_group("character"):
-				retreat = handle_combat_with(collider)
-			else:
-				do_retreat(false)
-			if done and retreat:
-				done=false
-		if done:
-			in_turn = false
-			previous_command = null
-			tick_complete.emit()
-	elif in_turn:
-		in_turn = false
-		tick_complete.emit() #nothing to do
 
 
 func control(_delta:float)->void:
@@ -93,13 +52,20 @@ func tick()->void:
 	in_turn = true
 
 	if not commands.is_empty():
-		direction = translate_command(commands[0])
+		var direction:Vector2i = translate_command(commands[0])
 		previous_command = commands[0]
 		commands.remove_at(0)	
 		previous_cell = grid.local_to_map(position)		
-		command_added.emit()
+		world_target_pos = grid.get_new_local_position(position, direction)
+		command_added.emit()			
+		if is_at_target_position():
+			xsm.change_state("wait")
 	else:
-		direction = Vector2i.ZERO		
+		# lets wait for the next frame because we might be inside a subscriber call of the signal
+		await get_tree().process_frame 
+		previous_command = null
+		in_turn = false		
+		tick_complete.emit() 
 	
 
 func translate_command(_command : Command)->Vector2i:
@@ -117,27 +83,46 @@ func translate_command(_command : Command)->Vector2i:
 
 func handle_combat_with(_other):
 	pass
+	
+func handle_combat(player, enemy)->void:
+	#Player wins
+	if player.previous_command.is_attack:
+		enemy.take_damage()
+		enemy.retreat()
+	else:
+		var cell:Vector2i = grid.local_to_map(player.position)
+		var player_moved:bool = player.position != player.grid.map_to_local(player.previous_cell)
+		var enemy_moved:bool = enemy.position != enemy.grid.map_to_local(enemy.previous_cell)
 
-func do_retreat(redo_command:bool):
+		#PLAYER loses but has shield
+		if player.previous_command.is_shield:
+			if player_moved:
+				if enemy_moved:
+					player.retreat()
+					enemy.retreat()
+				else:
+#					enemy.push(player)			TODO push
+					player.retreat()
+			else:
+				enemy.retreat()
+			
+		else:					
+			player.take_damage()	#TODO gets this from global var
+			if player_moved and enemy_moved:			
+				player.retreat()
+				enemy.retreat()
+			elif player_moved:			
+				player.retreat()
+			else:
+				enemy.retreat()
+			
+func take_damage():	
+	xsm.change_state("hurt")
+
+func bump()->void:
+	pass
+
+func retreat()->void:
 	world_target_pos = grid.map_to_local(previous_cell)
-	is_moving = true
 	if redo_command:
-		commands.insert(0,previous_command)
-	direction *= -1
-	target_direction = Vector2(direction).normalized()
-	
-
-func take_damage(dmg):
-	hp = clamp(hp - dmg, 0, hp)
-	
-	var hurt_color:Color = Color("ff0f18")
-	#var tween := create_tween().set_trans(Tween.TRANS_CUBIC).
-	modulate = hurt_color
-	await get_tree().create_timer(.2).timeout
-	modulate = Color.WHITE
-		
-	if hp == 0:
-		do_death()
-
-func do_death():
-	queue_free()
+		commands.insert(0,previous_command)	
