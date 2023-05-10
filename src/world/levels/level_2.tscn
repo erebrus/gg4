@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw0snsqx2njsk"]
+
+[ext_resource type="PackedScene" uid="uid://cldwu41ur8qw1" path="res://src/world/arena.tscn" id="1_1nc2o"]
+
+[node name="Map" instance=ExtResource("1_1nc2o")]
+
+[connection signal="body_entered" from="Quicksand" to="Quicksand" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Quicksand" to="Quicksand" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@23718" to="@Hazard@23718" method="_on_body_entered" flags=18]
