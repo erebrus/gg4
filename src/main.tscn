@@ -10,4 +10,7 @@ script = ExtResource("1_fmrj7")
 [node name="TurnManager" type="Node" parent="."]
 script = ExtResource("3_v7hly")
 
-[node name="Gui" parent="." instance=ExtResource("2_hg27e")]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Gui" parent="CanvasLayer" instance=ExtResource("2_hg27e")]
+offset_top = -128.0

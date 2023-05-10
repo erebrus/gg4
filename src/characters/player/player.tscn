@@ -283,7 +283,6 @@ _data = {
 collision_layer = 16
 collision_mask = 33
 script = ExtResource("2_jhrk2")
-enable_debug_movement = null
 
 [node name="sprite" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
@@ -294,3 +293,6 @@ offset = Vector2(0, -16)
 libraries = {
 "": SubResource("AnimationLibrary_jvdl7")
 }
+
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+position_smoothing_enabled = true

@@ -1,6 +1,6 @@
 extends Node
 
-@onready var gui = $Gui
+@onready var gui = $CanvasLayer/Gui
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
