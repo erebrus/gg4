@@ -21,8 +21,10 @@ var in_turn := false
 
 var dead := false
 
+@onready var sprite:AnimatedSprite2D = $sprite
 @onready var grid:Arena = get_parent()
 @onready var xsm:State = $xsm
+
 func _ready():
 	previous_cell = grid.local_to_map(position)
 	world_target_pos = position
@@ -128,3 +130,11 @@ func retreat()->void:
 	world_target_pos = grid.map_to_local(previous_cell)
 	if redo_command:
 		commands.insert(0,previous_command)	
+
+func play_animation(animation:String)->void:
+	if animation == "move":
+		if world_target_pos.y < position.y:
+			animation = "move_up"			
+	sprite.play(animation)
+	sprite.flip_h = world_target_pos.x < position.x
+	
