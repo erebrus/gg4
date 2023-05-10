@@ -6,7 +6,8 @@ const SPRITE_SIZE = 32
 	set(value):
 		commands = value
 		for command in commands:
-			command.rotated.connect(queue_sort)
+			if not command.rotated.is_connected(queue_sort):
+				command.rotated.connect(queue_sort)
 		add_children()
 
 @export var move_sprite: Texture
