@@ -1,8 +1,7 @@
-[gd_resource type="Resource" script_class="Piece" load_steps=7 format=3 uid="uid://lmaj55dcc2ow"]
+[gd_resource type="Resource" script_class="Piece" load_steps=6 format=3 uid="uid://bp3kv4fv1wtcj"]
 
 [ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_df7hs"]
 [ext_resource type="Script" path="res://src/commands/command.gd" id="1_vuvd1"]
-[ext_resource type="Texture2D" uid="uid://j6ap8ue7rlni" path="res://src/gui/pieces/charge.png" id="3_r2en6"]
 
 [sub_resource type="Resource" id="Resource_5bp26"]
 script = ExtResource("1_vuvd1")
@@ -25,5 +24,4 @@ speed = 1
 [resource]
 script = ExtResource("1_df7hs")
 commands = Array[ExtResource("1_vuvd1")]([SubResource("Resource_5bp26"), SubResource("Resource_5bp27"), SubResource("Resource_5bp28")])
-texture = ExtResource("3_r2en6")
 description = "Charge forward three times, attacking anything you find"

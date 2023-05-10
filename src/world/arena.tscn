@@ -26,3 +26,9 @@ enable_debug_movement = true
 
 [node name="Enemy" parent="." instance=ExtResource("4_xmkju")]
 position = Vector2(824.962, 554.173)
+
+[connection signal="body_entered" from="Quicksand" to="Quicksand" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="Quicksand" to="Quicksand" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@23509" to="@Hazard@23509" method="_on_body_entered" flags=18]

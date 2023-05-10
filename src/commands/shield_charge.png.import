@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iejsleyf06jt"
-path="res://.godot/imported/tripple_wait.png-96453859d29553a836e78624754099aa.ctex"
+uid="uid://tof5dstl6vd1"
+path="res://.godot/imported/shield_charge.png-d9fe4899319f5dbf322b63dcfa93ab38.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/gui/pieces/tripple_wait.png"
-dest_files=["res://.godot/imported/tripple_wait.png-96453859d29553a836e78624754099aa.ctex"]
+source_file="res://src/commands/shield_charge.png"
+dest_files=["res://.godot/imported/shield_charge.png-d9fe4899319f5dbf322b63dcfa93ab38.ctex"]
 
 [params]
 

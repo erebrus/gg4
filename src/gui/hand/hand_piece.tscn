@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/gui/hand/hand_piece.gd" id="1_yl2u0"]
 [ext_resource type="Resource" uid="uid://3d2ylmx68avu" path="res://src/gui/pieces/l.tres" id="2_e3t78"]
-[ext_resource type="PackedScene" uid="uid://caqd1ami16eji" path="res://src/gui/pieces/base_piece.tscn" id="3_5qb6f"]
+[ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="3_5qb6f"]
 
 [node name="HandPiece" type="PanelContainer"]
 anchors_preset = 8
