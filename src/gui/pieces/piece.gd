@@ -1,46 +1,27 @@
 class_name Piece extends Resource
 
-@export var commands : Array[Globals.Commands]
-@export var texture: Texture
-
+@export var commands : Array[Command]
+@export var description: String
+var rotate_count := 0
 
 func rotate_left() -> void:
 	for i in commands.size():
-		commands[i] = _rotate_command_left(commands[i])
+		commands[i].rotate_left()
+		rotate_count -= 1
 	
 
 func rotate_right() -> void:
 	for i in commands.size():
-		commands[i] = _rotate_command_right(commands[i])
+		commands[i].rotate_right()
+		rotate_count += 1
 	
+func reset_rotation() -> void:
+	while rotate_count != 0:
+		if rotate_count>0:
+			rotate_left()
+		else:
+			rotate_right()
 
-func _rotate_command_left(command: Globals.Commands) -> Globals.Commands:
-	match command:
-		Globals.Commands.LEFT:
-			return Globals.Commands.DOWN
-		Globals.Commands.UP:
-			return Globals.Commands.LEFT
-		Globals.Commands.RIGHT:
-			return Globals.Commands.UP
-		Globals.Commands.DOWN:
-			return Globals.Commands.RIGHT
-		_:
-			return command
-	
-
-func _rotate_command_right(command: Globals.Commands) -> Globals.Commands:
-	match command:
-		Globals.Commands.LEFT:
-			return Globals.Commands.UP
-		Globals.Commands.UP:
-			return Globals.Commands.RIGHT
-		Globals.Commands.RIGHT:
-			return Globals.Commands.DOWN
-		Globals.Commands.DOWN:
-			return Globals.Commands.LEFT
-		_:
-			return command
-	
 
 func _to_string() -> String:
-	return " ".join(commands.map(func(x): return ["Left", "Up", "Right", "Down"][x]))
+	return " ".join(commands.map(func(x): return x._to_string()))

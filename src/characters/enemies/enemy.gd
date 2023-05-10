@@ -1,10 +1,11 @@
 extends Character
 class_name Enemy
 
-@export var command_pattern:Array[Globals.Commands]=[]
+@export var command_pattern: Array[Command] = []
 
 func _ready():
 	super._ready()
+	redo_command = true
 	_test_pattern()
 
 func _test_pattern():
@@ -14,23 +15,15 @@ func _test_pattern():
 	assert(start==Vector2i.ZERO)
 		
 func control(_delta:float)->void:	
-	if command == null:
-		if commands.is_empty():
-			commands.append_array(command_pattern)
+	if commands.is_empty():
+		commands.append_array(command_pattern)
 		
-	
-func pre_handle_collision(_position, _direction):
-	var new_cell_pos = grid.local_to_map(_position)+_direction
-	if grid.grid[new_cell_pos.x][new_cell_pos.y] == Arena.CellType.OBSTACLE:
-		return
-
-func post_handle_collision(_position, _direction):
-	pass	
 
 func handle_combat_with(other):
-	other.take_damage(1)	
-	if other.previous_command != null:
-		other.do_retreat(false)
-	else:
-		do_retreat(true)
+	handle_combat(other, self)
+	
+func take_damage():	
+	super.take_damage()
+	dead = true
+	
 	

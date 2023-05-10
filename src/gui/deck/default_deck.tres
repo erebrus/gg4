@@ -1,39 +1,20 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://bjhasktpujsqs"]
+[gd_resource type="Resource" script_class="Deck" load_steps=14 format=3 uid="uid://bjhasktpujsqs"]
 
-[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_gqlm8"]
-[ext_resource type="Texture2D" uid="uid://clvrir1upfgp2" path="res://src/gui/pieces/l.png" id="2_mrcvf"]
-[ext_resource type="Texture2D" uid="uid://bqey8y2mtr6p4" path="res://src/gui/pieces/long.png" id="3_57fcy"]
-[ext_resource type="Texture2D" uid="uid://b0f13wob08j2u" path="res://src/gui/pieces/right.png" id="4_5bq1o"]
-[ext_resource type="Texture2D" uid="uid://2neuxcdkf2mx" path="res://src/gui/pieces/step.png" id="5_0bows"]
-[ext_resource type="Texture2D" uid="uid://codwn8e4fnc42" path="res://src/gui/pieces/u.png" id="6_sbys1"]
+[ext_resource type="Resource" uid="uid://cf8vqjp1hbl4a" path="res://src/gui/pieces/right.tres" id="1_safwu"]
+[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/long.tres" id="2_x76ek"]
+[ext_resource type="Resource" uid="uid://3d2ylmx68avu" path="res://src/gui/pieces/l.tres" id="3_nn11v"]
+[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/step.tres" id="4_hnfnq"]
+[ext_resource type="Resource" uid="uid://5s4vd7xwgk63" path="res://src/gui/pieces/u.tres" id="5_xd6un"]
+[ext_resource type="Resource" uid="uid://beihu3rnu20tv" path="res://src/gui/pieces/attack.tres" id="6_kvbpt"]
 [ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="7_kw80b"]
-
-[sub_resource type="Resource" id="Resource_mp32m"]
-script = ExtResource("1_gqlm8")
-commands = Array[int]([2, 2, 3, 3])
-texture = ExtResource("2_mrcvf")
-
-[sub_resource type="Resource" id="Resource_6qdkm"]
-script = ExtResource("1_gqlm8")
-commands = Array[int]([2, 2, 2, 2])
-texture = ExtResource("3_57fcy")
-
-[sub_resource type="Resource" id="Resource_fir6j"]
-script = ExtResource("1_gqlm8")
-commands = Array[int]([2])
-texture = ExtResource("4_5bq1o")
-
-[sub_resource type="Resource" id="Resource_dbhim"]
-script = ExtResource("1_gqlm8")
-commands = Array[int]([2, 3, 2, 2])
-texture = ExtResource("5_0bows")
-
-[sub_resource type="Resource" id="Resource_qmxbc"]
-script = ExtResource("1_gqlm8")
-commands = Array[int]([2, 3, 0, 0])
-texture = ExtResource("6_sbys1")
+[ext_resource type="Resource" uid="uid://cwc00d3ip1psj" path="res://src/gui/pieces/shield.tres" id="7_xrwc6"]
+[ext_resource type="Resource" uid="uid://lmaj55dcc2ow" path="res://src/gui/pieces/charge.tres" id="8_8iao1"]
+[ext_resource type="Resource" uid="uid://bm4gdywfkfvlf" path="res://src/gui/pieces/shield_charge.tres" id="9_cl4fp"]
+[ext_resource type="Resource" uid="uid://dpuudyls0tsih" path="res://src/gui/pieces/sprint.tres" id="10_7bodq"]
+[ext_resource type="Resource" uid="uid://myj08manl2ep" path="res://src/gui/pieces/wait.tres" id="11_8cejf"]
+[ext_resource type="Resource" uid="uid://chsk2qjugpdvk" path="res://src/gui/pieces/tripple_wait.tres" id="12_j8je2"]
 
 [resource]
 script = ExtResource("7_kw80b")
-pieces = Array[ExtResource("1_gqlm8")]([SubResource("Resource_mp32m"), SubResource("Resource_6qdkm"), SubResource("Resource_fir6j"), SubResource("Resource_dbhim"), SubResource("Resource_qmxbc")])
-quantities = Array[int]([10, 8, 15, 10, 5])
+pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_safwu"), ExtResource("2_x76ek"), ExtResource("3_nn11v"), ExtResource("4_hnfnq"), ExtResource("5_xd6un"), ExtResource("6_kvbpt"), ExtResource("7_xrwc6"), ExtResource("8_8iao1"), ExtResource("9_cl4fp"), ExtResource("10_7bodq"), ExtResource("11_8cejf"), ExtResource("12_j8je2")])
+quantities = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])

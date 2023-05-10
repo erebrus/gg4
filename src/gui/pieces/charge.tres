@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=6 format=3 uid="uid://lmaj55dcc2ow"]
+
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_df7hs"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_vuvd1"]
+
+[sub_resource type="Resource" id="Resource_5bp26"]
+script = ExtResource("1_vuvd1")
+action = 2
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_5bp27"]
+script = ExtResource("1_vuvd1")
+action = 2
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_5bp28"]
+script = ExtResource("1_vuvd1")
+action = 2
+direction = 2
+speed = 1
+
+[resource]
+script = ExtResource("1_df7hs")
+commands = Array[ExtResource("1_vuvd1")]([SubResource("Resource_5bp26"), SubResource("Resource_5bp27"), SubResource("Resource_5bp28")])
+description = "Charge forward three times, attacking anything you find"

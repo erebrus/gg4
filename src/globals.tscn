@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cypxnmwh6rjeq"]
+
+[ext_resource type="Script" path="res://src/globals.gd" id="1_esr3s"]
+[ext_resource type="Script" path="res://src/level_manager.gd" id="2_lpboo"]
+
+[node name="Globals" type="Node"]
+script = ExtResource("1_esr3s")
+
+[node name="LevelManager" type="Node" parent="."]
+script = ExtResource("2_lpboo")

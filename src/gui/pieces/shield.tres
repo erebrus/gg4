@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=4 format=3 uid="uid://cwc00d3ip1psj"]
+
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_df7hs"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_vuvd1"]
+
+[sub_resource type="Resource" id="Resource_5bp26"]
+script = ExtResource("1_vuvd1")
+action = 1
+direction = 2
+speed = 0
+
+[resource]
+script = ExtResource("1_df7hs")
+commands = Array[ExtResource("1_vuvd1")]([SubResource("Resource_5bp26")])
+description = "Stay and shield from incoming attacks"

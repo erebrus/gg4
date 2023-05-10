@@ -11,13 +11,21 @@ extends PanelContainer
 
 func _ready() -> void:
 	Events.player_queue_empty.connect(_on_player_queue_empty)
-	Events.level_complete.connect(_on_level_complete)
-	
+	hand.piece_discarded.connect(_on_piece_placed)
 	hand.piece_placed.connect(_on_piece_placed)
+	
+func set_deck_pieces(_pieces:Array[Piece]):
+	deck.pieces = _pieces
 	
 	if auto_draw_piece_on_place:
 		while hand.num_pieces < hand.max_pieces:
 			draw_from(deck)
+	
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		Globals.menu()
+		
 	
 
 func draw_from(pile: PiecePile) -> void:
@@ -52,5 +60,3 @@ func _on_player_queue_empty() -> void:
 		Globals.gameover()
 	
 
-func _on_level_complete() -> void:
-	Globals.win(deck.num_pieces)

@@ -1,38 +1,39 @@
 extends Character
 
 
-@export var enable_debug_movement:=true
-
 func _ready():
+	super._ready()
 	Events.commands_queued.connect(add_commands)
-	tick_complete.connect(_on_tick_complete)
-	
-func control(_delta:float)->void:	
-	if enable_debug_movement:		
-		if Input.is_action_just_pressed("ui_up"):
-			Events.commands_queued.emit([Globals.Commands.UP]) 
-		elif Input.is_action_just_pressed("ui_down"):
-			Events.commands_queued.emit([Globals.Commands.DOWN])
-		elif Input.is_action_just_pressed("ui_left"):
-			Events.commands_queued.emit([Globals.Commands.LEFT]) 
-		elif Input.is_action_just_pressed("ui_right"):
-			Events.commands_queued.emit([Globals.Commands.RIGHT])
-	else:
-		super.control(_delta)
-		
-		
-func add_commands(new_commands: Array[Globals.Commands]):
-	commands.append_array(new_commands)
+	tick_complete.connect(_on_tick_complete)	
+	set_camera_limits()
+
+func add_commands(new_commands: Array[Command]):
+	for c in new_commands:
+		commands.append(c.duplicate())
+	Events.player_ticked.emit()
 	Logger.debug("Added %s commands to player" % str(new_commands))
 
-func handle_combat_with(other):
-	do_retreat(false)
-	take_damage(1)	
+func handle_combat_with(_other):
+	handle_combat(self, _other)
 
-func do_death():
-	Logger.info("Player died")
-	Globals.gameover()
+func take_damage():	
+	Events.player_damaged.emit(4) #TODO replace by variable
+	super.take_damage()
+	
 
 func _on_tick_complete():
 	if commands.is_empty():
 		Events.player_queue_empty.emit()
+	else:
+		Events.player_ticked.emit()			
+
+func bump()->void:
+	Events.player_bumped.emit()
+
+func set_camera_limits()->void:
+	var cam:Camera2D= $Camera2D
+	cam.limit_left=-grid.tile_size.x
+	cam.limit_top=-grid.tile_size.y
+	cam.limit_right=grid.tile_size.x*grid.grid_size.x
+	cam.limit_bottom=grid.tile_size.y*grid.grid_size.y
+	
