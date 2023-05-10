@@ -21,10 +21,3 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("6_b2fmq")]
 position = Vector2(194.415, 189.279)
-enable_debug_movement = true
-
-[connection signal="body_entered" from="Quicksand" to="Quicksand" method="_on_body_entered" flags=18]
-[connection signal="body_exited" from="Quicksand" to="Quicksand" method="_on_body_exited" flags=18]
-[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="@Hazard@22001" to="@Hazard@22001" method="_on_body_entered" flags=18]

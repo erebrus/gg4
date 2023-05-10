@@ -1,12 +1,11 @@
 extends Character
 
 
-@export var enable_debug_movement:=true
-
 func _ready():
 	super._ready()
 	Events.commands_queued.connect(add_commands)
 	tick_complete.connect(_on_tick_complete)	
+	set_camera_limits()
 
 func add_commands(new_commands: Array[Command]):
 	commands.append_array(new_commands)
@@ -29,3 +28,11 @@ func _on_tick_complete():
 
 func bump()->void:
 	Events.player_bumped.emit()
+
+func set_camera_limits()->void:
+	var cam:Camera2D= $Camera2D
+	cam.limit_left=-grid.tile_size.x
+	cam.limit_top=-grid.tile_size.y
+	cam.limit_right=grid.tile_size.x*grid.grid_size.x
+	cam.limit_bottom=grid.tile_size.y*grid.grid_size.y
+	
