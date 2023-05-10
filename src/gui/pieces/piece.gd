@@ -1,7 +1,6 @@
 class_name Piece extends Resource
 
 @export var commands : Array[Command]
-@export var texture: Texture
 @export var description: String
 var rotate_count := 0
 

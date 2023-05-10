@@ -9,14 +9,12 @@ const SPRITE_SIZE = 128
 @export var piece: Piece
 
 @onready var piece_panel: PanelContainer = get_node("%Piece")
-@onready var sprite: Sprite2D = get_node("%Sprite")
+@onready var sprite: Control = get_node("%Sprite")
 @onready var description_label: Label = get_node("%Description")
 
 
 func _ready() -> void:
-	piece_panel.custom_minimum_size = Vector2(SPRITE_SIZE, SPRITE_SIZE)
-	sprite.position = piece_panel.custom_minimum_size / 2
-	sprite.texture = piece.texture
+	sprite.commands = piece.commands
 	description_label.text = piece.description
 	
 

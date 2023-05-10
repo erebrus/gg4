@@ -1,5 +1,8 @@
 class_name Command extends Resource
 
+signal rotated
+
+
 const SHIELD = 1
 const ATTACK = 2
 
@@ -29,6 +32,7 @@ func rotate_left() -> void:
 			direction = Direction.UP
 		Direction.DOWN:
 			direction = Direction.RIGHT
+	rotated.emit()
 	
 
 func rotate_right() -> void:
@@ -41,6 +45,7 @@ func rotate_right() -> void:
 			direction = Direction.DOWN
 		Direction.DOWN:
 			direction = Direction.LEFT
+	rotated.emit()
 	
 
 func _to_string() -> String:

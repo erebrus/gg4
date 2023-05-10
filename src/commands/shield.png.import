@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2neuxcdkf2mx"
-path="res://.godot/imported/step.png-872a220423437a9ede1d20d998adc9fd.ctex"
+uid="uid://c1e2j8bbsl2dx"
+path="res://.godot/imported/shield.png-2568dc76fd635d8dafce3351bc619d2d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/gui/pieces/step.png"
-dest_files=["res://.godot/imported/step.png-872a220423437a9ede1d20d998adc9fd.ctex"]
+source_file="res://src/commands/shield.png"
+dest_files=["res://.godot/imported/shield.png-2568dc76fd635d8dafce3351bc619d2d.ctex"]
 
 [params]
 
