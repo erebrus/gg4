@@ -8,7 +8,8 @@ func _ready():
 	set_camera_limits()
 
 func add_commands(new_commands: Array[Command]):
-	commands.append_array(new_commands)
+	for c in new_commands:
+		commands.append(c.duplicate())
 	Events.player_ticked.emit()
 	Logger.debug("Added %s commands to player" % str(new_commands))
 
