@@ -12,6 +12,9 @@ enum CellType {EMPTY, OBSTACLE}
 @export var grid_size_x:int = 15
 @export var grid_size_y:int = 8
 
+@export var default_deck:Deck
+@export var shuffle_deck:bool = true
+
 var turn_manager:TurnManager
 
 var tile_size:Vector2 
