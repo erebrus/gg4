@@ -1,6 +1,7 @@
 @tool
 extends StateAnimation
 
+
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -9,13 +10,14 @@ extends StateAnimation
 # of an animation (after the nb of times it should play)
 # If looping, is called after each loop
 func _on_anim_finished(_name):
-	pass
+	change_state("move")
 
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args):
-	owner.speed = owner.MAX_SPEED	
+	pass
+
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -26,36 +28,7 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	if owner.is_at_target_position():
-		change_state("idle")
-	var target_direction:Vector2 = (owner.world_target_pos - owner.position).normalized()
-	owner.velocity = owner.speed * target_direction * _delta
-	
-	var distance_to_target = owner.position.distance_to(owner.world_target_pos)
-	var move_distance = owner.velocity.length()
-
-	# Set the last movement distance to the distance to the target
-	# this will make the player stop exaclty on the target
-	var done :=false
-	if distance_to_target < move_distance:
-		owner.velocity = target_direction * distance_to_target
-		done = true			
-		
-	var collision = owner.move_and_collide(owner.velocity)
-
-	if collision:
-		#Logger.error("Unexpected collision with:",collision.collider.name)
-		var collider=collision.get_collider()
-		if collider.is_in_group("character"):			
-			owner.handle_combat_with(collider)
-			return
-		else:
-			owner.retreat() #TODO reconsider if this should be in a state						
-#			owner.bump()#TODO consider move to state
-			change_state("wobble")
-			return
-	if done:
-		change_state("idle")	
+	pass
 
 
 # This function is called each frame after all the update calls
