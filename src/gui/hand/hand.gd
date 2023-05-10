@@ -121,7 +121,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("ui_up"):
 		_on_left_button_pressed()
 	if Input.is_action_just_pressed("ui_down"):
-		_on_left_button_pressed()
+		_on_right_button_pressed()
 		
 	if Input.is_action_just_pressed("ui_left"):
 		choose_previous_piece()

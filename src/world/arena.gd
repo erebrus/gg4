@@ -12,9 +12,14 @@ enum CellType {EMPTY, OBSTACLE}
 @export var grid_size_x:int = 15
 @export var grid_size_y:int = 8
 
+@export var default_deck:Deck
+@export var shuffle_deck:bool = true
+
 var turn_manager:TurnManager
 
-var tile_size:Vector2 
+var tile_size:Vector2:
+	get:
+		return tile_set.tile_size 
 #TODO get this from tilemap itself
 var grid_size:Vector2 = Vector2(grid_size_x, grid_size_y)
 
@@ -23,7 +28,6 @@ var grid_size:Vector2 = Vector2(grid_size_x, grid_size_y)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(tile_set)
-	tile_size = tile_set.tile_size
 
 	init_children()
 	

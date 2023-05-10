@@ -29,6 +29,7 @@ func _gui_input(event: InputEvent) -> void:
 
 func place() -> void:
 	Events.commands_queued.emit(piece.commands)
+	piece.reset_rotation()
 	queue_free()
 	
 
