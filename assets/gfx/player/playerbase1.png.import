@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://53choxtg5sil"
-path="res://.godot/imported/Sand4.png-31bd5d2c4123cb2488a2464c41587138.ctex"
+uid="uid://de51cl8w4lswu"
+path="res://.godot/imported/playerbase1.png-3e14bda61ee887d8473728b2d8bf3090.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/world/tiles/Sand4.png"
-dest_files=["res://.godot/imported/Sand4.png-31bd5d2c4123cb2488a2464c41587138.ctex"]
+source_file="res://assets/gfx/player/playerbase1.png"
+dest_files=["res://.godot/imported/playerbase1.png-3e14bda61ee887d8473728b2d8bf3090.ctex"]
 
 [params]
 

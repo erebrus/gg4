@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://pllnnrdp1xi5"]
 
-[ext_resource type="Texture2D" uid="uid://6jhng8p4f0ol" path="res://src/world/hazard.png" id="1_36m5i"]
 [ext_resource type="Script" path="res://src/world/objects/hazard.gd" id="1_vwjgy"]
+[ext_resource type="Texture2D" uid="uid://cub2cf4r4kvv2" path="res://assets/gfx/world/tiles/Hazard2.png" id="2_lrrg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_33b7v"]
 size = Vector2(32, 32)
@@ -15,6 +15,6 @@ visible = false
 shape = SubResource("RectangleShape2D_33b7v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_36m5i")
+texture = ExtResource("2_lrrg7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
