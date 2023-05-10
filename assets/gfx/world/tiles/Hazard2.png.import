@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cub2cf4r4kvv2"
-path="res://.godot/imported/Hazard2.png-a7fb1f8767b7edfc69b263e50b6a483e.ctex"
+path="res://.godot/imported/Hazard2.png-91a783753488d0b56c18f28559e83e61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/world/Tiles/Hazard2.png"
-dest_files=["res://.godot/imported/Hazard2.png-a7fb1f8767b7edfc69b263e50b6a483e.ctex"]
+source_file="res://assets/gfx/world/tiles/Hazard2.png"
+dest_files=["res://.godot/imported/Hazard2.png-91a783753488d0b56c18f28559e83e61.ctex"]
 
 [params]
 

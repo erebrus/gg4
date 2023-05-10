@@ -33,10 +33,19 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_udcyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qfcu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_udcyt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nwpvr")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 4.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -278,7 +287,7 @@ enable_debug_movement = null
 
 [node name="sprite" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
-animation = &"move_up"
+animation = &"idle"
 offset = Vector2(0, -16)
 
 [node name="AnimationPlayer" parent="." index="2"]
