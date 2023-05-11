@@ -138,3 +138,5 @@ func play_animation(animation:String)->void:
 	sprite.play(animation)
 	sprite.flip_h = world_target_pos.x < position.x
 	
+
+	

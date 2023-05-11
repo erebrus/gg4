@@ -37,3 +37,6 @@ func set_camera_limits()->void:
 	cam.limit_right=grid.tile_size.x*grid.grid_size.x
 	cam.limit_bottom=grid.tile_size.y*grid.grid_size.y
 	
+func play_hop_sfx()->void:
+	$sfx/sfx_hop_grass.play()
+
