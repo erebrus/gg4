@@ -11,18 +11,12 @@ extends StateAnimation
 # If looping, is called after each loop
 func _on_anim_finished(_name):
 	pass
-	
 
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args):
-	if not "previous_command" in owner:
-		return
-		
-	owner.previous_command = null
-	owner.in_turn = false
-	owner.tick_complete.emit() #nothing else to do
+	pass
 
 
 # This function is called just after the state enters
@@ -34,11 +28,7 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	if not owner.is_at_target_position():
-		if owner.previous_command and owner.previous_command.is_attack:
-			change_state("attack")
-		else:
-			change_state("hop")
+	pass
 
 
 # This function is called each frame after all the update calls

@@ -10,7 +10,7 @@ extends StateAnimation
 # of an animation (after the nb of times it should play)
 # If looping, is called after each loop
 func _on_anim_finished(_name):
-	change_state("move")
+	change_state("hop")
 
 
 # This function is called when the state enters

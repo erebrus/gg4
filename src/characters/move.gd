@@ -1,15 +1,15 @@
 @tool
-extends StateAnimation
+extends State
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
 
-# This additionnal callback allows you to act at the end
-# of an animation (after the nb of times it should play)
-# If looping, is called after each loop
-func _on_anim_finished(_name):
-	pass
+## This additionnal callback allows you to act at the end
+## of an animation (after the nb of times it should play)
+## If looping, is called after each loop
+#func _on_anim_finished(_name):
+#	pass
 
 
 # This function is called when the state enters

@@ -132,11 +132,11 @@ func retreat()->void:
 		commands.insert(0,previous_command)	
 
 func play_animation(animation:String)->void:
-	if animation == "move":
+	if animation == "move" or animation == "attack":
 		if world_target_pos.y < position.y:
-			animation = "move_up"			
+			animation += "_up"			
 	sprite.play(animation)
-	sprite.flip_h = world_target_pos.x < position.x
+	sprite.flip_h = world_target_pos.x <= position.x
 	
 
 	

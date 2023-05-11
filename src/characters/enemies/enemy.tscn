@@ -1,30 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://bn8hyp5yo4amx"]
+[gd_scene load_steps=7 format=3 uid="uid://bn8hyp5yo4amx"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_f8rso"]
-[ext_resource type="Texture2D" uid="uid://5jm7m3b3avn2" path="res://src/characters/hurt.png" id="3_dbvjy"]
-[ext_resource type="Texture2D" uid="uid://clovogbd3h57n" path="res://src/characters/enemy.png" id="3_yleur"]
+[ext_resource type="Texture2D" uid="uid://ct81w1c01ca06" path="res://assets/gfx/enemy1/enemyidle1.png" id="2_ga4vs"]
+[ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_vobm2"]
+[ext_resource type="Texture2D" uid="uid://d3iwapvgihr1n" path="res://assets/gfx/enemy1/enemyidle2.png" id="3_2twpb"]
+[ext_resource type="Texture2D" uid="uid://gie4gckrt6x" path="res://assets/gfx/enemy1/enemyidle3.png" id="4_8jyup"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3p6th"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dbvjy")
+"texture": ExtResource("2_ga4vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2twpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8jyup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2twpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ga4vs")
 }],
 "loop": true,
 "name": &"death",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_yleur")
+"texture": ExtResource("2_ga4vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2twpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8jyup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2twpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ga4vs")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_dbvjy")
+"texture": ExtResource("2_ga4vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2twpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8jyup")
 }],
 "loop": true,
 "name": &"hurt",
@@ -32,7 +64,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_yleur")
+"texture": ExtResource("2_ga4vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2twpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8jyup")
 }],
 "loop": true,
 "name": &"move",
@@ -40,7 +78,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_yleur")
+"texture": ExtResource("2_ga4vs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2twpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8jyup")
 }],
 "loop": true,
 "name": &"wobble",
@@ -50,7 +94,11 @@ animations = [{
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_f8rso")]
 collision_layer = 32
 collision_mask = 17
+script = ExtResource("2_vobm2")
 
 [node name="sprite" parent="." index="1"]
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_3p6th")
-animation = &"wobble"
+animation = &"default"
+frame_progress = 0.538357
+offset = Vector2(0, -12)
