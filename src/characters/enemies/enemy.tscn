@@ -1,36 +1,40 @@
-[gd_scene load_steps=19 format=3 uid="uid://bn8hyp5yo4amx"]
+[gd_scene load_steps=23 format=3 uid="uid://bn8hyp5yo4amx"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_f8rso"]
 [ext_resource type="Texture2D" uid="uid://ct81w1c01ca06" path="res://assets/gfx/enemy1/enemyidle1.png" id="2_ga4vs"]
 [ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_vobm2"]
 [ext_resource type="Texture2D" uid="uid://d3iwapvgihr1n" path="res://assets/gfx/enemy1/enemyidle2.png" id="3_2twpb"]
-[ext_resource type="Texture2D" uid="uid://gie4gckrt6x" path="res://assets/gfx/enemy1/enemyidle3.png" id="4_8jyup"]
+[ext_resource type="Texture2D" uid="uid://bhhluxfcbajx4" path="res://assets/gfx/enemy1/enemywobble1.png" id="6_p5lpn"]
 [ext_resource type="Texture2D" uid="uid://bjicxtsiqqq18" path="res://assets/gfx/enemy1/enemyhopping1.png" id="6_sfh6b"]
+[ext_resource type="Texture2D" uid="uid://5w7nnbx2jd2n" path="res://assets/gfx/enemy1/enemywobble2.png" id="7_j43k2"]
 [ext_resource type="Texture2D" uid="uid://cwk08lex3tlo4" path="res://assets/gfx/enemy1/enemyhopping2.png" id="7_lq7d1"]
 [ext_resource type="Texture2D" uid="uid://db2fej0130ngj" path="res://assets/gfx/enemy1/enemyhopping3.png" id="8_b3ocr"]
+[ext_resource type="Texture2D" uid="uid://ck41sux7d8m2" path="res://assets/gfx/enemy1/enemywobble3.png" id="8_bux51"]
 [ext_resource type="Texture2D" uid="uid://cmt41emi0x0wi" path="res://assets/gfx/enemy1/enemyhopping4.png" id="9_f27dx"]
+[ext_resource type="Texture2D" uid="uid://dutxjg77ik621" path="res://assets/gfx/enemy1/enemywobble4.png" id="9_qpcpn"]
+[ext_resource type="Texture2D" uid="uid://byvq8us07j72f" path="res://assets/gfx/enemy1/enemywobble5.png" id="10_hpacf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3p6th"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ga4vs")
+"texture": ExtResource("6_p5lpn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_2twpb")
+"texture": ExtResource("7_j43k2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_8jyup")
+"texture": ExtResource("8_bux51")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_2twpb")
+"texture": ExtResource("9_qpcpn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_ga4vs")
+"texture": ExtResource("10_hpacf")
 }],
 "loop": true,
 "name": &"death",
-"speed": 6.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -38,9 +42,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_2twpb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_8jyup")
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_2twpb")
@@ -54,17 +55,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ga4vs")
+"texture": ExtResource("6_p5lpn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_2twpb")
+"texture": ExtResource("7_j43k2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_8jyup")
+"texture": ExtResource("8_bux51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qpcpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hpacf")
 }],
 "loop": true,
 "name": &"hurt",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -114,17 +121,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ga4vs")
+"texture": ExtResource("6_p5lpn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_2twpb")
+"texture": ExtResource("7_j43k2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_8jyup")
+"texture": ExtResource("8_bux51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qpcpn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hpacf")
 }],
 "loop": true,
 "name": &"wobble",
-"speed": 5.0
+"speed": 7.0
 }]
 
 [sub_resource type="Animation" id="Animation_psy0d"]
@@ -358,9 +371,14 @@ script = ExtResource("2_vobm2")
 [node name="sprite" parent="." index="1"]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_3p6th")
+animation = &"death"
+frame_progress = 0.936743
 offset = Vector2(0, -12)
 
 [node name="AnimationPlayer" parent="." index="2"]
 libraries = {
 "": SubResource("AnimationLibrary_1x7bn")
 }
+
+[node name="hop" parent="xsm/move" index="0"]
+next_state = NodePath("../attack")
