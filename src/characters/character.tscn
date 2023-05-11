@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b4bv0gd2datv0"]
+[gd_scene load_steps=22 format=3 uid="uid://b4bv0gd2datv0"]
 
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="3_uqxgq"]
 [ext_resource type="Script" path="res://src/characters/wait.gd" id="4_2hx5j"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://src/characters/death.gd" id="6_8ud4g"]
 [ext_resource type="Script" path="res://src/characters/hurt.gd" id="6_kofad"]
 [ext_resource type="Script" path="res://src/characters/retreat.gd" id="7_hnxgb"]
+[ext_resource type="AudioStream" uid="uid://hcmlms08c6vo" path="res://assets/sfx/walk_grass_01.wav" id="9_n65ai"]
+[ext_resource type="AudioStream" uid="uid://dbct8cl022dhj" path="res://assets/sfx/walk_grass_02.wav" id="10_6e2tr"]
+[ext_resource type="AudioStream" uid="uid://67qigalgwrr6" path="res://assets/sfx/walk_grass_03.wav" id="11_082v8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ms33h"]
 size = Vector2(32, 32)
@@ -232,6 +235,15 @@ _data = {
 "wobble": SubResource("Animation_oh7lp")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qlt7u"]
+streams_count = 3
+stream_0/stream = ExtResource("9_n65ai")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("10_6e2tr")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("11_082v8")
+stream_2/weight = 1.0
+
 [node name="Character" type="CharacterBody2D" groups=["character", "map_element"]]
 z_index = 1
 
@@ -340,3 +352,8 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../wait")
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="sfx_hop_grass" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_qlt7u")

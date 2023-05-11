@@ -41,8 +41,10 @@ func is_empty() -> bool:
 	return pieces.is_empty()
 	
 
-func _on_piece_selected(piece: Piece) -> void:
+func _on_piece_selected(piece: Piece, do_sound:=false) -> void:
 	selected_piece = piece
+	if do_sound:
+		$sfx/select.play()
 	for child in piece_container.get_children():
 		if child.piece != piece:
 			child.unselect()
@@ -56,12 +58,13 @@ func _on_piece_unselected(piece: Piece) -> void:
 func _on_left_button_pressed():
 	if selected_piece != null:
 		pieces[selected_piece].rotate_left()
+		$sfx/rotate.play()
 	
 
 func _on_right_button_pressed():
 	if selected_piece != null:
 		pieces[selected_piece].rotate_right()
-	
+		$sfx/rotate.play()
 
 func _on_accept_button_pressed():
 	if selected_piece != null:
@@ -76,11 +79,11 @@ func _on_accept_button_pressed():
 		if piece_count == 0:
 			selected_piece = null
 		else:
-			select_piece_by_index(idx)
+			select_piece_by_index(idx, false)
 
 			
 func choose_previous_piece()->void:
-	var idx = get_index_of_piece(selected_piece)
+	var idx = get_index_of_piece(selected_piece)	
 	if idx == -1:
 		Logger.warn("No piece selected, so we can't select previous piece")
 		return
@@ -114,7 +117,7 @@ func select_piece_by_index(idx:int, rollover:bool = false)->void:
 
 	var new_piece:Piece = piece_container.get_child(idx).piece
 	piece_container.get_child(idx).select()
-	_on_piece_selected(new_piece)
+	_on_piece_selected(new_piece, true)
 
 
 func _input(_event):		
