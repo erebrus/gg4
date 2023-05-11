@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu0a3pu5ddgwm"]
+[gd_scene load_steps=11 format=3 uid="uid://bu0a3pu5ddgwm"]
 
 [ext_resource type="Script" path="res://src/gui/hand/hand.gd" id="1_j7nri"]
 [ext_resource type="AudioStream" uid="uid://tpfd13du7rqd" path="res://assets/sfx/select_01.wav" id="2_0ickb"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://blyk2svkcpgtt" path="res://assets/sfx/rotate_01.wav" id="5_elipx"]
 [ext_resource type="AudioStream" uid="uid://bvasaw12l8h4c" path="res://assets/sfx/rotate_02.wav" id="6_b88of"]
 [ext_resource type="AudioStream" uid="uid://dlhfwuxai4hks" path="res://assets/sfx/rotate_03.wav" id="7_106kt"]
+[ext_resource type="AudioStream" uid="uid://cvlgkppviwq6j" path="res://assets/sfx/draw.wav" id="8_0q58l"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dw8ff"]
 streams_count = 3
@@ -66,6 +67,9 @@ stream = SubResource("AudioStreamRandomizer_dw8ff")
 
 [node name="rotate" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_ha38b")
+
+[node name="draw" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("8_0q58l")
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/LeftButton" to="." method="_on_left_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/AcceptButton" to="." method="_on_accept_button_pressed"]

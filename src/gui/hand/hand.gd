@@ -26,6 +26,7 @@ func _ready():
 
 func add(piece: Piece) -> void:
 	var scene = HandPiece.instantiate()
+	$sfx/draw.play()
 	scene.piece = piece
 	scene.selected.connect(_on_piece_selected.bind(piece))
 	scene.unselected.connect(_on_piece_unselected.bind(piece))
