@@ -408,8 +408,6 @@ script = ExtResource("2_jhrk2")
 
 [node name="sprite" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
-animation = &"attack"
-frame_progress = 0.662556
 offset = Vector2(0, -16)
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -422,9 +420,6 @@ position_smoothing_enabled = true
 
 [node name="move" parent="xsm" index="2"]
 debug_mode = true
-
-[node name="hop" parent="xsm/move" index="0"]
-next_state = NodePath("../attack")
 
 [node name="wobble" parent="xsm" index="5"]
 script = ExtResource("14_p1wy1")
