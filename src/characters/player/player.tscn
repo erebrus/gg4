@@ -1,9 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://jqxg88aou1fg"]
+[gd_scene load_steps=25 format=3 uid="uid://jqxg88aou1fg"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_fybfn"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="2_jhrk2"]
+[ext_resource type="Texture2D" uid="uid://cp1sp0yjqlqy" path="res://assets/gfx/player/playerattack2.png" id="3_5c1kj"]
 [ext_resource type="Texture2D" uid="uid://bt17q3m36yr0p" path="res://src/characters/player.png" id="3_uk3q1"]
+[ext_resource type="Texture2D" uid="uid://cnyqigxbax5md" path="res://assets/gfx/player/playerattack3.png" id="4_llx4j"]
 [ext_resource type="Texture2D" uid="uid://nhf50vo64x6x" path="res://assets/gfx/player/playerbase1.png" id="4_nwpvr"]
+[ext_resource type="Texture2D" uid="uid://dfbwo8gduhv8n" path="res://assets/gfx/player/playerattack4.png" id="5_avpgn"]
 [ext_resource type="Texture2D" uid="uid://7246oysoi34c" path="res://assets/gfx/player/playerhopping1.png" id="5_udcyt"]
 [ext_resource type="Texture2D" uid="uid://cpipe0a1pgo1b" path="res://assets/gfx/player/playerhopping2.png" id="7_qfcu6"]
 [ext_resource type="Texture2D" uid="uid://btgmeml6vssqy" path="res://assets/gfx/player/playerhopping3.png" id="8_knvq1"]
@@ -16,6 +19,46 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_da6y0"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5c1kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_llx4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_avpgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_llx4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5c1kj")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5c1kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_llx4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_avpgn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_llx4j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5c1kj")
+}],
+"loop": true,
+"name": &"attack_up",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_uk3q1")
@@ -318,8 +361,6 @@ script = ExtResource("2_jhrk2")
 
 [node name="sprite" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
-animation = &"wobble"
-frame_progress = 0.590708
 offset = Vector2(0, -16)
 
 [node name="AnimationPlayer" parent="." index="2"]
