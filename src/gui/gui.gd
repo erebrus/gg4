@@ -20,9 +20,8 @@ func set_deck_pieces(_pieces:Array[Piece]):
 	
 	if auto_draw_piece_on_place:
 		while hand.num_pieces < hand.max_pieces:
-
-		if draw_from(deck):
-			Events.piece_drawn.emit()
+			if draw_from(deck):
+				Events.piece_drawn.emit()
 		
 	await get_tree().create_timer(0.3).timeout
 	hand.pieces.values().front().select()
