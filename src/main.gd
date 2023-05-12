@@ -15,7 +15,7 @@ func _ready():
 	if map.default_deck:
 		gui.set_deck_pieces(map.default_deck.generate(map.shuffle_deck))
 	else:
-		gui.set_deck_pieces(Globals.deck.duplicate())
+		gui.set_deck_pieces(Globals.deck.duplicate(true))
 
 func _on_level_complete() -> void:
 	if Globals.level_manager.is_last_level():

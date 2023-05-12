@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfjqux4p83uay"]
+[gd_scene load_steps=5 format=3 uid="uid://dfjqux4p83uay"]
 
 [ext_resource type="Script" path="res://src/gui/gui.gd" id="1_jttiy"]
 [ext_resource type="PackedScene" uid="uid://uhyxt3b8el20" path="res://src/gui/deck/pile.tscn" id="1_lbl2e"]
 [ext_resource type="PackedScene" uid="uid://bu0a3pu5ddgwm" path="res://src/gui/hand/hand.tscn" id="2_4blni"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7howe"]
 
 [node name="Gui" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 128)
@@ -13,26 +15,25 @@ anchor_bottom = 1.0
 offset_top = -50.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7howe")
 script = ExtResource("1_jttiy")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
-
-[node name="Piles" type="VBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="DeckPile" parent="VBoxContainer/Piles" instance=ExtResource("1_lbl2e")]
+[node name="DeckPile" parent="." instance=ExtResource("1_lbl2e")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
+size_flags_vertical = 8
 
-[node name="DiscardPile" parent="VBoxContainer/Piles" instance=ExtResource("1_lbl2e")]
+[node name="Hand" parent="." instance=ExtResource("2_4blni")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 8
 
-[node name="Hand" parent="VBoxContainer" instance=ExtResource("2_4blni")]
+[node name="DiscardPile" parent="." instance=ExtResource("1_lbl2e")]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
-[connection signal="gui_input" from="VBoxContainer/Piles/DeckPile" to="." method="_on_deck_pile_gui_input"]
+[connection signal="gui_input" from="DeckPile" to="." method="_on_deck_pile_gui_input"]
