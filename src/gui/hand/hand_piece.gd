@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 	
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		if is_selected:
 			accepted.emit()
 		else:
@@ -68,5 +68,7 @@ func rotate_left() -> void:
 func rotate_right() -> void:
 	rotate_sound.play()
 	piece.rotate_right()
+	
 
-
+func _on_mouse_entered():
+	select()

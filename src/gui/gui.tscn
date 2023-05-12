@@ -22,6 +22,7 @@ script = ExtResource("1_jttiy")
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 8
 
 [node name="Hand" parent="." instance=ExtResource("2_4blni")]
 unique_name_in_owner = true
@@ -33,5 +34,6 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [connection signal="gui_input" from="DeckPile" to="." method="_on_deck_pile_gui_input"]
