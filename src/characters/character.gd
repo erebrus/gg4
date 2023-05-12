@@ -30,6 +30,8 @@ func _ready():
 	world_target_pos = position
 	xsm.disabled = false
 	xsm.change_state("idle")
+	if not sprite.is_playing():
+		sprite.play(sprite.animation)
 
 
 func update_sprite():
