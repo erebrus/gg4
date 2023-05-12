@@ -46,7 +46,8 @@ func _on_update(_delta):
 	if collision:
 		#Logger.error("Unexpected collision with:",collision.collider.name)
 		var collider=collision.get_collider()
-		if collider.is_in_group("character"):			
+		if collider.is_in_group("character"):	
+			owner.get_node("sfx/sfx_combat").play()		
 			owner.handle_combat_with(collider)
 			return
 		else:

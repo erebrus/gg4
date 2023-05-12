@@ -25,6 +25,7 @@ func handle_combat_with(other):
 func take_damage():	
 #	super.take_damage()
 	dead = true
+	$sfx/sfx_death.play()
 	xsm.change_state("death")
 	
 	

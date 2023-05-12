@@ -17,3 +17,7 @@ signal player_damaged(dmg)
 signal player_bumped
 
 signal announce_death(el)
+
+signal out_of_pieces
+
+signal piece_drawn

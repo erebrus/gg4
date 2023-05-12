@@ -1,27 +1,28 @@
-[gd_scene load_steps=33 format=3 uid="uid://bn8hyp5yo4amx"]
+[gd_scene load_steps=34 format=3 uid="uid://bn8hyp5yo4amx"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_f8rso"]
 [ext_resource type="Texture2D" uid="uid://ct81w1c01ca06" path="res://assets/gfx/enemy1/enemyidle1.png" id="2_ga4vs"]
 [ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_vobm2"]
 [ext_resource type="Texture2D" uid="uid://d3iwapvgihr1n" path="res://assets/gfx/enemy1/enemyidle2.png" id="3_2twpb"]
-[ext_resource type="Texture2D" uid="uid://cvcaiu45r3hg" path="res://assets/gfx/enemy1/enemydeath1.png" id="3_ptf8s"]
-[ext_resource type="Texture2D" uid="uid://dqkdwgn0omv72" path="res://assets/gfx/enemy1/enemydeath3.png" id="4_nrvin"]
-[ext_resource type="Texture2D" uid="uid://bchoqaoentcx6" path="res://assets/gfx/enemy1/enemydeath4.png" id="5_27l16"]
-[ext_resource type="Texture2D" uid="uid://dqelgqxk58smo" path="res://assets/gfx/enemy1/enemydeath5.png" id="6_f43wn"]
+[ext_resource type="Texture2D" uid="uid://d4gktgvcv8sim" path="res://assets/gfx/enemy1/enemydeath1.png" id="3_ptf8s"]
+[ext_resource type="Texture2D" uid="uid://cwu8s6ssg4eha" path="res://assets/gfx/enemy1/enemydeath3.png" id="4_nrvin"]
+[ext_resource type="Texture2D" uid="uid://dh6jgr2532ptu" path="res://assets/gfx/enemy1/enemydeath4.png" id="5_27l16"]
+[ext_resource type="Texture2D" uid="uid://w4sj5076vm8j" path="res://assets/gfx/enemy1/enemydeath5.png" id="6_f43wn"]
 [ext_resource type="Texture2D" uid="uid://bhhluxfcbajx4" path="res://assets/gfx/enemy1/enemywobble1.png" id="6_p5lpn"]
 [ext_resource type="Texture2D" uid="uid://bjicxtsiqqq18" path="res://assets/gfx/enemy1/enemyhopping1.png" id="6_sfh6b"]
 [ext_resource type="Texture2D" uid="uid://5w7nnbx2jd2n" path="res://assets/gfx/enemy1/enemywobble2.png" id="7_j43k2"]
 [ext_resource type="Texture2D" uid="uid://cwk08lex3tlo4" path="res://assets/gfx/enemy1/enemyhopping2.png" id="7_lq7d1"]
-[ext_resource type="Texture2D" uid="uid://dw6ucu13jmtwb" path="res://assets/gfx/enemy1/enemydeath6.png" id="7_srqf8"]
+[ext_resource type="Texture2D" uid="uid://b27ytf7ttlayo" path="res://assets/gfx/enemy1/enemydeath6.png" id="7_srqf8"]
 [ext_resource type="Texture2D" uid="uid://db2fej0130ngj" path="res://assets/gfx/enemy1/enemyhopping3.png" id="8_b3ocr"]
 [ext_resource type="Texture2D" uid="uid://ck41sux7d8m2" path="res://assets/gfx/enemy1/enemywobble3.png" id="8_bux51"]
-[ext_resource type="Texture2D" uid="uid://blrht33iie8n2" path="res://assets/gfx/enemy1/enemydeath7.png" id="8_kdedm"]
+[ext_resource type="Texture2D" uid="uid://701jkjf0fxrj" path="res://assets/gfx/enemy1/enemydeath7.png" id="8_kdedm"]
 [ext_resource type="Texture2D" uid="uid://cmt41emi0x0wi" path="res://assets/gfx/enemy1/enemyhopping4.png" id="9_f27dx"]
-[ext_resource type="Texture2D" uid="uid://b5to6hf814wb1" path="res://assets/gfx/enemy1/enemydeath8.png" id="9_qdsjv"]
+[ext_resource type="Texture2D" uid="uid://dl71dv8jb1edv" path="res://assets/gfx/enemy1/enemydeath8.png" id="9_qdsjv"]
 [ext_resource type="Texture2D" uid="uid://dutxjg77ik621" path="res://assets/gfx/enemy1/enemywobble4.png" id="9_qpcpn"]
 [ext_resource type="Texture2D" uid="uid://byvq8us07j72f" path="res://assets/gfx/enemy1/enemywobble5.png" id="10_hpacf"]
-[ext_resource type="Texture2D" uid="uid://bmvffdxnk4fn2" path="res://assets/gfx/enemy1/enemydeath9.png" id="10_n4a7x"]
-[ext_resource type="Texture2D" uid="uid://pelml2pic80a" path="res://assets/gfx/enemy1/enemydeath10.png" id="11_t6g65"]
+[ext_resource type="Texture2D" uid="uid://bvhtjyyllw15s" path="res://assets/gfx/enemy1/enemydeath9.png" id="10_n4a7x"]
+[ext_resource type="Texture2D" uid="uid://0vt2uf4ow7uc" path="res://assets/gfx/enemy1/enemydeath10.png" id="11_t6g65"]
+[ext_resource type="AudioStream" uid="uid://dst0ykybydjh" path="res://assets/sfx/enemy_breaks.wav" id="23_5ck1v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrgvn"]
 size = Vector2(100, 128)
@@ -406,4 +407,7 @@ libraries = {
 }
 
 [node name="hop" parent="xsm/move" index="0"]
-next_state = NodePath("../death")
+next_state = NodePath("../../wait")
+
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="sfx" index="2"]
+stream = ExtResource("23_5ck1v")

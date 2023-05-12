@@ -19,7 +19,8 @@ func set_deck_pieces(_pieces:Array[Piece]):
 	
 	if auto_draw_piece_on_place:
 		while hand.num_pieces < hand.max_pieces:
-			draw_from(deck)
+			if draw_from(deck):
+				Events.piece_drawn.emit()
 	
 
 func _input(event: InputEvent) -> void:
@@ -28,22 +29,24 @@ func _input(event: InputEvent) -> void:
 		
 	
 
-func draw_from(pile: PiecePile) -> void:
+func draw_from(pile: PiecePile) -> bool:
 	if hand.num_pieces >= hand.max_pieces:
 		Logger.error("Hand full")
-		return
+		return true
 	if pile.is_empty():
 		Logger.warn("Cannot draw from empty pile")
-		return
+		return false
 	
 	hand.add(pile.draw_piece())
+	return true
 	
 
 func _on_piece_placed(piece: Piece) -> void:
 	discard.add_piece(piece)
 	
 	if auto_draw_piece_on_place:
-		draw_from(deck)
+		if draw_from(deck):
+			Events.piece_drawn.emit()
 	
 
 func _on_deck_pile_gui_input(event: InputEvent) -> void:
@@ -51,12 +54,13 @@ func _on_deck_pile_gui_input(event: InputEvent) -> void:
 		return
 	
 	if event is InputEventMouseButton and event.is_pressed():
-		draw_from(deck)
+		if draw_from(deck):
+			Events.piece_drawn.emit()
 	
 
 func _on_player_queue_empty() -> void:
 	if deck.is_empty() and hand.is_empty():
 		Logger.info("Out of pieces")
-		Globals.gameover()
+		Events.out_of_pieces.emit()
 	
 

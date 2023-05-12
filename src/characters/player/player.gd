@@ -1,9 +1,12 @@
 extends Character
 
+var out_of_pieces:=false
 
 func _ready():
 	super._ready()
 	Events.commands_queued.connect(add_commands)
+	Events.out_of_pieces.connect(set_out_of_pieces.bind(true))
+	Events.piece_drawn.connect(set_out_of_pieces.bind(false))
 	tick_complete.connect(_on_tick_complete)	
 	set_camera_limits()
 
@@ -18,7 +21,14 @@ func handle_combat_with(_other):
 
 func take_damage():	
 	Events.player_damaged.emit(4) #TODO replace by variable
-	super.take_damage()
+	if out_of_pieces:
+		dead = true
+		xsm.change_state("death")	
+	else:
+		super.take_damage()
+
+func set_out_of_pieces(val:bool):
+	out_of_pieces=val
 	
 
 func _on_tick_complete():

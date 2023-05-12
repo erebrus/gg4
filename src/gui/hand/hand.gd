@@ -138,6 +138,7 @@ func _input(_event):
 func discard(idx:int = 0 )->void:
 	if idx < 0 or idx >= piece_container.get_child_count():
 		Logger.warn("Tried to discard invalid index %d" % idx)
+		Events.out_of_pieces.emit()
 		return
 
 	var handpiece = piece_container.get_child(idx)
@@ -155,7 +156,7 @@ func discard(idx:int = 0 )->void:
 		select_piece_by_index(idx, false)
 
 func on_player_damaged(dmg:int)->void:
-	for i in range (clamp(dmg, 0, piece_container.get_child_count())):
+	for i in range (dmg):#clamp(dmg, 0, piece_container.get_child_count())):
 		discard()
 
 func on_player_bumped()->void:
