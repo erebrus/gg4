@@ -1,12 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bu0a3pu5ddgwm"]
+[gd_scene load_steps=7 format=3 uid="uid://bu0a3pu5ddgwm"]
 
 [ext_resource type="Script" path="res://src/gui/hand/hand.gd" id="1_j7nri"]
 [ext_resource type="AudioStream" uid="uid://tpfd13du7rqd" path="res://assets/sfx/select_01.wav" id="2_0ickb"]
 [ext_resource type="AudioStream" uid="uid://jd77ot21ivyg" path="res://assets/sfx/select_02.wav" id="3_p1uqv"]
 [ext_resource type="AudioStream" uid="uid://cptieepqv6482" path="res://assets/sfx/select_03.wav" id="4_wnrh3"]
-[ext_resource type="AudioStream" uid="uid://blyk2svkcpgtt" path="res://assets/sfx/rotate_01.wav" id="5_elipx"]
-[ext_resource type="AudioStream" uid="uid://bvasaw12l8h4c" path="res://assets/sfx/rotate_02.wav" id="6_b88of"]
-[ext_resource type="AudioStream" uid="uid://dlhfwuxai4hks" path="res://assets/sfx/rotate_03.wav" id="7_106kt"]
 [ext_resource type="AudioStream" uid="uid://cvlgkppviwq6j" path="res://assets/sfx/draw.wav" id="8_0q58l"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dw8ff"]
@@ -16,15 +13,6 @@ stream_0/weight = 1.0
 stream_1/stream = ExtResource("3_p1uqv")
 stream_1/weight = 1.0
 stream_2/stream = ExtResource("4_wnrh3")
-stream_2/weight = 1.0
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ha38b"]
-streams_count = 3
-stream_0/stream = ExtResource("5_elipx")
-stream_0/weight = 1.0
-stream_1/stream = ExtResource("6_b88of")
-stream_1/weight = 1.0
-stream_2/stream = ExtResource("7_106kt")
 stream_2/weight = 1.0
 
 [node name="Hand" type="MarginContainer"]
@@ -39,6 +27,7 @@ script = ExtResource("1_j7nri")
 layout_mode = 2
 
 [node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="LeftButton" type="Button" parent="VBoxContainer/HBoxContainer"]
@@ -64,9 +53,6 @@ layout_mode = 2
 
 [node name="select" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_dw8ff")
-
-[node name="rotate" type="AudioStreamPlayer" parent="sfx"]
-stream = SubResource("AudioStreamRandomizer_ha38b")
 
 [node name="draw" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("8_0q58l")

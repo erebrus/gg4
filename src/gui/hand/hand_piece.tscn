@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cu4s4om5ko3l4"]
+[gd_scene load_steps=13 format=3 uid="uid://cu4s4om5ko3l4"]
 
 [ext_resource type="Texture2D" uid="uid://cbxk07ox053bh" path="res://src/gui/pieces/piece_bg.png" id="1_r1i2h"]
 [ext_resource type="Script" path="res://src/gui/hand/hand_piece.gd" id="1_yl2u0"]
-[ext_resource type="Resource" uid="uid://3d2ylmx68avu" path="res://src/gui/pieces/l.tres" id="2_e3t78"]
 [ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="3_5qb6f"]
+[ext_resource type="AudioStream" uid="uid://blyk2svkcpgtt" path="res://assets/sfx/rotate_01.wav" id="7_4n1wp"]
+[ext_resource type="AudioStream" uid="uid://bvasaw12l8h4c" path="res://assets/sfx/rotate_02.wav" id="8_u4tgl"]
+[ext_resource type="AudioStream" uid="uid://dlhfwuxai4hks" path="res://assets/sfx/rotate_03.wav" id="9_reybe"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w8a5o"]
 texture = ExtResource("1_r1i2h")
@@ -12,20 +14,192 @@ texture_margin_top = 26.0
 texture_margin_right = 13.0
 texture_margin_bottom = 13.0
 
-[node name="HandPiece" type="PanelContainer"]
+[sub_resource type="Animation" id="Animation_da2no"]
+resource_name = "Select"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/TurnLeftButton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/TurnRightButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:theme_override_constants/margin_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 96]
+}
+
+[sub_resource type="Animation" id="Animation_1pbg0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/TurnLeftButton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/TurnRightButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:theme_override_constants/margin_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_dnaq6"]
+resource_name = "Unselect"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/TurnLeftButton:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/TurnRightButton:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:theme_override_constants/margin_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [96, null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_crfis"]
+_data = {
+"RESET": SubResource("Animation_1pbg0"),
+"Select": SubResource("Animation_da2no"),
+"Unselect": SubResource("Animation_dnaq6")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_65dpj"]
+streams_count = 3
+stream_0/stream = ExtResource("7_4n1wp")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("8_u4tgl")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("9_reybe")
+stream_2/weight = 1.0
+
+[node name="HandPiece" type="MarginContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -13.0
+offset_top = -19.5
+offset_right = 13.0
+offset_bottom = 19.5
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 8
+script = ExtResource("1_yl2u0")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TurnLeftButton" type="Button" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+text = "<-"
+
+[node name="HandPiece" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_w8a5o")
-script = ExtResource("1_yl2u0")
-piece = ExtResource("2_e3t78")
 
-[node name="Sprite" parent="." instance=ExtResource("3_5qb6f")]
+[node name="Sprite" parent="HBoxContainer/HandPiece" instance=ExtResource("3_5qb6f")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="TurnRightButton" type="Button" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+text = "->"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_crfis")
+}
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="rotate" type="AudioStreamPlayer" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_65dpj")
+
+[connection signal="pressed" from="HBoxContainer/TurnLeftButton" to="." method="rotate_left"]
+[connection signal="pressed" from="HBoxContainer/TurnRightButton" to="." method="rotate_right"]

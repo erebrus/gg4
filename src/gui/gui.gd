@@ -14,12 +14,16 @@ func _ready() -> void:
 	hand.piece_discarded.connect(_on_piece_placed)
 	hand.piece_placed.connect(_on_piece_placed)
 	
+
 func set_deck_pieces(_pieces:Array[Piece]):
 	deck.pieces = _pieces
 	
 	if auto_draw_piece_on_place:
 		while hand.num_pieces < hand.max_pieces:
 			draw_from(deck)
+		
+	await get_tree().create_timer(0.3).timeout
+	hand.pieces.values().front().select()
 	
 
 func _input(event: InputEvent) -> void:
