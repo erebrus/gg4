@@ -16,7 +16,6 @@ var is_selected:= false
 
 func _ready() -> void:
 	sprite.commands = piece.commands
-	modulate = Color.RED
 	
 
 func _gui_input(event: InputEvent) -> void:
@@ -37,7 +36,6 @@ func select() -> void:
 	if is_selected:
 		return
 	is_selected = true
-	modulate = Color.YELLOW
 	selected.emit()
 	
 
@@ -45,15 +43,12 @@ func unselect() -> void:
 	if not is_selected:
 		return
 	is_selected = false
-	modulate = Color.RED
 	unselected.emit()
 	
 
 func rotate_left() -> void:
 	piece.rotate_left()
-#	sprite.rotate(-PI/2)
 	
 
 func rotate_right() -> void:
 	piece.rotate_right()
-#	sprite.rotate(PI/2)
