@@ -15,6 +15,11 @@ func _ready() -> void:
 	hand.piece_placed.connect(_on_piece_placed)
 	
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel"):
+		Globals.menu()
+	
+
 func set_deck_pieces(_pieces:Array[Piece]):
 	deck.pieces = _pieces
 	
@@ -25,12 +30,6 @@ func set_deck_pieces(_pieces:Array[Piece]):
 		
 	await get_tree().create_timer(0.3).timeout
 	hand.pieces.values().front().select()
-	
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		Globals.menu()
-		
 	
 
 func draw_from(pile: PiecePile) -> bool:
