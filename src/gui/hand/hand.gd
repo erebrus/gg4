@@ -52,6 +52,7 @@ func add(piece: Piece) -> void:
 func discard(idx:int = 0 )->void:
 	if idx < 0 or idx >= piece_container.get_child_count():
 		Logger.warn("Tried to discard invalid index %d" % idx)
+		Events.out_of_pieces.emit()
 		return
 
 	var handpiece = piece_container.get_child(idx)
@@ -79,7 +80,6 @@ func choose_previous_piece()->void:
 		Logger.warn("No piece selected, so we can't select previous piece")
 		return
 	select_piece_by_index(idx - 1, true)
-
 
 func choose_next_piece()->void:
 	var idx = get_index_of_piece(selected_piece)
@@ -148,7 +148,7 @@ func _on_piece_accepted(piece: Piece) -> void:
 	
 
 func _on_player_damaged(dmg:int)->void:
-	for i in range (clamp(dmg, 0, pieces.size())):
+	for i in range(dmg): #(clamp(dmg, 0, pieces.size())):
 		discard()
 	
 
@@ -157,4 +157,5 @@ func _on_player_bumped()->void:
 		discard(RngUtils.int_range(0, pieces.size()-1))
 	else:
 		Logger.warn("Tried to discard card, but hand is empty.")
+	
 	

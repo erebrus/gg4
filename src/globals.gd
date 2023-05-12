@@ -52,6 +52,7 @@ func _init_logger():
 
 
 func gameover():
+	await get_tree().create_timer(2.5).timeout
 	SceneLoader.load_scene(GAMEOVER_SCREEN)
 	
 
