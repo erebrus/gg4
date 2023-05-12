@@ -21,3 +21,7 @@ signal announce_death(el)
 signal out_of_pieces
 
 signal piece_drawn
+
+signal request_dice_roll(faces:Array[Dice.FaceType])
+
+signal piece_given(Piece)

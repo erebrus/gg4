@@ -1,14 +1,16 @@
 extends Area2D
+class_name Dice
 
 enum FaceType {ATTACK_PIECE, CHARGE_PIECE, BLOCK_PIECE, 
 	SPRINT_PIECE, GET_FROM_DISCARD, DISCARD_ONE
 #	, RESHUFFLE_HAND, , DISCARD_HAND
 	} 
 
-var faces:Array
+var faces:Array[FaceType]
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	faces = RngUtils.array(FaceType.values(), 6 , true)
+	RngUtils.array(FaceType.values(), 6 , true).map(func(x): x as FaceType)
+		
 	Logger.info("dice set with %s" % [faces])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,10 +19,7 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	var face:FaceType = RngUtils.array(faces)[0]
-	Logger.debug("Selected dice face=%s" % FaceType.keys()[face])
-	match face:
-		FaceType.ATTACK_PIECE:
-			Events.piece_given.emit(preload("res://src/gui/pieces/attack.tres"))
+	
+	Events.request_dice_roll.emit(faces)	
 	queue_free()
 	

@@ -13,8 +13,10 @@ func _ready() -> void:
 	Events.player_queue_empty.connect(_on_player_queue_empty)
 	hand.piece_discarded.connect(_on_piece_placed)
 	hand.piece_placed.connect(_on_piece_placed)
+	#TODO the line below is not ideal, because it's called for each command of the piece
+	Events.player_ticked.connect(draw_from.bind(deck)) 
+	Events.piece_given.connect(hand.add)
 	
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Globals.menu()
@@ -47,9 +49,9 @@ func draw_from(pile: PiecePile) -> bool:
 func _on_piece_placed(piece: Piece) -> void:
 	discard.add_piece(piece)
 	
-	if auto_draw_piece_on_place:
-		if draw_from(deck):
-			Events.piece_drawn.emit()
+#	if auto_draw_piece_on_place:
+#		if draw_from(deck):
+#			Events.piece_drawn.emit()
 	
 
 func _on_deck_pile_gui_input(event: InputEvent) -> void:
