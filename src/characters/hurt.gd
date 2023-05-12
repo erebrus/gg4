@@ -13,7 +13,7 @@ func _on_anim_finished(_name):
 	if owner.dead:
 		change_state("death")
 	else:
-		change_state("move")
+		change_state("hop")
 	
 
 

@@ -26,6 +26,7 @@ func _ready():
 
 func add(piece: Piece) -> void:
 	var scene = HandPiece.instantiate()
+	$sfx/draw.play()
 	scene.piece = piece
 	scene.selected.connect(_on_piece_selected.bind(piece))
 	scene.unselected.connect(_on_piece_unselected.bind(piece))
@@ -79,7 +80,7 @@ func _on_accept_button_pressed():
 		if piece_count == 0:
 			selected_piece = null
 		else:
-			select_piece_by_index(idx, false)
+			select_piece_by_index(idx, false, false)
 
 			
 func choose_previous_piece()->void:
@@ -105,7 +106,7 @@ func get_index_of_piece(piece:Piece)->int:
 	return -1
 
 
-func select_piece_by_index(idx:int, rollover:bool = false)->void:
+func select_piece_by_index(idx:int, rollover:bool, do_sound:=true)->void:
 	if piece_container.get_child_count() == 0:
 		Logger.warn("Cannot select piece of idx %d on empty hand."  % idx)
 		return
@@ -117,7 +118,7 @@ func select_piece_by_index(idx:int, rollover:bool = false)->void:
 
 	var new_piece:Piece = piece_container.get_child(idx).piece
 	piece_container.get_child(idx).select()
-	_on_piece_selected(new_piece, true)
+	_on_piece_selected(new_piece, do_sound)
 
 
 func _input(_event):		
@@ -151,7 +152,7 @@ func discard(idx:int = 0 )->void:
 	if piece_count == 0:
 		selected_piece = null
 	else:
-		select_piece_by_index(idx)
+		select_piece_by_index(idx, false)
 
 func on_player_damaged(dmg:int)->void:
 	for i in range (clamp(dmg, 0, piece_container.get_child_count())):

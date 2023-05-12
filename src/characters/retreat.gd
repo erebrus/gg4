@@ -30,7 +30,7 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	change_state("move") 
+	change_state("hop") 
 
 
 # This function is called each frame after all the update calls

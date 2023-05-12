@@ -17,6 +17,7 @@ func _on_anim_finished(_name):
 # XSM enters the root first, the the children
 func _on_enter(_args):
 	owner.collision_layer = 0
+	owner.retreat()
 	Events.announce_death.emit(owner)
 
 

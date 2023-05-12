@@ -35,7 +35,10 @@ func _after_enter(_args):
 # XSM updates the root first, then the children
 func _on_update(_delta):
 	if not owner.is_at_target_position():
-		change_state("move")
+		if owner.previous_command and owner.previous_command.is_attack:
+			change_state("attack")
+		else:
+			change_state("hop")
 
 
 # This function is called each frame after all the update calls

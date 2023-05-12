@@ -23,7 +23,8 @@ func handle_combat_with(other):
 	handle_combat(other, self)
 	
 func take_damage():	
-	super.take_damage()
+#	super.take_damage()
 	dead = true
+	xsm.change_state("death")
 	
 	

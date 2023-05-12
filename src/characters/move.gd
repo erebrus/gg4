@@ -1,15 +1,15 @@
 @tool
-extends StateAnimation
+extends State
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
 
-# This additionnal callback allows you to act at the end
-# of an animation (after the nb of times it should play)
-# If looping, is called after each loop
-func _on_anim_finished(_name):
-	pass
+## This additionnal callback allows you to act at the end
+## of an animation (after the nb of times it should play)
+## If looping, is called after each loop
+#func _on_anim_finished(_name):
+#	pass
 
 
 # This function is called when the state enters
@@ -26,7 +26,7 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	if owner.is_at_target_position():
+	if owner.is_at_target_position() and not owner.dead:
 		change_state("idle")
 	var target_direction:Vector2 = (owner.world_target_pos - owner.position).normalized()
 	owner.velocity = owner.speed * target_direction * _delta
@@ -54,7 +54,7 @@ func _on_update(_delta):
 #			owner.bump()#TODO consider move to state
 			change_state("wobble")
 			return
-	if done:
+	if done and not owner.dead:
 		change_state("idle")	
 
 
