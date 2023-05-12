@@ -69,7 +69,8 @@ func can_continue() -> bool:
 
 func start():
 	level_manager.reset_level()
-	SceneLoader.load_scene(MAIN_SCREEN)
+	#SceneLoader.load_scene(MAIN_SCREEN)
+	SceneManager.change_scene(MAIN_SCREEN, {"pattern":"horizontal", "wait_time":0})
 	
 
 func continue_game():
@@ -78,6 +79,7 @@ func continue_game():
 
 func choose_piece():
 	SceneLoader.load_scene(CHOOSE_PIECE)
+	SceneManager.change_scene(CHOOSE_PIECE)
 	
 
 #
