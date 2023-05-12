@@ -59,6 +59,48 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_wur44"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_sb2yv"]
 resource_name = "death"
 length = 0.5
@@ -214,48 +256,6 @@ tracks/1/keys = {
 "values": [&"wobble"]
 }
 
-[sub_resource type="Animation" id="Animation_wur44"]
-resource_name = "attack"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"move"]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("sprite")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"attack", 1.0, false],
-"method": &"play"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xnugw"]
 _data = {
 "RESET": SubResource("Animation_psy0d"),
@@ -280,7 +280,6 @@ stream_2/weight = 1.0
 z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_ms33h")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -345,6 +344,18 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
+[node name="death" type="Node" parent="xsm/move"]
+script = ExtResource("6_8ud4g")
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = "death"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../../wait")
+
 [node name="attack" type="Node" parent="xsm/move"]
 script = ExtResource("4_gccs2")
 animation_player = NodePath("../../../AnimationPlayer")
@@ -361,18 +372,6 @@ next_state = NodePath("")
 script = ExtResource("6_kofad")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
-anim_times_to_play = 1
-on_anim_finished = 0
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../wait")
-
-[node name="death" type="Node" parent="xsm"]
-script = ExtResource("6_8ud4g")
-animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "death"
 anim_times_to_play = 1
 on_anim_finished = 0
 disabled = false
