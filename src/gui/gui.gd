@@ -18,6 +18,7 @@ func _ready() -> void:
 	hand.piece_discarded.connect(_on_piece_discarded)
 	hand.piece_placed.connect(_on_piece_placed)
 	
+	Events.level_complete.connect(_on_level_complete)
 	Events.piece_given.connect(hand.add)
 	Events.trigger_discard.connect(_on_discard_triggered)
 	Events.trigger_discard_fetch.connect(_on_discard_fetch_triggered)
@@ -133,3 +134,6 @@ func _on_discard_triggered() -> void:
 
 func _on_discard_fetch_triggered() -> void:
 	await draw_from(discard_pile, true)
+	
+func _on_level_complete():
+	Globals.level_manager.last_discard_size=discard_pile.num_pieces
