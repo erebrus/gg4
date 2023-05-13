@@ -23,7 +23,6 @@ func _ready():
 func _on_dice_roll_completed():
 	if player == null:
 		return
-#	Events.dice_roll_complete.disconnect(_on_dice_roll_completed)
 	player.clear_suspension()
 	queue_free()
 
