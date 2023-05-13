@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bn8hyp5yo4amx"]
+[gd_scene load_steps=38 format=3 uid="uid://bn8hyp5yo4amx"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_f8rso"]
 [ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_vobm2"]
@@ -24,6 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://y3t3gq01l3t" path="res://assets/gfx/enemy1/enemyidlenew2.png" id="13_50l3o"]
 [ext_resource type="Texture2D" uid="uid://wdyxi8hgwldq" path="res://assets/gfx/enemy1/enemyidlenew3.png" id="14_xtmwu"]
 [ext_resource type="AudioStream" uid="uid://dst0ykybydjh" path="res://assets/sfx/enemy_breaks.wav" id="23_5ck1v"]
+[ext_resource type="Texture2D" uid="uid://cvyvi227pklii" path="res://assets/gfx/bubble/popup.png" id="24_1lmy3"]
+[ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="25_710cd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrgvn"]
 size = Vector2(100, 128)
@@ -399,8 +401,16 @@ _data = {
 "wobble": SubResource("Animation_oh7lp")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fcly7"]
+content_margin_left = 8.0
+content_margin_top = 10.0
+content_margin_right = 8.0
+content_margin_bottom = 25.0
+texture = ExtResource("24_1lmy3")
+
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_f8rso")]
 collision_layer = 32
+input_pickable = true
 script = ExtResource("2_vobm2")
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -417,5 +427,22 @@ libraries = {
 "": SubResource("AnimationLibrary_1x7bn")
 }
 
+[node name="Bubble" type="PanelContainer" parent="." index="3"]
+visible = false
+offset_left = -64.0
+offset_top = -237.0
+offset_right = 64.0
+offset_bottom = -109.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_fcly7")
+
+[node name="Command" parent="Bubble" index="0" instance=ExtResource("25_710cd")]
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+layout_mode = 2
+num_commands = 1
+
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="sfx" index="2"]
 stream = ExtResource("23_5ck1v")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
