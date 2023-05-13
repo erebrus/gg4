@@ -58,11 +58,17 @@ func unselect() -> void:
 	
 
 func rotate_left() -> void:
+	if Globals.player_in_turn:
+		return
+	
 	rotate_sound.play()
 	piece.rotate_left()
 	
 
 func rotate_right() -> void:
+	if Globals.player_in_turn:
+		return
+	
 	rotate_sound.play()
 	piece.rotate_right()
 	
@@ -86,6 +92,9 @@ func _unselect_tween() -> void:
 	
 
 func _on_hand_piece_gui_input(event):
+	if Globals.player_in_turn:
+		return
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		if is_selected:
 			accepted.emit()
@@ -94,4 +103,7 @@ func _on_hand_piece_gui_input(event):
 	
 
 func _on_hand_piece_mouse_entered():
+	if Globals.player_in_turn:
+		return
+	
 	select()
