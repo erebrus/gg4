@@ -20,10 +20,13 @@ const WIN_SCREEN = "res://src/win/win_screen.tscn"
 const CHOOSE_PIECE = "res://src/choose_piece/choose_piece.tscn"
 
 const START_DECK = preload("res://src/gui/deck/default_deck.tres")
+
+
 var deck:
 	get:
 		return level_manager.current_deck
 	
+var player_in_turn:= false
 
 @onready var level_manager:LevelManager = $LevelManager
 
