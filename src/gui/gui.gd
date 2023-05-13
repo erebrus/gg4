@@ -21,6 +21,7 @@ func _ready() -> void:
 	Events.trigger_discard.connect(_on_discard_triggered)
 	Events.trigger_discard_fetch.connect(_on_discard_fetch_triggered)
 	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Globals.menu()
@@ -90,16 +91,11 @@ func _discard_piece(piece: Piece, scene: Node2D) -> void:
 	path.queue_free()
 	discard_pile.add_piece(piece)
 	
-	# Draw another
-	if auto_draw_piece_on_place:
-		if draw_from(deck):
-			Events.piece_drawn.emit()
 
-func _on_piece_discarded(piece: Piece) -> void:
-	discard.add_piece(piece)
+func _on_piece_discarded(piece: Piece, scene: Node2D) -> void:
+	_discard_piece(piece, scene)
 	if deck.is_empty():
-		Events.out_of_pieces.emit()	
-
+		Events.out_of_pieces.emit()
 	
 
 func _on_piece_placed(piece: Piece, scene: Node2D) -> void:
@@ -123,9 +119,11 @@ func _on_player_queue_empty() -> void:
 	else:
 		while hand.num_pieces < hand.max_pieces and not deck.is_empty():
 			draw_from(deck)
+	
 
 func _on_discard_triggered() -> void:
 	hand.discard(RngUtils.int_range(0,hand.num_pieces-1))
+	
 
 func _on_discard_fetch_triggered() -> void:
-	draw_from(discard, true)
+	draw_from(discard_pile, true)

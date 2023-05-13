@@ -2,7 +2,7 @@ class_name Hand extends Node2D
 
 
 signal piece_placed(piece: Piece, scene: Node2D)
-signal piece_discarded(piece: Piece) # do same as piece placed?
+signal piece_discarded(piece: Piece, scene: Node2D)
 
 
 const HandPiece = preload("res://src/gui/hand/hand_piece.tscn")
@@ -55,17 +55,15 @@ func discard(idx:int = 0 )->void:
 	if idx < 0 or idx >= piece_container.get_child_count():
 		Logger.warn("Tried to discard invalid index %d" % idx)
 		return
-
+	
 	var handpiece = piece_container.get_child(idx)
 	piece_container.remove_child(handpiece)
 	var discarded_piece = handpiece.piece
 	pieces.erase(discarded_piece)
-	handpiece.queue_free()
 	
-	piece_discarded.emit(discarded_piece)
+	piece_discarded.emit(discarded_piece, handpiece)
 	
-	var piece_count:int = piece_container.get_child_count()
-	if piece_count == 0:
+	if is_empty():
 		selected_piece = null
 	else:
 		select_piece_by_index(idx, false)
@@ -96,6 +94,7 @@ func place_piece() -> void:
 		Logger.warn("Trying to place piece not in hand: %s" % selected_piece)
 		return
 	
+	var idx = pieces.keys().find(selected_piece)
 	var scene = pieces[selected_piece]
 	scene.place()
 	piece_container.remove_child(scene)
@@ -108,8 +107,7 @@ func place_piece() -> void:
 	if is_empty():
 		selected_piece = null
 	else:
-		# todo: select last-selected piece?
-		select_piece_by_index(0, false)
+		select_piece_by_index(idx, false)
 	
 
 func get_index_of_piece(piece:Piece) -> int:
@@ -169,7 +167,7 @@ func _on_player_damaged(dmg:int)->void:
 	
 
 func _on_player_bumped()->void:
-	if piece_container.get_child_count():
+	if not is_empty():
 		discard(RngUtils.int_range(0, pieces.size()-1))
 	else:
 		Logger.warn("Tried to discard card, but hand is empty.")

@@ -16,4 +16,3 @@ script = ExtResource("3_v7hly")
 [node name="Gui" parent="CanvasLayer" instance=ExtResource("2_hg27e")]
 
 [node name="Dice" parent="CanvasLayer" instance=ExtResource("4_37j7b")]
-
