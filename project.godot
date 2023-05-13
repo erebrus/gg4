@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 RngUtils="*res://addons/rng_utils/rng_utils.gd"
 Logger="*res://addons/gs_logger/logger.gd"
-SceneLoader="*res://addons/scene_loader/scene_loader.gd"
 Events="*res://src/events.gd"
 Globals="*res://src/globals.tscn"
 SceneManager="*res://addons/scene_manager/SceneManager.tscn"

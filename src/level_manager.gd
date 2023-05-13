@@ -17,7 +17,7 @@ func _ready():
 
 
 func is_last_level() -> bool:
-	return current_level >= levels.size()
+	return current_level >= levels.size() - 1
 	
 
 func next_level():
