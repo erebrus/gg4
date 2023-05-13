@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dmlk3fqhqbl8o"]
 
-[ext_resource type="Texture2D" uid="uid://ctckesesqwooy" path="res://src/world/objects/big_dice.png" id="1_4ex1h"]
 [ext_resource type="Script" path="res://src/gui/dice_panel.gd" id="1_gbs7d"]
+[ext_resource type="Texture2D" uid="uid://wt37myriyjor" path="res://assets/gfx/dice/bigdice1.png" id="2_0kjom"]
 [ext_resource type="Texture2D" uid="uid://ddcv4bh7fbq44" path="res://src/world/objects/dicef1.png" id="3_26upl"]
 [ext_resource type="AudioStream" uid="uid://bfha2nyg8t0wy" path="res://assets/sfx/diceroll.wav" id="4_ws1m4"]
 
@@ -146,7 +146,7 @@ pivot_offset = Vector2(256, 256)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("1_4ex1h")
+texture = ExtResource("2_0kjom")
 
 [node name="Face" type="TextureRect" parent="Dice"]
 layout_mode = 1
@@ -155,12 +155,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
+offset_left = -192.0
 offset_top = -128.0
-offset_right = 128.0
+offset_right = 64.0
 offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
+rotation = 0.0174533
 mouse_filter = 2
 texture = ExtResource("3_26upl")
 

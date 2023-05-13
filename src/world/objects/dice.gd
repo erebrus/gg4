@@ -23,6 +23,7 @@ func _ready():
 		Logger.info("dice set with %s" % [faces])
 	else:
 		assert(faces !=null and faces.size()==6)
+	$Sprite2D.play("default",)
 
 func _on_dice_roll_completed():
 	if player == null:
