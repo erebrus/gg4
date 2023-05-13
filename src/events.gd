@@ -29,3 +29,7 @@ signal request_dice_roll(faces:Array[Dice.FaceType])
 signal piece_given(Piece)
 
 signal tick_suspension_cleared(character:Character)
+
+signal trigger_discard_fetch
+
+signal trigger_discard
