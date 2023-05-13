@@ -42,10 +42,10 @@ func bump()->void:
 
 func set_camera_limits()->void:
 	var cam:Camera2D= $Camera2D
-	cam.limit_left=-grid.tile_size.x
-	cam.limit_top=-grid.tile_size.y
-	cam.limit_right=grid.tile_size.x*grid.grid_size.x
-	cam.limit_bottom=grid.tile_size.y*grid.grid_size.y
+	cam.limit_left=-int(grid.tile_size.x)
+	cam.limit_top=-int(grid.tile_size.y)
+	cam.limit_right=int(grid.tile_size.x*grid.grid_size.x)
+	cam.limit_bottom=int(grid.tile_size.y*grid.grid_size.y)
 	
 func play_hop_sfx()->void:
 	$sfx/sfx_hop_grass.play()

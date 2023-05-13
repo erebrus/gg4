@@ -43,6 +43,7 @@ func on_dice_roll(new_faces:Array[Dice.FaceType] ):
 			Events.piece_given.emit(preload("res://src/gui/pieces/sprint.tres"))
 		_:
 			Events.piece_given.emit(preload("res://src/gui/pieces/attack.tres"))			
+	Events.dice_roll_complete.emit()
 	await get_tree().create_timer(1).timeout
 	player.play("hide")
 

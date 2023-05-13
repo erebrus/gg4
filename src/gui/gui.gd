@@ -13,8 +13,6 @@ func _ready() -> void:
 	Events.player_queue_empty.connect(_on_player_queue_empty)
 	hand.piece_discarded.connect(_on_piece_placed)
 	hand.piece_placed.connect(_on_piece_placed)
-	#TODO the line below is not ideal, because it's called for each command of the piece
-	Events.player_ticked.connect(draw_from.bind(deck)) 
 	Events.piece_given.connect(hand.add)
 	
 func _input(event: InputEvent) -> void:
@@ -44,7 +42,7 @@ func draw_from(pile: PiecePile) -> bool:
 	
 	hand.add(pile.draw_piece())
 	return true
-	
+
 
 func _on_piece_placed(piece: Piece) -> void:
 	discard.add_piece(piece)
@@ -68,4 +66,6 @@ func _on_player_queue_empty() -> void:
 		Logger.info("Out of pieces")
 		Events.out_of_pieces.emit()
 	
-
+#if not draw_from(deck):
+#		if hand.is_empty():
+#			Globals.gameover()

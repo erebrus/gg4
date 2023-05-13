@@ -15,5 +15,6 @@ script = ExtResource("3_v7hly")
 
 [node name="Gui" parent="CanvasLayer" instance=ExtResource("2_hg27e")]
 offset_top = -128.0
+auto_draw_piece_on_place = null
 
 [node name="Dice" parent="CanvasLayer" instance=ExtResource("4_37j7b")]

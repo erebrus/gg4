@@ -7,19 +7,31 @@ enum FaceType {ATTACK_PIECE, CHARGE_PIECE, BLOCK_PIECE,
 	} 
 
 var faces:Array[FaceType]
+var player
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	RngUtils.array(FaceType.values(), 6 , true).map(func(x): x as FaceType)
+	Events.dice_roll_complete.connect(_on_dice_roll_completed)
+	var t_faces = RngUtils.array(FaceType.values(), 6 , true) 
+	for t in t_faces:
+		if faces == null:
+			faces = [t]
+		else:
+			faces.append(t)
 		
 	Logger.info("dice set with %s" % [faces])
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+func _on_dice_roll_completed():
+	if player == null:
+		return
+#	Events.dice_roll_complete.disconnect(_on_dice_roll_completed)
+	player.clear_suspension()
+	queue_free()
 
 func _on_body_entered(body):
-	
+	player = body
+	player.suspend_tick()
+
 	Events.request_dice_roll.emit(faces)	
-	queue_free()
+	
+	
 	
