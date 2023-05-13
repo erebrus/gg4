@@ -17,7 +17,8 @@ func unregister(element):
 func register(element):
 	elements.append(element)
 	element.tick_complete.connect(_on_tick_complete.bind(element))
-	Events.player_ticked.connect(_on_player_ticked)
+	if element.is_in_group("player"):
+		Events.player_ticked.connect(_on_player_ticked)
 
 func _on_player_ticked()->void:
 	if turn_complete():

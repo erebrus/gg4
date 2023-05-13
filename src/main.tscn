@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://caltr3wgjn0r3"]
+[gd_scene load_steps=5 format=3 uid="uid://caltr3wgjn0r3"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_fmrj7"]
 [ext_resource type="PackedScene" uid="uid://dfjqux4p83uay" path="res://src/gui/gui.tscn" id="2_hg27e"]
 [ext_resource type="Script" path="res://src/world/turn_manager.gd" id="3_v7hly"]
+[ext_resource type="PackedScene" uid="uid://dmlk3fqhqbl8o" path="res://src/gui/dice_panel.tscn" id="4_37j7b"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_fmrj7")
@@ -13,3 +14,6 @@ script = ExtResource("3_v7hly")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Gui" parent="CanvasLayer" instance=ExtResource("2_hg27e")]
+
+[node name="Dice" parent="CanvasLayer" instance=ExtResource("4_37j7b")]
+

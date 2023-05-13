@@ -428,8 +428,5 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 position_smoothing_enabled = true
 
-[node name="move" parent="xsm" index="2"]
-debug_mode = true
-
 [node name="wobble" parent="xsm" index="4"]
 script = ExtResource("14_p1wy1")
