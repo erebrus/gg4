@@ -11,10 +11,10 @@ extends PanelContainer
 
 func _ready() -> void:
 	Events.player_queue_empty.connect(_on_player_queue_empty)
-	hand.piece_discarded.connect(_on_piece_placed)
+	hand.piece_discarded.connect(_on_piece_discarded)
 	hand.piece_placed.connect(_on_piece_placed)
+	Events.piece_given.connect(hand.add)
 	
-
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Globals.menu()
@@ -42,14 +42,16 @@ func draw_from(pile: PiecePile) -> bool:
 	
 	hand.add(pile.draw_piece())
 	return true
-	
+
 
 func _on_piece_placed(piece: Piece) -> void:
 	discard.add_piece(piece)
-	
-	if auto_draw_piece_on_place:
-		if draw_from(deck):
-			Events.piece_drawn.emit()
+
+func _on_piece_discarded(piece: Piece) -> void:
+	discard.add_piece(piece)
+	if deck.is_empty():
+		Events.out_of_pieces.emit()	
+
 	
 
 func _on_deck_pile_gui_input(event: InputEvent) -> void:
@@ -64,6 +66,9 @@ func _on_deck_pile_gui_input(event: InputEvent) -> void:
 func _on_player_queue_empty() -> void:
 	if deck.is_empty() and hand.is_empty():
 		Logger.info("Out of pieces")
+		Globals.gameover()
 		Events.out_of_pieces.emit()
-	
+	else:
+		while hand.num_pieces < hand.max_pieces and not deck.is_empty():
+			draw_from(deck)
 
