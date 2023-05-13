@@ -8,7 +8,7 @@ func _ready():
 	
 	var map:Arena = Globals.level_manager.get_current_level().instantiate()
 	map.turn_manager = $TurnManager
-	
+	Globals.level_manager.level_complete = false
 	add_child(map)
 	move_child(map, 0)
 	

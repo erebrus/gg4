@@ -23,12 +23,15 @@ func _physics_process(_delta):
 	if out_of_pieces and not dead:
 		dead = true
 		xsm.change_state("death")	
+		$sfx/sfx_death.play()
 		
 func take_damage():	
 	Events.player_damaged.emit(4) #TODO replace by variable
 	if out_of_pieces:
 		dead = true
+		$sfx/sfx_death.play()
 		xsm.change_state("death")	
+		
 	else:
 		super.take_damage()
 

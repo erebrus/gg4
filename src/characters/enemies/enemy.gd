@@ -2,6 +2,7 @@ extends Character
 class_name Enemy
 
 @export var command_pattern: Array[Command] = []
+@onready var sfx_death:=$sfx/sfx_death
 
 func _ready():
 	super._ready()

@@ -9,6 +9,8 @@ var levels:Array[PackedScene] = [
 var current_deck:Array[Piece]
 var current_level:int = 0
 var highest_level:int = 0
+var last_discard_size:int = 0
+var level_complete:bool = false
 
 const path="usr://game_conf.tres"
 
