@@ -18,14 +18,15 @@ func register(element):
 	elements.append(element)
 	element.tick_complete.connect(_on_tick_complete.bind(element))
 	if element.is_in_group("player"):
-		Events.player_ticked.connect(_on_player_ticked)
+		Events.trigger_tick.connect(_on_trigger_tick)
 
-func _on_player_ticked()->void:
+func _on_trigger_tick()->void:
 	if turn_complete():
 		tick()
 	else:
 		tick_pending=true
-		
+	
+
 func _on_tick_complete(el)->void:
 	if not el in elements_moving:
 		Logger.warn("Tried to remove %s from moving list, but element is not there." % [el.name])

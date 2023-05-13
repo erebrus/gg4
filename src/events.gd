@@ -7,7 +7,7 @@ signal player_queue_empty
 
 signal level_complete
 
-signal player_ticked
+signal trigger_tick
 
 signal player_damaged(dmg)
 
