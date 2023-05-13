@@ -52,7 +52,6 @@ func add(piece: Piece) -> void:
 func discard(idx:int = 0 )->void:
 	if idx < 0 or idx >= piece_container.get_child_count():
 		Logger.warn("Tried to discard invalid index %d" % idx)
-		Events.out_of_pieces.emit()
 		return
 
 	var handpiece = piece_container.get_child(idx)

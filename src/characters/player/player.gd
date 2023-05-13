@@ -6,7 +6,7 @@ func _ready():
 	super._ready()
 	Events.commands_queued.connect(add_commands)
 	Events.out_of_pieces.connect(set_out_of_pieces.bind(true))
-	Events.piece_drawn.connect(set_out_of_pieces.bind(false))
+#	Events.piece_drawn.connect(set_out_of_pieces.bind(false))
 	tick_complete.connect(_on_tick_complete)	
 	set_camera_limits()
 
@@ -19,6 +19,11 @@ func add_commands(new_commands: Array[Command]):
 func handle_combat_with(_other):
 	handle_combat(self, _other)
 
+func _physics_process(_delta):
+	if out_of_pieces and not dead:
+		dead = true
+		xsm.change_state("death")	
+		
 func take_damage():	
 	Events.player_damaged.emit(4) #TODO replace by variable
 	if out_of_pieces:

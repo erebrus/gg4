@@ -17,7 +17,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_7howe")
 script = ExtResource("1_jttiy")
-auto_draw_piece_on_place = null
 
 [node name="DeckPile" parent="." instance=ExtResource("1_lbl2e")]
 unique_name_in_owner = true
