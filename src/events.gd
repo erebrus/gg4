@@ -30,3 +30,5 @@ signal tick_suspension_cleared(character:Character)
 signal trigger_discard_fetch
 
 signal trigger_discard
+
+signal turn_complete

@@ -38,6 +38,8 @@ func _on_tick_complete(el)->void:
 		if tick_pending:
 			tick_pending = false
 			tick()
+		else:
+			Events.turn_complete.emit()
 
 func tick()->void:
 	Logger.debug("Tick")
