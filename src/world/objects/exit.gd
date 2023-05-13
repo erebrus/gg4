@@ -7,4 +7,5 @@ func _on_body_entered(body):
 
 func on_level_complete():
 	Logger.info("Level complete.")
+	Globals.level_manager.level_complete=true
 	Events.level_complete.emit()
