@@ -7,7 +7,7 @@ signal player_queue_empty
 
 signal level_complete
 
-signal player_ticked
+signal trigger_tick
 
 signal player_damaged(dmg)
 
@@ -30,3 +30,5 @@ signal tick_suspension_cleared(character:Character)
 signal trigger_discard_fetch
 
 signal trigger_discard
+
+signal turn_complete

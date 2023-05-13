@@ -27,5 +27,5 @@ func _on_piece_mouse_exited():
 
 
 func _on_piece_gui_input(event):
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		selected.emit()

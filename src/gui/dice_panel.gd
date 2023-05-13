@@ -35,13 +35,13 @@ func on_dice_roll(new_faces:Array[Dice.FaceType] ):
 	Logger.debug("Selected dice face=%s" % Dice.FaceType.keys()[face])
 	match face:
 		Dice.FaceType.ATTACK_PIECE:
-			Events.piece_given.emit(preload("res://src/gui/pieces/attack.tres"))
+			Events.piece_given.emit(preload("res://src/gui/pieces/attack.tres").copy())
 		Dice.FaceType.CHARGE_PIECE:
-			Events.piece_given.emit(preload("res://src/gui/pieces/charge.tres"))
+			Events.piece_given.emit(preload("res://src/gui/pieces/charge.tres").copy())
 		Dice.FaceType.BLOCK_PIECE:
-			Events.piece_given.emit(preload("res://src/gui/pieces/shield.tres"))
+			Events.piece_given.emit(preload("res://src/gui/pieces/shield.tres").copy())
 		Dice.FaceType.SPRINT_PIECE:
-			Events.piece_given.emit(preload("res://src/gui/pieces/sprint.tres"))
+			Events.piece_given.emit(preload("res://src/gui/pieces/sprint.tres").copy())
 		Dice.FaceType.GET_FROM_DISCARD:
 			Events.trigger_discard_fetch.emit()
 		Dice.FaceType.DISCARD_ONE:

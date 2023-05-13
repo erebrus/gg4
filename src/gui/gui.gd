@@ -7,6 +7,7 @@ const DISCARD_TIME = 1
 
 @export var auto_draw_piece_on_place: bool = true
 
+var exit_reached := false
 
 @onready var deck: PiecePile = get_node("%DeckPile")
 @onready var discard_pile: PiecePile = get_node("%DiscardPile")
@@ -14,12 +15,14 @@ const DISCARD_TIME = 1
 
 
 func _ready() -> void:
-	Events.player_queue_empty.connect(_on_player_queue_empty)
 	hand.piece_discarded.connect(_on_piece_discarded)
 	hand.piece_placed.connect(_on_piece_placed)
+	
 	Events.piece_given.connect(hand.add)
 	Events.trigger_discard.connect(_on_discard_triggered)
 	Events.trigger_discard_fetch.connect(_on_discard_fetch_triggered)
+	Events.level_complete.connect(func(): exit_reached = true)
+	Events.player_queue_empty.connect(_on_player_queue_empty)
 	
 
 func _input(event: InputEvent) -> void:
@@ -31,9 +34,7 @@ func set_deck_pieces(_pieces:Array[Piece]):
 	deck.pieces = _pieces
 	
 	if auto_draw_piece_on_place:
-		while hand.num_pieces < hand.max_pieces:
-			if draw_from(deck):
-				Events.piece_drawn.emit()
+		_fill_hand()
 		
 	await get_tree().create_timer(0.3).timeout
 	hand.pieces.values().front().select()
@@ -48,6 +49,9 @@ func draw_from(pile: PiecePile, do_random:=false) -> bool:
 		return false
 	
 	hand.add(pile.draw_piece(do_random))
+	
+	await get_tree().create_timer(0.3).timeout
+	
 	return true
 
 
@@ -92,10 +96,17 @@ func _discard_piece(piece: Piece, scene: Node2D) -> void:
 	discard_pile.add_piece(piece)
 	
 
+func _fill_hand() -> void:
+	while hand.num_pieces < hand.max_pieces and not deck.is_empty():
+		await draw_from(deck)
+	
+	if deck.is_empty() and hand.is_empty():
+		Logger.info("Out of pieces")
+		Events.out_of_pieces.emit()
+	
+
 func _on_piece_discarded(piece: Piece, scene: Node2D) -> void:
 	_discard_piece(piece, scene)
-	if deck.is_empty():
-		Events.out_of_pieces.emit()
 	
 
 func _on_piece_placed(piece: Piece, scene: Node2D) -> void:
@@ -105,20 +116,15 @@ func _on_piece_placed(piece: Piece, scene: Node2D) -> void:
 func _on_deck_pile_gui_input(event: InputEvent) -> void:
 	if auto_draw_piece_on_place:
 		return
-	
+	# todo: we can probably delete this and avoid extra complexity/errors
 	if event is InputEventMouseButton and event.is_pressed():
-		if draw_from(deck):
+		if await draw_from(deck):
 			Events.piece_drawn.emit()
 	
 
 func _on_player_queue_empty() -> void:
-	if deck.is_empty() and hand.is_empty():
-		Logger.info("Out of pieces")
-		Globals.gameover()
-		Events.out_of_pieces.emit()
-	else:
-		while hand.num_pieces < hand.max_pieces and not deck.is_empty():
-			draw_from(deck)
+	if not exit_reached:
+		_fill_hand()
 	
 
 func _on_discard_triggered() -> void:
@@ -126,4 +132,4 @@ func _on_discard_triggered() -> void:
 	
 
 func _on_discard_fetch_triggered() -> void:
-	draw_from(discard_pile, true)
+	await draw_from(discard_pile, true)

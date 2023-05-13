@@ -46,10 +46,11 @@ func _on_update(_delta):
 	if collision:
 		#Logger.error("Unexpected collision with:",collision.collider.name)
 		var collider=collision.get_collider()
-		if collider.is_in_group("character"):	
-			owner.get_node("sfx/sfx_combat").play()		
-			owner.handle_combat_with(collider)
-			return
+		if collider.is_in_group("character"):
+			if not collider.dead:
+				owner.get_node("sfx/sfx_combat").play()		
+				owner.handle_combat_with(collider)
+				return
 		else:
 			owner.retreat() #TODO reconsider if this should be in a state						
 #			owner.bump()#TODO consider move to state
