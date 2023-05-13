@@ -14,6 +14,8 @@ func _ready() -> void:
 	hand.piece_discarded.connect(_on_piece_discarded)
 	hand.piece_placed.connect(_on_piece_placed)
 	Events.piece_given.connect(hand.add)
+	Events.trigger_discard.connect(_on_discard_triggered)
+	Events.trigger_discard_fetch.connect(_on_discard_fetch_triggered)
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -32,7 +34,7 @@ func set_deck_pieces(_pieces:Array[Piece]):
 	hand.pieces.values().front().select()
 	
 
-func draw_from(pile: PiecePile) -> bool:
+func draw_from(pile: PiecePile, do_random:=false) -> bool:
 	if hand.num_pieces >= hand.max_pieces:
 		Logger.error("Hand full")
 		return true
@@ -40,7 +42,7 @@ func draw_from(pile: PiecePile) -> bool:
 		Logger.warn("Cannot draw from empty pile")
 		return false
 	
-	hand.add(pile.draw_piece())
+	hand.add(pile.draw_piece(do_random))
 	return true
 
 
@@ -72,3 +74,8 @@ func _on_player_queue_empty() -> void:
 		while hand.num_pieces < hand.max_pieces and not deck.is_empty():
 			draw_from(deck)
 
+func _on_discard_triggered() -> void:
+	hand.discard(RngUtils.int_range(0,hand.num_pieces-1))
+
+func _on_discard_fetch_triggered() -> void:
+	draw_from(discard, true)

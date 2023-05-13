@@ -22,9 +22,15 @@ func is_empty() -> bool:
 	return pieces.is_empty()
 	
 
-func draw_piece() -> Piece:
+func draw_piece(do_random:=false) -> Piece:
 	assert(not pieces.is_empty())
-	var piece = pieces.pop_front()
+	var piece
+	if do_random:
+		var idx = RngUtils.int_range(0, pieces.size()-1)
+		piece = pieces[idx]
+		pieces.remove_at(idx)
+	else:
+		piece = pieces.pop_front()
 	update()
 	return piece 
 	

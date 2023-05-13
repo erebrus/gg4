@@ -26,6 +26,7 @@ func on_dice_roll(new_faces:Array[Dice.FaceType] ):
 	player.play("show")
 	await player.animation_finished
 	player.play("roll")
+	$sfx_roll.play()
 	timer.start()	
 	await player.animation_finished
 	timer.stop()
@@ -41,12 +42,14 @@ func on_dice_roll(new_faces:Array[Dice.FaceType] ):
 			Events.piece_given.emit(preload("res://src/gui/pieces/shield.tres"))
 		Dice.FaceType.SPRINT_PIECE:
 			Events.piece_given.emit(preload("res://src/gui/pieces/sprint.tres"))
-		_:
-			Events.piece_given.emit(preload("res://src/gui/pieces/attack.tres"))			
+		Dice.FaceType.GET_FROM_DISCARD:
+			Events.trigger_discard_fetch.emit()
+		Dice.FaceType.DISCARD_ONE:
+			Events.trigger_discard.emit()
 	Events.dice_roll_complete.emit()
 	await get_tree().create_timer(1).timeout
 	player.play("hide")
 
 func _on_timer_timeout():
-	face = RngUtils.int_range(0, 5)
+	face = faces[RngUtils.int_range(0, 5)]
 	face_texture.texture = textures[face]
