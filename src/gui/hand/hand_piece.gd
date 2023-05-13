@@ -1,4 +1,4 @@
-extends MarginContainer
+extends Node2D
 
 
 signal selected
@@ -6,12 +6,18 @@ signal unselected
 signal accepted
 
 
+const SELECTED_OFFSET = -80
+const SELECTED_POSITION = Vector2(1920/2,1280-600)
 const SPRITE_SIZE = 128
 
 @export var piece: Piece
 
+
+var tween: Tween
+
 @onready var sprite: Container = get_node("%Sprite")
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var left_button: Button = get_node("%TurnLeftButton")
+@onready var right_button: Button = get_node("%TurnRightButton")
 
 @onready var rotate_sound: AudioStreamPlayer = $sfx/rotate
 
@@ -30,24 +36,17 @@ func _input(event: InputEvent) -> void:
 			rotate_right()
 	
 
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
-		if is_selected:
-			accepted.emit()
-		else:
-			select()
-	
-
 func place() -> void:
 	Events.commands_queued.emit(piece.commands)
-	piece.reset_rotation()
+	# todo: animation before free
 	queue_free()
 	
 
 func select() -> void:
 	if is_selected:
 		return
-	animation_player.play("Select")
+	Logger.info("Piece selected: %s" % get_index())
+	_select_tween()
 	is_selected = true
 	selected.emit()
 	
@@ -55,7 +54,7 @@ func select() -> void:
 func unselect() -> void:
 	if not is_selected:
 		return
-	animation_player.play("Unselect")
+	_unselect_tween()
 	is_selected = false
 	unselected.emit()
 	
@@ -70,5 +69,31 @@ func rotate_right() -> void:
 	piece.rotate_right()
 	
 
-func _on_mouse_entered():
+func _select_tween() -> void:
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(self, "position", Vector2(position.x, SELECTED_OFFSET), 0.3)
+	tween.tween_callback(left_button.show)
+	tween.tween_callback(right_button.show)
+	
+
+func _unselect_tween() -> void:
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	tween.tween_property(self, "position", Vector2(position.x, 0), 0.3)
+	tween.tween_callback(left_button.hide)
+	tween.tween_callback(right_button.hide)
+	
+
+func _on_hand_piece_gui_input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
+		if is_selected:
+			accepted.emit()
+		else:
+			select()
+	
+
+func _on_hand_piece_mouse_entered():
 	select()

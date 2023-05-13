@@ -1,4 +1,4 @@
-class_name Hand extends MarginContainer
+class_name Hand extends Node2D
 
 
 signal piece_placed(piece: Piece)
@@ -7,6 +7,7 @@ signal piece_discarded(piece: Piece)
 
 const HandPiece = preload("res://src/gui/hand/hand_piece.tscn")
 
+const PIECE_SIZE = 160
 
 @export var max_pieces: int = 4
 var num_pieces:
@@ -47,6 +48,7 @@ func add(piece: Piece) -> void:
 	scene.unselected.connect(_on_piece_unselected.bind(piece))
 	pieces[piece] = scene
 	piece_container.add_child(scene)
+	sort_pieces()
 	
 
 func discard(idx:int = 0 )->void:
@@ -80,6 +82,7 @@ func choose_previous_piece()->void:
 		Logger.warn("No piece selected, so we can't select previous piece")
 		return
 	select_piece_by_index(idx - 1, true)
+	
 
 func choose_next_piece()->void:
 	var idx = get_index_of_piece(selected_piece)
@@ -92,16 +95,14 @@ func choose_next_piece()->void:
 func place_piece() -> void:
 	var idx = get_index_of_piece(selected_piece)
 	pieces[selected_piece].place()
-	piece_container.remove_child(pieces[selected_piece])
 	pieces.erase(selected_piece)
 	piece_placed.emit(selected_piece)
 	
-	var piece_count:int = piece_container.get_child_count()
-
-	if piece_count == 0:
+	if is_empty():
 		selected_piece = null
 	else:
 		# todo: only select after commands are played out?
+		await Events.player_queue_empty
 		select_piece_by_index(idx, false)
 	
 
@@ -122,6 +123,14 @@ func select_piece_by_index(idx:int, rollover:bool)->void:
 	pieces[pieces.keys()[idx]].select()
 	
 
+func sort_pieces() -> void:
+	var total_size = PIECE_SIZE * pieces.size()
+	for i in pieces.size():
+		var piece = pieces[pieces.keys()[i]]
+		piece.position.x = - total_size / 2 + PIECE_SIZE * i + PIECE_SIZE / 2
+		piece.position.y = 0
+	
+
 func _on_piece_selected(piece: Piece) -> void:
 	selected_piece = piece
 	var idx = get_index_of_piece(piece)
@@ -140,6 +149,7 @@ func _on_piece_unselected(piece: Piece) -> void:
 func _on_accept_button_pressed():
 	if selected_piece != null:
 		place_piece()
+	
 
 func _on_piece_accepted(piece: Piece) -> void:
 	if piece != selected_piece:
