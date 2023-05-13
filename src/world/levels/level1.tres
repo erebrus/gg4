@@ -1,12 +1,12 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://ce3scipjpcb16"]
+[gd_resource type="Resource" script_class="Deck" load_steps=6 format=3 uid="uid://ceosqw62vvpig"]
 
 [ext_resource type="Resource" uid="uid://beihu3rnu20tv" path="res://src/gui/pieces/attack.tres" id="1_vfbt3"]
-[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/long.tres" id="2_aq5f7"]
-[ext_resource type="Resource" uid="uid://cf8vqjp1hbl4a" path="res://src/gui/pieces/right.tres" id="2_s6rhb"]
-[ext_resource type="Resource" uid="uid://3d2ylmx68avu" path="res://src/gui/pieces/l.tres" id="3_gi83i"]
+[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/run.tres" id="2_7jgo2"]
+[ext_resource type="Resource" uid="uid://cf8vqjp1hbl4a" path="res://src/gui/pieces/step.tres" id="3_wpgwb"]
 [ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="4_8rgn8"]
+[ext_resource type="Resource" uid="uid://e5ed3741kb34" path="res://src/gui/pieces/long_turn_right.tres" id="4_adqqj"]
 
 [resource]
 script = ExtResource("4_8rgn8")
-pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_vfbt3"), ExtResource("2_aq5f7"), ExtResource("2_s6rhb"), ExtResource("3_gi83i")])
+pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_vfbt3"), ExtResource("2_7jgo2"), ExtResource("3_wpgwb"), ExtResource("4_adqqj")])
 quantities = Array[int]([2, 1, 4, 1])

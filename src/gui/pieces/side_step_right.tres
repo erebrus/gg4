@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=7 format=3 uid="uid://bhfvpl5bi2dwr"]
+
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_1kxso"]
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="2_f6lya"]
+
+[sub_resource type="Resource" id="Resource_mg7ly"]
+script = ExtResource("1_1kxso")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_tm12r"]
+script = ExtResource("1_1kxso")
+action = 0
+direction = 3
+speed = 1
+
+[sub_resource type="Resource" id="Resource_8c8of"]
+script = ExtResource("1_1kxso")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_vx6s7"]
+script = ExtResource("1_1kxso")
+action = 0
+direction = 2
+speed = 1
+
+[resource]
+script = ExtResource("2_f6lya")
+commands = Array[ExtResource("1_1kxso")]([SubResource("Resource_mg7ly"), SubResource("Resource_tm12r"), SubResource("Resource_8c8of"), SubResource("Resource_vx6s7")])
+description = "Move in a step down shape"

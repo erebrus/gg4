@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=6 format=3 uid="uid://dk7dheh6xv58l"]
+
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_2o2i7"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_u4spq"]
+
+[sub_resource type="Resource" id="Resource_meyrm"]
+script = ExtResource("1_u4spq")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_ksj7j"]
+script = ExtResource("1_u4spq")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_hd35t"]
+script = ExtResource("1_u4spq")
+action = 0
+direction = 2
+speed = 1
+
+[resource]
+script = ExtResource("1_2o2i7")
+commands = Array[ExtResource("1_u4spq")]([SubResource("Resource_meyrm"), SubResource("Resource_ksj7j"), SubResource("Resource_hd35t")])
+description = "Wait between steps"
