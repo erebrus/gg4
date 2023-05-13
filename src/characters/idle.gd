@@ -19,10 +19,7 @@ func _on_anim_finished(_name):
 func _on_enter(_args):
 	if not "previous_command" in owner:
 		return
-		
-	owner.previous_command = null
-	owner.in_turn = false
-	owner.tick_complete.emit() #nothing else to do
+	owner.complete_tick()
 
 
 # This function is called just after the state enters

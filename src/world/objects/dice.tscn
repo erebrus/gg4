@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://0wen44id7217"]
+
+[ext_resource type="Script" path="res://src/world/objects/dice.gd" id="1_ohx4n"]
+[ext_resource type="Texture2D" uid="uid://c8arh8xf2660k" path="res://assets/gfx/dice/diceidle1.png" id="2_78m76"]
+[ext_resource type="Texture2D" uid="uid://dqn47ptugelxy" path="res://assets/gfx/dice/diceidle2.png" id="3_4uxso"]
+[ext_resource type="Texture2D" uid="uid://vj5cfkyqt6m1" path="res://assets/gfx/dice/diceidle3.png" id="4_1sbpr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3db3h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_78m76")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4uxso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1sbpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4uxso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_78m76")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gd638"]
+size = Vector2(96, 96)
+
+[node name="Dice" type="Area2D"]
+collision_mask = 16
+script = ExtResource("1_ohx4n")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7, -16)
+sprite_frames = SubResource("SpriteFrames_3db3h")
+frame = 3
+frame_progress = 0.488111
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gd638")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

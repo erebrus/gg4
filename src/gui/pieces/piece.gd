@@ -21,7 +21,16 @@ func reset_rotation() -> void:
 			rotate_left()
 		else:
 			rotate_right()
+	
 
+func copy() -> Piece:
+	var dup = Piece.new()
+	dup = duplicate(true)
+	dup.commands.clear()
+	for command in commands:
+		dup.commands.append(command.duplicate(true))
+	return dup
+	
 
 func _to_string() -> String:
 	return " ".join(commands.map(func(x): return x._to_string()))

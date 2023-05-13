@@ -1,9 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://bn8hyp5yo4amx"]
+[gd_scene load_steps=35 format=3 uid="uid://bn8hyp5yo4amx"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_f8rso"]
-[ext_resource type="Texture2D" uid="uid://ct81w1c01ca06" path="res://assets/gfx/enemy1/enemyidle1.png" id="2_ga4vs"]
 [ext_resource type="Script" path="res://src/characters/enemies/enemy.gd" id="2_vobm2"]
-[ext_resource type="Texture2D" uid="uid://d3iwapvgihr1n" path="res://assets/gfx/enemy1/enemyidle2.png" id="3_2twpb"]
 [ext_resource type="Texture2D" uid="uid://cvcaiu45r3hg" path="res://assets/gfx/enemy1/enemydeath1.png" id="3_ptf8s"]
 [ext_resource type="Texture2D" uid="uid://dqkdwgn0omv72" path="res://assets/gfx/enemy1/enemydeath3.png" id="4_nrvin"]
 [ext_resource type="Texture2D" uid="uid://bchoqaoentcx6" path="res://assets/gfx/enemy1/enemydeath4.png" id="5_27l16"]
@@ -22,6 +20,10 @@
 [ext_resource type="Texture2D" uid="uid://byvq8us07j72f" path="res://assets/gfx/enemy1/enemywobble5.png" id="10_hpacf"]
 [ext_resource type="Texture2D" uid="uid://bmvffdxnk4fn2" path="res://assets/gfx/enemy1/enemydeath9.png" id="10_n4a7x"]
 [ext_resource type="Texture2D" uid="uid://pelml2pic80a" path="res://assets/gfx/enemy1/enemydeath10.png" id="11_t6g65"]
+[ext_resource type="Texture2D" uid="uid://2j58uvvhuk4i" path="res://assets/gfx/enemy1/enemyidlenew1.png" id="12_i6ehy"]
+[ext_resource type="Texture2D" uid="uid://y3t3gq01l3t" path="res://assets/gfx/enemy1/enemyidlenew2.png" id="13_50l3o"]
+[ext_resource type="Texture2D" uid="uid://wdyxi8hgwldq" path="res://assets/gfx/enemy1/enemyidlenew3.png" id="14_xtmwu"]
+[ext_resource type="AudioStream" uid="uid://dst0ykybydjh" path="res://assets/sfx/enemy_breaks.wav" id="23_5ck1v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrgvn"]
 size = Vector2(100, 128)
@@ -62,23 +64,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_ga4vs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_2twpb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_2twpb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_ga4vs")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("6_p5lpn")
 }, {
 "duration": 1.0,
@@ -96,6 +81,35 @@ animations = [{
 "loop": true,
 "name": &"hurt",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_i6ehy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_i6ehy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_i6ehy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_50l3o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xtmwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xtmwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xtmwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_50l3o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -290,7 +304,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_cm82f"]
 resource_name = "idle"
-length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -314,7 +327,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"default"]
+"values": [&"idle"]
 }
 
 [sub_resource type="Animation" id="Animation_cs8m5"]
@@ -397,7 +410,7 @@ shape = SubResource("RectangleShape2D_xrgvn")
 [node name="sprite" parent="." index="1"]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_3p6th")
-animation = &"death"
+animation = &"idle"
 offset = Vector2(0, -12)
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -405,5 +418,5 @@ libraries = {
 "": SubResource("AnimationLibrary_1x7bn")
 }
 
-[node name="hop" parent="xsm/move" index="0"]
-next_state = NodePath("../death")
+[node name="sfx_death" type="AudioStreamPlayer2D" parent="sfx" index="2"]
+stream = ExtResource("23_5ck1v")

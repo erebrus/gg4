@@ -10,7 +10,10 @@ extends StateAnimation
 # of an animation (after the nb of times it should play)
 # If looping, is called after each loop
 func _on_anim_finished(_name):
-	owner.call_deferred("queue_free")
+	if owner.is_in_group("player"):
+		Globals.gameover()
+	else:
+		owner.call_deferred("queue_free")
 
 
 # This function is called when the state enters

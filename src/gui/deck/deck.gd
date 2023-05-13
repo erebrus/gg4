@@ -11,7 +11,7 @@ func generate(do_shuffle := true) -> Array[Piece]:
 	var deck: Array[Piece]
 	for i in pieces.size():
 		for _n in quantities[i]:
-			deck.append(pieces[i].duplicate())
+			deck.append(pieces[i].copy())
 	if do_shuffle:
 		deck.shuffle()
 	return deck

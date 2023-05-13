@@ -1,21 +1,29 @@
-[gd_scene load_steps=26 format=3 uid="uid://jqxg88aou1fg"]
+[gd_scene load_steps=34 format=3 uid="uid://jqxg88aou1fg"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_fybfn"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="2_jhrk2"]
 [ext_resource type="Texture2D" uid="uid://cp1sp0yjqlqy" path="res://assets/gfx/player/playerattack2.png" id="3_5c1kj"]
-[ext_resource type="Texture2D" uid="uid://bt17q3m36yr0p" path="res://src/characters/player.png" id="3_uk3q1"]
 [ext_resource type="Texture2D" uid="uid://cnyqigxbax5md" path="res://assets/gfx/player/playerattack3.png" id="4_llx4j"]
 [ext_resource type="Texture2D" uid="uid://nhf50vo64x6x" path="res://assets/gfx/player/playerbase1.png" id="4_nwpvr"]
 [ext_resource type="Texture2D" uid="uid://dfbwo8gduhv8n" path="res://assets/gfx/player/playerattack4.png" id="5_avpgn"]
 [ext_resource type="Texture2D" uid="uid://7246oysoi34c" path="res://assets/gfx/player/playerhopping1.png" id="5_udcyt"]
+[ext_resource type="Texture2D" uid="uid://63emmd6s3j8k" path="res://assets/gfx/player/playerdeath1.png" id="6_36rb6"]
+[ext_resource type="Texture2D" uid="uid://b5x0xeyqbth0o" path="res://assets/gfx/player/playerdeath2.png" id="7_o6x78"]
 [ext_resource type="Texture2D" uid="uid://cpipe0a1pgo1b" path="res://assets/gfx/player/playerhopping2.png" id="7_qfcu6"]
+[ext_resource type="Texture2D" uid="uid://cy8ygs71r5vki" path="res://assets/gfx/player/playerdeath3.png" id="8_7huqd"]
 [ext_resource type="Texture2D" uid="uid://btgmeml6vssqy" path="res://assets/gfx/player/playerhopping3.png" id="8_knvq1"]
+[ext_resource type="Texture2D" uid="uid://cvrl41vvfokbh" path="res://assets/gfx/player/playerdeath4.png" id="9_tjh8y"]
 [ext_resource type="Texture2D" uid="uid://bhr07727rxyg0" path="res://assets/gfx/player/playerwobble1.png" id="9_v4t8x"]
 [ext_resource type="Texture2D" uid="uid://hbsmbqtuprd0" path="res://assets/gfx/player/playerwobble2.png" id="10_5erti"]
+[ext_resource type="Texture2D" uid="uid://hsgoc4g84n0o" path="res://assets/gfx/player/playerdeath5.png" id="10_pcnch"]
+[ext_resource type="Texture2D" uid="uid://d577tq3k06uy" path="res://assets/gfx/player/playerdeath6.png" id="11_7rlb4"]
 [ext_resource type="Texture2D" uid="uid://1aqx67lqq7qs" path="res://assets/gfx/player/playerwobble3.png" id="11_b4pyr"]
+[ext_resource type="Texture2D" uid="uid://c22ga4igveo04" path="res://assets/gfx/player/playeridlenew1.png" id="12_b1svj"]
 [ext_resource type="Texture2D" uid="uid://biqgcadaoqope" path="res://assets/gfx/player/playerwobble4.png" id="12_sgaxy"]
 [ext_resource type="Texture2D" uid="uid://bphnbiuuw8dig" path="res://assets/gfx/player/playerwobble5.png" id="13_722ib"]
+[ext_resource type="Texture2D" uid="uid://dl70xehhgks8l" path="res://assets/gfx/player/playeridlenew2.png" id="13_m0tgh"]
 [ext_resource type="Script" path="res://src/characters/player/wobble.gd" id="14_p1wy1"]
+[ext_resource type="Texture2D" uid="uid://dswmdkc7knyke" path="res://assets/gfx/player/playeridlenew3.png" id="14_yvkpj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_da6y0"]
 animations = [{
@@ -61,27 +69,42 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_uk3q1")
+"texture": ExtResource("6_36rb6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_o6x78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_7huqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tjh8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_pcnch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7rlb4")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_nwpvr")
+"texture": ExtResource("12_b1svj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_udcyt")
+"texture": ExtResource("13_m0tgh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_qfcu6")
+"texture": ExtResource("14_yvkpj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_udcyt")
+"texture": ExtResource("13_m0tgh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_nwpvr")
+"texture": ExtResource("12_b1svj")
 }],
 "loop": true,
 "name": &"idle",
@@ -154,7 +177,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"wobble",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="Animation" id="Animation_psy0d"]
@@ -162,22 +185,10 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("sprite:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("sprite:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -231,7 +242,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_sb2yv"]
 resource_name = "death"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -255,18 +266,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"death"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hw3ro"]
@@ -363,7 +362,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_oh7lp"]
 resource_name = "wobble"
-length = 1.6
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -388,6 +387,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [&"wobble"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -16), Vector2(-12, -16), Vector2(12, -16), Vector2(0, -16), Vector2(12, -16), Vector2(-12, -16), Vector2(-7.15256e-06, -16)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jvdl7"]
 _data = {
@@ -408,8 +419,9 @@ script = ExtResource("2_jhrk2")
 
 [node name="sprite" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
-animation = &"wobble"
-frame_progress = 0.0549245
+animation = &"idle"
+frame = 4
+frame_progress = 0.8127
 offset = Vector2(0, -16)
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -420,8 +432,5 @@ libraries = {
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 position_smoothing_enabled = true
 
-[node name="move" parent="xsm" index="2"]
-debug_mode = true
-
-[node name="wobble" parent="xsm" index="5"]
+[node name="wobble" parent="xsm" index="4"]
 script = ExtResource("14_p1wy1")
