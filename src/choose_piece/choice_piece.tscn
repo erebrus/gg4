@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs3ie3ldfbwx1"]
+[gd_scene load_steps=6 format=3 uid="uid://bs3ie3ldfbwx1"]
 
 [ext_resource type="Script" path="res://src/choose_piece/choice_piece.gd" id="1_fx7i2"]
 [ext_resource type="Resource" uid="uid://bm4gdywfkfvlf" path="res://src/gui/pieces/shield_charge.tres" id="2_q3f7a"]
+[ext_resource type="Texture2D" uid="uid://cbxk07ox053bh" path="res://src/gui/pieces/piece_bg.png" id="3_0ysby"]
 [ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="3_cmmij"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gkfbx"]
+texture = ExtResource("3_0ysby")
+texture_margin_left = 13.0
+texture_margin_top = 26.0
+texture_margin_right = 13.0
+texture_margin_bottom = 13.0
 
 [node name="ChoicePiece" type="VBoxContainer"]
 anchors_preset = 8
@@ -24,6 +32,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_gkfbx")
 
 [node name="Sprite" parent="Piece" instance=ExtResource("3_cmmij")]
 unique_name_in_owner = true

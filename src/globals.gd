@@ -19,8 +19,15 @@ const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"
 const WIN_SCREEN = "res://src/win/win_screen.tscn"
 const CHOOSE_PIECE = "res://src/choose_piece/choose_piece.tscn"
 
+const TRANSITION_COLOR = Color("#009aff")
+
 const START_DECK = preload("res://src/gui/deck/default_deck.tres")
 
+var default_transition = {
+	"pattern":"horizontal", 
+	"wait_time":0,
+	"color": TRANSITION_COLOR
+}
 
 var deck:
 	get:
@@ -53,15 +60,20 @@ func _init_logger():
 
 func gameover():
 	await get_tree().create_timer(2.5).timeout
-	SceneLoader.load_scene(GAMEOVER_SCREEN)
+	SceneManager.change_scene(GAMEOVER_SCREEN, default_transition)
 	
 
 func win(remaining_pieces: int):
-	SceneLoader.load_scene(WIN_SCREEN, remaining_pieces)
+	SceneManager.change_scene(WIN_SCREEN, {
+		"pattern":"horizontal", 
+		"wait_time":0,
+		"color": TRANSITION_COLOR,
+		"on_ready": func(scene): scene.set_data(remaining_pieces)
+	})
 	
 
 func menu():
-	SceneLoader.load_scene(MENU_SCREEN)
+	SceneManager.change_scene(MENU_SCREEN, default_transition)
 	
 
 func can_continue() -> bool:
@@ -70,15 +82,19 @@ func can_continue() -> bool:
 
 func start():
 	level_manager.reset_level()
-	SceneLoader.load_scene(MAIN_SCREEN)
+	SceneManager.change_scene(MAIN_SCREEN, default_transition)
 	
 
 func continue_game():
-	SceneLoader.load_scene(MAIN_SCREEN)
+	SceneManager.change_scene(MAIN_SCREEN, default_transition)
 	
 
 func choose_piece():
-	SceneLoader.load_scene(CHOOSE_PIECE)
+	SceneManager.change_scene(CHOOSE_PIECE, {
+			"pattern_enter":"curtains", 
+			"wait_time":0, 
+			"color": TRANSITION_COLOR,
+		})
 	
 
 #
