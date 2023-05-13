@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=5 format=3 uid="uid://cpggwsu24jreo"]
+
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_n3omd"]
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_vse08"]
+
+[sub_resource type="Resource" id="Resource_8nq8q"]
+script = ExtResource("1_n3omd")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_altdm"]
+script = ExtResource("1_n3omd")
+action = 0
+direction = 3
+speed = 1
+
+[resource]
+script = ExtResource("1_vse08")
+commands = Array[ExtResource("1_n3omd")]([SubResource("Resource_8nq8q"), SubResource("Resource_altdm")])
+description = "Forward and turn right"

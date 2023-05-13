@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Piece" load_steps=7 format=3 uid="uid://criqx647ysnvi"]
+[gd_resource type="Resource" script_class="Piece" load_steps=6 format=3 uid="uid://criqx647ysnvi"]
 
 [ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_3flr7"]
 [ext_resource type="Script" path="res://src/commands/command.gd" id="1_g8rd5"]
@@ -21,13 +21,7 @@ action = 0
 direction = 2
 speed = 1
 
-[sub_resource type="Resource" id="Resource_vx6s7"]
-script = ExtResource("1_g8rd5")
-action = 0
-direction = 2
-speed = 1
-
 [resource]
 script = ExtResource("1_3flr7")
-commands = Array[ExtResource("1_g8rd5")]([SubResource("Resource_mg7ly"), SubResource("Resource_tm12r"), SubResource("Resource_8c8of"), SubResource("Resource_vx6s7")])
-description = "Move forward four times"
+commands = Array[ExtResource("1_g8rd5")]([SubResource("Resource_mg7ly"), SubResource("Resource_tm12r"), SubResource("Resource_8c8of")])
+description = "Move forward three times"

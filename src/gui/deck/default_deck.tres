@@ -1,20 +1,19 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=14 format=3 uid="uid://bjhasktpujsqs"]
+[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://b3qkrx8ptw0y4"]
 
-[ext_resource type="Resource" uid="uid://cf8vqjp1hbl4a" path="res://src/gui/pieces/right.tres" id="1_safwu"]
-[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/long.tres" id="2_x76ek"]
-[ext_resource type="Resource" uid="uid://3d2ylmx68avu" path="res://src/gui/pieces/l.tres" id="3_nn11v"]
-[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/step.tres" id="4_hnfnq"]
-[ext_resource type="Resource" uid="uid://5s4vd7xwgk63" path="res://src/gui/pieces/u.tres" id="5_xd6un"]
-[ext_resource type="Resource" uid="uid://beihu3rnu20tv" path="res://src/gui/pieces/attack.tres" id="6_kvbpt"]
+[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/side_step_right.tres" id="1_034i0"]
+[ext_resource type="Resource" uid="uid://7ny1aln8n5ku" path="res://src/gui/pieces/side_step_left.tres" id="2_msvmy"]
+[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/run.tres" id="3_tjqmq"]
+[ext_resource type="Resource" uid="uid://cf8vqjp1hbl4a" path="res://src/gui/pieces/step.tres" id="4_hnfnq"]
+[ext_resource type="Resource" uid="uid://e5ed3741kb34" path="res://src/gui/pieces/long_turn_right.tres" id="6_6fn34"]
+[ext_resource type="Resource" uid="uid://bsxma5ndyfbxb" path="res://src/gui/pieces/long_turn_left.tres" id="7_3tvdf"]
 [ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="7_kw80b"]
-[ext_resource type="Resource" uid="uid://cwc00d3ip1psj" path="res://src/gui/pieces/shield.tres" id="7_xrwc6"]
-[ext_resource type="Resource" uid="uid://lmaj55dcc2ow" path="res://src/gui/pieces/charge.tres" id="8_8iao1"]
-[ext_resource type="Resource" uid="uid://bm4gdywfkfvlf" path="res://src/gui/pieces/shield_charge.tres" id="9_cl4fp"]
-[ext_resource type="Resource" uid="uid://dpuudyls0tsih" path="res://src/gui/pieces/sprint.tres" id="10_7bodq"]
+[ext_resource type="Resource" uid="uid://5s4vd7xwgk63" path="res://src/gui/pieces/u_turn_right.tres" id="8_q6vr7"]
+[ext_resource type="Resource" uid="uid://m13auijtsiqg" path="res://src/gui/pieces/u_turn_left.tres" id="9_wtyv4"]
 [ext_resource type="Resource" uid="uid://myj08manl2ep" path="res://src/gui/pieces/wait.tres" id="11_8cejf"]
-[ext_resource type="Resource" uid="uid://chsk2qjugpdvk" path="res://src/gui/pieces/tripple_wait.tres" id="12_j8je2"]
+[ext_resource type="Resource" uid="uid://cpggwsu24jreo" path="res://src/gui/pieces/short_turn_right.tres" id="17_875ay"]
+[ext_resource type="Resource" uid="uid://djwsc88vx6sxx" path="res://src/gui/pieces/short_turn_left.tres" id="18_lhh85"]
 
 [resource]
 script = ExtResource("7_kw80b")
-pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_safwu"), ExtResource("2_x76ek"), ExtResource("3_nn11v"), ExtResource("4_hnfnq"), ExtResource("5_xd6un"), ExtResource("6_kvbpt"), ExtResource("7_xrwc6"), ExtResource("8_8iao1"), ExtResource("9_cl4fp"), ExtResource("10_7bodq"), ExtResource("11_8cejf"), ExtResource("12_j8je2")])
-quantities = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_034i0"), ExtResource("2_msvmy"), ExtResource("3_tjqmq"), ExtResource("4_hnfnq"), ExtResource("8_q6vr7"), ExtResource("9_wtyv4"), ExtResource("6_6fn34"), ExtResource("7_3tvdf"), ExtResource("17_875ay"), ExtResource("18_lhh85"), ExtResource("11_8cejf")])
+quantities = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
