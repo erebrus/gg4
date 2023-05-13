@@ -14,6 +14,5 @@ script = ExtResource("3_v7hly")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Gui" parent="CanvasLayer" instance=ExtResource("2_hg27e")]
-offset_top = -128.0
 
 [node name="Dice" parent="CanvasLayer" instance=ExtResource("4_37j7b")]

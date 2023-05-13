@@ -7,14 +7,12 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7howe"]
 
 [node name="Gui" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 128)
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -50.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_7howe")
 script = ExtResource("1_jttiy")
 
@@ -26,9 +24,7 @@ size_flags_vertical = 8
 
 [node name="Hand" parent="." instance=ExtResource("2_4blni")]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
+position = Vector2(960, 980)
 
 [node name="DiscardPile" parent="." instance=ExtResource("1_lbl2e")]
 unique_name_in_owner = true
