@@ -77,7 +77,7 @@ func _select_tween() -> void:
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.tween_property(self, "position", Vector2(position.x, SELECTED_OFFSET), 0.3)
+	tween.tween_property(self, "position:y", SELECTED_OFFSET, 0.3)
 	tween.tween_callback(left_button.show)
 	tween.tween_callback(right_button.show)
 	
@@ -88,7 +88,7 @@ func _unselect_tween() -> void:
 	tween = create_tween()
 	tween.tween_callback(left_button.hide)
 	tween.tween_callback(right_button.hide)
-	tween.tween_property(self, "position", Vector2(position.x, 0), 0.3)
+	tween.tween_property(self, "position:y", 0, 0.3)
 	
 
 func _on_hand_piece_gui_input(event):
