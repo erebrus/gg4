@@ -42,6 +42,9 @@ func tick()->void:
 	in_turn = true
 
 	if not commands.is_empty():
+		#HACK I dont know where the null comes from and I'm tired of looking for it!
+		while commands[0] == null:
+			commands.remove_at(0)
 		var direction:Vector2i = translate_command(commands[0])
 		previous_command = commands[0]
 		commands.remove_at(0)	
@@ -77,13 +80,13 @@ func translate_command(_command : Command)->Vector2i:
 		return Vector2i.ZERO
 	match _command.direction:
 		Command.Direction.RIGHT:
-			return Vector2i.RIGHT
+			return Vector2i.RIGHT*_command.speed
 		Command.Direction.LEFT:
-			return Vector2i.LEFT
+			return Vector2i.LEFT*_command.speed
 		Command.Direction.UP:
-			return Vector2i.UP
+			return Vector2i.UP*_command.speed
 		Command.Direction.DOWN:
-			return Vector2i.DOWN
+			return Vector2i.DOWN*_command.speed
 	return Vector2i.ZERO	
 	
 
@@ -128,7 +131,9 @@ func bump()->void:
 	pass
 
 func retreat()->void:
-	world_target_pos = grid.map_to_local(previous_cell)
+	var prev_pos:Vector2 = grid.map_to_local(previous_cell)
+	var direction:Vector2 = (prev_pos  - world_target_pos).normalized()
+	world_target_pos = world_target_pos + grid.tile_size*Vector2(round(direction.x), round(direction.y))
 	if redo_command:
 		commands.insert(0,previous_command)	
 
