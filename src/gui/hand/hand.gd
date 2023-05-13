@@ -30,6 +30,9 @@ func _ready():
 	
 
 func _input(_event):
+	if Globals.player_in_turn:
+		return
+	
 	if Input.is_action_just_pressed("ui_left"):
 		choose_previous_piece()
 	if Input.is_action_just_pressed("ui_right"):
