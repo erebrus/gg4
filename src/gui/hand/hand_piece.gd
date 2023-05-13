@@ -7,7 +7,7 @@ signal accepted
 
 
 const SELECTED_OFFSET = -80
-const SELECTED_POSITION = Vector2(1920/2,1280-600)
+const SELECTED_POSITION = Vector2(1920/2,1080-600)
 const SPRITE_SIZE = 128
 
 @export var piece: Piece
@@ -38,8 +38,6 @@ func _input(event: InputEvent) -> void:
 
 func place() -> void:
 	Events.commands_queued.emit(piece.commands)
-	# todo: animation before free
-	queue_free()
 	
 
 func select() -> void:
@@ -82,9 +80,9 @@ func _unselect_tween() -> void:
 	if tween:
 		tween.kill()
 	tween = create_tween()
-	tween.tween_property(self, "position", Vector2(position.x, 0), 0.3)
 	tween.tween_callback(left_button.hide)
 	tween.tween_callback(right_button.hide)
+	tween.tween_property(self, "position", Vector2(position.x, 0), 0.3)
 	
 
 func _on_hand_piece_gui_input(event):

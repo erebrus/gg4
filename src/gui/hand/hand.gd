@@ -1,8 +1,8 @@
 class_name Hand extends Node2D
 
 
-signal piece_placed(piece: Piece)
-signal piece_discarded(piece: Piece)
+signal piece_placed(piece: Piece, scene: Node2D)
+signal piece_discarded(piece: Piece) # do same as piece placed?
 
 
 const HandPiece = preload("res://src/gui/hand/hand_piece.tscn")
@@ -93,17 +93,24 @@ func choose_next_piece()->void:
 	
 
 func place_piece() -> void:
-	var idx = get_index_of_piece(selected_piece)
-	pieces[selected_piece].place()
-	pieces.erase(selected_piece)
-	piece_placed.emit(selected_piece)
+	if not pieces.has(selected_piece):
+		Logger.warn("Trying to place piece not in hand: %s" % selected_piece)
+		return
 	
+	var scene = pieces[selected_piece]
+	scene.place()
+	piece_container.remove_child(scene)
+	pieces.erase(selected_piece)
+	piece_placed.emit(selected_piece, scene)
+	
+	# todo: only select after commands are played out?
+	await Events.player_queue_empty
+		
 	if is_empty():
 		selected_piece = null
 	else:
-		# todo: only select after commands are played out?
-		await Events.player_queue_empty
-		select_piece_by_index(idx, false)
+		# todo: select last-selected piece?
+		select_piece_by_index(0, false)
 	
 
 func get_index_of_piece(piece:Piece) -> int:
