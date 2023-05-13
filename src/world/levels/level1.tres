@@ -9,4 +9,4 @@
 [resource]
 script = ExtResource("4_8rgn8")
 pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_vfbt3"), ExtResource("2_aq5f7"), ExtResource("2_s6rhb"), ExtResource("3_gi83i")])
-quantities = Array[int]([2, 1, 2, 1])
+quantities = Array[int]([2, 1, 4, 1])

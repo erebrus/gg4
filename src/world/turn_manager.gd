@@ -17,7 +17,8 @@ func unregister(element):
 func register(element):
 	elements.append(element)
 	element.tick_complete.connect(_on_tick_complete.bind(element))
-	Events.player_ticked.connect(_on_player_ticked)
+	if element.is_in_group("player"):
+		Events.player_ticked.connect(_on_player_ticked)
 
 func _on_player_ticked()->void:
 	if turn_complete():
@@ -29,6 +30,9 @@ func _on_tick_complete(el)->void:
 	if not el in elements_moving:
 		Logger.warn("Tried to remove %s from moving list, but element is not there." % [el.name])
 	elements_moving.erase(el)
+	if el.is_in_group("player"):
+		Globals.player_in_turn=false
+		Logger.debug("Turn player over")
 	if turn_complete():
 		Logger.debug("Tick done.")
 		if tick_pending:
@@ -40,6 +44,9 @@ func tick()->void:
 	elements_moving = []
 	elements_moving.append_array(elements)
 	for el in elements_moving:
+		if el.is_in_group("player"):
+			Globals.player_in_turn=true
+			Logger.debug("Turn player start")
 		el.tick()
 	
 func turn_complete()->bool:

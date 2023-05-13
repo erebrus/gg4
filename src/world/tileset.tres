@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://bebwvjoavppeh"]
+[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://bebwvjoavppeh"]
 
 [ext_resource type="Texture2D" uid="uid://dbiy0qbai6wdx" path="res://assets/gfx/world/tiles/Grass2.png" id="1_yqtyx"]
 [ext_resource type="Texture2D" uid="uid://c0wkx8k4qs6ex" path="res://assets/gfx/world/tiles/Grass1.png" id="2_2geos"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://pllnnrdp1xi5" path="res://src/world/objects/hazard.tscn" id="5_3boht"]
 [ext_resource type="PackedScene" uid="uid://c2dkrwgtcayi2" path="res://src/world/special_tiles/quicksand.tscn" id="6_2qlge"]
 [ext_resource type="Texture2D" uid="uid://cl05d74quam6s" path="res://assets/gfx/world/tiles/Grass3.png" id="7_4jona"]
+[ext_resource type="PackedScene" uid="uid://0wen44id7217" path="res://src/world/objects/dice.tscn" id="7_pfqa3"]
 [ext_resource type="Texture2D" uid="uid://bp8mkpgbrp0rm" path="res://assets/gfx/world/tiles/Grass4.png" id="8_vh1c7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_deu38"]
@@ -36,6 +37,7 @@ texture_region_size = Vector2i(128, 128)
 scenes/1/scene = ExtResource("4_arrqi")
 scenes/2/scene = ExtResource("5_3boht")
 scenes/3/scene = ExtResource("6_2qlge")
+scenes/4/scene = ExtResource("7_pfqa3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_trh3g"]
 texture = ExtResource("7_4jona")

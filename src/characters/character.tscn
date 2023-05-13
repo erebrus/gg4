@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4bv0gd2datv0"]
+[gd_scene load_steps=29 format=3 uid="uid://b4bv0gd2datv0"]
 
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="3_uqxgq"]
 [ext_resource type="Script" path="res://src/characters/wait.gd" id="4_2hx5j"]
@@ -11,7 +11,11 @@
 [ext_resource type="AudioStream" uid="uid://hcmlms08c6vo" path="res://assets/sfx/walk_grass_01.wav" id="9_n65ai"]
 [ext_resource type="Script" path="res://src/characters/hop.gd" id="9_ol2ln"]
 [ext_resource type="AudioStream" uid="uid://dbct8cl022dhj" path="res://assets/sfx/walk_grass_02.wav" id="10_6e2tr"]
+[ext_resource type="AudioStream" uid="uid://v1o8qt8700sk" path="res://assets/sfx/attack_01.wav" id="10_hey1b"]
 [ext_resource type="AudioStream" uid="uid://67qigalgwrr6" path="res://assets/sfx/walk_grass_03.wav" id="11_082v8"]
+[ext_resource type="AudioStream" uid="uid://b36j2ht1al5ps" path="res://assets/sfx/attack_02.wav" id="11_wjpd7"]
+[ext_resource type="AudioStream" uid="uid://bp1auy67y5vjh" path="res://assets/sfx/attack_03.wav" id="12_r7jx2"]
+[ext_resource type="AudioStream" uid="uid://bbf23v56fu7b" path="res://assets/sfx/error_wall.wav" id="16_c5iaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ms33h"]
 size = Vector2(80, 80)
@@ -267,6 +271,15 @@ _data = {
 "wobble": SubResource("Animation_oh7lp")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x1hi6"]
+streams_count = 3
+stream_0/stream = ExtResource("10_hey1b")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("11_wjpd7")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("12_r7jx2")
+stream_2/weight = 1.0
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qlt7u"]
 streams_count = 3
 stream_0/stream = ExtResource("9_n65ai")
@@ -280,7 +293,6 @@ stream_2/weight = 1.0
 z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_ms33h")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -343,7 +355,19 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../attack")
+next_state = NodePath("../../wait")
+
+[node name="death" type="Node" parent="xsm/move"]
+script = ExtResource("6_8ud4g")
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = "death"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../../wait")
 
 [node name="attack" type="Node" parent="xsm/move"]
 script = ExtResource("4_gccs2")
@@ -361,18 +385,6 @@ next_state = NodePath("")
 script = ExtResource("6_kofad")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "hurt"
-anim_times_to_play = 1
-on_anim_finished = 0
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../wait")
-
-[node name="death" type="Node" parent="xsm"]
-script = ExtResource("6_8ud4g")
-animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "death"
 anim_times_to_play = 1
 on_anim_finished = 0
 disabled = false
@@ -407,5 +419,11 @@ next_state = NodePath("../wait")
 
 [node name="sfx" type="Node" parent="."]
 
+[node name="sfx_combat" type="AudioStreamPlayer2D" parent="sfx"]
+stream = SubResource("AudioStreamRandomizer_x1hi6")
+
 [node name="sfx_hop_grass" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_qlt7u")
+
+[node name="sfx_bump" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("16_c5iaa")

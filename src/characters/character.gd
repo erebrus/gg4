@@ -20,6 +20,8 @@ var commands:Array[Command]
 var in_turn := false
 
 var dead := false
+var tick_suspended := false
+var tick_requested := false
 
 @onready var sprite:AnimatedSprite2D = $sprite
 @onready var grid:Arena = get_parent()
@@ -30,25 +32,11 @@ func _ready():
 	world_target_pos = position
 	xsm.disabled = false
 	xsm.change_state("idle")
-
-
-func update_sprite():
-	pass
+	if not sprite.is_playing():
+		sprite.play(sprite.animation)
 
 func is_at_target_position()->bool:
 	return position == world_target_pos
-
-
-func _physics_process(delta:float):	
-	if dead:
-		return
-	control(delta)
-	update_sprite()
-
-
-func control(_delta:float)->void:
-	pass	
-
 
 func tick()->void:
 	in_turn = true
@@ -65,11 +53,25 @@ func tick()->void:
 	else:
 		# lets wait for the next frame because we might be inside a subscriber call of the signal
 		await get_tree().process_frame 
-		previous_command = null
-		in_turn = false		
-		tick_complete.emit() 
+		complete_tick()
 	
+func complete_tick():
+	if tick_suspended:
+		tick_requested = true
+		return
+	previous_command = null
+	in_turn = false		
+	tick_complete.emit() 
+	tick_requested = false
+		
+func clear_suspension():
+	tick_suspended = false
+	if tick_requested:
+		complete_tick()
 
+func suspend_tick():
+	tick_suspended = true
+	
 func translate_command(_command : Command)->Vector2i:
 	if _command.speed == 0:
 		return Vector2i.ZERO
@@ -94,7 +96,6 @@ func handle_combat(player, enemy)->void:
 		enemy.take_damage()
 		enemy.retreat()
 	else:
-		var cell:Vector2i = grid.local_to_map(player.position)
 		var player_moved:bool = player.position != player.grid.map_to_local(player.previous_cell)
 		var enemy_moved:bool = enemy.position != enemy.grid.map_to_local(enemy.previous_cell)
 

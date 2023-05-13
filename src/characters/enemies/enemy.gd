@@ -14,7 +14,7 @@ func _test_pattern():
 		start +=translate_command(v)
 	assert(start==Vector2i.ZERO)
 		
-func control(_delta:float)->void:	
+func _physics_process(_delta)->void:	
 	if commands.is_empty():
 		commands.append_array(command_pattern)
 		
@@ -23,7 +23,9 @@ func handle_combat_with(other):
 	handle_combat(other, self)
 	
 func take_damage():	
-	super.take_damage()
+#	super.take_damage()
 	dead = true
+	$sfx/sfx_death.play()
+	xsm.change_state("death")
 	
 	

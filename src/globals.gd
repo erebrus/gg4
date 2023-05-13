@@ -20,10 +20,13 @@ const WIN_SCREEN = "res://src/win/win_screen.tscn"
 const CHOOSE_PIECE = "res://src/choose_piece/choose_piece.tscn"
 
 const START_DECK = preload("res://src/gui/deck/default_deck.tres")
+
+
 var deck:
 	get:
 		return level_manager.current_deck
 	
+var player_in_turn:= false
 
 @onready var level_manager:LevelManager = $LevelManager
 
@@ -43,15 +46,13 @@ func _ready():
 func _init_logger():
 	Logger.set_logger_level(Logger.LOG_LEVEL_INFO)
 	Logger.set_logger_format(Logger.LOG_FORMAT_MORE)
-	var console_appender:Appender = Logger.add_appender(ConsoleAppender.new())
-	console_appender.logger_format=Logger.LOG_FORMAT_FULL
-	console_appender.logger_level = Logger.LOG_LEVEL_DEBUG
 	var file_appender:Appender = Logger.add_appender(FileAppender.new("res://debug.log"))
 	file_appender.logger_format=Logger.LOG_FORMAT_FULL
 	file_appender.logger_level = Logger.LOG_LEVEL_DEBUG
 
 
 func gameover():
+	await get_tree().create_timer(2.5).timeout
 	SceneLoader.load_scene(GAMEOVER_SCREEN)
 	
 

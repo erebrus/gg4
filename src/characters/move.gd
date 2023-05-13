@@ -26,7 +26,7 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	if owner.is_at_target_position():
+	if owner.is_at_target_position() and not owner.dead:
 		change_state("idle")
 	var target_direction:Vector2 = (owner.world_target_pos - owner.position).normalized()
 	owner.velocity = owner.speed * target_direction * _delta
@@ -46,7 +46,8 @@ func _on_update(_delta):
 	if collision:
 		#Logger.error("Unexpected collision with:",collision.collider.name)
 		var collider=collision.get_collider()
-		if collider.is_in_group("character"):			
+		if collider.is_in_group("character"):	
+			owner.get_node("sfx/sfx_combat").play()		
 			owner.handle_combat_with(collider)
 			return
 		else:
@@ -54,7 +55,7 @@ func _on_update(_delta):
 #			owner.bump()#TODO consider move to state
 			change_state("wobble")
 			return
-	if done:
+	if done and not owner.dead:
 		change_state("idle")	
 
 
