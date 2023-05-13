@@ -17,7 +17,7 @@ var num_pieces:
 
 var selected_piece: Piece
 var pieces: Dictionary
-
+var sort_tween: Tween
 
 @onready var piece_container = get_node("%Pieces")
 @onready var draw_sound: AudioStreamPlayer = $sfx/draw
@@ -51,6 +51,7 @@ func add(piece: Piece) -> void:
 	scene.unselected.connect(_on_piece_unselected.bind(piece))
 	pieces[piece] = scene
 	piece_container.add_child(scene)
+	
 	sort_pieces()
 	
 
@@ -65,6 +66,7 @@ func discard(idx:int = 0 )->void:
 	pieces.erase(discarded_piece)
 	
 	piece_discarded.emit(discarded_piece, handpiece)
+	sort_pieces()
 	
 	if is_empty():
 		selected_piece = null
@@ -103,6 +105,7 @@ func place_piece() -> void:
 	piece_container.remove_child(scene)
 	pieces.erase(selected_piece)
 	piece_placed.emit(selected_piece, scene)
+	sort_pieces()
 	
 	# todo: only select after commands are played out?
 	await Events.player_queue_empty
@@ -131,11 +134,22 @@ func select_piece_by_index(idx:int, rollover:bool)->void:
 	
 
 func sort_pieces() -> void:
+	if pieces.is_empty():
+		return
+	
+	Logger.debug("Sorting %s pieces" % pieces.size())
+	
+	if sort_tween:
+		sort_tween.kill()
+	sort_tween = create_tween().set_parallel()
+	
 	var total_size = PIECE_SIZE * pieces.size()
 	for i in pieces.size():
 		var piece = pieces[pieces.keys()[i]]
-		piece.position.x = - total_size / 2 + PIECE_SIZE * i + PIECE_SIZE / 2
-		piece.position.y = 0
+		var x = - total_size / 2 + PIECE_SIZE * i + PIECE_SIZE / 2
+		sort_tween.tween_property(piece, "position:x", x, 0.3)
+	
+	Logger.debug("Finish sorting  %s pieces" % pieces.size())
 	
 
 func _on_piece_selected(piece: Piece) -> void:
