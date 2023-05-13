@@ -7,6 +7,7 @@ const DISCARD_TIME = 1
 
 @export var auto_draw_piece_on_place: bool = true
 
+var exit_reached := false
 
 @onready var deck: PiecePile = get_node("%DeckPile")
 @onready var discard_pile: PiecePile = get_node("%DiscardPile")
@@ -17,10 +18,11 @@ func _ready() -> void:
 	hand.piece_discarded.connect(_on_piece_discarded)
 	hand.piece_placed.connect(_on_piece_placed)
 	
-	Events.turn_complete.connect(_on_turn_complete)
 	Events.piece_given.connect(hand.add)
 	Events.trigger_discard.connect(_on_discard_triggered)
 	Events.trigger_discard_fetch.connect(_on_discard_fetch_triggered)
+	Events.level_complete.connect(func(): exit_reached = true)
+	Events.player_queue_empty.connect(_on_player_queue_empty)
 	
 
 func _input(event: InputEvent) -> void:
@@ -120,8 +122,9 @@ func _on_deck_pile_gui_input(event: InputEvent) -> void:
 			Events.piece_drawn.emit()
 	
 
-func _on_turn_complete() -> void:
-	_fill_hand()
+func _on_player_queue_empty() -> void:
+	if not exit_reached:
+		_fill_hand()
 	
 
 func _on_discard_triggered() -> void:

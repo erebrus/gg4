@@ -7,13 +7,15 @@ func _ready():
 	Events.commands_queued.connect(add_commands)
 	Events.out_of_pieces.connect(set_out_of_pieces.bind(true))
 #	Events.piece_drawn.connect(set_out_of_pieces.bind(false))
-	tick_complete.connect(_on_tick_complete)	
+	Events.turn_complete.connect(_on_turn_complete)	
 	set_camera_limits()
 
 func add_commands(new_commands: Array[Command]):
 	for c in new_commands:
 		commands.append(c.duplicate())
-	Events.player_ticked.emit()
+	Globals.player_in_turn = true
+	Logger.debug("Turn player start")
+	Events.trigger_tick.emit()
 	Logger.debug("Added %s commands to player" % str(new_commands))
 
 func handle_combat_with(_other):
@@ -36,11 +38,14 @@ func set_out_of_pieces(val:bool):
 	out_of_pieces=val
 	
 
-func _on_tick_complete():
+func _on_turn_complete():
 	if commands.is_empty():
 		Events.player_queue_empty.emit()
+		Globals.player_in_turn = false
+		Logger.debug("Turn player over")
 	else:
-		Events.player_ticked.emit()			
+		Events.trigger_tick.emit()
+	
 
 func bump()->void:
 	Events.player_bumped.emit()

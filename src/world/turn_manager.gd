@@ -31,27 +31,25 @@ func _on_tick_complete(el)->void:
 	if not el in elements_moving:
 		Logger.warn("Tried to remove %s from moving list, but element is not there." % [el.name])
 	elements_moving.erase(el)
-	if el.is_in_group("player"):
-		Globals.player_in_turn=false
-		Logger.debug("Turn player over")
+	
 	if turn_complete():
-		Logger.debug("Tick done.")
+		Events.turn_complete.emit()
+		
+		Logger.debug("Tick done. Pending: %s" % tick_pending)
 		if tick_pending:
 			tick_pending = false
 			tick()
-		else:
-			Events.turn_complete.emit()
+		
 
 func tick()->void:
 	Logger.debug("Tick")
 	elements_moving = []
 	elements_moving.append_array(elements)
+	
 	for el in elements_moving:
-		if el.is_in_group("player"):
-			Globals.player_in_turn=true
-			Logger.debug("Turn player start")
 		el.tick()
 	
+
 func turn_complete()->bool:
 	return elements_moving.is_empty()
 	
