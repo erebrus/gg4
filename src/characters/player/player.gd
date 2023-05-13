@@ -22,14 +22,14 @@ func handle_combat_with(_other):
 	handle_combat(self, _other)
 
 func _physics_process(_delta):
-	if out_of_pieces and not dead:
+	if out_of_pieces and not dead and not Globals.level_manager.level_complete:
 		dead = true
 		xsm.change_state("death")	
 		$sfx/sfx_death.play()
 		
 func take_damage():	
 	Events.player_damaged.emit(4) #TODO replace by variable
-	if out_of_pieces:
+	if out_of_pieces and not Globals.level_manager.level_complete:
 		dead = true
 		$sfx/sfx_death.play()
 		xsm.change_state("death")	
