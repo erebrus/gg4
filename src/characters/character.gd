@@ -62,7 +62,7 @@ func complete_tick():
 	if tick_suspended:
 		tick_requested = true
 		return
-	previous_command = null
+#	previous_command = null
 	in_turn = false		
 	tick_complete.emit() 
 	tick_requested = false

@@ -1,6 +1,6 @@
 extends Container
 
-const SPRITE_SIZE = 32
+const SPRITE_SIZE = 42
 
 @export var commands: Array[Command]:
 	set(value):
