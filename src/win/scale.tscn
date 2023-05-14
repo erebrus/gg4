@@ -22,7 +22,13 @@ position = Vector2(-480, 0)
 texture = ExtResource("3_bamgm")
 offset = Vector2(0, 188)
 
+[node name="BagPosition" type="Marker2D" parent="LeftPlate"]
+position = Vector2(1, 315)
+
 [node name="RightPlate" type="Sprite2D" parent="."]
 position = Vector2(480, 0)
 texture = ExtResource("3_bamgm")
 offset = Vector2(0, 187)
+
+[node name="BagPosition" type="Marker2D" parent="RightPlate"]
+position = Vector2(1, 315)
