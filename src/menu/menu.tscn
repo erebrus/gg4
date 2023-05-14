@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnp5yf4j7gjpx"]
+[gd_scene load_steps=5 format=3 uid="uid://bnp5yf4j7gjpx"]
 
 [ext_resource type="Script" path="res://src/menu/menu.gd" id="1_syvxs"]
+[ext_resource type="Texture2D" uid="uid://vy15ccy5i33v" path="res://assets/gfx/bgs/backgroungstart2.png" id="2_fpqhr"]
 
 [sub_resource type="Theme" id="Theme_iu8oi"]
 default_font_size = 64
@@ -18,16 +19,27 @@ grow_vertical = 2
 theme = SubResource("Theme_iu8oi")
 script = ExtResource("1_syvxs")
 
-[node name="MarginContainer2" type="MarginContainer" parent="."]
+[node name="BG" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 300
+texture = ExtResource("2_fpqhr")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -313.5
+offset_right = 313.5
+offset_bottom = 140.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 100
 
 [node name="Label" type="Label" parent="MarginContainer2"]
 layout_mode = 2
-text = "Awesome Puzzle Game"
+text = "Less is Quest"
 label_settings = SubResource("LabelSettings_kbu0s")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmt4b7nq0aagl"]
+[gd_scene load_steps=4 format=3 uid="uid://bmt4b7nq0aagl"]
 
 [ext_resource type="Script" path="res://src/gameover/gameover.gd" id="1_fx6b7"]
+[ext_resource type="Texture2D" uid="uid://xd4kaq8g71gf" path="res://assets/gfx/bgs/backgroundover.png" id="2_lb3se"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xue0m"]
 font_size = 100
@@ -13,6 +14,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fx6b7")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_lb3se")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 60.0
