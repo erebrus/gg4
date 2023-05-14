@@ -1,21 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bnp5yf4j7gjpx"]
+[gd_scene load_steps=7 format=3 uid="uid://bnp5yf4j7gjpx"]
 
 [ext_resource type="StyleBox" uid="uid://c5x52ku10ofab" path="res://src/menu/button_normal.tres" id="1_jsv5s"]
 [ext_resource type="Script" path="res://src/menu/menu.gd" id="1_syvxs"]
 [ext_resource type="Texture2D" uid="uid://vy15ccy5i33v" path="res://assets/gfx/bgs/backgroungstart2.png" id="2_fpqhr"]
-[ext_resource type="StyleBox" uid="uid://dkcv6bou47q5p" path="res://src/menu/button_hover.tres" id="2_ofox0"]
 [ext_resource type="StyleBox" uid="uid://cddhkm3vxv4ls" path="res://src/menu/button_pressed.tres" id="3_c0578"]
 
 [sub_resource type="Theme" id="Theme_iu8oi"]
 default_font_size = 64
-Button/colors/font_color = Color(0.988235, 0.913725, 0.00392157, 1)
+Button/colors/font_color = Color(0.988235, 0.533333, 0.00392157, 1)
 Button/colors/font_hover_color = Color(0.988235, 0.913725, 0.00392157, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.988235, 0.913725, 0.00392157, 1)
 Button/constants/outline_size = 10
 Button/styles/disabled = ExtResource("1_jsv5s")
 Button/styles/focus = null
-Button/styles/hover = ExtResource("2_ofox0")
+Button/styles/hover = ExtResource("3_c0578")
 Button/styles/normal = ExtResource("1_jsv5s")
 Button/styles/pressed = ExtResource("3_c0578")
 
