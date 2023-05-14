@@ -413,7 +413,6 @@ _data = {
 }
 
 [node name="Player" groups=["player"] instance=ExtResource("1_fybfn")]
-z_index = 2
 collision_layer = 16
 collision_mask = 33
 script = ExtResource("2_jhrk2")
