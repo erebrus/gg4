@@ -1,0 +1,50 @@
+[gd_scene load_steps=17 format=3 uid="uid://ch0gav3hkigvm"]
+
+[ext_resource type="PackedScene" uid="uid://cldwu41ur8qw1" path="res://src/world/arena.tscn" id="1_dqusf"]
+[ext_resource type="PackedScene" uid="uid://bn8hyp5yo4amx" path="res://src/characters/enemies/enemy.tscn" id="2_4d06b"]
+[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/step.tres" id="2_7ttbl"]
+[ext_resource type="Resource" uid="uid://dbrvx8tdmcjjj" path="res://src/gui/pieces/long_turn_left.tres" id="3_a8o5w"]
+[ext_resource type="Resource" uid="uid://cibyoxpl20xsc" path="res://src/gui/pieces/long_turn_right.tres" id="4_ojg68"]
+[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/run.tres" id="5_6fdqf"]
+[ext_resource type="Resource" uid="uid://5s4vd7xwgk63" path="res://src/gui/pieces/u_turn_right.tres" id="6_og78x"]
+[ext_resource type="Resource" uid="uid://myj08manl2ep" path="res://src/gui/pieces/wait.tres" id="7_jb5cp"]
+[ext_resource type="Resource" uid="uid://c6w822vyykot8" path="res://src/gui/pieces/side_step_left.tres" id="8_cv4kp"]
+[ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="9_35xtg"]
+[ext_resource type="Resource" uid="uid://dehqbqwem143e" path="res://src/gui/pieces/short_turn_left.tres" id="9_icsqp"]
+[ext_resource type="Resource" uid="uid://dv8irc4icam0e" path="res://src/gui/pieces/short_turn_right.tres" id="10_lib2a"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="11_b713o"]
+
+[sub_resource type="Resource" id="Resource_tkucj"]
+script = ExtResource("9_35xtg")
+pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("2_7ttbl"), ExtResource("3_a8o5w"), ExtResource("4_ojg68"), ExtResource("5_6fdqf"), ExtResource("6_og78x"), ExtResource("7_jb5cp"), ExtResource("8_cv4kp"), ExtResource("9_icsqp"), ExtResource("10_lib2a")])
+quantities = Array[int]([8, 2, 2, 2, 2, 4, 2, 2, 2])
+
+[sub_resource type="Resource" id="Resource_3cigx"]
+script = ExtResource("11_b713o")
+action = 2
+direction = 1
+speed = 1
+
+[sub_resource type="Resource" id="Resource_ns7gf"]
+script = ExtResource("11_b713o")
+action = 2
+direction = 3
+speed = 1
+
+[node name="Map" instance=ExtResource("1_dqusf")]
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 0, 0, 4, 5, 0, 5, 5, 0, 6, 5, 0, 7, 2, 0, 8, 2, 0, 10, 1, 0, 11, 0, 0, 12, 5, 0, 13, 2, 0, 14, 2, 0, 65536, 5, 0, 131072, 5, 0, 196608, 1, 0, 262144, 6, 0, 327680, 0, 0, 393216, 5, 0, 458752, 5, 0, 458753, 6, 0, 458754, 2, 0, 458755, 1, 0, 458756, 6, 0, 458757, 6, 0, 458758, 0, 0, 458759, 5, 0, 458760, 1, 0, 458761, 5, 0, 458762, 6, 0, 458763, 0, 0, 458764, 0, 0, 458765, 2, 0, 458766, 0, 0, 393230, 5, 0, 327694, 5, 0, 262158, 6, 0, 196622, 1, 0, 131086, 0, 0, 65550, 2, 0, 196615, 0, 0, 65543, 0, 0, 65542, 0, 0, 65540, 5, 0, 65539, 1, 0, 65538, 6, 0, 65537, 6, 0, 131073, 0, 0, 196609, 5, 0, 262145, 0, 0, 327681, 2, 0, 393217, 2, 0, 393218, 2, 0, 327682, 0, 0, 262146, 6, 0, 196610, 2, 0, 131074, 6, 0, 131075, 2, 0, 196611, 2, 0, 196612, 0, 0, 131076, 6, 0, 131077, 6, 0, 196613, 1, 0, 262149, 2, 0, 327685, 2, 0, 393221, 1, 0, 393222, 0, 0, 327686, 5, 0, 262150, 2, 0, 131078, 5, 0, 262151, 2, 0, 327687, 2, 0, 393223, 6, 0, 393224, 6, 0, 327688, 2, 0, 262152, 2, 0, 196616, 6, 0, 131080, 6, 0, 65544, 6, 0, 65545, 5, 0, 131081, 5, 0, 196617, 0, 0, 262153, 2, 0, 327689, 1, 0, 393225, 0, 0, 393226, 5, 0, 327690, 1, 0, 262154, 2, 0, 196618, 0, 0, 131082, 6, 0, 65546, 1, 0, 65547, 6, 0, 262155, 2, 0, 327691, 6, 0, 393228, 1, 0, 327692, 5, 0, 262156, 2, 0, 65548, 1, 0, 65549, 1, 0, 131085, 5, 0, 196621, 0, 0, 262157, 1, 0, 327693, 0, 0, 393229, 1, 0, 65541, 5, 0, 9, 2, 0, 196614, 0, 0, 131079, 0, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 0, -65529, 2, 0, -65528, 2, 0, -65527, 2, 0, -65526, 2, 0, -65525, 2, 0, -65524, 2, 0, -65523, 2, 0, -65522, 2, 0, -65521, 2, 0, 15, 2, 0, 65551, 2, 0, 131087, 2, 0, 196623, 2, 0, 262159, 2, 0, 327695, 2, 0, 393231, 2, 0, 458767, 2, 0, 589839, 2, 0, 524303, 2, 0, 589838, 2, 0, 589837, 2, 0, 589836, 2, 0, 589835, 2, 0, 589834, 2, 0, 589833, 2, 0, 589832, 2, 0, 589831, 2, 0, 589830, 2, 0, 589829, 2, 0, 589828, 2, 0, 589827, 2, 0, 589826, 2, 0, 589825, 2, 0, 65535, 2, 0, 131071, 2, 0, 196607, 2, 0, 262143, 2, 0, 327679, 2, 0, 393215, 2, 0, 458751, 2, 0, 524287, 2, 0, 589823, 2, 0, 655359, 2, 0, 589824, 2, 0, 524297, 1, 0, 524301, 2, 0, 524302, 5, 0, 524288, 6, 0, 524289, 0, 0, 524290, 2, 0, 524291, 1, 0, 524292, 0, 0, 524293, 2, 0, 524294, 2, 0, 524295, 2, 0, 524296, 0, 0, 524298, 2, 0, 524299, 2, 0, 524300, 2, 0, 262148, 6, 0, 393220, 1, 0, 327683, 0, 0, 262147, 5, 0, 327684, 2, 0, 393219, 5, 0, 393227, 1, 0, 131083, 5, 0, 196620, 6, 0, 131084, 5, 0, 196619, 6, 0)
+layer_1/tile_data = PackedInt32Array(393226, 4, 65536, 458755, 4, 131072, 65542, 4, 262144, 131083, 4, 262144)
+default_deck = SubResource("Resource_tkucj")
+
+[node name="Enemy" parent="." index="1" instance=ExtResource("2_4d06b")]
+position = Vector2(1088, 448)
+command_pattern = Array[ExtResource("11_b713o")]([SubResource("Resource_3cigx"), SubResource("Resource_3cigx"), SubResource("Resource_ns7gf"), SubResource("Resource_ns7gf")])
+
+[node name="Enemy2" parent="." index="2" instance=ExtResource("2_4d06b")]
+position = Vector2(1088, 1088)
+command_pattern = Array[ExtResource("11_b713o")]([SubResource("Resource_3cigx"), SubResource("Resource_3cigx"), SubResource("Resource_ns7gf"), SubResource("Resource_ns7gf")])
+
+[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Dice" to="Dice" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Dice@73982" to="@Dice@73982" method="_on_body_entered" flags=18]

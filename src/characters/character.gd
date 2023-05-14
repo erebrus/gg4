@@ -144,5 +144,7 @@ func play_animation(animation:String)->void:
 	sprite.play(animation)
 	sprite.flip_h = world_target_pos.x <= position.x
 	
+func play_hop_sfx()->void:
+	$sfx/sfx_hop_grass.play()
+		
 
-	

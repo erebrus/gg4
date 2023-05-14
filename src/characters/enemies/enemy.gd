@@ -52,3 +52,6 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	bubble.hide()
+
+func play_hop_sfx()->void:
+	super.play_hop_sfx()
