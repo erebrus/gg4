@@ -36,6 +36,8 @@ func add_children() -> void:
 		var sprite = Sprite2D.new()
 		sprites[command] = sprite
 		
+		if sprites.size() == 1:
+			sprite.modulate = Color("#bed498")
 		if command.is_attack:
 			sprite.texture = attack_sprite
 		elif command.is_shield and command.speed == 0:
