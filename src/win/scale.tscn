@@ -1,34 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://vwfacvtfaa58"]
+[gd_scene load_steps=5 format=3 uid="uid://8u8j005pm35d"]
 
 [ext_resource type="Script" path="res://src/win/scale.gd" id="1_sb4fn"]
-[ext_resource type="Texture2D" uid="uid://juj5fht3a3rh" path="res://assets/gfx/scale/scale_base.png" id="1_wd0iy"]
-[ext_resource type="Texture2D" uid="uid://2wdusx5a6114" path="res://assets/gfx/scale/rod.png" id="2_26cf3"]
-[ext_resource type="Texture2D" uid="uid://wandql8tsu76" path="res://assets/gfx/scale/plate.png" id="3_bamgm"]
+[ext_resource type="Texture2D" uid="uid://btwpv7yuyl6gu" path="res://assets/gfx/scale/stickscale.png" id="2_bsmp0"]
+[ext_resource type="Texture2D" uid="uid://7nrbhy2lqmep" path="res://assets/gfx/scale/basescale.png" id="3_rgu4t"]
+[ext_resource type="Texture2D" uid="uid://ea4pbbdl8nvw" path="res://assets/gfx/scale/pratoscale.png" id="4_ive1s"]
 
 [node name="Scale" type="Node2D"]
 script = ExtResource("1_sb4fn")
 
-[node name="Base" type="Sprite2D" parent="."]
-position = Vector2(0, 330)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("1_wd0iy")
-
 [node name="Rod" type="Sprite2D" parent="."]
-scale = Vector2(1, 0.5)
-texture = ExtResource("2_26cf3")
+texture = ExtResource("2_bsmp0")
+
+[node name="Base" type="Sprite2D" parent="."]
+texture = ExtResource("3_rgu4t")
+offset = Vector2(0, 203.714)
 
 [node name="LeftPlate" type="Sprite2D" parent="."]
-position = Vector2(-480, 0)
-texture = ExtResource("3_bamgm")
-offset = Vector2(0, 188)
+position = Vector2(-460, 0)
+texture = ExtResource("4_ive1s")
+offset = Vector2(-2, 138)
 
 [node name="BagPosition" type="Marker2D" parent="LeftPlate"]
-position = Vector2(1, 315)
+position = Vector2(-6, 215)
 
 [node name="RightPlate" type="Sprite2D" parent="."]
-position = Vector2(480, 0)
-texture = ExtResource("3_bamgm")
-offset = Vector2(0, 187)
+position = Vector2(460, 0)
+texture = ExtResource("4_ive1s")
+offset = Vector2(-2, 138)
 
 [node name="BagPosition" type="Marker2D" parent="RightPlate"]
-position = Vector2(1, 315)
+position = Vector2(-6, 215)

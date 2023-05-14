@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://juj5fht3a3rh"
-path="res://.godot/imported/scale_base.png-b1ebe89cffd10adbaafd9455646636e1.ctex"
+uid="uid://ea4pbbdl8nvw"
+path="res://.godot/imported/pratoscale.png-28e4cf6cb704912d4f5099964c9e3e25.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/scale/scale_base.png"
-dest_files=["res://.godot/imported/scale_base.png-b1ebe89cffd10adbaafd9455646636e1.ctex"]
+source_file="res://assets/gfx/scale/pratoscale.png"
+dest_files=["res://.godot/imported/pratoscale.png-28e4cf6cb704912d4f5099964c9e3e25.ctex"]
 
 [params]
 

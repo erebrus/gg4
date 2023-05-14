@@ -1,17 +1,15 @@
 @tool
 extends Node2D
 
-@export var rod_length: int = 1024
+@export var half_length: int = 460
 
 @export var angle: float:
 	set(value):
 		angle = value
 		$Rod.rotation = angle
 		
-		var half = (rod_length - 100) / 2
-		
-		$LeftPlate.position = Vector2(-half, 0).rotated(angle) + $Rod.position
-		$RightPlate.position = Vector2(half,0).rotated(angle) + $Rod.position
+		$LeftPlate.position = Vector2(-half_length, 0).rotated(angle) + $Rod.position
+		$RightPlate.position = Vector2(half_length,0).rotated(angle) + $Rod.position
 		
 
 var left_plate_base: Vector2:

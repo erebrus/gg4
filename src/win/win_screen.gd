@@ -19,8 +19,8 @@ const RANKS = {
 func _ready():
 	await animate_scale()
 	$Timer.start()
-	await get_tree().create_timer(0.3).timeout
 	
+	await get_tree().create_timer(0.3).timeout
 	can_exit = true
 	
 
