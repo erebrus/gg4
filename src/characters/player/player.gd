@@ -1,7 +1,8 @@
 extends Character
 
 var out_of_pieces:=false
-
+@onready var sfx_death = $sfx/sfx_death
+@onready var sfx_wobble = $sfx/sfx_wobble
 func _ready():
 	super._ready()
 	Events.commands_queued.connect(add_commands)
@@ -25,13 +26,11 @@ func _physics_process(_delta):
 	if out_of_pieces and not dead and not Globals.level_manager.level_complete:
 		dead = true
 		xsm.change_state("death")	
-		$sfx/sfx_death.play()
 		
 func take_damage(dmg:int = 4):	
 	Events.player_damaged.emit(dmg) #TODO replace by variable
 	if out_of_pieces and not Globals.level_manager.level_complete:
 		dead = true
-		$sfx/sfx_death.play()
 		xsm.change_state("death")	
 		
 	else:

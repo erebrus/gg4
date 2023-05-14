@@ -458,8 +458,18 @@ clip_contents = true
 layout_mode = 2
 num_commands = 1
 
+[node name="sfx_combat" parent="sfx" index="0"]
+bus = &"sfx"
+
+[node name="sfx_hop_grass" parent="sfx" index="1"]
+bus = &"sfx"
+
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="sfx" index="2"]
 stream = ExtResource("23_5ck1v")
+bus = &"sfx"
+
+[node name="sfx_bump" parent="sfx" index="3"]
+bus = &"sfx"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

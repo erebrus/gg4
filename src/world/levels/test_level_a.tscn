@@ -43,8 +43,3 @@ command_pattern = Array[ExtResource("11_b713o")]([SubResource("Resource_3cigx"),
 [node name="Enemy2" parent="." index="2" instance=ExtResource("2_4d06b")]
 position = Vector2(1088, 1088)
 command_pattern = Array[ExtResource("11_b713o")]([SubResource("Resource_3cigx"), SubResource("Resource_3cigx"), SubResource("Resource_ns7gf"), SubResource("Resource_ns7gf")])
-
-[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Dice" to="Dice" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="@Dice@91119" to="@Dice@91119" method="_on_body_entered" flags=18]

@@ -11,7 +11,7 @@ var original_collision_layer:int
 # If looping, is called after each loop
 func _on_anim_finished(_name):
 	if owner.dead:
-		$sfx/sfx_death.play()
+		owner.sfx_death.play()
 		change_state("death")
 	else:
 		change_state("hop")
