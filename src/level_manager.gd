@@ -6,6 +6,9 @@ var levels:Array[PackedScene] = [
 	preload("res://src/world/levels/tutorial_level_1.tscn"),
 	preload("res://src/world/levels/tutorial_level_2.tscn"),
 	preload("res://src/world/levels/level_1.tscn"),
+	preload("res://src/world/levels/mato_test_1.tscn"),
+	preload("res://src/world/levels/level_c_1.tscn"),	
+	preload("res://src/world/levels/level_c_2.tscn"),		
 	preload("res://src/world/levels/level_2.tscn"),
 	
 	

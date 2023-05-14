@@ -44,6 +44,9 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq135"]
 texture = ExtResource("4_7ctij")
 texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_x4dqh"]
 scenes/1/scene = ExtResource("4_arrqi")

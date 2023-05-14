@@ -1,0 +1,100 @@
+[gd_scene load_steps=16 format=3 uid="uid://ccwnvv6nrek3q"]
+
+[ext_resource type="PackedScene" uid="uid://cldwu41ur8qw1" path="res://src/world/arena.tscn" id="1_44jse"]
+[ext_resource type="PackedScene" uid="uid://bn8hyp5yo4amx" path="res://src/characters/enemies/enemy.tscn" id="2_0pa7q"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="3_bulg5"]
+
+[sub_resource type="Resource" id="Resource_e3ewn"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 0
+speed = 1
+
+[sub_resource type="Resource" id="Resource_s1ty2"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_1a82v"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_pu2vn"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 0
+speed = 1
+
+[sub_resource type="Resource" id="Resource_p0r7m"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_sv2h0"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_eyjv3"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 3
+speed = 1
+
+[sub_resource type="Resource" id="Resource_1ewkm"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 3
+speed = 1
+
+[sub_resource type="Resource" id="Resource_c8q72"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 0
+speed = 1
+
+[sub_resource type="Resource" id="Resource_nh0d3"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 0
+speed = 1
+
+[sub_resource type="Resource" id="Resource_4pwbt"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 1
+speed = 1
+
+[sub_resource type="Resource" id="Resource_v0w6j"]
+script = ExtResource("3_bulg5")
+action = 0
+direction = 1
+speed = 1
+
+[node name="LevelC2" instance=ExtResource("1_44jse")]
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 6, 0, 3, 2, 0, 4, 2, 0, 5, 0, 0, 6, 6, 0, 7, 1, 0, 8, 6, 0, 10, 5, 0, 11, 6, 0, 12, 6, 0, 13, 6, 0, 14, 6, 0, 65536, 0, 0, 131072, 5, 0, 196608, 1, 0, 262144, 6, 0, 327680, 5, 0, 393216, 5, 0, 458752, 5, 0, 458753, 0, 0, 458754, 5, 0, 458755, 6, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 0, 0, 458760, 2, 0, 458761, 2, 0, 458762, 1, 0, 458763, 5, 0, 458764, 5, 0, 458765, 5, 0, 458766, 1, 0, 393230, 2, 0, 327694, 2, 0, 262158, 0, 0, 196622, 0, 0, 131086, 5, 0, 65550, 1, 0, 196615, 5, 0, 65543, 5, 0, 65542, 1, 0, 65540, 2, 0, 65539, 2, 0, 65538, 5, 0, 65537, 5, 0, 131073, 1, 0, 196609, 6, 0, 262145, 5, 0, 327681, 5, 0, 393217, 5, 0, 393218, 5, 0, 327682, 0, 0, 262146, 0, 0, 196610, 0, 0, 131074, 0, 0, 131075, 2, 0, 196611, 2, 0, 196612, 2, 0, 131076, 2, 0, 131077, 6, 0, 196613, 1, 0, 262149, 6, 0, 327685, 0, 0, 393221, 1, 0, 393222, 5, 0, 327686, 1, 0, 262150, 0, 0, 131078, 0, 0, 262151, 6, 0, 327687, 0, 0, 393223, 1, 0, 393224, 2, 0, 327688, 2, 0, 262152, 2, 0, 196616, 2, 0, 131080, 2, 0, 65544, 0, 0, 65545, 6, 0, 131081, 2, 0, 196617, 2, 0, 262153, 2, 0, 327689, 2, 0, 393225, 2, 0, 393226, 2, 0, 327690, 0, 0, 262154, 5, 0, 196618, 5, 0, 131082, 0, 0, 65546, 0, 0, 65547, 1, 0, 131083, 0, 0, 196619, 1, 0, 262155, 0, 0, 327691, 1, 0, 393227, 1, 0, 393228, 2, 0, 327692, 2, 0, 262156, 6, 0, 196620, 1, 0, 131084, 5, 0, 65548, 0, 0, 65549, 1, 0, 131085, 0, 0, 196621, 6, 0, 262157, 5, 0, 327693, 2, 0, 393229, 2, 0, 65541, 5, 0, 9, 5, 0, 196614, 0, 0, 131079, 6, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 0, -65529, 2, 0, -65528, 2, 0, -65527, 2, 0, -65526, 2, 0, -65525, 2, 0, -65524, 2, 0, -65523, 2, 0, -65522, 2, 0, -65521, 2, 0, 15, 2, 0, 65551, 2, 0, 131087, 2, 0, 196623, 2, 0, 262159, 2, 0, 327695, 2, 0, 393231, 2, 0, 458767, 2, 0, 589839, 2, 0, 524303, 2, 0, 589838, 2, 0, 589837, 2, 0, 589836, 2, 0, 589835, 2, 0, 589834, 2, 0, 589833, 2, 0, 589832, 2, 0, 589831, 2, 0, 589830, 2, 0, 589829, 2, 0, 589828, 2, 0, 589827, 2, 0, 589826, 2, 0, 589825, 2, 0, 65535, 2, 0, 131071, 2, 0, 196607, 2, 0, 262143, 2, 0, 327679, 2, 0, 393215, 2, 0, 458751, 2, 0, 524287, 2, 0, 589823, 2, 0, 655359, 2, 0, 589824, 2, 0, 524297, 2, 0, 524301, 1, 0, 524302, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 6, 0, 524292, 0, 0, 524293, 1, 0, 524294, 6, 0, 524295, 1, 0, 524296, 2, 0, 524298, 5, 0, 524299, 6, 0, 524300, 0, 0, 262148, 2, 0, 393220, 2, 0, 327683, 2, 0, 262147, 2, 0, 327684, 2, 0, 393219, 2, 0)
+layer_1/tile_data = PackedInt32Array(327681, 4, 262144, 262150, 4, 262144, 131083, 4, 262144, 524292, 4, 131072, 393227, 4, 196608, 262154, 4, 131072, 131077, 4, 131072, 131079, 4, 131072, 524301, 4, 65536)
+
+[node name="Enemy" parent="." index="1" instance=ExtResource("2_0pa7q")]
+position = Vector2(832, 832)
+command_pattern = Array[ExtResource("3_bulg5")]([SubResource("Resource_e3ewn"), SubResource("Resource_s1ty2"), SubResource("Resource_1a82v"), SubResource("Resource_pu2vn")])
+
+[node name="Enemy2" parent="." index="2" instance=ExtResource("2_0pa7q")]
+position = Vector2(1344, 192)
+command_pattern = Array[ExtResource("3_bulg5")]([SubResource("Resource_p0r7m"), SubResource("Resource_sv2h0"), SubResource("Resource_eyjv3"), SubResource("Resource_1ewkm"), SubResource("Resource_c8q72"), SubResource("Resource_nh0d3"), SubResource("Resource_4pwbt"), SubResource("Resource_v0w6j")])
+
+[connection signal="body_entered" from="@Dice@37639" to="@Dice@37639" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@37640" to="@Hazard@37640" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@37641" to="@Hazard@37641" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Dice@37642" to="@Dice@37642" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@37643" to="@Hazard@37643" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@37644" to="@Hazard@37644" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Dice@37645" to="@Dice@37645" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Quicksand@37646" to="@Quicksand@37646" method="_on_body_entered" flags=18]
+[connection signal="body_exited" from="@Quicksand@37646" to="@Quicksand@37646" method="_on_body_exited" flags=18]
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
