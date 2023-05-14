@@ -39,15 +39,20 @@ func _on_tick_complete(el)->void:
 		if tick_pending:
 			tick_pending = false
 			tick()
-		
+	else:
+		_process_next_element()		
 
 func tick()->void:
 	Logger.debug("Tick")
 	elements_moving = []
 	elements_moving.append_array(elements)
 	
-	for el in elements_moving:
-		el.tick()
+	_process_next_element()
+
+func _process_next_element():
+	if elements_moving.is_empty():
+		return
+	elements_moving[0].tick()
 	
 
 func turn_complete()->bool:
