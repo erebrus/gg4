@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://0m6bfc4pfihw"]
 
 [ext_resource type="Script" path="res://src/gui/pieces/base_piece.gd" id="1_gmlum"]
-[ext_resource type="Texture2D" uid="uid://b0f13wob08j2u" path="res://src/commands/right.png" id="2_dheb5"]
-[ext_resource type="Texture2D" uid="uid://5avxrtpdmgtm" path="res://src/commands/wait.png" id="3_2wyoq"]
-[ext_resource type="Texture2D" uid="uid://c1e2j8bbsl2dx" path="res://src/commands/shield.png" id="4_3i5qw"]
+[ext_resource type="Texture2D" uid="uid://dmo1omec2tj0e" path="res://assets/gfx/Ui/42 movetile.png" id="2_6hu8l"]
+[ext_resource type="Texture2D" uid="uid://bf806xfs7di05" path="res://assets/gfx/Ui/42 waittile.png" id="3_iy48o"]
+[ext_resource type="Texture2D" uid="uid://dhm5f6w6yf234" path="res://assets/gfx/Ui/42 shieldtile.png" id="4_s5h7t"]
 [ext_resource type="Texture2D" uid="uid://tof5dstl6vd1" path="res://src/commands/shield_charge.png" id="5_op03k"]
-[ext_resource type="Texture2D" uid="uid://b1idpgb0fmpli" path="res://src/commands/attack.png" id="6_qldos"]
+[ext_resource type="Texture2D" uid="uid://cp48xu6iidaa" path="res://assets/gfx/Ui/42 Swordtile.png" id="6_pilvw"]
 [ext_resource type="Texture2D" uid="uid://h8xxyw48txqw" path="res://src/commands/sprint.png" id="7_n0mgh"]
 
 [node name="BasePiece" type="Container"]
@@ -19,9 +19,9 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_gmlum")
-move_sprite = ExtResource("2_dheb5")
-wait_sprite = ExtResource("3_2wyoq")
-shield_sprite = ExtResource("4_3i5qw")
+move_sprite = ExtResource("2_6hu8l")
+wait_sprite = ExtResource("3_iy48o")
+shield_sprite = ExtResource("4_s5h7t")
 shield_charge_sprite = ExtResource("5_op03k")
-attack_sprite = ExtResource("6_qldos")
+attack_sprite = ExtResource("6_pilvw")
 sprint_sprite = ExtResource("7_n0mgh")
