@@ -135,11 +135,6 @@ layout_mode = 2
 focus_mode = 0
 text = "Continue"
 
-[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-text = "Options"
-
 [node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
