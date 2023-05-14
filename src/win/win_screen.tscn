@@ -55,10 +55,12 @@ script = ExtResource("2_3x4lx")
 
 [node name="squeak" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_sm1jv")
+bus = &"sfx"
 
 [node name="rank" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_6nd57")
 volume_db = -10.0
+bus = &"sfx"
 
 [node name="BG" type="TextureRect" parent="."]
 layout_mode = 0
