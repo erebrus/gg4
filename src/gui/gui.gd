@@ -8,6 +8,7 @@ const DISCARD_TIME = 1
 @export var auto_draw_piece_on_place: bool = true
 
 var exit_reached := false
+var filling_hand := false
 
 @onready var deck: PiecePile = get_node("%DeckPile")
 @onready var discard_pile: PiecePile = get_node("%DiscardPile")
@@ -47,10 +48,10 @@ func set_deck_pieces(_pieces:Array[Piece]):
 	deck.pieces = _pieces
 	
 	if auto_draw_piece_on_place:
-		_fill_hand()
+		await _fill_hand()
 		
-	await get_tree().create_timer(0.3).timeout
-	hand.pieces.values().front().select()
+		await get_tree().create_timer(0.1).timeout
+		hand.pieces.values().front().select()
 	
 
 func draw_from(pile: PiecePile, do_random:=false) -> bool:
@@ -110,12 +111,19 @@ func _discard_piece(piece: Piece, scene: Node2D) -> void:
 	
 
 func _fill_hand() -> void:
+	if filling_hand:
+		return
+	
+	filling_hand = true
 	while hand.num_pieces < hand.max_pieces and not deck.is_empty():
+		Logger.info("drawing card: %s" % Time.get_ticks_msec())
 		await draw_from(deck)
 	
 	if deck.is_empty() and hand.is_empty():
 		Logger.info("Out of pieces")
 		Events.out_of_pieces.emit()
+	
+	filling_hand = false
 	
 
 func _on_piece_discarded(piece: Piece, scene: Node2D) -> void:

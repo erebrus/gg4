@@ -1,10 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmt4b7nq0aagl"]
+[gd_scene load_steps=8 format=3 uid="uid://bmt4b7nq0aagl"]
 
 [ext_resource type="Script" path="res://src/gameover/gameover.gd" id="1_fx6b7"]
-[ext_resource type="Texture2D" uid="uid://xd4kaq8g71gf" path="res://assets/gfx/bgs/backgroundover.png" id="2_lb3se"]
+[ext_resource type="Texture2D" uid="uid://cn1pnylo7b01x" path="res://assets/gfx/bgs/backgroundover2.png" id="2_6hgnq"]
+[ext_resource type="FontFile" uid="uid://0djk7bufqtr1" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="3_okv2y"]
+[ext_resource type="Texture2D" uid="uid://bma1ucuxwqykx" path="res://assets/gfx/deathplayerscreen.png" id="4_fibi0"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_xue0m"]
-font_size = 100
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jji6b"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 40.0
+content_margin_bottom = 20.0
+bg_color = Color(0.988235, 0.913725, 0.00392157, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh4o3"]
+content_margin_left = 40.0
+content_margin_right = 60.0
+bg_color = Color(0.94902, 0.760784, 0.858824, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_25yfb"]
+font = ExtResource("3_okv2y")
+font_size = 120
+font_color = Color(0.596078, 0.0627451, 0.317647, 1)
 
 [node name="Gameover" type="Control"]
 layout_mode = 3
@@ -19,26 +53,46 @@ script = ExtResource("1_fx6b7")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("2_lb3se")
+texture = ExtResource("2_6hgnq")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -409.5
+offset_top = -146.0
+offset_right = 409.5
+offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+theme_override_constants/margin_bottom = 200
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "GAME OVER"
-label_settings = SubResource("LabelSettings_xue0m")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jji6b")
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2/PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_fh4o3")
+
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer2/PanelContainer"]
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_25yfb")
+
+[node name="Deathplayerscreen" type="Sprite2D" parent="."]
+position = Vector2(863, 685)
+scale = Vector2(0.619271, 0.619444)
+texture = ExtResource("4_fibi0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
