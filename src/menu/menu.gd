@@ -13,15 +13,23 @@ func _ready() -> void:
 	var tween:=create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property($menu_music, "volume_db",-15.0, 1)
 	
-	
 
-func _on_start_button_pressed():
-	Globals.start()
+func _turn_off_music():
 	var tween:=create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property($menu_music, "volume_db",-80.0, 1)
 	await tween.finished
 	$menu_music.stop()
+	
 
+func _on_tutorial_button_pressed():
+	Globals.tutorial()
+	_turn_off_music()
+	
+
+
+func _on_start_button_pressed():
+	Globals.start()
+	_turn_off_music()
 	
 
 func _on_continue_button_pressed():
@@ -31,3 +39,5 @@ func _on_continue_button_pressed():
 func _on_quit_button_pressed():
 	get_tree().quit()
 	
+
+
