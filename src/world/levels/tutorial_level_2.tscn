@@ -1,10 +1,7 @@
-
-[gd_scene load_steps=7 format=3 uid="uid://blveeq44y5h4a"]
-
+[gd_scene load_steps=22 format=3 uid="uid://blveeq44y5h4a"]
 
 [ext_resource type="PackedScene" uid="uid://cldwu41ur8qw1" path="res://src/world/arena.tscn" id="1_4276d"]
 [ext_resource type="PackedScene" uid="uid://bn8hyp5yo4amx" path="res://src/characters/enemies/enemy.tscn" id="2_4pryh"]
-[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/step.tres" id="2_8j42i"]
 [ext_resource type="Script" path="res://src/commands/command.gd" id="3_0wp32"]
 [ext_resource type="Resource" uid="uid://cibyoxpl20xsc" path="res://src/gui/pieces/long_turn_right.tres" id="3_nwdnt"]
 [ext_resource type="Resource" uid="uid://dv8irc4icam0e" path="res://src/gui/pieces/short_turn_right.tres" id="4_srvf2"]
@@ -12,43 +9,61 @@
 [ext_resource type="Resource" uid="uid://dehqbqwem143e" path="res://src/gui/pieces/short_turn_left.tres" id="6_11m2a"]
 [ext_resource type="Resource" uid="uid://c6w822vyykot8" path="res://src/gui/pieces/side_step_left.tres" id="7_7p2an"]
 [ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="8_e5je7"]
-[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/side_step_right.tres" id="8_xoe3c"]
+[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/step.tres" id="8_xoe3c"]
 [ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/run.tres" id="9_tkxmq"]
 [ext_resource type="Resource" uid="uid://myj08manl2ep" path="res://src/gui/pieces/wait.tres" id="10_d2r4r"]
 
 [sub_resource type="Resource" id="Resource_251gq"]
 script = ExtResource("8_e5je7")
-pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("2_8j42i"), ExtResource("3_nwdnt"), ExtResource("4_srvf2"), ExtResource("5_c83r6"), ExtResource("6_11m2a"), ExtResource("7_7p2an"), ExtResource("8_xoe3c"), ExtResource("9_tkxmq"), ExtResource("10_d2r4r")])
+pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("8_xoe3c"), ExtResource("3_nwdnt"), ExtResource("4_srvf2"), ExtResource("5_c83r6"), ExtResource("6_11m2a"), ExtResource("7_7p2an"), ExtResource("8_xoe3c"), ExtResource("9_tkxmq"), ExtResource("10_d2r4r")])
 quantities = Array[int]([14, 2, 4, 2, 4, 2, 2, 4, 3])
 
-[sub_resource type="Resource" id="Resource_cyrn1"]
+[sub_resource type="Resource" id="Resource_uwij5"]
 script = ExtResource("3_0wp32")
-action = 2
+action = 0
 direction = 1
 speed = 1
 
-[sub_resource type="Resource" id="Resource_yxygh"]
+[sub_resource type="Resource" id="Resource_drobk"]
 script = ExtResource("3_0wp32")
-action = 2
+action = 0
+direction = 1
+speed = 1
+
+[sub_resource type="Resource" id="Resource_yxvj6"]
+script = ExtResource("3_0wp32")
+action = 0
 direction = 3
 speed = 1
 
-[sub_resource type="Resource" id="Resource_c44er"]
+[sub_resource type="Resource" id="Resource_r3sln"]
 script = ExtResource("3_0wp32")
-action = 2
+action = 0
 direction = 3
 speed = 1
 
-[sub_resource type="Resource" id="Resource_rimej"]
+[sub_resource type="Resource" id="Resource_ne81n"]
 script = ExtResource("3_0wp32")
-action = 2
+action = 0
 direction = 1
 speed = 1
 
-[sub_resource type="Resource" id="Resource_hkiyp"]
+[sub_resource type="Resource" id="Resource_sgtr4"]
 script = ExtResource("3_0wp32")
-action = 2
+action = 0
 direction = 1
+speed = 1
+
+[sub_resource type="Resource" id="Resource_flu86"]
+script = ExtResource("3_0wp32")
+action = 0
+direction = 3
+speed = 1
+
+[sub_resource type="Resource" id="Resource_yd8di"]
+script = ExtResource("3_0wp32")
+action = 0
+direction = 3
 speed = 1
 
 [node name="TutorialLevel2" instance=ExtResource("1_4276d")]
@@ -59,10 +74,15 @@ show_keys = true
 tutorials = Array[String](["This level presents a few extra challenges.", "See those cute creatures. They don't like you. If you collide with them, you will discard your hand.", "If you collect a dice, you can get a surprise. Maybe good, maybe bad.", "Attack tokens let you defeat them and shield tokens will let you keep your hand. Maybe the dice will give you one.", "", "Those crosses represents a hazard tile. You can cross it, but it will force you to discard one token.", "", "You now have all you need to survive your quest.", "At the end of each level, you  will be given a choice of token to add to your bag.", "Remember keep your discard bag light. Less is more. Less is quest."])
 
 [node name="Enemy" parent="." index="1" instance=ExtResource("2_4pryh")]
-
 position = Vector2(704, 320)
-command_pattern = Array[ExtResource("3_0wp32")]([SubResource("Resource_cyrn1"), SubResource("Resource_cyrn1"), SubResource("Resource_rimej"), SubResource("Resource_rimej")])
+command_pattern = Array[ExtResource("3_0wp32")]([SubResource("Resource_uwij5"), SubResource("Resource_drobk"), SubResource("Resource_yxvj6"), SubResource("Resource_r3sln")])
 
 [node name="Enemy2" parent="." index="2" instance=ExtResource("2_4pryh")]
 position = Vector2(1344, 320)
-command_pattern = Array[ExtResource("3_0wp32")]([SubResource("Resource_cyrn1"), SubResource("Resource_cyrn1"), SubResource("Resource_hkiyp"), SubResource("Resource_hkiyp")])
+command_pattern = Array[ExtResource("3_0wp32")]([SubResource("Resource_ne81n"), SubResource("Resource_sgtr4"), SubResource("Resource_flu86"), SubResource("Resource_yd8di")])
+
+[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@25837" to="@Hazard@25837" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="Dice" to="Dice" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Dice@25838" to="@Dice@25838" method="_on_body_entered" flags=18]
