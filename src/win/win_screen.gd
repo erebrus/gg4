@@ -10,9 +10,9 @@ var can_exit = false
 
 
 const RANKS = {
-	"Shogi": 20,
-	"Dead of Winter": 30,
-	"Settlers of Catan": 40,
+	"Shogi": 10,
+	"Dead of Winter": 18,
+	"Settlers of Catan": 25,
 	"Uno": 50
 }
 
