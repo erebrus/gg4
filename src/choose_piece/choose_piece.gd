@@ -27,7 +27,6 @@ func _ready() -> void:
 
 func _on_piece_selected(piece: Piece) -> void:
 	Globals.deck.append(piece)
-	Globals.level_manager.next_level()
 	SceneManager.change_scene(Globals.MAIN_SCREEN, {
 		"pattern":"curtains" ,
 		"wait_time":0,

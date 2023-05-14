@@ -28,12 +28,16 @@ func _input(event: InputEvent):
 	if not can_exit:
 		return
 	if event is InputEventKey or event is InputEventMouseButton:
-		Globals.start()
+		exit()
+	
+
+func exit():
+	Globals.next_level()
 	
 
 func _on_timer_timeout():
-	Globals.start()
-
+	exit()
+	
 
 func animate_scale():
 	var tween = create_tween()
