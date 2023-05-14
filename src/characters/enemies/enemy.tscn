@@ -24,8 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://y3t3gq01l3t" path="res://assets/gfx/enemy1/enemyidlenew2.png" id="13_50l3o"]
 [ext_resource type="Texture2D" uid="uid://wdyxi8hgwldq" path="res://assets/gfx/enemy1/enemyidlenew3.png" id="14_xtmwu"]
 [ext_resource type="AudioStream" uid="uid://dst0ykybydjh" path="res://assets/sfx/enemy_breaks.wav" id="23_5ck1v"]
-[ext_resource type="Texture2D" uid="uid://cvyvi227pklii" path="res://assets/gfx/bubble/popup.png" id="24_1lmy3"]
-[ext_resource type="PackedScene" path="res://src/gui/pieces/base_piece.tscn" id="25_710cd"]
+[ext_resource type="Texture2D" uid="uid://dv8troiam8l01" path="res://assets/gfx/Ui/thoughtbubble.png" id="24_ieyrd"]
+[ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="25_710cd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrgvn"]
 size = Vector2(100, 128)
@@ -406,7 +406,7 @@ content_margin_left = 8.0
 content_margin_top = 10.0
 content_margin_right = 8.0
 content_margin_bottom = 25.0
-texture = ExtResource("24_1lmy3")
+texture = ExtResource("24_ieyrd")
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_f8rso")]
 collision_layer = 32
@@ -436,8 +436,6 @@ offset_bottom = -109.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fcly7")
 
 [node name="Command" parent="Bubble" index="0" instance=ExtResource("25_710cd")]
-modulate = Color(0, 0, 0, 1)
-clip_contents = true
 layout_mode = 2
 num_commands = 1
 
