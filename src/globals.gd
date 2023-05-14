@@ -76,13 +76,8 @@ func gameover():
 	SceneManager.change_scene(GAMEOVER_SCREEN, default_transition)
 	
 
-func win(remaining_pieces: int):
-	SceneManager.change_scene(WIN_SCREEN, {
-		"pattern":"horizontal", 
-		"wait_time":0,
-		"color": TRANSITION_COLOR,
-		"on_ready": func(scene): scene.set_data(remaining_pieces)
-	})
+func win():
+	SceneManager.change_scene(WIN_SCREEN, default_transition)
 	
 
 func menu():
@@ -105,6 +100,18 @@ func start():
 
 func continue_game():
 	_main_screen()
+	
+
+func next_level():
+	if level_manager.is_last_level():
+		menu()
+	else:
+		level_manager.next_level()
+		
+		if level_manager.is_tutorial():
+			_main_screen()
+		else:
+			choose_piece()
 	
 
 func _main_screen():

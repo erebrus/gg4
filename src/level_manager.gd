@@ -26,6 +26,10 @@ func is_last_level() -> bool:
 	return current_level >= levels.size() - 1
 	
 
+func is_tutorial() -> bool:
+	return current_level < START_GAME
+	
+
 func tutorial_level():
 	current_level = 0
 	
