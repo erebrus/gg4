@@ -6,7 +6,7 @@ extends Node
 func _ready():
 	Events.level_complete.connect(_on_level_complete)
 	
-	var map:Arena = Globals.level_manager.get_current_level().instantiate()
+	var map = Globals.level_manager.get_current_level().instantiate()
 	map.turn_manager = $TurnManager
 	Globals.level_manager.level_complete = false
 	add_child(map)
