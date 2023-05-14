@@ -13,7 +13,7 @@ quantities = Array[int]([7])
 
 [sub_resource type="Resource" id="Resource_m5p8h"]
 script = ExtResource("4_f6q50")
-action = 0
+action = 2
 direction = 0
 speed = 1
 
@@ -32,6 +32,3 @@ shuffle_deck = false
 [node name="Enemy" parent="." index="1" instance=ExtResource("3_5xw1o")]
 position = Vector2(448, 192)
 command_pattern = Array[ExtResource("4_f6q50")]([SubResource("Resource_m5p8h"), SubResource("Resource_2j1fu")])
-
-[connection signal="body_entered" from="Dice" to="Dice" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]

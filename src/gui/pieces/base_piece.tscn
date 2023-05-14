@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://0m6bfc4pfihw"]
+[gd_scene load_steps=8 format=3 uid="uid://cnu2k7if1wqqc"]
 
 [ext_resource type="Script" path="res://src/gui/pieces/base_piece.gd" id="1_gmlum"]
 [ext_resource type="Texture2D" uid="uid://dmo1omec2tj0e" path="res://assets/gfx/Ui/42 movetile.png" id="2_6hu8l"]

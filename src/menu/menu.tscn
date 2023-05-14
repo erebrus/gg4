@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://bnp5yf4j7gjpx"]
 
-[ext_resource type="StyleBox" uid="uid://c5x52ku10ofab" path="res://src/menu/button_normal.tres" id="1_jsv5s"]
+[ext_resource type="StyleBox" path="res://src/menu/button_normal.tres" id="1_jsv5s"]
 [ext_resource type="Script" path="res://src/menu/menu.gd" id="1_syvxs"]
 [ext_resource type="Texture2D" uid="uid://vy15ccy5i33v" path="res://assets/gfx/bgs/backgroungstart2.png" id="2_fpqhr"]
-[ext_resource type="StyleBox" uid="uid://cddhkm3vxv4ls" path="res://src/menu/button_pressed.tres" id="3_c0578"]
-[ext_resource type="FontFile" uid="uid://0djk7bufqtr1" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="5_leofv"]
+[ext_resource type="StyleBox" path="res://src/menu/button_pressed.tres" id="3_c0578"]
 [ext_resource type="AudioStream" uid="uid://cj10cglbgba46" path="res://assets/music/No_moni_50_new_fidget_spinners.mp3" id="3_hdowm"]
+[ext_resource type="FontFile" uid="uid://0djk7bufqtr1" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="5_leofv"]
 
 [sub_resource type="FontVariation" id="FontVariation_423qv"]
 variation_embolden = 0.6

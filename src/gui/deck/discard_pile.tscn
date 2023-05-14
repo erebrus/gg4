@@ -5,5 +5,5 @@
 
 [node name="DiscardPile" instance=ExtResource("1_mbfaf")]
 
-[node name="TextureRect" parent="." index="0"]
+[node name="TextureRect" parent="MarginContainer" index="0"]
 texture = ExtResource("2_k7t0j")
