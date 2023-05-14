@@ -18,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("1_gmlum")
 move_sprite = ExtResource("2_6hu8l")
 wait_sprite = ExtResource("3_iy48o")

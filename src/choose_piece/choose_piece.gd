@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 	for piece in pieces:
 		var scene = Choice.instantiate()
+		scene.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		scene.piece = piece
 		scene.selected.connect(_on_piece_selected.bind(piece))
 		pieces_container.add_child(scene)
