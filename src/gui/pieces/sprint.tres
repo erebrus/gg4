@@ -7,9 +7,9 @@
 script = ExtResource("1_vuvd1")
 action = 0
 direction = 2
-speed = 4
+speed = 3
 
 [resource]
 script = ExtResource("1_df7hs")
 commands = Array[ExtResource("1_vuvd1")]([SubResource("Resource_5bp26")])
-description = "Sprint forward at 4x speed"
+description = "Sprint forward at 3x speed"

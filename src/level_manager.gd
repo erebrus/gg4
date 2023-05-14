@@ -1,11 +1,15 @@
 class_name LevelManager extends Node
 
+const START_GAME = 2
+
 var levels:Array[PackedScene] = [
-#	preload("res://src/world/levels/test_level_a.tscn"),
-	
 	preload("res://src/world/levels/tutorial_level_1.tscn"),
-	preload("res://src/world/levels/level_1.tscn"),
-	preload("res://src/world/levels/level_2.tscn"),
+	preload("res://src/world/levels/tutorial_level_2.tscn"),
+#	preload("res://src/world/levels/level_1.tscn"),
+	preload("res://src/world/levels/mato_test_1.tscn"),
+	preload("res://src/world/levels/level_c_1.tscn"),	
+	preload("res://src/world/levels/level_c_2.tscn"),		
+#	preload("res://src/world/levels/level_2.tscn"),
 	
 	
 ]
@@ -25,6 +29,14 @@ func is_last_level() -> bool:
 	return current_level >= levels.size() - 1
 	
 
+func is_tutorial() -> bool:
+	return current_level < START_GAME
+	
+
+func tutorial_level():
+	current_level = 0
+	
+
 func next_level():
 	current_level += 1
 	if current_level >= levels.size():
@@ -32,17 +44,20 @@ func next_level():
 	
 
 func reset_level():
-	current_level=0
+	current_level = START_GAME
+	
 
 func get_current_level()->PackedScene:
 	return levels[current_level]
+	
 
 func get_next_level()->PackedScene:
 	current_level += 1
 	if current_level >= levels.size():
 		current_level = 0
 	return get_current_level()
-		
+	
+
 func load_data():
 	if ResourceLoader.exists(path):
 		var conf:GameConfiguration = ResourceLoader.load(path)	as GameConfiguration

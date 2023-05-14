@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://jqxg88aou1fg"]
+[gd_scene load_steps=46 format=3 uid="uid://jqxg88aou1fg"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_fybfn"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="2_jhrk2"]
@@ -24,8 +24,17 @@
 [ext_resource type="Texture2D" uid="uid://dl70xehhgks8l" path="res://assets/gfx/player/playeridlenew2.png" id="13_m0tgh"]
 [ext_resource type="Script" path="res://src/characters/player/wobble.gd" id="14_p1wy1"]
 [ext_resource type="Texture2D" uid="uid://dswmdkc7knyke" path="res://assets/gfx/player/playeridlenew3.png" id="14_yvkpj"]
+[ext_resource type="Texture2D" uid="uid://dspn7gog1yv6e" path="res://assets/gfx/player/winplayer1.png" id="19_5ijxd"]
+[ext_resource type="Texture2D" uid="uid://bi7h6wercxwup" path="res://assets/gfx/player/winplayer2.png" id="20_i788b"]
+[ext_resource type="Texture2D" uid="uid://b3rtd2pf608pe" path="res://assets/gfx/player/winplayer3.png" id="21_t4gw3"]
+[ext_resource type="Texture2D" uid="uid://c22xtwlj1or2d" path="res://assets/gfx/player/winplayer4.png" id="22_v4117"]
+[ext_resource type="Texture2D" uid="uid://dau5l5trfqd3e" path="res://assets/gfx/player/winplayer5.png" id="23_hd3io"]
+[ext_resource type="Texture2D" uid="uid://c7rcevdk2m8f5" path="res://assets/gfx/player/winplayer6.png" id="24_fag2u"]
+[ext_resource type="Texture2D" uid="uid://c7hb1kqyrmkvj" path="res://assets/gfx/player/winplayer7.png" id="25_jvu7t"]
 [ext_resource type="AudioStream" uid="uid://yqmymcml8vh7" path="res://assets/sfx/player_death.wav" id="25_rnil7"]
 [ext_resource type="AudioStream" uid="uid://dqeeccptvvv3s" path="res://assets/sfx/woblis_gain.mp3" id="26_l11gn"]
+[ext_resource type="Texture2D" uid="uid://cbrd235fsv8af" path="res://assets/gfx/player/winplayer8.png" id="26_rpmrg"]
+[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="33_3e1ci"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_da6y0"]
 animations = [{
@@ -150,6 +159,41 @@ animations = [{
 }],
 "loop": true,
 "name": &"move_up",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_5ijxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_i788b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_t4gw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_v4117")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_hd3io")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fag2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_jvu7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_rpmrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_fag2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_hd3io")
+}],
+"loop": true,
+"name": &"win",
 "speed": 10.0
 }, {
 "frames": [{
@@ -430,6 +474,25 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_b8uyt"]
+resource_name = "win"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"win", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jvdl7"]
 _data = {
 "RESET": SubResource("Animation_psy0d"),
@@ -438,6 +501,7 @@ _data = {
 "hurt": SubResource("Animation_hw3ro"),
 "idle": SubResource("Animation_cm82f"),
 "move": SubResource("Animation_cs8m5"),
+"win": SubResource("Animation_b8uyt"),
 "wobble": SubResource("Animation_oh7lp")
 }
 
@@ -448,7 +512,8 @@ script = ExtResource("2_jhrk2")
 
 [node name="sprite" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
-animation = &"death"
+animation = &"win"
+frame_progress = 0.451491
 offset = Vector2(0, -16)
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -462,14 +527,17 @@ position_smoothing_enabled = true
 [node name="wobble" parent="xsm" index="4"]
 script = ExtResource("14_p1wy1")
 
-[node name="sfx_combat" parent="sfx" index="0"]
-bus = &"sfx"
-
-[node name="sfx_hop_grass" parent="sfx" index="1"]
-bus = &"sfx"
-
-[node name="sfx_bump" parent="sfx" index="2"]
-bus = &"sfx"
+[node name="win" type="Node" parent="xsm" index="6"]
+script = ExtResource("33_3e1ci")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "win"
+anim_times_to_play = 1
+on_anim_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
 
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="sfx" index="3"]
 stream = ExtResource("25_rnil7")

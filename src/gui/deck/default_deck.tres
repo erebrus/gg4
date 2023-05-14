@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=12 format=3 uid="uid://bjhasktpujsqs"]
+[gd_resource type="Resource" script_class="Deck" load_steps=13 format=3 uid="uid://bjhasktpujsqs"]
 
+[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/step.tres" id="1_n22ia"]
 [ext_resource type="Resource" uid="uid://c6w822vyykot8" path="res://src/gui/pieces/side_step_left.tres" id="2_msvmy"]
 [ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/run.tres" id="3_tjqmq"]
-[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/step.tres" id="4_hnfnq"]
+[ext_resource type="Resource" uid="uid://bhfvpl5bi2dws" path="res://src/gui/pieces/side_step_right.tres" id="4_hnfnq"]
 [ext_resource type="Resource" uid="uid://cibyoxpl20xsc" path="res://src/gui/pieces/long_turn_right.tres" id="6_6fn34"]
 [ext_resource type="Resource" uid="uid://dbrvx8tdmcjjj" path="res://src/gui/pieces/long_turn_left.tres" id="7_3tvdf"]
 [ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="7_kw80b"]
@@ -14,5 +15,5 @@
 
 [resource]
 script = ExtResource("7_kw80b")
-pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("4_hnfnq"), ExtResource("2_msvmy"), ExtResource("3_tjqmq"), ExtResource("4_hnfnq"), ExtResource("8_q6vr7"), ExtResource("9_wtyv4"), ExtResource("6_6fn34"), ExtResource("7_3tvdf"), ExtResource("17_875ay"), ExtResource("18_lhh85"), ExtResource("11_8cejf")])
-quantities = Array[int]([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("1_n22ia"), ExtResource("2_msvmy"), ExtResource("3_tjqmq"), ExtResource("4_hnfnq"), ExtResource("8_q6vr7"), ExtResource("9_wtyv4"), ExtResource("6_6fn34"), ExtResource("7_3tvdf"), ExtResource("17_875ay"), ExtResource("18_lhh85"), ExtResource("11_8cejf")])
+quantities = Array[int]([12, 2, 5, 2, 1, 1, 2, 2, 4, 4, 4])

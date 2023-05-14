@@ -28,7 +28,9 @@ func _show_command():
 	
 
 func handle_combat_with(other):
-	handle_combat(other, self)
+	if not other.previous_command.is_shield:			
+		other.take_damage()
+	retreat()
 	
 
 func take_damage():	

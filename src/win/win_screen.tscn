@@ -1,29 +1,116 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmueioutpi337"]
+[gd_scene load_steps=12 format=3 uid="uid://de78fqoskgcl3"]
 
-[ext_resource type="PackedScene" uid="uid://bmt4b7nq0aagl" path="res://src/gameover/gameover.tscn" id="1_aupqi"]
 [ext_resource type="Script" path="res://src/win/win_screen.gd" id="2_3x4lx"]
+[ext_resource type="AudioStream" uid="uid://bpainag0kt7cr" path="res://assets/sfx/523259__sheyvan__metal-squeak.wav" id="2_sm1jv"]
+[ext_resource type="Texture2D" uid="uid://cn1pnylo7b01x" path="res://assets/gfx/bgs/backgroundover2.png" id="2_yoy6l"]
+[ext_resource type="FontFile" uid="uid://0djk7bufqtr1" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="3_87tt5"]
+[ext_resource type="Texture2D" uid="uid://bkhs2eajk1b6y" path="res://assets/gfx/Ui/Bag.png" id="4_7olwa"]
+[ext_resource type="Texture2D" uid="uid://b7iq6e1rwk0jg" path="res://assets/gfx/Ui/deathbag.png" id="4_cb0q7"]
+[ext_resource type="PackedScene" uid="uid://8u8j005pm35d" path="res://src/win/scale.tscn" id="5_dlxke"]
+[ext_resource type="AudioStream" uid="uid://gdg2slluu70c" path="res://assets/sfx/next.wav" id="8_6nd57"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_21evv"]
-font_size = 60
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbmb7"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 40.0
+content_margin_bottom = 20.0
+bg_color = Color(0.988235, 0.913725, 0.00392157, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[node name="WinScreen" instance=ExtResource("1_aupqi")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mwyn"]
+content_margin_left = 40.0
+content_margin_right = 60.0
+bg_color = Color(0.94902, 0.760784, 0.858824, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndepv"]
+font = ExtResource("3_87tt5")
+font_size = 120
+font_color = Color(0.596078, 0.0627451, 0.317647, 1)
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_3x4lx")
 
-[node name="Label" parent="VBoxContainer" index="0"]
-text = "YOU WIN"
+[node name="squeak" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sm1jv")
+bus = &"sfx"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="1"]
+[node name="rank" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_6nd57")
+volume_db = -10.0
+bus = &"sfx"
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_yoy6l")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Scale" parent="." instance=ExtResource("5_dlxke")]
+position = Vector2(960, 250)
+
+[node name="Bag" type="Sprite2D" parent="."]
+position = Vector2(462, -139)
+texture = ExtResource("4_7olwa")
+offset = Vector2(3, -96)
+
+[node name="Deathbag" type="Sprite2D" parent="."]
+position = Vector2(1431, -151)
+texture = ExtResource("4_cb0q7")
+offset = Vector2(8, -88)
+
+[node name="TitlePanel" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -282.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer2" type="PanelContainer" parent="TitlePanel"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qbmb7")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" index="0"]
+[node name="PanelContainer" type="PanelContainer" parent="TitlePanel/PanelContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Remaining Pieces:"
-label_settings = SubResource("LabelSettings_21evv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mwyn")
 
-[node name="PiecesLabel" type="Label" parent="VBoxContainer/HBoxContainer" index="1"]
+[node name="Label" type="Label" parent="TitlePanel/PanelContainer2/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_21evv")
+text = "56: Catan"
+label_settings = SubResource("LabelSettings_ndepv")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

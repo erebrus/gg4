@@ -20,7 +20,16 @@ func add_commands(new_commands: Array[Command]):
 	Logger.debug("Added %s commands to player" % str(new_commands))
 
 func handle_combat_with(_other):
-	handle_combat(self, _other)
+	if previous_command.is_attack:
+		_other.take_damage()
+		_other.retreat()
+	elif previous_command.is_shield:
+		_other.retreat()
+	else:
+		take_damage()
+		retreat()
+		
+		
 
 func _physics_process(_delta):
 	if out_of_pieces and not dead and not Globals.level_manager.level_complete:
