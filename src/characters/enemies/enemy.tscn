@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://wdyxi8hgwldq" path="res://assets/gfx/enemy1/enemyidlenew3.png" id="14_xtmwu"]
 [ext_resource type="AudioStream" uid="uid://dst0ykybydjh" path="res://assets/sfx/enemy_breaks.wav" id="23_5ck1v"]
 [ext_resource type="Texture2D" uid="uid://cvyvi227pklii" path="res://assets/gfx/bubble/popup.png" id="24_1lmy3"]
-[ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="25_710cd"]
+[ext_resource type="PackedScene" path="res://src/gui/pieces/base_piece.tscn" id="25_710cd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrgvn"]
 size = Vector2(100, 128)
