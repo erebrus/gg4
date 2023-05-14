@@ -1,19 +1,25 @@
-[gd_resource type="TileSet" load_steps=16 format=3 uid="uid://bebwvjoavppeh"]
+[gd_resource type="TileSet" load_steps=24 format=3 uid="uid://bebwvjoavppeh"]
 
 [ext_resource type="Texture2D" uid="uid://dbiy0qbai6wdx" path="res://assets/gfx/world/tiles/Grass2.png" id="1_yqtyx"]
 [ext_resource type="Texture2D" uid="uid://c0wkx8k4qs6ex" path="res://assets/gfx/world/tiles/Grass1.png" id="2_2geos"]
 [ext_resource type="Texture2D" uid="uid://d04j6jc848tgo" path="res://assets/gfx/world/tiles/Grass5.png" id="3_anj77"]
+[ext_resource type="Texture2D" uid="uid://clpbkjbdud2m6" path="res://assets/gfx/world/tiles/Water1.png" id="4_7ctij"]
 [ext_resource type="PackedScene" uid="uid://dgltfqufrm17e" path="res://src/world/objects/exit.tscn" id="4_arrqi"]
 [ext_resource type="PackedScene" uid="uid://pllnnrdp1xi5" path="res://src/world/objects/hazard.tscn" id="5_3boht"]
 [ext_resource type="PackedScene" uid="uid://c2dkrwgtcayi2" path="res://src/world/special_tiles/quicksand.tscn" id="6_2qlge"]
 [ext_resource type="Texture2D" uid="uid://cl05d74quam6s" path="res://assets/gfx/world/tiles/Grass3.png" id="7_4jona"]
 [ext_resource type="PackedScene" uid="uid://0wen44id7217" path="res://src/world/objects/dice.tscn" id="7_pfqa3"]
 [ext_resource type="Texture2D" uid="uid://bp8mkpgbrp0rm" path="res://assets/gfx/world/tiles/Grass4.png" id="8_vh1c7"]
+[ext_resource type="Texture2D" uid="uid://cs2rvfswtimen" path="res://assets/gfx/world/tiles/Water2.png" id="11_6de5i"]
+[ext_resource type="Texture2D" uid="uid://ew5eapem8q2j" path="res://assets/gfx/world/tiles/Water3.png" id="12_p2prt"]
+[ext_resource type="Texture2D" uid="uid://rmm27nksw7ua" path="res://assets/gfx/world/tiles/Water4.png" id="13_7i3ny"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_deu38"]
 texture = ExtResource("1_yqtyx")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
@@ -21,6 +27,8 @@ texture_region_size = Vector2i(128, 128)
 texture = ExtResource("2_2geos")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
@@ -33,6 +41,10 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 0:0/0/custom_data_0 = 1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gq135"]
+texture = ExtResource("4_7ctij")
+texture_region_size = Vector2i(128, 128)
+
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_x4dqh"]
 scenes/1/scene = ExtResource("4_arrqi")
 scenes/2/scene = ExtResource("5_3boht")
@@ -43,11 +55,30 @@ scenes/4/scene = ExtResource("7_pfqa3")
 texture = ExtResource("7_4jona")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qdfaw"]
 texture = ExtResource("8_vh1c7")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ckc3m"]
+texture = ExtResource("11_6de5i")
+texture_region_size = Vector2i(128, 128)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gk40p"]
+texture = ExtResource("12_p2prt")
+texture_region_size = Vector2i(128, 128)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_63mp0"]
+texture = ExtResource("13_7i3ny")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -57,6 +88,9 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 48
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "grass"
+terrain_set_0/terrain_0/color = Color(0.501961, 0.972549, 0.25098, 1)
 custom_data_layer_0/name = "type"
 custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_j2k3b")
@@ -65,3 +99,7 @@ sources/4 = SubResource("TileSetScenesCollectionSource_x4dqh")
 sources/0 = SubResource("TileSetAtlasSource_deu38")
 sources/5 = SubResource("TileSetAtlasSource_trh3g")
 sources/6 = SubResource("TileSetAtlasSource_qdfaw")
+sources/3 = SubResource("TileSetAtlasSource_gq135")
+sources/7 = SubResource("TileSetAtlasSource_ckc3m")
+sources/8 = SubResource("TileSetAtlasSource_gk40p")
+sources/9 = SubResource("TileSetAtlasSource_63mp0")

@@ -421,9 +421,12 @@ next_state = NodePath("../wait")
 
 [node name="sfx_combat" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_x1hi6")
+bus = &"sfx"
 
 [node name="sfx_hop_grass" type="AudioStreamPlayer2D" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_qlt7u")
+bus = &"sfx"
 
 [node name="sfx_bump" type="AudioStreamPlayer2D" parent="sfx"]
 stream = ExtResource("16_c5iaa")
+bus = &"sfx"

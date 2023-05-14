@@ -1,7 +1,8 @@
 extends Character
 
 var out_of_pieces:=false
-
+@onready var sfx_death = $sfx/sfx_death
+@onready var sfx_wobble = $sfx/sfx_wobble
 func _ready():
 	super._ready()
 	Events.commands_queued.connect(add_commands)
@@ -25,13 +26,11 @@ func _physics_process(_delta):
 	if out_of_pieces and not dead and not Globals.level_manager.level_complete:
 		dead = true
 		xsm.change_state("death")	
-		$sfx/sfx_death.play()
 		
-func take_damage():	
-	Events.player_damaged.emit(4) #TODO replace by variable
+func take_damage(dmg:int = 4):	
+	Events.player_damaged.emit(dmg) #TODO replace by variable
 	if out_of_pieces and not Globals.level_manager.level_complete:
 		dead = true
-		$sfx/sfx_death.play()
 		xsm.change_state("death")	
 		
 	else:
@@ -57,9 +56,9 @@ func set_camera_limits()->void:
 	var cam:Camera2D= $Camera2D
 	cam.limit_left=-int(grid.tile_size.x)
 	cam.limit_top=-int(grid.tile_size.y)
-	cam.limit_right=int(grid.tile_size.x*grid.grid_size.x)
-	cam.limit_bottom=int(grid.tile_size.y*grid.grid_size.y)
+	cam.limit_right=int(grid.tile_size.x*(grid.grid_size.x+1))
+	cam.limit_bottom=int(grid.tile_size.y*(grid.grid_size.y+1))
 	
 func play_hop_sfx()->void:
-	$sfx/sfx_hop_grass.play()
+	super.play_hop_sfx()
 

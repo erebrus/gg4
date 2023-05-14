@@ -32,11 +32,10 @@ func handle_combat_with(other):
 	
 
 func take_damage():	
-#	super.take_damage()
-	Logger.info("Enemy killed: %s" % name)
-	dead = true
-	$sfx/sfx_death.play()
-	xsm.change_state("death")
+	if not dead:
+		Logger.info("Enemy killed: %s" % name)
+		dead = true
+		xsm.change_state("death")
 	
 
 func _on_turn_complete():
@@ -52,3 +51,6 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	bubble.hide()
+
+func play_hop_sfx()->void:
+	super.play_hop_sfx()
