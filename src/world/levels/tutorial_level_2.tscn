@@ -74,15 +74,15 @@ show_keys = true
 tutorials = Array[String](["This level presents a few extra challenges.", "See those cute creatures. They don't like you. If you collide with them, you will discard your hand.", "If you collect a dice, you can get a surprise. Maybe good, maybe bad.", "Attack tokens let you defeat them and shield tokens will let you keep your hand. Maybe the dice will give you one.", "", "Those crosses represents a hazard tile. You can cross it, but it will force you to discard one token.", "", "You now have all you need to survive your quest.", "At the end of each level, you  will be given a choice of token to add to your bag.", "Remember keep your discard bag light. Less is more. Less is quest."])
 
 [node name="Enemy" parent="." index="1" instance=ExtResource("2_4pryh")]
-position = Vector2(704, 320)
+position = Vector2(832, 448)
 command_pattern = Array[ExtResource("3_0wp32")]([SubResource("Resource_uwij5"), SubResource("Resource_drobk"), SubResource("Resource_yxvj6"), SubResource("Resource_r3sln")])
 
 [node name="Enemy2" parent="." index="2" instance=ExtResource("2_4pryh")]
-position = Vector2(1344, 320)
+position = Vector2(1216, 1088)
 command_pattern = Array[ExtResource("3_0wp32")]([SubResource("Resource_ne81n"), SubResource("Resource_sgtr4"), SubResource("Resource_flu86"), SubResource("Resource_yd8di")])
 
 [connection signal="body_entered" from="Exit" to="Exit" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Hazard" to="Hazard" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="@Hazard@25837" to="@Hazard@25837" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Hazard@31315" to="@Hazard@31315" method="_on_body_entered" flags=18]
 [connection signal="body_entered" from="Dice" to="Dice" method="_on_body_entered" flags=18]
-[connection signal="body_entered" from="@Dice@25838" to="@Dice@25838" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="@Dice@31316" to="@Dice@31316" method="_on_body_entered" flags=18]
