@@ -32,3 +32,10 @@ signal trigger_discard_fetch
 signal trigger_discard
 
 signal turn_complete
+
+signal request_keys(val:bool)
+
+signal request_tutorial(val:String)
+
+signal request_hide_panels()
+

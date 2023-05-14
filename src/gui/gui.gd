@@ -12,7 +12,7 @@ var exit_reached := false
 @onready var deck: PiecePile = get_node("%DeckPile")
 @onready var discard_pile: PiecePile = get_node("%DiscardPile")
 @onready var hand: Hand = get_node("%Hand")
-
+@onready var keys_panel = $MarginContainer/keys
 
 func _ready() -> void:
 	hand.piece_discarded.connect(_on_piece_discarded)
@@ -24,13 +24,25 @@ func _ready() -> void:
 	Events.trigger_discard_fetch.connect(_on_discard_fetch_triggered)
 	Events.level_complete.connect(func(): exit_reached = true)
 	Events.player_queue_empty.connect(_on_player_queue_empty)
-	
+	Events.request_keys.connect(_on_request_keys)
+	Events.request_hide_panels.connect(_on_request_hide_panels)
+	Events.request_tutorial.connect(_on_request_tutorial)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Globals.menu()
 	
+func _on_request_keys(val:bool)->void:
+	keys_panel.visible = val
 
+
+func _on_request_hide_panels()->void:
+	keys_panel.visible = false
+
+
+func _on_request_tutorial(text:String)->void:
+	
+	
 func set_deck_pieces(_pieces:Array[Piece]):
 	deck.pieces = _pieces
 	
