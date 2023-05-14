@@ -27,11 +27,12 @@ func _ready():
 func _input(event: InputEvent):
 	if not can_exit:
 		return
-	if event is InputEventKey or event is InputEventMouseButton:
+	if event is InputEventKey or (event is InputEventMouseButton and event.is_pressed()):
 		exit()
 	
 
 func exit():
+	can_exit = false
 	Globals.next_level()
 	
 
