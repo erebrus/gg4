@@ -1,6 +1,5 @@
 extends Container
 
-const SPRITE_SIZE = 42
 
 @export var commands: Array[Command]:
 	set(value):
@@ -10,6 +9,7 @@ const SPRITE_SIZE = 42
 				command.rotated.connect(_position_children)
 		add_children()
 
+@export var sprite_size := 42
 @export var num_commands:= 3
 
 @export var move_sprite: Texture
@@ -23,7 +23,7 @@ var sprites: Dictionary
 
 
 func _ready() -> void:
-	custom_minimum_size = Vector2i(SPRITE_SIZE * num_commands, SPRITE_SIZE * num_commands)
+	custom_minimum_size = Vector2i(sprite_size * num_commands, sprite_size * num_commands)
 	
 
 func add_children() -> void:
@@ -67,7 +67,7 @@ func _position_children() -> void:
 		var sprite = sprites[command]
 		
 		if i > 0:
-			start_position += Vector2(SPRITE_SIZE * previous_speed, 0).rotated(previous_rotation)
+			start_position += Vector2(sprite_size * previous_speed, 0).rotated(previous_rotation)
 		
 		if command.speed > 0:
 			match command.direction:
@@ -84,9 +84,9 @@ func _position_children() -> void:
 		else:
 			previous_speed = 1
 		
-		sprite.position = start_position + Vector2(SPRITE_SIZE * (previous_speed-1), 0).rotated(previous_rotation) / 2
+		sprite.position = start_position + Vector2(sprite_size * (previous_speed-1), 0).rotated(previous_rotation) / 2
 		
-		var half_size = Vector2(SPRITE_SIZE * previous_speed, SPRITE_SIZE).rotated(previous_rotation) / 2
+		var half_size = Vector2(sprite_size * previous_speed, sprite_size).rotated(previous_rotation) / 2
 		var left = sprite.position.x - abs(half_size.x)
 		var right = sprite.position.x + abs(half_size.x)
 		var top = sprite.position.y - abs(half_size.y)

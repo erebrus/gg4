@@ -1,9 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmlk3fqhqbl8o"]
+[gd_scene load_steps=16 format=3 uid="uid://dmlk3fqhqbl8o"]
 
 [ext_resource type="Script" path="res://src/gui/dice_panel.gd" id="1_gbs7d"]
 [ext_resource type="Texture2D" uid="uid://wt37myriyjor" path="res://assets/gfx/dice/bigdice1.png" id="2_0kjom"]
 [ext_resource type="Texture2D" uid="uid://ddcv4bh7fbq44" path="res://src/world/objects/dicef1.png" id="3_26upl"]
+[ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="3_y8a81"]
+[ext_resource type="Texture2D" uid="uid://c31d3ntiiu6gn" path="res://assets/gfx/Ui/64 movetile.png" id="4_4y8wx"]
 [ext_resource type="AudioStream" uid="uid://bfha2nyg8t0wy" path="res://assets/sfx/diceroll.wav" id="4_ws1m4"]
+[ext_resource type="Texture2D" uid="uid://nwrb77f5y13i" path="res://assets/gfx/Ui/64 waittile.png" id="5_rrlym"]
+[ext_resource type="Texture2D" uid="uid://c7xturbaa7j46" path="res://assets/gfx/Ui/64 shieldtile.png" id="6_kof7x"]
+[ext_resource type="Texture2D" uid="uid://djk031mst7dm3" path="res://assets/gfx/Ui/64 Swordtile.png" id="7_nqj4i"]
 
 [sub_resource type="Animation" id="Animation_qo7uu"]
 length = 0.001
@@ -112,6 +117,13 @@ _data = {
 "show": SubResource("Animation_7rhfv")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x1aav"]
+content_margin_left = 20.0
+content_margin_top = 27.0
+content_margin_right = 90.0
+content_margin_bottom = 15.0
+texture = ExtResource("2_0kjom")
+
 [node name="DicePanel" type="Control"]
 modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(512, 512)
@@ -136,7 +148,7 @@ libraries = {
 "": SubResource("AnimationLibrary_wkwfr")
 }
 
-[node name="Dice" type="TextureRect" parent="."]
+[node name="Dice" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(512, 512)
 layout_mode = 0
 offset_right = 512.0
@@ -146,22 +158,22 @@ pivot_offset = Vector2(256, 256)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
-texture = ExtResource("2_0kjom")
+theme_override_styles/panel = SubResource("StyleBoxTexture_x1aav")
+
+[node name="BasePiece" parent="Dice" instance=ExtResource("3_y8a81")]
+visible = false
+layout_mode = 2
+sprite_size = 64
+move_sprite = ExtResource("4_4y8wx")
+wait_sprite = ExtResource("5_rrlym")
+shield_sprite = ExtResource("6_kof7x")
+attack_sprite = ExtResource("7_nqj4i")
 
 [node name="Face" type="TextureRect" parent="Dice"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -128.0
-offset_right = 64.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = 0.0174533
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 texture = ExtResource("3_26upl")
 
