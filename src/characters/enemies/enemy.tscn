@@ -24,8 +24,8 @@
 [ext_resource type="Texture2D" uid="uid://y3t3gq01l3t" path="res://assets/gfx/enemy1/enemyidlenew2.png" id="13_50l3o"]
 [ext_resource type="Texture2D" uid="uid://wdyxi8hgwldq" path="res://assets/gfx/enemy1/enemyidlenew3.png" id="14_xtmwu"]
 [ext_resource type="AudioStream" uid="uid://dst0ykybydjh" path="res://assets/sfx/enemy_breaks.wav" id="23_5ck1v"]
-[ext_resource type="Texture2D" uid="uid://dv8troiam8l01" path="res://assets/gfx/Ui/thoughtbubble.png" id="24_ieyrd"]
-[ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="25_710cd"]
+[ext_resource type="Texture2D" uid="uid://dv8troiam8l01" path="res://assets/gfx/Ui/thoughtbubble.png" id="24_ukr1d"]
+[ext_resource type="PackedScene" uid="uid://cnu2k7if1wqqc" path="res://src/gui/pieces/base_piece.tscn" id="25_710cd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xrgvn"]
 size = Vector2(100, 100)
@@ -225,27 +225,16 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("sprite")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [&"attack", 1.0, false],
-"method": &"play"
-}]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
+"args": ["attack"],
+"method": &"play_animation"
+}, {
 "args": [],
 "method": &"play_hop_sfx"
 }]
@@ -423,7 +412,7 @@ content_margin_left = 8.0
 content_margin_top = 10.0
 content_margin_right = 8.0
 content_margin_bottom = 25.0
-texture = ExtResource("24_ieyrd")
+texture = ExtResource("24_ukr1d")
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_f8rso")]
 collision_layer = 32
@@ -453,21 +442,13 @@ offset_bottom = -109.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_fcly7")
 
 [node name="Command" parent="Bubble" index="0" instance=ExtResource("25_710cd")]
+modulate = Color(0, 0, 0, 1)
 clip_contents = true
 layout_mode = 2
 num_commands = 1
 
-[node name="sfx_combat" parent="sfx" index="0"]
-bus = &"sfx"
-
-[node name="sfx_hop_grass" parent="sfx" index="1"]
-bus = &"sfx"
-
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="sfx" index="2"]
 stream = ExtResource("23_5ck1v")
-bus = &"sfx"
-
-[node name="sfx_bump" parent="sfx" index="3"]
 bus = &"sfx"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -62,7 +62,6 @@ func complete_tick():
 	if tick_suspended:
 		tick_requested = true
 		return
-#	previous_command = null
 	in_turn = false		
 	tick_complete.emit() 
 	tick_requested = false
@@ -93,36 +92,6 @@ func translate_command(_command : Command)->Vector2i:
 func handle_combat_with(_other):
 	pass
 	
-func handle_combat(player, enemy)->void:
-	#Player wins
-	if player.previous_command.is_attack:
-		enemy.take_damage()
-		enemy.retreat()
-	else:
-		var player_moved:bool = player.position != player.grid.map_to_local(player.previous_cell)
-		var enemy_moved:bool = enemy.position != enemy.grid.map_to_local(enemy.previous_cell)
-
-		#PLAYER loses but has shield
-		if player.previous_command.is_shield:
-			if player_moved:
-				if enemy_moved:
-					player.retreat()
-					enemy.retreat()
-				else:
-#					enemy.push(player)			TODO push
-					player.retreat()
-			else:
-				enemy.retreat()
-			
-		else:					
-			player.take_damage()	#TODO gets this from global var
-			if player_moved and enemy_moved:			
-				player.retreat()
-				enemy.retreat()
-			elif player_moved:			
-				player.retreat()
-			else:
-				enemy.retreat()
 			
 func take_damage():	
 	xsm.change_state("hurt")
