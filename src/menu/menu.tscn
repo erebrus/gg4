@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnp5yf4j7gjpx"]
+[gd_scene load_steps=11 format=3 uid="uid://bnp5yf4j7gjpx"]
 
 [ext_resource type="StyleBox" uid="uid://c5x52ku10ofab" path="res://src/menu/button_normal.tres" id="1_jsv5s"]
 [ext_resource type="Script" path="res://src/menu/menu.gd" id="1_syvxs"]
@@ -6,7 +6,11 @@
 [ext_resource type="StyleBox" uid="uid://cddhkm3vxv4ls" path="res://src/menu/button_pressed.tres" id="3_c0578"]
 [ext_resource type="FontFile" uid="uid://0djk7bufqtr1" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="5_leofv"]
 
+[sub_resource type="FontVariation" id="FontVariation_423qv"]
+variation_embolden = 0.6
+
 [sub_resource type="Theme" id="Theme_iu8oi"]
+default_font = SubResource("FontVariation_423qv")
 default_font_size = 64
 Button/colors/font_color = Color(0.6, 0.0627451, 0.317647, 1)
 Button/colors/font_hover_color = Color(0.596078, 0.0627451, 0.321569, 1)

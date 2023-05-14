@@ -36,6 +36,10 @@ script/templates_search_path="res://addons/xsm/templates/"
 
 enabled=PackedStringArray("res://addons/rng_utils/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/xsm/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
+[gui]
+
+theme/custom_font="res://assets/fonts/ShadowsIntoLight-Regular.ttf"
+
 [input]
 
 ui_up={
