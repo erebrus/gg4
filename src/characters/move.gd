@@ -1,6 +1,8 @@
 @tool
 extends State
 
+var already_collided: Array
+
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -16,6 +18,7 @@ extends State
 # XSM enters the root first, the the children
 func _on_enter(_args):
 	owner.speed = owner.MAX_SPEED	
+	already_collided.clear()
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -46,16 +49,21 @@ func _on_update(_delta):
 	if collision:
 		#Logger.error("Unexpected collision with:",collision.collider.name)
 		var collider=collision.get_collider()
-		if collider.is_in_group("character"):
-			if not collider.dead:
-				owner.get_node("sfx/sfx_combat").play()		
-				owner.handle_combat_with(collider)
+		
+		# dont collice twice in the same move with the same thing
+		if not already_collided.has(collider):
+			already_collided.append(collider)
+			if collider.is_in_group("character"):
+				if not collider.dead:
+					owner.get_node("sfx/sfx_combat").play()		
+					owner.handle_combat_with(collider)
+					return
+			else:
+				owner.retreat() #TODO reconsider if this should be in a state						
+	#			owner.bump()#TODO consider move to state
+				change_state("wobble")
 				return
-		else:
-			owner.retreat() #TODO reconsider if this should be in a state						
-#			owner.bump()#TODO consider move to state
-			change_state("wobble")
-			return
+		
 	if done and not owner.dead:
 		change_state("idle")	
 
