@@ -34,7 +34,7 @@ script/templates_search_path="res://addons/xsm/templates/"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/rng_utils/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/xsm/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/rng_utils/plugin.cfg", "res://addons/gs_logger/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/xsm/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/ActionIcon/plugin.cfg")
 
 [gui]
 
@@ -42,6 +42,11 @@ theme/custom_font="res://assets/fonts/ShadowsIntoLight-Regular.ttf"
 
 [input]
 
+ui_accept={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":32,"echo":false,"script":null)
+]
+}
 ui_up={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194320,"physical_keycode":0,"key_label":0,"unicode":4194320,"echo":false,"script":null)

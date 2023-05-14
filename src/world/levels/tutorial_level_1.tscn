@@ -1,0 +1,20 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0jjlobaaiekk"]
+
+[ext_resource type="PackedScene" uid="uid://cldwu41ur8qw1" path="res://src/world/arena.tscn" id="1_m4adi"]
+[ext_resource type="Resource" uid="uid://bhfvpl5bi2dwr" path="res://src/gui/pieces/step.tres" id="2_at3x7"]
+[ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="2_f3b70"]
+[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/run.tres" id="3_jbmoq"]
+[ext_resource type="Resource" uid="uid://cibyoxpl20xsc" path="res://src/gui/pieces/long_turn_right.tres" id="4_tmqwm"]
+[ext_resource type="Resource" uid="uid://dehqbqwem143e" path="res://src/gui/pieces/short_turn_left.tres" id="5_2dy4l"]
+
+[sub_resource type="Resource" id="Resource_0xco6"]
+script = ExtResource("2_f3b70")
+pieces = Array[Resource("res://src/gui/pieces/piece.gd")]([ExtResource("2_at3x7"), ExtResource("3_jbmoq"), ExtResource("4_tmqwm"), ExtResource("5_2dy4l"), ExtResource("3_jbmoq"), ExtResource("2_at3x7"), ExtResource("3_jbmoq"), ExtResource("2_at3x7")])
+quantities = Array[int]([1, 1, 1, 1, 1, 1, 1, 8])
+
+[node name="TutorialLevel1" instance=ExtResource("1_m4adi")]
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 2, 6, 0, 3, 6, 0, 4, 6, 0, 5, 0, 0, 6, 6, 0, 7, 1, 0, 8, 6, 0, 10, 5, 0, 11, 6, 0, 12, 6, 0, 13, 6, 0, 14, 6, 0, 65536, 0, 0, 131072, 2, 0, 196608, 1, 0, 262144, 6, 0, 327680, 5, 0, 393216, 5, 0, 458752, 5, 0, 458753, 0, 0, 458754, 5, 0, 458755, 6, 0, 458756, 1, 0, 458757, 1, 0, 458758, 1, 0, 458759, 0, 0, 458760, 6, 0, 458761, 0, 0, 458762, 1, 0, 458763, 5, 0, 458764, 5, 0, 458765, 5, 0, 458766, 1, 0, 393230, 5, 0, 327694, 1, 0, 262158, 0, 0, 196622, 0, 0, 131086, 5, 0, 65550, 1, 0, 196615, 5, 0, 65543, 5, 0, 65542, 1, 0, 65540, 5, 0, 65539, 1, 0, 65538, 5, 0, 65537, 5, 0, 131073, 2, 0, 196609, 6, 0, 262145, 5, 0, 327681, 5, 0, 393217, 5, 0, 393218, 5, 0, 327682, 0, 0, 262146, 0, 0, 196610, 0, 0, 131074, 2, 0, 131075, 2, 0, 196611, 6, 0, 196612, 6, 0, 131076, 2, 0, 131077, 2, 0, 196613, 1, 0, 262149, 6, 0, 327685, 0, 0, 393221, 1, 0, 393222, 5, 0, 327686, 1, 0, 262150, 0, 0, 131078, 0, 0, 262151, 6, 0, 327687, 0, 0, 393223, 1, 0, 393224, 5, 0, 327688, 6, 0, 262152, 0, 0, 196616, 1, 0, 131080, 1, 0, 65544, 0, 0, 65545, 2, 0, 131081, 2, 0, 196617, 2, 0, 262153, 5, 0, 327689, 6, 0, 393225, 1, 0, 393226, 1, 0, 327690, 0, 0, 262154, 5, 0, 196618, 5, 0, 131082, 0, 0, 65546, 0, 0, 65547, 1, 0, 131083, 4, 65536, 196619, 1, 0, 262155, 0, 0, 327691, 1, 0, 393227, 1, 0, 393228, 1, 0, 327692, 5, 0, 262156, 6, 0, 196620, 1, 0, 131084, 5, 0, 65548, 0, 0, 65549, 1, 0, 131085, 0, 0, 196621, 6, 0, 262157, 5, 0, 327693, 5, 0, 393229, 5, 0, 65541, 5, 0, 9, 2, 0, 196614, 0, 0, 131079, 6, 0, -1, 2, 0, -65536, 2, 0, -65535, 2, 0, -65534, 2, 0, -65533, 2, 0, -65532, 2, 0, -65531, 2, 0, -65530, 2, 0, -65529, 2, 0, -65528, 2, 0, -65527, 2, 0, -65526, 2, 0, -65525, 2, 0, -65524, 2, 0, -65523, 2, 0, -65522, 2, 0, -65521, 2, 0, 15, 2, 0, 65551, 2, 0, 131087, 2, 0, 196623, 2, 0, 262159, 2, 0, 327695, 2, 0, 393231, 2, 0, 458767, 2, 0, 589839, 2, 0, 524303, 2, 0, 589838, 2, 0, 589837, 2, 0, 589836, 2, 0, 589835, 2, 0, 589834, 2, 0, 589833, 2, 0, 589832, 2, 0, 589831, 2, 0, 589830, 2, 0, 589829, 2, 0, 589828, 2, 0, 589827, 2, 0, 589826, 2, 0, 589825, 2, 0, 65535, 2, 0, 131071, 2, 0, 196607, 2, 0, 262143, 2, 0, 327679, 2, 0, 393215, 2, 0, 458751, 2, 0, 524287, 2, 0, 589823, 2, 0, 655359, 2, 0, 589824, 2, 0, 524297, 6, 0, 524301, 1, 0, 524302, 0, 0, 524288, 0, 0, 524289, 0, 0, 524290, 0, 0, 524291, 6, 0, 524292, 0, 0, 524293, 1, 0, 524294, 6, 0, 524295, 1, 0, 524296, 1, 0, 524298, 5, 0, 524299, 6, 0, 524300, 0, 0, 262148, 1, 0, 393220, 1, 0, 327683, 5, 0, 262147, 6, 0, 327684, 6, 0, 393219, 0, 0)
+default_deck = SubResource("Resource_0xco6")
+shuffle_deck = false
+show_keys = true
+tutorials = Array[String](["Place movement tokens to reach the end tile. Don't overshoot it.", "You can walk on grass and sand tiles.", "Don't forget you can rotate tokens.", "Mountain tiles are impassable and will force you to discard a token if you try.", "If you run out of tokens. You will lose.", "If you overshoot the exit, you will have to turn back."])
