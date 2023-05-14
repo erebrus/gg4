@@ -26,7 +26,7 @@ var tile_size:Vector2:
 var grid_size:Vector2 = Vector2(grid_size_x, grid_size_y)
 
 
-
+var first_turn:=true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	assert(tile_set)
@@ -36,6 +36,14 @@ func _ready():
 	Logger.info("Arena initialised.")
 
 func check_tutorial():
+	
+	if first_turn:		
+		first_turn = false
+		return
+	
+	if show_keys:
+		Events.request_keys.emit(false)
+		show_keys = false
 	if tutorials != null and not tutorials.is_empty():
 		var msg:String=tutorials.pop_front()
 		if msg.length()>0:
