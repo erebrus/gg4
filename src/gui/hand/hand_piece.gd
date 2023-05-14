@@ -16,8 +16,8 @@ const SPRITE_SIZE = 128
 var tween: Tween
 
 @onready var sprite: Container = get_node("%Sprite")
-@onready var left_button: Button = get_node("%TurnLeftButton")
-@onready var right_button: Button = get_node("%TurnRightButton")
+@onready var left_button: TextureButton = get_node("%TurnLeftButton")
+@onready var right_button: TextureButton = get_node("%TurnRightButton")
 
 @onready var rotate_sound: AudioStreamPlayer = $sfx/rotate
 
