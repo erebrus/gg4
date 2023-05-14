@@ -2,7 +2,7 @@ class_name LevelManager extends Node
 
 var levels:Array[PackedScene] = [
 	preload("res://src/world/levels/tutorial_level_1.tscn"),
-	preload("res://src/world/levels/tutorial_level_2.tscn"),	
+	preload("res://src/world/levels/tutorial_level_2.tscn"),
 	preload("res://src/world/levels/level_1.tscn"),
 	preload("res://src/world/levels/level_2.tscn"),
 	
