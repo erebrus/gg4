@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfjqux4p83uay"]
+[gd_scene load_steps=7 format=3 uid="uid://dfjqux4p83uay"]
 
 [ext_resource type="Script" path="res://src/gui/gui.gd" id="1_jttiy"]
 [ext_resource type="PackedScene" uid="uid://uhyxt3b8el20" path="res://src/gui/deck/pile.tscn" id="1_lbl2e"]
 [ext_resource type="PackedScene" uid="uid://bu0a3pu5ddgwm" path="res://src/gui/hand/hand.tscn" id="2_4blni"]
 [ext_resource type="PackedScene" uid="uid://cn2m6mmvjw07h" path="res://src/gui/deck/discard_pile.tscn" id="4_hv5f3"]
+[ext_resource type="PackedScene" uid="uid://5sgamaocbx1q" path="res://src/gui/keys.tscn" id="5_580nd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7howe"]
 
@@ -32,5 +33,15 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 10
+
+[node name="keys" parent="MarginContainer" instance=ExtResource("5_580nd")]
+layout_mode = 2
 
 [connection signal="gui_input" from="DeckPile" to="." method="_on_deck_pile_gui_input"]
