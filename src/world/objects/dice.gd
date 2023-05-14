@@ -34,8 +34,10 @@ func _on_dice_roll_completed():
 func _on_body_entered(body):
 	player = body
 	player.suspend_tick()
-	$Sprite2D.visible = false
+	$Sprite2D.play("fade")
 	Events.request_dice_roll.emit(faces)	
-	
+	await $Sprite2D.animation_finished
+	var tween:=create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property($Sprite2D, "modulate", Color(1,1,1,0),.25)
 	
 	

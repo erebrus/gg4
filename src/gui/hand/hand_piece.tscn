@@ -1,18 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu4s4om5ko3l4"]
+[gd_scene load_steps=11 format=3 uid="uid://cu4s4om5ko3l4"]
 
-[ext_resource type="Texture2D" uid="uid://cbxk07ox053bh" path="res://src/gui/pieces/piece_bg.png" id="1_r1i2h"]
 [ext_resource type="Script" path="res://src/gui/hand/hand_piece.gd" id="1_yl2u0"]
+[ext_resource type="Texture2D" uid="uid://ci34k26f3t252" path="res://assets/gfx/Ui/tilewood.png" id="2_anh0m"]
+[ext_resource type="Texture2D" uid="uid://m3lkikh6o1g5" path="res://assets/gfx/Ui/Rotate.png" id="2_l3h58"]
 [ext_resource type="PackedScene" uid="uid://0m6bfc4pfihw" path="res://src/gui/pieces/base_piece.tscn" id="3_5qb6f"]
+[ext_resource type="Texture2D" uid="uid://b7mlf7rq5shll" path="res://assets/gfx/Ui/Rotate_pressed.png" id="3_sgoei"]
 [ext_resource type="AudioStream" uid="uid://blyk2svkcpgtt" path="res://assets/sfx/rotate_01.wav" id="7_4n1wp"]
 [ext_resource type="AudioStream" uid="uid://bvasaw12l8h4c" path="res://assets/sfx/rotate_02.wav" id="8_u4tgl"]
 [ext_resource type="AudioStream" uid="uid://dlhfwuxai4hks" path="res://assets/sfx/rotate_03.wav" id="9_reybe"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w8a5o"]
-texture = ExtResource("1_r1i2h")
+texture = ExtResource("2_anh0m")
 texture_margin_left = 13.0
-texture_margin_top = 26.0
+texture_margin_top = 13.0
 texture_margin_right = 13.0
-texture_margin_bottom = 13.0
+texture_margin_bottom = 26.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_65dpj"]
 streams_count = 3
@@ -39,12 +41,15 @@ offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TurnLeftButton" type="Button" parent="HBoxContainer"]
+[node name="TurnLeftButton" type="TextureButton" parent="HBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 0
-text = "<-"
+texture_normal = ExtResource("2_l3h58")
+texture_pressed = ExtResource("3_sgoei")
+texture_hover = ExtResource("2_l3h58")
+flip_h = true
 
 [node name="HandPiece" type="PanelContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(128, 128)
@@ -58,12 +63,14 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_w8a5o")
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="TurnRightButton" type="Button" parent="HBoxContainer"]
+[node name="TurnRightButton" type="TextureButton" parent="HBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_vertical = 0
-text = "->"
+texture_normal = ExtResource("2_l3h58")
+texture_pressed = ExtResource("3_sgoei")
+texture_hover = ExtResource("2_l3h58")
 
 [node name="sfx" type="Node" parent="."]
 

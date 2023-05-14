@@ -29,6 +29,8 @@ unique_name_in_owner = true
 
 [node name="select" type="AudioStreamPlayer" parent="sfx"]
 stream = SubResource("AudioStreamRandomizer_dw8ff")
+bus = &"sfx"
 
 [node name="draw" type="AudioStreamPlayer" parent="sfx"]
 stream = ExtResource("8_0q58l")
+bus = &"sfx"

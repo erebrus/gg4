@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=7 format=3 uid="uid://cibyoxpl20xsc"]
+
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_1j1bl"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_j22lm"]
+
+[sub_resource type="Resource" id="Resource_178x4"]
+script = ExtResource("1_j22lm")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_m2o16"]
+script = ExtResource("1_j22lm")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_fglgl"]
+script = ExtResource("1_j22lm")
+action = 0
+direction = 3
+speed = 1
+
+[sub_resource type="Resource" id="Resource_yfoem"]
+script = ExtResource("1_j22lm")
+action = 0
+direction = 3
+speed = 1
+
+[resource]
+script = ExtResource("1_1j1bl")
+commands = Array[ExtResource("1_j22lm")]([SubResource("Resource_178x4"), SubResource("Resource_m2o16"), SubResource("Resource_fglgl"), SubResource("Resource_yfoem")])
+description = "Move in an L shape"

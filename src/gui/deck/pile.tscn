@@ -1,9 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://uhyxt3b8el20"]
+[gd_scene load_steps=6 format=3 uid="uid://uhyxt3b8el20"]
 
 [ext_resource type="Script" path="res://src/gui/deck/pile.gd" id="1_flpqe"]
-[ext_resource type="Texture2D" uid="uid://c7ukhtt1fosk" path="res://src/gui/deck/bag.png" id="2_wuapi"]
+[ext_resource type="Texture2D" uid="uid://bkhs2eajk1b6y" path="res://assets/gfx/Ui/Bag.png" id="2_q3h84"]
+[ext_resource type="FontFile" uid="uid://0djk7bufqtr1" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="3_rtopx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uda2t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0ip5"]
+font = ExtResource("3_rtopx")
+font_size = 58
+outline_size = 20
+outline_color = Color(0.12549, 0.129412, 0.168627, 1)
 
 [node name="Pile" type="PanelContainer"]
 anchors_preset = 8
@@ -22,11 +29,26 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_uda2t")
 script = ExtResource("1_flpqe")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
-texture = ExtResource("2_wuapi")
+size_flags_vertical = 0
+theme_override_constants/margin_left = 170
+theme_override_constants/margin_top = 30
 
-[node name="NumPieces" type="Label" parent="."]
+[node name="NumPieces" type="Label" parent="MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "28"
+label_settings = SubResource("LabelSettings_c0ip5")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = -12
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_q3h84")

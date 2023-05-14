@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn2m6mmvjw07h"]
+
+[ext_resource type="PackedScene" uid="uid://uhyxt3b8el20" path="res://src/gui/deck/pile.tscn" id="1_mbfaf"]
+[ext_resource type="Texture2D" uid="uid://b7iq6e1rwk0jg" path="res://assets/gfx/Ui/deathbag.png" id="2_k7t0j"]
+
+[node name="DiscardPile" instance=ExtResource("1_mbfaf")]
+
+[node name="TextureRect" parent="MarginContainer" index="0"]
+texture = ExtResource("2_k7t0j")

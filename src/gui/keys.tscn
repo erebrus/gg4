@@ -1,0 +1,133 @@
+[gd_scene load_steps=7 format=3 uid="uid://5sgamaocbx1q"]
+
+[ext_resource type="Texture2D" uid="uid://cr21m814ruqga" path="res://addons/ActionIcon/Keyboard/Blank.png" id="1_s5vor"]
+[ext_resource type="Script" path="res://addons/ActionIcon/ActionIcon.gd" id="2_o8i2s"]
+[ext_resource type="Texture2D" uid="uid://houtlwmeqs21" path="res://addons/ActionIcon/Mouse/WheelUp.png" id="3_dbmbg"]
+[ext_resource type="Texture2D" uid="uid://dgy4fgawfj0km" path="res://addons/ActionIcon/Mouse/Left.png" id="3_tle24"]
+[ext_resource type="Texture2D" uid="uid://b8ncmualdsu0b" path="res://addons/ActionIcon/Mouse/WheelDown.png" id="4_4eaac"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vpms"]
+bg_color = Color(0, 0, 0, 0.215686)
+
+[node name="keys" type="PanelContainer"]
+custom_minimum_size = Vector2(908, 320)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1012.0
+offset_bottom = -760.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vpms")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Select" type="HBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ui_left" type="TextureRect" parent="MarginContainer/GridContainer/Select"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_s5vor")
+stretch_mode = 5
+script = ExtResource("2_o8i2s")
+action_name = &"ui_left"
+fit_mode = 0
+
+[node name="Sep" type="Label" parent="MarginContainer/GridContainer/Select"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+
+[node name="ui_right" type="TextureRect" parent="MarginContainer/GridContainer/Select"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_s5vor")
+stretch_mode = 5
+script = ExtResource("2_o8i2s")
+action_name = &"ui_right"
+fit_mode = 0
+
+[node name="SelectLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Change the selected token."
+
+[node name="Rotate" type="HBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="ui_up" type="TextureRect" parent="MarginContainer/GridContainer/Rotate"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_s5vor")
+stretch_mode = 5
+script = ExtResource("2_o8i2s")
+action_name = &"ui_up"
+joypad_mode = 1
+favor_mouse = false
+fit_mode = 0
+
+[node name="ui_up2" type="TextureRect" parent="MarginContainer/GridContainer/Rotate"]
+layout_mode = 2
+texture = ExtResource("3_dbmbg")
+
+[node name="Sep" type="Label" parent="MarginContainer/GridContainer/Rotate"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "/"
+
+[node name="ui_down" type="TextureRect" parent="MarginContainer/GridContainer/Rotate"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+texture = ExtResource("1_s5vor")
+stretch_mode = 5
+script = ExtResource("2_o8i2s")
+action_name = &"ui_down"
+joypad_mode = 1
+favor_mouse = false
+fit_mode = 0
+
+[node name="ui_down2" type="TextureRect" parent="MarginContainer/GridContainer/Rotate"]
+layout_mode = 2
+texture = ExtResource("4_4eaac")
+
+[node name="RotateLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Rotate the selected token."
+
+[node name="Place" type="HBoxContainer" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ui_accept" type="TextureRect" parent="MarginContainer/GridContainer/Place"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("1_s5vor")
+stretch_mode = 5
+script = ExtResource("2_o8i2s")
+action_name = &"ui_accept"
+favor_mouse = false
+
+[node name="ui_accept2" type="TextureRect" parent="MarginContainer/GridContainer/Place"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("3_tle24")
+
+[node name="PlaceLabel" type="Label" parent="MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Place the selected token."

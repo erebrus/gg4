@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 	for piece in pieces:
 		var scene = Choice.instantiate()
+		scene.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		scene.piece = piece
 		scene.selected.connect(_on_piece_selected.bind(piece))
 		pieces_container.add_child(scene)
@@ -27,4 +28,9 @@ func _ready() -> void:
 func _on_piece_selected(piece: Piece) -> void:
 	Globals.deck.append(piece)
 	Globals.level_manager.next_level()
-	SceneLoader.load_scene(Globals.MAIN_SCREEN)
+	SceneManager.change_scene(Globals.MAIN_SCREEN, {
+		"pattern":"curtains" ,
+		"wait_time":0,
+		"invert": true,
+		"color": Globals.TRANSITION_COLOR
+	})

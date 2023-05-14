@@ -10,7 +10,6 @@ const GameDataPath = "user://conf.cfg"
 var config:ConfigFile
 
 var debug_build := false
-var music
 
 
 const MENU_SCREEN = "res://src/menu/menu.tscn"
@@ -19,16 +18,24 @@ const GAMEOVER_SCREEN = "res://src/gameover/gameover.tscn"
 const WIN_SCREEN = "res://src/win/win_screen.tscn"
 const CHOOSE_PIECE = "res://src/choose_piece/choose_piece.tscn"
 
+const TRANSITION_COLOR = Color("#009aff")
+
 const START_DECK = preload("res://src/gui/deck/default_deck.tres")
 
+var default_transition = {
+	"pattern":"horizontal", 
+	"wait_time":0,
+	"color": TRANSITION_COLOR
+}
 
 var deck:
 	get:
 		return level_manager.current_deck
 	
 var player_in_turn:= false
-
+var game_music_on := false
 @onready var level_manager:LevelManager = $LevelManager
+@onready var music:=$music
 
 func _ready():
 	_init_logger()
@@ -43,6 +50,19 @@ func _ready():
 #	music.bus="Music"
 #	add_child(music)
 
+func start_game_music()->void:
+	if not music.playing:
+		music.volume_db=-80
+		music.play()
+		var tween:=create_tween().set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(music, "volume_db",-15.0, 1)
+		game_music_on = true
+
+
+func stop_game_music()->void:
+	music.stop()
+	game_music_on = false
+		
 func _init_logger():
 	Logger.set_logger_level(Logger.LOG_LEVEL_INFO)
 	Logger.set_logger_format(Logger.LOG_FORMAT_MORE)
@@ -53,15 +73,20 @@ func _init_logger():
 
 func gameover():
 	await get_tree().create_timer(2.5).timeout
-	SceneLoader.load_scene(GAMEOVER_SCREEN)
+	SceneManager.change_scene(GAMEOVER_SCREEN, default_transition)
 	
 
 func win(remaining_pieces: int):
-	SceneLoader.load_scene(WIN_SCREEN, remaining_pieces)
+	SceneManager.change_scene(WIN_SCREEN, {
+		"pattern":"horizontal", 
+		"wait_time":0,
+		"color": TRANSITION_COLOR,
+		"on_ready": func(scene): scene.set_data(remaining_pieces)
+	})
 	
 
 func menu():
-	SceneLoader.load_scene(MENU_SCREEN)
+	SceneManager.change_scene(MENU_SCREEN, default_transition)
 	
 
 func can_continue() -> bool:
@@ -70,15 +95,21 @@ func can_continue() -> bool:
 
 func start():
 	level_manager.reset_level()
-	SceneLoader.load_scene(MAIN_SCREEN)
+	SceneManager.change_scene(MAIN_SCREEN, default_transition)
+	start_game_music()
 	
 
 func continue_game():
-	SceneLoader.load_scene(MAIN_SCREEN)
+	SceneManager.change_scene(MAIN_SCREEN, default_transition)
+	start_game_music()
 	
 
 func choose_piece():
-	SceneLoader.load_scene(CHOOSE_PIECE)
+	SceneManager.change_scene(CHOOSE_PIECE, {
+			"pattern_enter":"curtains", 
+			"wait_time":0, 
+			"color": TRANSITION_COLOR,
+		})
 	
 
 #
@@ -106,3 +137,8 @@ func choose_piece():
 #func _exit_tree():
 #	save_data()
 
+
+
+func _on_music_finished():
+	if game_music_on:
+		start_game_music()

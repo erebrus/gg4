@@ -46,6 +46,7 @@ func add(piece: Piece) -> void:
 	var scene = HandPiece.instantiate()
 	draw_sound.play()
 	scene.piece = piece
+	scene.position = Vector2(-600, 0)
 	scene.selected.connect(_on_piece_selected.bind(piece))
 	scene.accepted.connect(_on_piece_accepted.bind(piece))
 	scene.unselected.connect(_on_piece_unselected.bind(piece))
@@ -83,7 +84,7 @@ func choose_previous_piece()->void:
 	if idx == -1:
 		Logger.warn("No piece selected, so we can't select previous piece")
 		return
-	select_piece_by_index(idx - 1, true)
+	select_piece_by_index(idx + 1, true)
 	
 
 func choose_next_piece()->void:
@@ -91,7 +92,7 @@ func choose_next_piece()->void:
 	if idx == -1:
 		Logger.warn("No piece selected, so we can't select next piece")
 		return
-	select_piece_by_index(idx + 1, true)
+	select_piece_by_index(idx - 1, true)
 	
 
 func place_piece() -> void:
@@ -99,7 +100,7 @@ func place_piece() -> void:
 		Logger.warn("Trying to place piece not in hand: %s" % selected_piece)
 		return
 	
-	var idx = pieces.keys().find(selected_piece)
+	var idx = get_index_of_piece(selected_piece)
 	var scene = pieces[selected_piece]
 	scene.place()
 	piece_container.remove_child(scene)
@@ -146,7 +147,7 @@ func sort_pieces() -> void:
 	var total_size = PIECE_SIZE * pieces.size()
 	for i in pieces.size():
 		var piece = pieces[pieces.keys()[i]]
-		var x = - total_size / 2 + PIECE_SIZE * i + PIECE_SIZE / 2
+		var x = + total_size / 2 - PIECE_SIZE * i - PIECE_SIZE / 2
 		sort_tween.tween_property(piece, "position:x", x, 0.3)
 	
 	Logger.debug("Finish sorting  %s pieces" % pieces.size())

@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=7 format=3 uid="uid://c6w822vyykot8"]
+
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="1_1eqg2"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_r8a8b"]
+
+[sub_resource type="Resource" id="Resource_1kvtl"]
+script = ExtResource("1_r8a8b")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_w3a5h"]
+script = ExtResource("1_r8a8b")
+action = 0
+direction = 1
+speed = 1
+
+[sub_resource type="Resource" id="Resource_bfyy4"]
+script = ExtResource("1_r8a8b")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_mitlu"]
+script = ExtResource("1_r8a8b")
+action = 0
+direction = 2
+speed = 1
+
+[resource]
+script = ExtResource("1_1eqg2")
+commands = Array[ExtResource("1_r8a8b")]([SubResource("Resource_1kvtl"), SubResource("Resource_w3a5h"), SubResource("Resource_bfyy4"), SubResource("Resource_mitlu")])
+description = "Move in a step up shape"

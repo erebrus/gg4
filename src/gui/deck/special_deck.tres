@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Deck" load_steps=8 format=3 uid="uid://bas55cd0npkbp"]
+[gd_resource type="Resource" script_class="Deck" load_steps=8 format=3]
 
 [ext_resource type="Resource" uid="uid://beihu3rnu20tv" path="res://src/gui/pieces/attack.tres" id="1_2rbou"]
 [ext_resource type="Script" path="res://src/gui/deck/deck.gd" id="1_wph0t"]
 [ext_resource type="Resource" uid="uid://lmaj55dcc2ow" path="res://src/gui/pieces/charge.tres" id="2_u6r2h"]
-[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/long.tres" id="3_2723l"]
+[ext_resource type="Resource" uid="uid://criqx647ysnvi" path="res://src/gui/pieces/run.tres" id="3_2723l"]
 [ext_resource type="Resource" uid="uid://cwc00d3ip1psj" path="res://src/gui/pieces/shield.tres" id="4_kcw5r"]
 [ext_resource type="Resource" uid="uid://bm4gdywfkfvlf" path="res://src/gui/pieces/shield_charge.tres" id="5_ysmlt"]
 [ext_resource type="Resource" uid="uid://dpuudyls0tsih" path="res://src/gui/pieces/sprint.tres" id="6_nsbp7"]

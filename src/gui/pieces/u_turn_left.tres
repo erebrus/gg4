@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Piece" load_steps=7 format=3 uid="uid://jdhjahfl3tx"]
+
+[ext_resource type="Script" path="res://src/commands/command.gd" id="1_12qs0"]
+[ext_resource type="Script" path="res://src/gui/pieces/piece.gd" id="2_8rnwr"]
+
+[sub_resource type="Resource" id="Resource_e5dem"]
+script = ExtResource("1_12qs0")
+action = 0
+direction = 2
+speed = 1
+
+[sub_resource type="Resource" id="Resource_fomim"]
+script = ExtResource("1_12qs0")
+action = 0
+direction = 1
+speed = 1
+
+[sub_resource type="Resource" id="Resource_nqa7p"]
+script = ExtResource("1_12qs0")
+action = 0
+direction = 0
+speed = 1
+
+[sub_resource type="Resource" id="Resource_vtrfo"]
+script = ExtResource("1_12qs0")
+action = 0
+direction = 0
+speed = 1
+
+[resource]
+script = ExtResource("2_8rnwr")
+commands = Array[ExtResource("1_12qs0")]([SubResource("Resource_e5dem"), SubResource("Resource_fomim"), SubResource("Resource_nqa7p"), SubResource("Resource_vtrfo")])
+description = "Move in a U shape"

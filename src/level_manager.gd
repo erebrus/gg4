@@ -1,6 +1,9 @@
 class_name LevelManager extends Node
 
 var levels:Array[PackedScene] = [
+#	preload("res://src/world/levels/test_level_a.tscn"),
+	
+	preload("res://src/world/levels/tutorial_level_1.tscn"),
 	preload("res://src/world/levels/level_1.tscn"),
 	preload("res://src/world/levels/level_2.tscn"),
 	
@@ -9,6 +12,8 @@ var levels:Array[PackedScene] = [
 var current_deck:Array[Piece]
 var current_level:int = 0
 var highest_level:int = 0
+var last_discard_size:int = 0
+var level_complete:bool = false
 
 const path="usr://game_conf.tres"
 
@@ -17,7 +22,7 @@ func _ready():
 
 
 func is_last_level() -> bool:
-	return current_level >= levels.size()
+	return current_level >= levels.size() - 1
 	
 
 func next_level():
