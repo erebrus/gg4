@@ -8,6 +8,7 @@ func _ready() -> void:
 	if (Globals.can_continue()):
 		continue_button.show()
 	Globals.stop_game_music()
+	$menu_music.volume_db=-80
 	$menu_music.play()
 	var tween:=create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property($menu_music, "volume_db",-15.0, 1)
@@ -16,6 +17,9 @@ func _ready() -> void:
 
 func _on_start_button_pressed():
 	Globals.start()
+	var tween:=create_tween().set_trans(Tween.TRANS_LINEAR)
+	tween.tween_property($menu_music, "volume_db",-80.0, 1)
+	await tween.finished
 	$menu_music.stop()
 
 	
