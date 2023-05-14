@@ -1,29 +1,153 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmueioutpi337"]
+[gd_scene load_steps=12 format=3 uid="uid://de78fqoskgcl3"]
 
-[ext_resource type="PackedScene" uid="uid://bmt4b7nq0aagl" path="res://src/gameover/gameover.tscn" id="1_aupqi"]
 [ext_resource type="Script" path="res://src/win/win_screen.gd" id="2_3x4lx"]
+[ext_resource type="Texture2D" uid="uid://cn1pnylo7b01x" path="res://assets/gfx/bgs/backgroundover2.png" id="2_yoy6l"]
+[ext_resource type="FontFile" uid="uid://0djk7bufqtr1" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="3_87tt5"]
+[ext_resource type="Texture2D" uid="uid://b7iq6e1rwk0jg" path="res://assets/gfx/Ui/deathbag.png" id="4_cb0q7"]
+[ext_resource type="PackedScene" uid="uid://vwfacvtfaa58" path="res://src/win/scale.tscn" id="5_dlxke"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_21evv"]
-font_size = 60
+[sub_resource type="Animation" id="Animation_v5lmm"]
+length = 5.0
+loop_mode = 1
 
-[node name="WinScreen" instance=ExtResource("1_aupqi")]
+[sub_resource type="Animation" id="Animation_osegq"]
+resource_name = "weight"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Deathbag:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-151, -0.25, 0, 0.2, 0, 680, -0.1, -228, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scale:angle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.2, 0, 0, -0.1, 0, 0.1, 0.185314, 0.4, -0.1, -0.193566, 0.138277, 0.236076, 0.4, -0.163403, -0.378081, 0.0832884, 0.161234, 0.4, -0.107313, -0.191621, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 0.9)
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.298774),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"add_discard_pile_to_plate"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yg8h5"]
+_data = {
+"RESET": SubResource("Animation_v5lmm"),
+"weight": SubResource("Animation_osegq")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbmb7"]
+content_margin_left = 40.0
+content_margin_top = 20.0
+content_margin_right = 40.0
+content_margin_bottom = 20.0
+bg_color = Color(0.988235, 0.913725, 0.00392157, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mwyn"]
+content_margin_left = 40.0
+content_margin_right = 60.0
+bg_color = Color(0.94902, 0.760784, 0.858824, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndepv"]
+font = ExtResource("3_87tt5")
+font_size = 120
+font_color = Color(0.596078, 0.0627451, 0.317647, 1)
+
+[node name="WinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_3x4lx")
 
-[node name="Label" parent="VBoxContainer" index="0"]
-text = "YOU WIN"
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_yoy6l")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" index="1"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "weight"
+libraries = {
+"": SubResource("AnimationLibrary_yg8h5")
+}
+
+[node name="Scale" parent="." instance=ExtResource("5_dlxke")]
+position = Vector2(960, 355)
+
+[node name="Deathbag" type="Sprite2D" parent="."]
+position = Vector2(1431, -151)
+texture = ExtResource("4_cb0q7")
+offset = Vector2(8, -88)
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -282.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_qbmb7")
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" index="0"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2/PanelContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Remaining Pieces:"
-label_settings = SubResource("LabelSettings_21evv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_4mwyn")
 
-[node name="PiecesLabel" type="Label" parent="VBoxContainer/HBoxContainer" index="1"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="MarginContainer2/PanelContainer2/PanelContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_21evv")
+text = "56: Catan"
+label_settings = SubResource("LabelSettings_ndepv")

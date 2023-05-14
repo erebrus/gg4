@@ -1,6 +1,28 @@
-extends "res://src/gameover/gameover.gd"
+extends Control
 
 
-func set_data(num_pieces: int) -> void:
-	var pieces_label: Label = get_node("%PiecesLabel")
-	pieces_label.text = str(num_pieces)
+var can_exit = false
+
+@onready var discard_pile := $Deathbag
+@onready var balance := $Scale
+
+func _ready():
+	await get_tree().create_timer(0.3).timeout
+	can_exit = true
+	
+
+func _input(event: InputEvent):
+	if not can_exit:
+		return
+	if event is InputEventKey or event is InputEventMouseButton:
+		Globals.start()
+	
+
+func _on_timer_timeout():
+	Globals.start()
+
+
+func add_discard_pile_to_plate():
+	balance.add_to_right_plate(discard_pile)
+	
+
