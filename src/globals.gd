@@ -93,13 +93,21 @@ func can_continue() -> bool:
 	return level_manager.current_level > 0
 	
 
+func tutorial():
+	level_manager.tutorial_level()
+	_main_screen()
+	
+
 func start():
 	level_manager.reset_level()
-	SceneManager.change_scene(MAIN_SCREEN, default_transition)
-	start_game_music()
+	_main_screen()
 	
 
 func continue_game():
+	_main_screen()
+	
+
+func _main_screen():
 	SceneManager.change_scene(MAIN_SCREEN, default_transition)
 	start_game_music()
 	
