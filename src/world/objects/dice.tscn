@@ -1,9 +1,26 @@
-[gd_scene load_steps=7 format=3 uid="uid://0wen44id7217"]
+[gd_scene load_steps=24 format=3 uid="uid://0wen44id7217"]
 
 [ext_resource type="Script" path="res://src/world/objects/dice.gd" id="1_ohx4n"]
 [ext_resource type="Texture2D" uid="uid://c8arh8xf2660k" path="res://assets/gfx/dice/diceidle1.png" id="2_78m76"]
 [ext_resource type="Texture2D" uid="uid://dqn47ptugelxy" path="res://assets/gfx/dice/diceidle2.png" id="3_4uxso"]
 [ext_resource type="Texture2D" uid="uid://vj5cfkyqt6m1" path="res://assets/gfx/dice/diceidle3.png" id="4_1sbpr"]
+[ext_resource type="Texture2D" uid="uid://b3lv2im6qxqro" path="res://assets/gfx/dice/fade1.png" id="5_wtw4g"]
+[ext_resource type="Texture2D" uid="uid://d30fquiejd3yq" path="res://assets/gfx/dice/fade2.png" id="6_xnyf8"]
+[ext_resource type="Texture2D" uid="uid://bybekwofnndai" path="res://assets/gfx/dice/fade3.png" id="7_848nl"]
+[ext_resource type="Texture2D" uid="uid://xt2bmm2ioksx" path="res://assets/gfx/dice/fade4.png" id="8_3371n"]
+[ext_resource type="Texture2D" uid="uid://bl1g4q6j6sbw7" path="res://assets/gfx/dice/fade5.png" id="9_ntjil"]
+[ext_resource type="Texture2D" uid="uid://boh82fmgqppa0" path="res://assets/gfx/dice/fade6.png" id="10_d83c6"]
+[ext_resource type="Texture2D" uid="uid://dryrv1grupnj8" path="res://assets/gfx/dice/fade7.png" id="11_7jrei"]
+[ext_resource type="Texture2D" uid="uid://bqsbyn3emp6o7" path="res://assets/gfx/dice/fade8.png" id="12_ptsib"]
+[ext_resource type="Texture2D" uid="uid://bntxxnafnw5un" path="res://assets/gfx/dice/fade9.png" id="13_q5xkw"]
+[ext_resource type="Texture2D" uid="uid://c72e16ypmerwo" path="res://assets/gfx/dice/fade10.png" id="14_onduu"]
+[ext_resource type="Texture2D" uid="uid://2e82x7qqcg5b" path="res://assets/gfx/dice/fade11.png" id="15_en0ut"]
+[ext_resource type="Texture2D" uid="uid://c647tw33yla3o" path="res://assets/gfx/dice/fade12.png" id="16_6rj0g"]
+[ext_resource type="Texture2D" uid="uid://dsccfn1p1igwu" path="res://assets/gfx/dice/fade13.png" id="17_jbxnt"]
+[ext_resource type="Texture2D" uid="uid://be4ygrbso66c4" path="res://assets/gfx/dice/fade14.png" id="18_uu642"]
+[ext_resource type="Texture2D" uid="uid://c6uv2e1mhyrym" path="res://assets/gfx/dice/fade15.png" id="19_531tf"]
+[ext_resource type="Texture2D" uid="uid://b1aa28cdjstpc" path="res://assets/gfx/dice/fade16.png" id="20_xf1ie"]
+[ext_resource type="Texture2D" uid="uid://b1l26pjyttao3" path="res://assets/gfx/dice/fade17.png" id="21_nujio"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3db3h"]
 animations = [{
@@ -26,22 +43,79 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wtw4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xnyf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_848nl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3371n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ntjil")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_d83c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7jrei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ptsib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_q5xkw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_onduu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_en0ut")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6rj0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jbxnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_uu642")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_531tf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_xf1ie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_nujio")
+}],
+"loop": false,
+"name": &"fade",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gd638"]
 size = Vector2(96, 96)
 
 [node name="Dice" type="Area2D"]
+z_index = 2
 collision_mask = 16
 script = ExtResource("1_ohx4n")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-7, -16)
 sprite_frames = SubResource("SpriteFrames_3db3h")
-frame = 3
-frame_progress = 0.488111
+animation = &"fade"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_gd638")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

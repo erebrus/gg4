@@ -15,6 +15,8 @@ enum CellType {EMPTY, OBSTACLE}
 @export var default_deck:Deck
 @export var shuffle_deck:bool = true
 @export var show_keys:bool = false
+@export var tutorials:Array[String]
+
 var turn_manager:TurnManager
 
 var tile_size:Vector2:
@@ -30,9 +32,19 @@ func _ready():
 	assert(tile_set)
 
 	init_children()
-		
+	Events.player_queue_empty.connect(check_tutorial)
 	Logger.info("Arena initialised.")
 
+func check_tutorial():
+	if tutorials != null and not tutorials.is_empty():
+		var msg:String=tutorials.pop_front()
+		if msg.length()>0:
+			Events.request_tutorial.emit(msg)
+		else:
+			Events.request_hide_panels.emit()
+	else:
+		Events.player_queue_empty.disconnect(check_tutorial)
+	
 func init_children():	
 	for child in get_children():
 		if child.is_in_group("map_element"):
