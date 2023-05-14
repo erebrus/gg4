@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://blveeq44y5h4a"]
+
+[ext_resource type="PackedScene" uid="uid://cldwu41ur8qw1" path="res://src/world/arena.tscn" id="1_4276d"]
+[ext_resource type="PackedScene" uid="uid://bn8hyp5yo4amx" path="res://src/characters/enemies/enemy.tscn" id="2_4pryh"]
+[ext_resource type="Script" path="res://src/commands/command.gd" id="3_0wp32"]
+
+[sub_resource type="Resource" id="Resource_cyrn1"]
+script = ExtResource("3_0wp32")
+action = 2
+direction = 3
+speed = 1
+
+[node name="TutorialLevel2" instance=ExtResource("1_4276d")]
+
+[node name="Enemy" parent="." index="1" instance=ExtResource("2_4pryh")]
+position = Vector2(704, 320)
+command_pattern = Array[ExtResource("3_0wp32")]([SubResource("Resource_cyrn1"), SubResource("Resource_cyrn1"), SubResource("Resource_cyrn1"), SubResource("Resource_cyrn1")])
+
+[node name="Enemy2" parent="." index="2" instance=ExtResource("2_4pryh")]
+position = Vector2(1344, 320)
+command_pattern = Array[ExtResource("3_0wp32")]([SubResource("Resource_cyrn1"), SubResource("Resource_cyrn1"), SubResource("Resource_cyrn1"), SubResource("Resource_cyrn1")])
