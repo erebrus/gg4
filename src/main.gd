@@ -11,7 +11,10 @@ func _ready():
 	Globals.level_manager.level_complete = false
 	add_child(map)
 	move_child(map, 0)
-	
+
+	if map.show_keys:
+		Events.request_keys.emit(true)
+		
 	if map.default_deck:
 		gui.set_deck_pieces(map.default_deck.generate(map.shuffle_deck))
 	else:

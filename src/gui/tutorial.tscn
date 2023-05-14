@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqo0x8yn78q5t"]
+
+[ext_resource type="Script" path="res://src/gui/tutorial.gd" id="1_ayqsr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vpms"]
+bg_color = Color(0, 0, 0, 0.215686)
+
+[node name="tutorial" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1412.0
+offset_bottom = -979.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vpms")
+script = ExtResource("1_ayqsr")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+custom_minimum_size = Vector2(640, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "You now have all you need to survive your quest.
+At the end of each level, you  will be given a choice of token to add to your bag. 
+Remember keep your discard bag light. Less is more. Less is quest."
+autowrap_mode = 3

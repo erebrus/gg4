@@ -14,5 +14,6 @@ script = ExtResource("3_v7hly")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Gui" parent="CanvasLayer" instance=ExtResource("2_hg27e")]
+auto_draw_piece_on_place = true
 
 [node name="Dice" parent="CanvasLayer" instance=ExtResource("4_37j7b")]

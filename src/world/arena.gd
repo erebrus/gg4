@@ -14,7 +14,7 @@ enum CellType {EMPTY, OBSTACLE}
 
 @export var default_deck:Deck
 @export var shuffle_deck:bool = true
-
+@export var show_keys:bool = false
 var turn_manager:TurnManager
 
 var tile_size:Vector2:
@@ -30,7 +30,7 @@ func _ready():
 	assert(tile_set)
 
 	init_children()
-	
+		
 	Logger.info("Arena initialised.")
 
 func init_children():	

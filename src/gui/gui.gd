@@ -39,10 +39,10 @@ func _on_request_keys(val:bool)->void:
 
 func _on_request_hide_panels()->void:
 	keys_panel.visible = false
-
+	$MarginContainer/tutorial.visible = false
 
 func _on_request_tutorial(text:String)->void:
-	
+	$MarginContainer/tutorial.show_message(text)
 	
 func set_deck_pieces(_pieces:Array[Piece]):
 	deck.pieces = _pieces
