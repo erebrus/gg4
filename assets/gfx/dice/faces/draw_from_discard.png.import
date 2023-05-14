@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m3lkikh6o1g5"
-path="res://.godot/imported/Rotate.png-032eb0ee14ce1ad81612e66a4d66987d.ctex"
+uid="uid://b23vrdquk5kax"
+path="res://.godot/imported/draw_from_discard.png-6a0998df9a0c291d5e1e6801b4f215ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/gfx/Ui/Rotate.png"
-dest_files=["res://.godot/imported/Rotate.png-032eb0ee14ce1ad81612e66a4d66987d.ctex"]
+source_file="res://assets/gfx/dice/faces/draw_from_discard.png"
+dest_files=["res://.godot/imported/draw_from_discard.png-6a0998df9a0c291d5e1e6801b4f215ae.ctex"]
 
 [params]
 

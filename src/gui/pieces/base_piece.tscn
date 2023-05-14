@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dhm5f6w6yf234" path="res://assets/gfx/Ui/42 shieldtile.png" id="4_s5h7t"]
 [ext_resource type="Texture2D" uid="uid://tof5dstl6vd1" path="res://src/commands/shield_charge.png" id="5_op03k"]
 [ext_resource type="Texture2D" uid="uid://cp48xu6iidaa" path="res://assets/gfx/Ui/42 Swordtile.png" id="6_pilvw"]
-[ext_resource type="Texture2D" uid="uid://h8xxyw48txqw" path="res://src/commands/sprint.png" id="7_n0mgh"]
+[ext_resource type="Texture2D" uid="uid://cuije5bn1ikgg" path="res://assets/gfx/Ui/42 sprinttile.png" id="7_ce2r2"]
 
 [node name="BasePiece" type="Container"]
 anchors_preset = 8
@@ -24,4 +24,4 @@ wait_sprite = ExtResource("3_iy48o")
 shield_sprite = ExtResource("4_s5h7t")
 shield_charge_sprite = ExtResource("5_op03k")
 attack_sprite = ExtResource("6_pilvw")
-sprint_sprite = ExtResource("7_n0mgh")
+sprint_sprite = ExtResource("7_ce2r2")
