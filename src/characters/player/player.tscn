@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://jqxg88aou1fg"]
+[gd_scene load_steps=36 format=3 uid="uid://jqxg88aou1fg"]
 
 [ext_resource type="PackedScene" uid="uid://b4bv0gd2datv0" path="res://src/characters/character.tscn" id="1_fybfn"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="2_jhrk2"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://src/characters/player/wobble.gd" id="14_p1wy1"]
 [ext_resource type="Texture2D" uid="uid://dswmdkc7knyke" path="res://assets/gfx/player/playeridlenew3.png" id="14_yvkpj"]
 [ext_resource type="AudioStream" uid="uid://yqmymcml8vh7" path="res://assets/sfx/player_death.wav" id="25_rnil7"]
+[ext_resource type="AudioStream" uid="uid://dqeeccptvvv3s" path="res://assets/sfx/woblis_gain.mp3" id="26_l11gn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_da6y0"]
 animations = [{
@@ -400,6 +401,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0, -16), Vector2(-12, -16), Vector2(12, -16), Vector2(0, -16), Vector2(12, -16), Vector2(-12, -16), Vector2(-7.15256e-06, -16)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/sfx_wobble")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jvdl7"]
 _data = {
@@ -419,7 +434,7 @@ script = ExtResource("2_jhrk2")
 
 [node name="sprite" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_da6y0")
-animation = &"death"
+animation = &"wobble"
 offset = Vector2(0, -16)
 
 [node name="AnimationPlayer" parent="." index="2"]
@@ -435,3 +450,6 @@ script = ExtResource("14_p1wy1")
 
 [node name="sfx_death" type="AudioStreamPlayer2D" parent="sfx" index="3"]
 stream = ExtResource("25_rnil7")
+
+[node name="sfx_wobble" type="AudioStreamPlayer2D" parent="sfx" index="4"]
+stream = ExtResource("26_l11gn")

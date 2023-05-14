@@ -10,7 +10,6 @@ const GameDataPath = "user://conf.cfg"
 var config:ConfigFile
 
 var debug_build := false
-var music
 
 
 const MENU_SCREEN = "res://src/menu/menu.tscn"
@@ -34,8 +33,9 @@ var deck:
 		return level_manager.current_deck
 	
 var player_in_turn:= false
-
+var game_music_on := false
 @onready var level_manager:LevelManager = $LevelManager
+@onready var music:=$music
 
 func _ready():
 	_init_logger()
@@ -50,6 +50,19 @@ func _ready():
 #	music.bus="Music"
 #	add_child(music)
 
+func start_game_music()->void:
+	if not music.playing:
+		music.volume_db=-80
+		music.play()
+		var tween:=create_tween().set_trans(Tween.TRANS_LINEAR)
+		tween.tween_property(music, "volume_db",-15.0, 1)
+		game_music_on = true
+
+
+func stop_game_music()->void:
+	music.stop()
+	game_music_on = false
+		
 func _init_logger():
 	Logger.set_logger_level(Logger.LOG_LEVEL_INFO)
 	Logger.set_logger_format(Logger.LOG_FORMAT_MORE)
@@ -83,10 +96,12 @@ func can_continue() -> bool:
 func start():
 	level_manager.reset_level()
 	SceneManager.change_scene(MAIN_SCREEN, default_transition)
+	start_game_music()
 	
 
 func continue_game():
 	SceneManager.change_scene(MAIN_SCREEN, default_transition)
+	start_game_music()
 	
 
 func choose_piece():
@@ -122,3 +137,8 @@ func choose_piece():
 #func _exit_tree():
 #	save_data()
 
+
+
+func _on_music_finished():
+	if game_music_on:
+		start_game_music()

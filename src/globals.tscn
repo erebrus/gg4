@@ -1,10 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://cypxnmwh6rjeq"]
+[gd_scene load_steps=8 format=3 uid="uid://cypxnmwh6rjeq"]
 
 [ext_resource type="Script" path="res://src/globals.gd" id="1_esr3s"]
 [ext_resource type="Script" path="res://src/level_manager.gd" id="2_lpboo"]
+[ext_resource type="AudioStream" uid="uid://c6nrlvwl67db6" path="res://assets/music/Fanta_Bubbles.mp3" id="3_52nf3"]
+[ext_resource type="AudioStream" uid="uid://cx2o3e41luxv5" path="res://assets/music/Finding_Truffles.mp3" id="4_l7syq"]
+[ext_resource type="AudioStream" uid="uid://bk1nktofo20b6" path="res://assets/music/Frogs_gambling.mp3" id="5_j1wy7"]
+[ext_resource type="AudioStream" uid="uid://8kas5v3twxlw" path="res://assets/music/Monke_Eat_Banana.mp3" id="6_ytfti"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qlufm"]
+streams_count = 4
+stream_0/stream = ExtResource("3_52nf3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("4_l7syq")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("5_j1wy7")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("6_ytfti")
+stream_3/weight = 1.0
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_esr3s")
 
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("2_lpboo")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_qlufm")
+volume_db = -15.0
+bus = &"music"
+
+[connection signal="finished" from="music" to="." method="_on_music_finished"]
